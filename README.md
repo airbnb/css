@@ -117,7 +117,7 @@ Properties should be separated into two groups: those which affect the structure
   border: 1px solid blue(3);
   color: blue(3);
   font-size: ms(0);
-  text-shadow: 4px 4px 2px green(1)
+  text-shadow: 4px 4px 2px green(1);
 }
 ```
 
