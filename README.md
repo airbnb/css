@@ -177,9 +177,9 @@ We encourage some combination of OOCSS and BEM for these reasons:
 .person--female__hand--left {}
 ```
 
-  * `.listing-card` is the “block” and represents the higher-level component
-  * `.listing-card__title` is an “element” and represents a descendant of `.listing-card` that helps compose the block as a whole.
-  * `.listing-card--featured` is a “modifier” and represents a different state or variation on the `.listing-card` block.
+  * `.person` is the “block” and represents the higher-level component
+  * `.person__hand` is an “element” and represents a descendant of `.person` that helps compose the block as a whole.
+  * `.person__hand--left` is a “modifier” and represents a different state or variation on the `.person__hand` block.
 
 ### ID selectors
 
