@@ -153,23 +153,28 @@ We encourage some combination of OOCSS and BEM for these reasons:
 
 **Example**
 
-```html
-<article class="listing-card listing-card--featured">
-
-  <h1 class="listing-card__title">Adorable 2BR in the sunny Mission</h1>
-
-  <div class="listing-card__content">
-    <p>Vestibulum id ligula porta felis euismod semper.</p>
-  </div>
-
-</article>
-```
-
 ```css
-.listing-card { }
-.listing-card--featured { }
-.listing-card__title { }
-.listing-card__content { }
+//
+// BEM Example Module
+// $author Your Name
+
+
+// ==========================================================================
+// Default Person
+// ==========================================================================
+
+.person {}
+.person__hand {}
+.person__hand--left {}
+
+
+// ==========================================================================
+// Female Person
+// ==========================================================================
+
+.person--female {}
+.person--female__hand {}
+.person--female__hand--left {}
 ```
 
   * `.listing-card` is the “block” and represents the higher-level component
