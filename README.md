@@ -13,6 +13,7 @@
     - [Property Separation] (#property-separation)
     - [Comments](#comments)
     - [OOCSS and BEM](#oocss-and-bem)
+    - [Module Sections Separation] #module-sections-separation
     - [ID Selectors](#id-selectors)
     - [JavaScript hooks](#javascript-hooks)
     - [Modular Scale] (#modular-scale)
@@ -154,6 +155,25 @@ We encourage some combination of OOCSS and BEM for these reasons:
 **Example**
 
 ```css
+.person {}
+.person__hand {}
+.person__hand--left {}
+.person--female {}
+.person--female__hand {}
+.person--female__hand--left {}
+```
+
+  * `.person` is the “block” and represents the higher-level component
+  * `.person__hand` is an “element” and represents a descendant of `.person` that helps compose the block as a whole.
+  * `.person__hand--left` is a “modifier” and represents a different state or variation on the `.person__hand` block.
+
+### Module Sections Separation
+
+(S)CSS Modules should be broken into sections, typically by the modifications to the module. These sections should be separated using comment blocks. A module should always begin with the module name and author of the module and have a default section and then optional additional sections, depending on the module. See below for an example of the BEM example used above being separated into sections.
+
+**Example**
+
+```css
 //
 // BEM Example Module
 // $author Your Name
@@ -176,10 +196,6 @@ We encourage some combination of OOCSS and BEM for these reasons:
 .person--female__hand {}
 .person--female__hand--left {}
 ```
-
-  * `.person` is the “block” and represents the higher-level component
-  * `.person__hand` is an “element” and represents a descendant of `.person` that helps compose the block as a whole.
-  * `.person__hand--left` is a “modifier” and represents a different state or variation on the `.person__hand` block.
 
 ### ID selectors
 
