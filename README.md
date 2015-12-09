@@ -105,6 +105,8 @@ Finally, properties are what give the selected elements of a rule declaration th
 
 Properties should be separated into two groups: those which affect the structure or positioning of the element and those which affect the styling of the element. Separate these properties in the class with a newline.
 
+**Example**
+
 ```css
 .example {
   display: inline-block;
