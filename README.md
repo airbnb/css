@@ -15,6 +15,7 @@
     - [OOCSS and BEM](#oocss-and-bem)
     - [ID Selectors](#id-selectors)
     - [JavaScript hooks](#javascript-hooks)
+    - [Modular Scale] (#modular-scale)
   1. [Sass](#sass)
     - [Syntax](#syntax)
     - [Ordering](#ordering-of-property-declarations)
@@ -189,6 +190,19 @@ We recommend creating JavaScript-specific classes to bind to, prefixed with `.js
 
 ```html
 <button class="btn btn-primary js-request-to-book">Request to Book</button>
+```
+
+### Modular Scale
+
+When defining sizes (widths, paddings, margins etc.) always use the relative `em` unit. SASS includes a modular scale mixin which provides a number of `em` unit size breakpoints. Always use this modular scale mixin for sizes if possible. See http://www.modularscale.com/?1,9.0625&em&1.5&sass&text for a visual representation of the breakpoints and see below for an example of using the modular scale mixin.
+
+**Example**
+
+```css
+.example {
+  width: ms(4);
+  padding: ms(-1) * 1.5;
+}
 ```
 
 ## Sass
