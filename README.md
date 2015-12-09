@@ -16,6 +16,7 @@
     - [ID Selectors](#id-selectors)
     - [JavaScript hooks](#javascript-hooks)
     - [Modular Scale] (#modular-scale)
+    - [Colour Helpers] (#colour-helpers)
   1. [Sass](#sass)
     - [Syntax](#syntax)
     - [Ordering](#ordering-of-property-declarations)
@@ -208,6 +209,21 @@ When defining sizes (widths, paddings, margins etc.) always use the relative `em
   padding: ms(-1) * 1.5;
 }
 ```
+
+### Colour Helpers
+
+When using colours, do not define your own colours. Instead use the Plinth colour helpers (defined here: https://github.com/thebeansgroup/plinth/blob/master/vendor/assets/stylesheets/_settings-colours.css.scss) to use a set of predefined colours.
+
+**Example**
+
+```css
+.example {
+  background: blue(2);
+  color: blue(3);
+  border: 1px solid mono(0);
+}
+```
+
 
 ## Sass
 
