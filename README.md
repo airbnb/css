@@ -10,6 +10,7 @@
     - [Properties](#properties)
   1. [CSS](#css)
     - [Formatting](#formatting)
+    - [Property Separation] (#property-separation)
     - [Comments](#comments)
     - [OOCSS and BEM](#oocss-and-bem)
     - [ID Selectors](#id-selectors)
@@ -98,6 +99,25 @@ Finally, properties are what give the selected elements of a rule declaration th
 .selector,
 .per-line {
   // ...
+}
+```
+### Property Separation
+
+Properties should be separated into two groups: those which affect the structure or positioning of the element and those which affect the styling of the element. Separate these properties in the class with a newline.
+
+```css
+.example {
+  display: inline-block;
+  height: ms(0);
+  width: ms(4);
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  border: 1px solid blue(3);
+  color: blue(3);
+  font-size: ms(0);
+  text-shadow: 4px 4px 2px green(1)
 }
 ```
 
