@@ -268,8 +268,8 @@ When defining sizes (widths, paddings, margins etc.) always use the relative `em
       font-weight: bold;
       @include transition(background 0.5s ease);
 
-      .icon {
-        margin-right: 10px;
+      :hover {
+        background: blue(1);
       }
     }
     ```
