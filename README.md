@@ -169,7 +169,7 @@ We encourage some combination of OOCSS and BEM for these reasons:
 
 ### Module Sections Separation
 
-(S)CSS Modules should be broken into sections, typically by the modifications to the module. These sections should be separated using comment blocks. A module should always begin with the module name and author of the module and have a default section and then optional additional sections, depending on the module. See below for an example of the BEM example used above being separated into sections.
+(S)CSS modules should be broken into sections, typically by the modifications of that module. These sections should be separated using comment blocks. A module should always begin with the module name and author of the module and have a default section and then optional additional sections, depending on the module. See below for an example of the BEM example used above being separated into sections:
 
 **Example**
 
