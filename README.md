@@ -21,7 +21,6 @@
     - [Ordering](#ordering-of-property-declarations)
     - [Mixins](#mixins)
     - [Placeholders](#placeholders)
-    - [Nested selectors](#nested-selectors)
 
 ## Terminology
 
