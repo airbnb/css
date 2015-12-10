@@ -13,10 +13,11 @@
     - [Property Separation] (#property-separation)
     - [Comments](#comments)
     - [OOCSS and BEM](#oocss-and-bem)
-    - [Module Sections Separation] #module-sections-separation
+    - [Module Sections Separation] (#module-sections-separation)
     - [ID Selectors](#id-selectors)
     - [Modular Scale] (#modular-scale)
     - [Colour Helpers] (#colour-helpers)
+    - [Z-index Layer Rules] (#z-index-layer-rules)
   1. [Sass](#sass)
     - [Syntax](#syntax)
     - [Ordering](#ordering-of-property-declarations)
@@ -229,6 +230,33 @@ When using colours, do not define your own colours. Instead use the Plinth colou
 }
 ```
 
+### Z-index Layer Rules
+
+To help avoid issues when using z-index, assign z-indexes according to the elements layer. The layers are are in groups of 10s as follows:
+
+- UI tweaks (close button, icon etc) = 0 - 9
+- Tooltips = 10 - 19
+- Takeovers = 20 - 29
+- Overlays = 30 - 39
+- Modals = 40 - 49
+
+From this, a UI component ranging between 0-9 will be relative to it's parent layer.
+
+**Example**
+
+```css
+.takeover--example1 {
+  z-index: 20;
+}
+
+.takeover--example2 {
+  z-index: 21;
+}
+
+.tooltip {
+  z-index: 10;
+}
+```
 
 ## Sass
 
