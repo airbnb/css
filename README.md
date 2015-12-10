@@ -15,7 +15,6 @@
     - [OOCSS and BEM](#oocss-and-bem)
     - [Module Sections Separation] #module-sections-separation
     - [ID Selectors](#id-selectors)
-    - [JavaScript hooks](#javascript-hooks)
     - [Modular Scale] (#modular-scale)
     - [Colour Helpers] (#colour-helpers)
   1. [Sass](#sass)
@@ -202,16 +201,6 @@ We encourage some combination of OOCSS and BEM for these reasons:
 While it is possible to select elements by ID in CSS, it should generally be considered an anti-pattern. ID selectors introduce an unnecessarily high level of [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) to your rule declarations, and they are not reusable.
 
 For more on this subject, read [CSS Wizardry's article](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/) on dealing with specificity.
-
-### JavaScript hooks
-
-Avoid binding to the same class in both your CSS and JavaScript. Conflating the two often leads to, at a minimum, time wasted during refactoring when a developer must cross-reference each class they are changing, and at its worst, developers being afraid to make changes for fear of breaking functionality.
-
-We recommend creating JavaScript-specific classes to bind to, prefixed with `.js-`:
-
-```html
-<button class="btn btn-primary js-request-to-book">Request to Book</button>
-```
 
 ### Modular Scale
 
