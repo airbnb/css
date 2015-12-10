@@ -10,16 +10,19 @@
     - [Properties](#properties)
   1. [CSS](#css)
     - [Formatting](#formatting)
+    - [Property Separation] (#property-separation)
     - [Comments](#comments)
     - [OOCSS and BEM](#oocss-and-bem)
+    - [Module Sections Separation] (#module-sections-separation)
     - [ID Selectors](#id-selectors)
-    - [JavaScript hooks](#javascript-hooks)
+    - [Modular Scale] (#modular-scale)
+    - [Colour Helpers] (#colour-helpers)
+    - [Z-index Layer Rules] (#z-index-layer-rules)
   1. [Sass](#sass)
     - [Syntax](#syntax)
     - [Ordering](#ordering-of-property-declarations)
     - [Mixins](#mixins)
     - [Placeholders](#placeholders)
-    - [Nested selectors](#nested-selectors)
 
 ## Terminology
 
@@ -100,6 +103,27 @@ Finally, properties are what give the selected elements of a rule declaration th
   // ...
 }
 ```
+### Property Separation
+
+Properties should be separated into two groups: those which affect the structure or positioning of the element and those which affect the styling of the element. Separate these properties in the class with a newline.
+
+**Example**
+
+```css
+.example {
+  display: inline-block;
+  height: ms(0);
+  width: ms(4);
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  border: 1px solid blue(3);
+  color: blue(3);
+  font-size: ms(0);
+  text-shadow: 4px 4px 2px green(1);
+}
+```
 
 ### Comments
 
@@ -130,28 +154,48 @@ We encourage some combination of OOCSS and BEM for these reasons:
 
 **Example**
 
-```html
-<article class="listing-card listing-card--featured">
-
-  <h1 class="listing-card__title">Adorable 2BR in the sunny Mission</h1>
-
-  <div class="listing-card__content">
-    <p>Vestibulum id ligula porta felis euismod semper.</p>
-  </div>
-
-</article>
+```css
+.person {}
+.person__hand {}
+.person__hand--left {}
+.person--female {}
+.person--female__hand {}
+.person--female__hand--left {}
 ```
+
+  * `.person` is the “block” and represents the higher-level component
+  * `.person__hand` is an “element” and represents a descendant of `.person` that helps compose the block as a whole.
+  * `.person__hand--left` is a “modifier” and represents a different state or variation on the `.person__hand` block.
+
+### Module Sections Separation
+
+(S)CSS modules should be broken into sections, typically by the modifications of that module. These sections should be separated using comment blocks. A module should always begin with the module name and author of the module and have a default section and then optional additional sections, depending on the module. See below for an example of the BEM example used above being separated into sections:
+
+**Example**
 
 ```css
-.listing-card { }
-.listing-card--featured { }
-.listing-card__title { }
-.listing-card__content { }
-```
+//
+// BEM Example Module
+// $author Your Name
 
-  * `.listing-card` is the “block” and represents the higher-level component
-  * `.listing-card__title` is an “element” and represents a descendant of `.listing-card` that helps compose the block as a whole.
-  * `.listing-card--featured` is a “modifier” and represents a different state or variation on the `.listing-card` block.
+
+// ==========================================================================
+// Default Person
+// ==========================================================================
+
+.person {}
+.person__hand {}
+.person__hand--left {}
+
+
+// ==========================================================================
+// Female Person
+// ==========================================================================
+
+.person--female {}
+.person--female__hand {}
+.person--female__hand--left {}
+```
 
 ### ID selectors
 
@@ -159,14 +203,59 @@ While it is possible to select elements by ID in CSS, it should generally be con
 
 For more on this subject, read [CSS Wizardry's article](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/) on dealing with specificity.
 
-### JavaScript hooks
+### Modular Scale
 
-Avoid binding to the same class in both your CSS and JavaScript. Conflating the two often leads to, at a minimum, time wasted during refactoring when a developer must cross-reference each class they are changing, and at its worst, developers being afraid to make changes for fear of breaking functionality.
+When defining sizes (widths, paddings, margins etc.) always use the relative `em` unit. SASS includes a modular scale mixin which provides a number of `em` unit size breakpoints. Always use this modular scale mixin for sizes if possible. See http://www.modularscale.com/?1,9.0625&em&1.5&sass&text for a visual representation of the breakpoints and see below for an example of using the modular scale mixin.
 
-We recommend creating JavaScript-specific classes to bind to, prefixed with `.js-`:
+**Example**
 
-```html
-<button class="btn btn-primary js-request-to-book">Request to Book</button>
+```css
+.example {
+  width: ms(4);
+  padding: ms(-1) * 1.5;
+}
+```
+
+### Colour Helpers
+
+When using colours, do not define your own colours. Instead use the Plinth colour helpers (defined here: https://github.com/thebeansgroup/plinth/blob/master/vendor/assets/stylesheets/_settings-colours.css.scss) to use a set of predefined colours.
+
+**Example**
+
+```css
+.example {
+  background: blue(2);
+  color: blue(3);
+  border: 1px solid mono(0);
+}
+```
+
+### Z-index Layer Rules
+
+To help avoid issues when using z-index, assign z-indexes according to the elements layer. The layers are are in groups of 10s as follows:
+
+- UI tweaks (close button, icon etc) = 0 - 9
+- Tooltips = 10 - 19
+- Takeovers = 20 - 29
+- Overlays = 30 - 39
+- Modals = 40 - 49
+
+From this, a UI component ranging between 0-9 will be relative to it's parent layer.
+
+**Example**
+
+```css
+.takeover--example1 {
+  z-index: 20;
+}
+
+.takeover--example2 {
+  z-index: 21;
+}
+
+.tooltip {
+  z-index: 10;
+}
 ```
 
 ## Sass
@@ -227,8 +316,8 @@ We recommend creating JavaScript-specific classes to bind to, prefixed with `.js
       font-weight: bold;
       @include transition(background 0.5s ease);
 
-      .icon {
-        margin-right: 10px;
+      :hover {
+        background: blue(1);
       }
     }
     ```
@@ -278,28 +367,3 @@ Placeholders are powerful but easy to abuse, especially when combined with neste
   color: green;
 }
 ```
-
-### Nested selectors
-
-**Do not nest selectors more than three levels deep!**
-
-```scss
-.page-container {
-  .content {
-    .profile {
-      // STOP!
-    }
-  }
-}
-```
-
-When selectors become this long, you're likely writing CSS that is:
-
-* Strongly coupled to the HTML (fragile) *—OR—*
-* Overly specific (powerful) *—OR—*
-* Not reusable
-
-
-Again: **never nest ID selectors!**
-
-If you must use an ID selector in the first place (and you should really try not to), they should never be nested. If you find yourself doing this, you need to revisit your markup, or figure out why such strong specificity is needed. If you are writing well formed HTML and CSS, you should **never** need to do this.
