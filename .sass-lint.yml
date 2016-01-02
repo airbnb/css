@@ -1,0 +1,32 @@
+files:
+  include: '**/*.s+(a|c)ss'
+options:
+  formatter: stylish
+  merge-default-rules: false
+rules:
+  bem-depth: 1
+  border-zero:
+    - 1
+    - convention: none
+  brace-style:
+    - 1
+    - allow-single-line: false
+  class-name-format:
+    - 1
+    - convention: '^(?!js-).*'
+      convention-explanation: 'should not be written in the form js-*'
+  extends-before-declarations: 0
+  extends-before-mixins: 0
+  id-name-format:
+    - 1
+    - convention: hyphenatedbem
+  leading-zero: 0
+  mixins-before-declarations: 0
+  no-qualifying-elements: 0
+  placeholder-name-format:
+    - 1
+    - convention: hyphenatedbem
+  property-sort-order: 0
+  quotes:
+    - 1
+    - style: double
