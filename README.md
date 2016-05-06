@@ -67,7 +67,8 @@ Finally, properties are what give the selected elements of a rule declaration th
 ### Formatting
 
 * Use soft tabs (2 spaces) for indentation
-* Prefer dashes over camelCasing in class names. Underscores are OK if you're using BEM (see [OOCSS and BEM](#oocss-and-bem) below).
+* Prefer dashes over camelCasing in class names.
+  - Underscores and PascalCasing are okay if you are using BEM (see [OOCSS and BEM](#oocss-and-bem) below).
 * Do not use ID selectors
 * When using multiple selectors in a rule declaration, give each selector its own line.
 * Put a space before the opening brace `{` in rule declarations
@@ -131,30 +132,38 @@ We encourage some combination of OOCSS and BEM for these reasons:
   * CSS Trick's [BEM 101](https://css-tricks.com/bem-101/)
   * Harry Roberts' [introduction to BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
 
+We recommend a variant of BEM with PascalCased “blocks”, which works particularly well when combined with components (e.g. React). Underscores and dashes are still used for modifiers and children.
+
 **Example**
 
-```html
-<article class="listing-card listing-card--featured">
+```jsx
+// ListingCard.jsx
+function ListingCard() {
+  return (
+    <article class="ListingCard ListingCard--featured">
 
-  <h1 class="listing-card__title">Adorable 2BR in the sunny Mission</h1>
+      <h1 class="ListingCard__title">Adorable 2BR in the sunny Mission</h1>
 
-  <div class="listing-card__content">
-    <p>Vestibulum id ligula porta felis euismod semper.</p>
-  </div>
+      <div class="ListingCard__content">
+        <p>Vestibulum id ligula porta felis euismod semper.</p>
+      </div>
 
-</article>
+    </article>
+  );
+}
 ```
 
 ```css
-.listing-card { }
-.listing-card--featured { }
-.listing-card__title { }
-.listing-card__content { }
+/* ListingCard.css */
+.ListingCard { }
+.ListingCard--featured { }
+.ListingCard__title { }
+.ListingCard__content { }
 ```
 
-  * `.listing-card` is the “block” and represents the higher-level component
-  * `.listing-card__title` is an “element” and represents a descendant of `.listing-card` that helps compose the block as a whole.
-  * `.listing-card--featured` is a “modifier” and represents a different state or variation on the `.listing-card` block.
+  * `.ListingCard` is the “block” and represents the higher-level component
+  * `.ListingCard__title` is an “element” and represents a descendant of `.ListingCard` that helps compose the block as a whole.
+  * `.ListingCard--featured` is a “modifier” and represents a different state or variation on the `.ListingCard` block.
 
 ### ID selectors
 
@@ -282,5 +291,5 @@ If you must use an ID selector in the first place (and you should really try not
 ## Translation
 
   This style guide is also available in other languages:
-  
+
   - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese (Simplified)**: [Zhangjd/css-style-guide](https://github.com/Zhangjd/css-style-guide)
