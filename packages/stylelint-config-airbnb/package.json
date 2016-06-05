@@ -1,0 +1,40 @@
+{
+  "name": "stylelint-config-airbnb",
+  "version": "0.0.0",
+  "description": "Airbnb's stylelint config, following our styleguide",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/airbnb/css.git"
+  },
+  "keywords": [
+    "airbnb",
+    "css",
+    "lint",
+    "stylelint",
+    "stylelint-config",
+    "stylelint-config-airbnb"
+  ],
+  "author": "Stephen Edgar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/airbnb/css/issues"
+  },
+  "homepage": "https://github.com/airbnb/css#readme",
+  "devDependencies": {
+    "eslint": "^3.0.1",
+    "eslint-config-airbnb-base": "^4.0.0",
+    "eslint-plugin-import": "^1.10.2",
+    "stylelint": "^6.9.0",
+    "stylelint-scss": "^1.2.1",
+    "stylelint-value-border-zero": "^1.0.2"
+  },
+  "peerDependencies": {
+    "stylelint": "^6.9.0",
+    "stylelint-scss": "^1.2.1"
+  }
+}

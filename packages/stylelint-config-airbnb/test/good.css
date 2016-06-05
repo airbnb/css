@@ -1,0 +1,31 @@
+.avatar {
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.one,
+.selector,
+.per-line {
+  border: 2px;
+}
+
+.foo {
+  border: 0;
+}
+
+.btn {
+  background: green;
+  font-weight: bold;
+  @include transition(background 0.5s ease);
+
+  .icon {
+    margin-right: 10px;
+  }
+}
+
+.page-container {
+  .content {
+    .profile {
+    }
+  }
+}
