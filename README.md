@@ -1,4 +1,4 @@
-# BoomTown CSS / Sass Styleguide
+# BoomTown CSS / Sass / Less Styleguide
 
 *A mostly reasonable approach to CSS and Sass*
 
@@ -15,7 +15,7 @@
     - [ID Selectors](#id-selectors)
     - [JavaScript hooks](#javascript-hooks)
     - [Border](#border)
-  1. [Sass](#sass)
+  1. [Sass / Less](#sass)
     - [Syntax](#syntax)
     - [Ordering](#ordering-of-property-declarations)
     - [Variables](#variables)
@@ -201,7 +201,7 @@ Use `0` instead of `none` to specify that a style has no border.
 }
 ```
 
-## Sass
+## Sass / Less
 
 ### Syntax
 
