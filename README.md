@@ -1,4 +1,5 @@
 # BoomTown CSS / Sass / Less Styleguide
+>>>>>>> eff1aea2e2a970402dd97f565c7e1a95c4c486ef
 
 *A mostly reasonable approach to CSS and Sass*
 
@@ -253,7 +254,7 @@ Use `0` instead of `none` to specify that a style has no border.
 
 ### Variables
 
-Prefer dash-cased variable names (e.g. `$my-variable`) over camelCased or snake_cased variable names. It is acceptable to prefix variable names that are intended to be used only within the same file with an underscore (e.g. `$_my-variable`).
+Prefer dash-cased variable names (e.g. `$my-variable`) over camelCased or snake_cased variable names. Anything used globally should be moved to a global variables file. It is acceptable to prefix variable names that are intended to be used only within the same file with an underscore (e.g. `$_my-variable`).
 
 ### Mixins
 
