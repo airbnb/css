@@ -1,5 +1,4 @@
 # BoomTown CSS / Sass / Less Styleguide
->>>>>>> eff1aea2e2a970402dd97f565c7e1a95c4c486ef
 
 *A mostly reasonable approach to CSS and Sass*
 
