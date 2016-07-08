@@ -1,0 +1,12 @@
+sudo: false
+dist: trusty
+language: node_js
+cache:
+  directories:
+    - node_modules
+node_js:
+  - "8"
+  - "6"
+  - "4"
+before_install:
+  - npm prune
