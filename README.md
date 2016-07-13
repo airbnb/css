@@ -165,17 +165,18 @@ function ListingCard() {
   * `.ListingCard__title` is an “element” and represents a descendant of `.ListingCard` that helps compose the block as a whole.
   * `.ListingCard--featured` is a “modifier” and represents a different state or variation on the `.ListingCard` block.
 
-### ID selectors
+### ID 선택자
 
-While it is possible to select elements by ID in CSS, it should generally be considered an anti-pattern. ID selectors introduce an unnecessarily high level of [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) to your rule declarations, and they are not reusable.
+CSS에서 ID로 요소를 선택하는 것이 가능하긴 하지만, 이것은 안티패턴으로 간주됩니다. ID 선택자는 불필요한 [특수성](https://developer.mozilla.org/en-us/docs/Web/Css/Specificity)을 초래하며 재사용이 불가능하기 때문입니다.
 
-For more on this subject, read [CSS Wizardry's article](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/) on dealing with specificity.
+이 주제에 대해 더 알고 싶으시다면, [CSS Wizardry의 글](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/)을 읽어보세요.
 
-### JavaScript hooks
 
-Avoid binding to the same class in both your CSS and JavaScript. Conflating the two often leads to, at a minimum, time wasted during refactoring when a developer must cross-reference each class they are changing, and at its worst, developers being afraid to make changes for fear of breaking functionality.
+### 자바스크립트 훅
 
-We recommend creating JavaScript-specific classes to bind to, prefixed with `.js-`:
+CSS 클래스 명에 자바스크립트 훅을 거는 것을 권장하지 않습니다. 한 클래스 명에 두 가지를 혼합시키게 되면 결국 리팩토링할 때 두 경우를 모두 고려해야하기 때문에 시간이 낭비되며, 최악의 경우에는 기능이 작동하지 않을 가능성 때문에 개발자가 코드를 변경시키길 두려워할 수도 있습니다.
+
+자바스크립트에 바인드 할 새로운 클래스(접두어로는 `.js-`를 추가)를 만드는 것을 권장합니다:
 
 ```html
 <button class="btn btn-primary js-request-to-book">Request to Book</button>
@@ -183,7 +184,7 @@ We recommend creating JavaScript-specific classes to bind to, prefixed with `.js
 
 ### Border
 
-Use `0` instead of `none` to specify that a style has no border.
+border가 없을 경우에는 `0` 대신 `none`을 사용하세요.
 
 **Bad**
 
