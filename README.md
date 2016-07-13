@@ -16,13 +16,13 @@
     - [JavaScript hooks](#javascript-hooks)
     - [Border](#border)
   1. [Sass](#sass)
-    - [Syntax](#문법)
-    - [Ordering](#속성-선언-순서)
-    - [Variables](#변수)
-    - [Mixins](#믹스인(이하-mixins))
-    - [Extend directive](#extend-지시자)
-    - [Nested selectors](#중첩-선택자)
-  1. [Translation](#번역)
+    - [문법](#문법)
+    - [순서](#속성-선언-순서)
+    - [변수](#변수)
+    - [믹스인](#믹스인-mixins)
+    - [Extend 지시자](#extend-지시자)
+    - [중첩 선택자](#중첩-선택자)
+  1. [번역](#번역)
 
 ## Terminology
 
@@ -256,7 +256,7 @@ Use `0` instead of `none` to specify that a style has no border.
 변수 이름을 정할 때는 `-`를 사용하는 것을 권장합니다. 같은 파일 내에서만 사용될 변수에 한해서는 접두어를 추가해도 괜찮습니다. (예- `$_my-variable`).
 
 
-### 믹스인(이하 Mixins)
+### 믹스인-Mixins
 
 Mixin은 코드를 DRY하게 하고 명료하게 하며, 복잡성을 줄이기 위해 사용해야 합니다. 인자를 받지 않는 Mixin은 이럴 때 유용합니다. 하지만 만약 당신이 페이로드(payload)를 압축하지 않는다면(예- gzip), 불필요한 코드 중복이 발생하게 됩니다.
 
