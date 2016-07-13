@@ -68,7 +68,7 @@
 
 * 부드러운 탭(띄어쓰기 2칸) 들여쓰기를 사용하세요.
 * 클래스 이름에는 camelCase 방식보다 대시(-)를 사용하세요.
-  - 만약 당신이 BEM(아래 [OOCSS and BEM](#oocss와-bem) 참조)을 사용하고 계신다면 밑줄(_)과 PalcalCase 방식을 사용하셔도 괜찮습니다.
+  - 만약 당신이 BEM(아래 [OOCSS와 BEM](#oocss와-bem) 참조)을 사용하고 계신다면 밑줄(_)과 PalcalCase 방식을 사용하셔도 괜찮습니다.
 * ID 선택자를 사용하지 마세요.
 * 당신이 규칙 선언부에서 다중 선택자를 사용하실 때, 선택자를 한 줄에 한개씩 적어주세요.
 * 규칙 선언부의 여는 괄호 `{` 이전에 띄어쓰기를 넣어주세요.
@@ -107,34 +107,34 @@
 
 ### 주석
 
-* Prefer line comments (`//` in Sass-land) to block comments.
-* Prefer comments on their own line. Avoid end-of-line comments.
-* Write detailed comments for code that isn't self-documenting:
-  - Uses of z-index
-  - Compatibility or browser-specific hacks
+* 블록 형식 주석보다 라인 형태 주석(Sass일 경우 `//`)을 권장합니다.
+* 주석을 새로운 줄에 적어주세요. 선택자 또는 속성과 같은 줄에 주석을 작성하는 방식을 피해주세요.
+* 코드 자체만으로 이해하기 어려운 경우 자세한 주석을 작성해주세요:
+  - z-index를 사용하는 경우
+  - 특정 브라우저를 지원하기 위해 사용하는 경우
 
-### OOCSS and BEM
+### OOCSS와 BEM
 
-We encourage some combination of OOCSS and BEM for these reasons:
+우리는 다음과 같은 이유로 OOCSS와 BEM의 혼용을 권장합니다:
 
-  * It helps create clear, strict relationships between CSS and HTML
-  * It helps us create reusable, composable components
-  * It allows for less nesting and lower specificity
-  * It helps in building scalable stylesheets
+  * CSS와 HTML 사이의 명확하고, 엄격한 관계를 형성하는 데에 도움을 줍니다
+  * 재사용 가능하고, 작성 가능한 컴포넌트를 만드는 데에 도움을 줍니다
+  * 보다 적은 중첩과 낮은 특수성을 갖게 합니다
+  * 확장성 있는 스타일시트를 작성하도록 도움을 줍니다
 
-**OOCSS**, or “Object Oriented CSS”, is an approach for writing CSS that encourages you to think about your stylesheets as a collection of “objects”: reusable, repeatable snippets that can be used independently throughout a website.
+**OOCSS**, 또는 “Object Oriented CSS”는 당신의 스타일시트를 "객체"의 모음(한 웹사이트에서 독립적으로 사용되는, 재사용 가능하고 반복 가능한 단편들)로 판단하게 만드는 CSS 작성을 위한 접근 방식입니다.
 
-  * Nicole Sullivan's [OOCSS wiki](https://github.com/stubbornella/oocss/wiki)
-  * Smashing Magazine's [Introduction to OOCSS](http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/)
+  * Nicole Sullivan의 [OOCSS wiki](https://github.com/stubbornella/oocss/wiki)
+  * Smashing Magazine의 [Introduction to OOCSS](http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/)
 
-**BEM**, or “Block-Element-Modifier”, is a _naming convention_ for classes in HTML and CSS. It was originally developed by Yandex with large codebases and scalability in mind, and can serve as a solid set of guidelines for implementing OOCSS.
+**BEM**, 또는 “Block-Element-Modifier”는 HTML과 CSS 내부의 클래스에 대한 _명명 협약_입니다. 이것은 원래 대량의 코드베이스와 확장 가능성을 염두해두고 Yandex에서 개발되었으며, OOCSS 구현을 위한 견고한 가이드라인으로 사용될 수 있습니다.
 
-  * CSS Trick's [BEM 101](https://css-tricks.com/bem-101/)
-  * Harry Roberts' [introduction to BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
+  * CSS Trick의 [BEM 101](https://css-tricks.com/bem-101/)
+  * Harry Roberts의 [introduction to BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
 
-We recommend a variant of BEM with PascalCased “blocks”, which works particularly well when combined with components (e.g. React). Underscores and dashes are still used for modifiers and children.
+우리는 React와 같은 컴포넌트들과 결합할 때 부분적으로 잘 작동하는 PascalCase 형태의 "블록들"과 함께 BEM의 변형을 권장합니다. 밑줄과 대시는 아직 변형자와 자식에게 사용됩니다.
 
-**Example**
+**예시**
 
 ```jsx
 // ListingCard.jsx
