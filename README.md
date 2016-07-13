@@ -4,7 +4,7 @@
 
 ## 목차
 
-  1. [용어 설명](#용어 설명)
+  1. [용어 설명](#terminology)
     - [규칙 선언부(Rule declaration)](#규칙 선언부(Rule declaration))
     - [선택자(Selectors)](#선택자(Selectors))
     - [속성(properties)](#속성(properties))
@@ -56,7 +56,7 @@
 마지막으로, 속성(Properties)은 규칙 선언부의 선택된 요소들이 그들의 스타일을 가지게 하는 것입니다. 속성은 키-값의 쌍으로 구성되며, 규칙 선언부는 하나 이상의 속성 선언부를 가질 수 있습니다. 속성 선언부는 아래와 같은 형태입니다:
 
 ```css
-/* some selector */ {
+/* 특정 선택자 */ {
   background: #f1f1f1;
   color: #333;
 }
@@ -64,19 +64,19 @@
 
 ## CSS
 
-### Formatting
+### 형식
 
-* Use soft tabs (2 spaces) for indentation
-* Prefer dashes over camelCasing in class names.
-  - Underscores and PascalCasing are okay if you are using BEM (see [OOCSS and BEM](#oocss-and-bem) below).
-* Do not use ID 선택자
-* When using multiple 선택자 in a 규칙 선언부, give each selector its own line.
-* Put a space before the opening brace `{` in 규칙 선언부s
-* In 속성(properties), put a space after, but not before, the `:` character.
-* Put closing braces `}` of 규칙 선언부s on a new line
-* Put blank lines between 규칙 선언부s
+* 부드러운 탭(띄어쓰기 2칸) 들여쓰기를 사용하세요.
+* 클래스 이름에는 camelCase 방식보다 대시(-)를 사용하세요.
+  - 만약 당신이 BEM(아래 [OOCSS and BEM](#oocss-and-bem) 참조)을 사용하고 계신다면 밑줄(_)과 PalcalCase 방식을 사용하셔도 괜찮습니다.
+* ID 선택자를 사용하지 마세요.
+* 당신이 규칙 선언부에서 다중 선택자를 사용하실 때, 선택자를 한 줄에 한개씩 적어주세요.
+* 규칙 선언부의 여는 괄호 `{` 이전에 띄어쓰기를 넣어주세요.
+* 속성 부분에서, `:` 문자 뒤에 띄어쓰기를 넣어주세요. 단, `:` 문자 앞에는 띄어쓰기를 넣지 말아주세요.
+* 규칙 선언부의 닫는 괄호 `}`를 새로운 줄에 넣어주세요.
+* 규칙 선언부들 사이에 빈 줄을 넣어주세요.
 
-**Bad**
+**잘못된 예시**
 
 ```css
 .avatar{
@@ -90,7 +90,7 @@
 }
 ```
 
-**Good**
+**올바른 예시**
 
 ```css
 .avatar {
@@ -105,7 +105,7 @@
 }
 ```
 
-### Comments
+### 주석
 
 * Prefer line comments (`//` in Sass-land) to block comments.
 * Prefer comments on their own line. Avoid end-of-line comments.
