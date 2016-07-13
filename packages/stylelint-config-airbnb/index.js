@@ -1,7 +1,6 @@
 module.exports = {
   plugins: [
     'stylelint-scss',
-    'stylelint-value-border-zero',
   ],
   rules: {
     'at-rule-empty-line-before': 'never',
@@ -23,8 +22,8 @@ module.exports = {
     'scss/dollar-variable-pattern': '^foo',
     'scss/at-extend-no-missing-placeholder': true,
 
-    'value-border-zero': {
-      convention: '0',
+    'declaration-property-value-blacklist': {
+      '/^border/': ['none'],
     },
   },
 };
