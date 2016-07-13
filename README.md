@@ -16,13 +16,13 @@
     - [JavaScript hooks](#javascript-hooks)
     - [Border](#border)
   1. [Sass](#sass)
-    - [Syntax](#syntax)
-    - [Ordering](#ordering-of-property-declarations)
-    - [Variables](#variables)
-    - [Mixins](#mixins)
-    - [Extend directive](#extend-directive)
-    - [Nested selectors](#nested-selectors)
-  1. [Translation](#translation)
+    - [문법](#문법)
+    - [순서](#속성-선언-순서)
+    - [변수](#변수)
+    - [믹스인](#믹스인-mixins)
+    - [Extend 지시자](#extend-지시자)
+    - [중첩 선택자](#중첩-선택자)
+  1. [번역](#번역)
 
 ## Terminology
 
@@ -165,17 +165,18 @@ function ListingCard() {
   * `.ListingCard__title` is an “element” and represents a descendant of `.ListingCard` that helps compose the block as a whole.
   * `.ListingCard--featured` is a “modifier” and represents a different state or variation on the `.ListingCard` block.
 
-### ID selectors
+### ID 선택자
 
-While it is possible to select elements by ID in CSS, it should generally be considered an anti-pattern. ID selectors introduce an unnecessarily high level of [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) to your rule declarations, and they are not reusable.
+CSS에서 ID로 요소를 선택하는 것이 가능하긴 하지만, 이것은 안티패턴으로 간주됩니다. ID 선택자는 불필요한 [특수성](https://developer.mozilla.org/en-us/docs/Web/Css/Specificity)을 초래하며 재사용이 불가능하기 때문입니다.
 
-For more on this subject, read [CSS Wizardry's article](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/) on dealing with specificity.
+이 주제에 대해 더 알고 싶으시다면, [CSS Wizardry의 글](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/)을 읽어보세요.
 
-### JavaScript hooks
 
-Avoid binding to the same class in both your CSS and JavaScript. Conflating the two often leads to, at a minimum, time wasted during refactoring when a developer must cross-reference each class they are changing, and at its worst, developers being afraid to make changes for fear of breaking functionality.
+### 자바스크립트 훅
 
-We recommend creating JavaScript-specific classes to bind to, prefixed with `.js-`:
+CSS 클래스 명에 자바스크립트 훅을 거는 것을 권장하지 않습니다. 한 클래스 명에 두 가지를 혼합시키게 되면 결국 리팩토링할 때 두 경우를 모두 고려해야하기 때문에 시간이 낭비되며, 최악의 경우에는 기능이 작동하지 않을 가능성 때문에 개발자가 코드를 변경시키길 두려워할 수도 있습니다.
+
+자바스크립트에 바인드 할 새로운 클래스(접두어로는 `.js-`를 추가)를 만드는 것을 권장합니다:
 
 ```html
 <button class="btn btn-primary js-request-to-book">Request to Book</button>
@@ -183,7 +184,7 @@ We recommend creating JavaScript-specific classes to bind to, prefixed with `.js
 
 ### Border
 
-Use `0` instead of `none` to specify that a style has no border.
+border가 없을 경우에는 `0` 대신 `none`을 사용하세요.
 
 **Bad**
 
@@ -203,16 +204,16 @@ Use `0` instead of `none` to specify that a style has no border.
 
 ## Sass
 
-### Syntax
+### 문법
 
-* Use the `.scss` syntax, never the original `.sass` syntax
-* Order your regular CSS and `@include` declarations logically (see below)
+* 항상 `.sass`가 아닌 `.scss` 문법을 사용해주세요.
+* 보통 CSS와 `@include` 선언은 논리적으로 순서를 정리해주세요. (아래 예시를 참조)
 
-### Ordering of property declarations
+### 속성 선언 순서
 
-1. Property declarations
+1. 속성 선언
 
-    List all standard property declarations, anything that isn't an `@include` or a nested selector.
+    우선 표준 속성 선언을 먼저 작성합니다. `@include` 혹은 중첩 선택자는 아직 적지 않습니다.
 
     ```scss
     .btn-green {
@@ -222,9 +223,9 @@ Use `0` instead of `none` to specify that a style has no border.
     }
     ```
 
-2. `@include` declarations
+2. `@include` 선언
 
-    Grouping `@include`s at the end makes it easier to read the entire selector.
+    `@include`를 마지막에 모아놓으면 전체 선택자를 쉽게 독해할 수 있습니다.
 
     ```scss
     .btn-green {
@@ -235,9 +236,9 @@ Use `0` instead of `none` to specify that a style has no border.
     }
     ```
 
-3. Nested selectors
+3. 중첩 선택자
 
-    Nested selectors, _if necessary_, go last, and nothing goes after them. Add whitespace between your rule declarations and nested selectors, as well as between adjacent nested selectors. Apply the same guidelines as above to your nested selectors.
+    중첩 선택자는 마지막에 위치합니다. 그리고 그 다음으로는 아무것도 오지 않습니다. 규칙 선언부와 중첩 선택자 사이에는 여백을 추가하며, 중첩 선택자 사이에도 마찬가치입니다. 중첩 선택자 내부 속성들 또한 위의 규칙을 따릅니다.
 
     ```scss
     .btn {
@@ -251,21 +252,22 @@ Use `0` instead of `none` to specify that a style has no border.
     }
     ```
 
-### Variables
+### 변수
 
-Prefer dash-cased variable names (e.g. `$my-variable`) over camelCased or snake_cased variable names. It is acceptable to prefix variable names that are intended to be used only within the same file with an underscore (e.g. `$_my-variable`).
+변수 이름을 정할 때는 `-`를 사용하는 것을 권장합니다. 같은 파일 내에서만 사용될 변수에 한해서는 접두어를 추가해도 괜찮습니다. (예- `$_my-variable`).
 
-### Mixins
 
-Mixins should be used to DRY up your code, add clarity, or abstract complexity--in much the same way as well-named functions. Mixins that accept no arguments can be useful for this, but note that if you are not compressing your payload (e.g. gzip), this may contribute to unnecessary code duplication in the resulting styles.
+### 믹스인-Mixins
 
-### Extend directive
+Mixin은 코드를 DRY하게 하고 명료하게 하며, 복잡성을 줄이기 위해 사용해야 합니다. 인자를 받지 않는 Mixin은 이럴 때 유용합니다. 하지만 만약 당신이 페이로드(payload)를 압축하지 않는다면(예- gzip), 불필요한 코드 중복이 발생하게 됩니다.
 
-`@extend` should be avoided because it has unintuitive and potentially dangerous behavior, especially when used with nested selectors. Even extending top-level placeholder selectors can cause problems if the order of selectors ends up changing later (e.g. if they are in other files and the order the files are loaded shifts). Gzipping should handle most of the savings you would have gained by using `@extend`, and you can DRY up your stylesheets nicely with mixins.
+### Extend 지시자
 
-### Nested selectors
+`@extend`는 직관적이지 않고 특히 중첩 선택자와 함께 사용할 때 위험성이 있기 때문에 사용하지 않는 것을 권장합니다. 심지어 최상위 placeholder 선택자를 extend해도 선택자들의 순서가 바뀌게 되면 문제가 발생할 수 있습니다. `@extend`를 사용함으로써 얻을 수 있는 이점은 Gzip을 사용하면 해결될 뿐더러, 스타일시트를 DRY하게 만들기 위해서는 mixin을 사용하면 됩니다.
 
-**Do not nest selectors more than three levels deep!**
+### 중첩 선택자
+
+**중첩은 최대 3번까지!**
 
 ```scss
 .page-container {
@@ -277,20 +279,19 @@ Mixins should be used to DRY up your code, add clarity, or abstract complexity--
 }
 ```
 
-When selectors become this long, you're likely writing CSS that is:
+만약 선택자가 이렇게 길어진다면, 당신은 다음과 같은 CSS를 작성하고 있을 가능성이 높습니다:
 
-* Strongly coupled to the HTML (fragile) *—OR—*
-* Overly specific (powerful) *—OR—*
-* Not reusable
+* HTML과 밀접하게 엮여있다.(망가지기 쉬움)
+* 너무 구체적이다.
+* 재사용할 수 없다.
 
+강조: **절대로 ID 선택자는 중첩하지 마세요!**
 
-Again: **never nest ID selectors!**
+어쩔 수 없이 ID 선택자를 사용해야한다면(사용하지 않는 것이 가장 좋습니다.), 절대로 중첩되지 않도록 유의하세요. 만약 중첩시키게 된다면, 왜 그렇게 특수한 케이스가 발생하는지 먼저 고민해보는 것이 좋습니다. 만약 당신이 잘 구성된 HTML과 CSS를 사용한다면 절대로 이렇게 할 필요가 없습니다.  
 
-If you must use an ID selector in the first place (and you should really try not to), they should never be nested. If you find yourself doing this, you need to revisit your markup, or figure out why such strong specificity is needed. If you are writing well formed HTML and CSS, you should **never** need to do this.
+## 번역
 
-## Translation
-
-  This style guide is also available in other languages:
+  이 스타일 가이드는 여러가지 언어로 번역 돼 있습니다:
 
   - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese (Simplified)**: [Zhangjd/css-style-guide](https://github.com/Zhangjd/css-style-guide)
   - ![ru](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Russia.png) **Russian**: [Nekorsis/css-style-guide](https://github.com/Nekorsis/css-style-guide)
