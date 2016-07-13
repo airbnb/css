@@ -161,9 +161,9 @@ function ListingCard() {
 .ListingCard__content { }
 ```
 
-  * `.ListingCard` is the “block” and represents the higher-level component
-  * `.ListingCard__title` is an “element” and represents a descendant of `.ListingCard` that helps compose the block as a whole.
-  * `.ListingCard--featured` is a “modifier” and represents a different state or variation on the `.ListingCard` block.
+  * `.ListingCard`는 "블록"이며 더 높은 단계의 컴포넌트를 나타냅니다
+  * `.ListingCard__title`는 "요소"이며 그 블록을 전체로 조정하도록 돕는 `.ListingCard`의 자손임을 나타냅니다
+  * `.ListingCard--featured`는 "변형자"이며 '.ListingCard' 블록에 존재하는 다른 상태 또는 변형을 나타냅니다
 
 ### ID 선택자
 
@@ -186,7 +186,7 @@ CSS 클래스 명에 자바스크립트 훅을 거는 것을 권장하지 않습
 
 border가 없을 경우에는 `none` 대신 `0`을 사용하세요.
 
-**Bad**
+**잘못된 예시**
 
 ```css
 .foo {
@@ -194,7 +194,7 @@ border가 없을 경우에는 `none` 대신 `0`을 사용하세요.
 }
 ```
 
-**Good**
+**올바른 예시**
 
 ```css
 .foo {
