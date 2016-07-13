@@ -1,19 +1,19 @@
-# Airbnb CSS / Sass Styleguide
+# Airbnb CSS / Sass 스타일 가이드
 
-*A mostly reasonable approach to CSS and Sass*
+*CSS와 Sass에 대한 가장 합리적인 접근 방법*
 
-## Table of Contents
+## 목차
 
-  1. [Terminology](#terminology)
-    - [Rule Declaration](#rule-declaration)
-    - [Selectors](#selectors)
-    - [Properties](#properties)
+  1. [용어 설명](#용어-설명)
+    - [규칙 선언부](#규칙-선언부)
+    - [선택자](#선택자)
+    - [속성](#속성)
   1. [CSS](#css)
-    - [Formatting](#formatting)
-    - [Comments](#comments)
-    - [OOCSS and BEM](#oocss-and-bem)
-    - [ID Selectors](#id-selectors)
-    - [JavaScript hooks](#javascript-hooks)
+    - [형식](#형식)
+    - [주석](#주석)
+    - [OOCSS와 BEM](#oocss와-bem)
+    - [ID 선택자](#id-선택자)
+    - [자바스크립트 훅](#자바스크립트-훅)
     - [Border](#border)
   1. [Sass](#sass)
     - [문법](#문법)
@@ -24,11 +24,11 @@
     - [중첩 선택자](#중첩-선택자)
   1. [번역](#번역)
 
-## Terminology
+## 용어 설명
 
-### Rule declaration
+### 규칙 선언부
 
-A “rule declaration” is the name given to a selector (or a group of selectors) with an accompanying group of properties. Here's an example:
+"규칙 선언부(Rule declaration)"는 특정 속성 그룹을 따르는 선택자(또는 선택자로 묶인 그룹)에게 부여되는 이름입니다. 다음 예시를 참조해주세요:
 
 ```css
 .listing {
@@ -37,9 +37,9 @@ A “rule declaration” is the name given to a selector (or a group of selector
 }
 ```
 
-### Selectors
+### 선택자
 
-In a rule declaration, “selectors” are the bits that determine which elements in the DOM tree will be styled by the defined properties. Selectors can match HTML elements, as well as an element's class, ID, or any of its attributes. Here are some examples of selectors:
+규칙 선언부에서, "선택자(Selectors)"는 DOM 트리의 어떤 요소들이 정의된 속성(Properties)으로 꾸며질지 결정하는 부분들입니다. 선택자는 HTML 요소들, 뿐만 아니라 한 요소의 클래스, ID, 또는 해당 요소의 어느 속성(attributes)들과도 연결될 수 있습니다. 다음은 선택자에 대한 예시들입니다:
 
 ```css
 .my-element-class {
@@ -51,12 +51,12 @@ In a rule declaration, “selectors” are the bits that determine which element
 }
 ```
 
-### Properties
+### 속성
 
-Finally, properties are what give the selected elements of a rule declaration their style. Properties are key-value pairs, and a rule declaration can contain one or more property declarations. Property declarations look like this:
+마지막으로, "속성(Properties)"은 규칙 선언부의 선택된 요소들이 그들의 스타일을 가지게 하는 것입니다. 속성은 키-값의 쌍으로 구성되며, 규칙 선언부는 하나 이상의 속성 선언부를 가질 수 있습니다. 속성 선언부는 아래와 같은 형태입니다:
 
 ```css
-/* some selector */ {
+/* 특정 선택자 */ {
   background: #f1f1f1;
   color: #333;
 }
@@ -64,19 +64,19 @@ Finally, properties are what give the selected elements of a rule declaration th
 
 ## CSS
 
-### Formatting
+### 형식
 
-* Use soft tabs (2 spaces) for indentation
-* Prefer dashes over camelCasing in class names.
-  - Underscores and PascalCasing are okay if you are using BEM (see [OOCSS and BEM](#oocss-and-bem) below).
-* Do not use ID selectors
-* When using multiple selectors in a rule declaration, give each selector its own line.
-* Put a space before the opening brace `{` in rule declarations
-* In properties, put a space after, but not before, the `:` character.
-* Put closing braces `}` of rule declarations on a new line
-* Put blank lines between rule declarations
+* 부드러운 탭(띄어쓰기 2칸) 들여쓰기를 사용하세요.
+* 클래스 이름에는 camelCase 방식보다 대시(-)를 사용하세요.
+  - 만약 당신이 BEM(아래 [OOCSS와 BEM](#oocss와-bem) 참조)을 사용하고 계신다면 밑줄(_)과 PalcalCase 방식을 사용하셔도 괜찮습니다.
+* ID 선택자를 사용하지 마세요.
+* 당신이 규칙 선언부에서 다중 선택자를 사용하실 때, 선택자를 한 줄에 한개씩 적어주세요.
+* 규칙 선언부의 여는 괄호 `{` 이전에 띄어쓰기를 넣어주세요.
+* 속성 부분에서, `:` 문자 뒤에 띄어쓰기를 넣어주세요. 단, `:` 문자 앞에는 띄어쓰기를 넣지 말아주세요.
+* 규칙 선언부의 닫는 괄호 `}`를 새로운 줄에 넣어주세요.
+* 규칙 선언부들 사이에 빈 줄을 넣어주세요.
 
-**Bad**
+**잘못된 예시**
 
 ```css
 .avatar{
@@ -90,7 +90,7 @@ Finally, properties are what give the selected elements of a rule declaration th
 }
 ```
 
-**Good**
+**올바른 예시**
 
 ```css
 .avatar {
@@ -105,36 +105,36 @@ Finally, properties are what give the selected elements of a rule declaration th
 }
 ```
 
-### Comments
+### 주석
 
-* Prefer line comments (`//` in Sass-land) to block comments.
-* Prefer comments on their own line. Avoid end-of-line comments.
-* Write detailed comments for code that isn't self-documenting:
-  - Uses of z-index
-  - Compatibility or browser-specific hacks
+* 블록 형식 주석보다 라인 형태 주석(Sass일 경우 `//`)을 권장합니다.
+* 주석을 새로운 줄에 적어주세요. 선택자 또는 속성과 같은 줄에 주석을 작성하는 방식을 피해주세요.
+* 코드 자체만으로 이해하기 어려운 경우 자세한 주석을 작성해주세요:
+  - z-index를 사용하는 경우
+  - 특정 브라우저를 지원하기 위해 사용하는 경우
 
-### OOCSS and BEM
+### OOCSS와 BEM
 
-We encourage some combination of OOCSS and BEM for these reasons:
+우리는 다음과 같은 이유로 OOCSS와 BEM의 혼용을 권장합니다:
 
-  * It helps create clear, strict relationships between CSS and HTML
-  * It helps us create reusable, composable components
-  * It allows for less nesting and lower specificity
-  * It helps in building scalable stylesheets
+  * CSS와 HTML 사이의 명확하고, 엄격한 관계를 형성하는 데에 도움을 줍니다
+  * 재사용 가능하고, 작성 가능한 컴포넌트를 만드는 데에 도움을 줍니다
+  * 보다 적은 중첩과 낮은 특수성을 갖게 합니다
+  * 확장성 있는 스타일시트를 작성하도록 도움을 줍니다
 
-**OOCSS**, or “Object Oriented CSS”, is an approach for writing CSS that encourages you to think about your stylesheets as a collection of “objects”: reusable, repeatable snippets that can be used independently throughout a website.
+**OOCSS**, 또는 “Object Oriented CSS”는 당신의 스타일시트를 "객체"의 모음(한 웹사이트에서 독립적으로 사용되는, 재사용 가능하고 반복 가능한 단편들)로 판단하게 만드는 CSS 작성을 위한 접근 방식입니다.
 
-  * Nicole Sullivan's [OOCSS wiki](https://github.com/stubbornella/oocss/wiki)
-  * Smashing Magazine's [Introduction to OOCSS](http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/)
+  * Nicole Sullivan의 [OOCSS wiki](https://github.com/stubbornella/oocss/wiki)
+  * Smashing Magazine의 [Introduction to OOCSS](http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/)
 
-**BEM**, or “Block-Element-Modifier”, is a _naming convention_ for classes in HTML and CSS. It was originally developed by Yandex with large codebases and scalability in mind, and can serve as a solid set of guidelines for implementing OOCSS.
+**BEM**, 또는 “Block-Element-Modifier”는 HTML과 CSS 내부의 클래스에 대한 _명명 협약_입니다. 이것은 원래 대량의 코드베이스와 확장 가능성을 염두해두고 Yandex에서 개발되었으며, OOCSS 구현을 위한 견고한 가이드라인으로 사용될 수 있습니다.
 
-  * CSS Trick's [BEM 101](https://css-tricks.com/bem-101/)
-  * Harry Roberts' [introduction to BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
+  * CSS Trick의 [BEM 101](https://css-tricks.com/bem-101/)
+  * Harry Roberts의 [introduction to BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
 
-We recommend a variant of BEM with PascalCased “blocks”, which works particularly well when combined with components (e.g. React). Underscores and dashes are still used for modifiers and children.
+우리는 React와 같은 컴포넌트들과 결합할 때 부분적으로 잘 작동하는 PascalCase 형태의 "블록들"과 함께 BEM의 변형을 권장합니다. 밑줄과 대시는 아직 변형자와 자식에게 사용됩니다.
 
-**Example**
+**예시**
 
 ```jsx
 // ListingCard.jsx
