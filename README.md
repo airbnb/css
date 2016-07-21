@@ -73,6 +73,7 @@ Finally, properties are what give the selected elements of a rule declaration th
 * When using multiple selectors in a rule declaration, give each selector its own line.
 * Put a space before the opening brace `{` in rule declarations
 * In properties, put a space after, but not before, the `:` character.
+* Sort the properties alphabetically
 * Put closing braces `}` of rule declarations on a new line
 * Put blank lines between rule declarations
 
