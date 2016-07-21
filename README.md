@@ -211,44 +211,138 @@ Use `0` instead of `none` to specify that a style has no border.
 
 ### Ordering of property declarations
 
-1. Property declarations
+1. Local variables
 
-    List all standard property declarations, anything that isn't an `@include` or a nested selector.
+    If you are using local variables you should put them in the top.
 
     ```scss
     .btn-green {
+      $height: 10em;
+      // ...
+    }
+    ```
+
+2. `@extend` declarations
+
+    `@extend`s at the top makes it easier to read because you will know what the selector is inheriting right away.
+
+    ```scss
+    .btn-green {
+      $height: 10em;
+
+      @extend %placeholder;
+      // ...
+    }
+    ```
+
+3. Simple `@include` declarations
+
+    `@include`s before the regular properties are easier to be overwritten _if necessary_.
+
+    ```scss
+    .btn-green {
+      $height: 10em;
+
+      @extend %placeholder;
+      @include size(100% $height);
+      // ...
+    }
+    ```
+
+4. Regular property declarations
+
+    List all standard property declarations.
+
+    ```scss
+    .btn-green {
+      $height: 10em;
+
+      @extend %placeholder;
+      @include size(100% $height);
       background: green;
       font-weight: bold;
       // ...
     }
     ```
 
-2. `@include` declarations
+5. Media `@include` declarations
 
-    Grouping `@include`s at the end makes it easier to read the entire selector.
+    Putting your `@include`s media queries after the properties are easier to read and to overwrite.
 
     ```scss
     .btn-green {
+      $height: 10em;
+
+      @extend %placeholder;
+      @include size(100% $height);
       background: green;
       font-weight: bold;
-      @include transition(background 0.5s ease);
+      
+      @include at-breakpoint($mobile) {
+        font-weight: normal;
+      }
       // ...
     }
     ```
 
-3. Nested selectors
+6. Pseudo elements and classes
+
+    Since they are an extension of the element, they should be placed after the nested selectors.
+
+    ```scss
+    .btn-green {
+      $height: 10em;
+
+      @extend %placeholder;
+      @include size(100% $height);
+      background: green;
+      font-weight: bold;
+      
+      @include at-breakpoint($mobile) {
+        font-weight: normal;
+      }
+      
+      &:hover {
+        background: dark-green;
+      }
+      
+      &::before {
+        content: '>';
+      }
+      
+      // ...
+    }
+    ```
+
+7. Nested selectors
 
     Nested selectors, _if necessary_, go last, and nothing goes after them. Add whitespace between your rule declarations and nested selectors, as well as between adjacent nested selectors. Apply the same guidelines as above to your nested selectors.
 
     ```scss
     .btn {
+      $height: 10em;
+
+      @extend %placeholder;
+      @include size(100% $height);
       background: green;
       font-weight: bold;
-      @include transition(background 0.5s ease);
+      
+      @include at-breakpoint($mobile) {
+        font-weight: normal;
+      }
+      
+      &:hover {
+        background: dark-green;
+      }
+      
+      &::before {
+        content: '>';
+      }
 
       .icon {
         margin-right: 10px;
       }
+
     }
     ```
 
