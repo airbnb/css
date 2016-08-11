@@ -5,23 +5,23 @@
 ## Mục lục
 
   1. [Thuật ngữ](#terminology)
-    - [Khai báo](#khai-báo)
+    - [Khai báo](#rule-declaration)
     - [Selectors](#selectors)
-    - [Thuộc tính](#thuộc-tính)
+    - [Thuộc tính](#properties)
   1. [CSS](#css)
-    - [Quy cách](#quy-cách)
-    - [Chú thích](#chú-thích)
-    - [OOCSS và BEM](#oocss-và-bem)
+    - [Quy cách](#formatting)
+    - [Chú thích](#comments)
+    - [OOCSS và BEM](#oocss-and-bem)
     - [ID Selectors](#id-selectors)
     - [JavaScript hooks](#javascript-hooks)
-    - [Đường viền](#đường-viền)
+    - [Đường viền](#border)
   1. [Sass](#sass)
-    - [Cú pháp](#cú-pháp)
-    - [Thứ tự](##sắp-xếp-các-khai-báo-thuộc-tính)
-    - [Biến](#biến)
+    - [Cú pháp](#syntax)
+    - [Thứ tự](#ordering-of-property-declarations)
+    - [Biến](#variables)
     - [Mixins](#mixins)
     - [Mở rộng directive](#extend-directive)
-    - [Selectors lồng nhau](##selectors-lồng-nhau)
+    - [Selectors lồng nhau](#nested-selectors)
   1. [Translation](#translation)
 
 ## Thuật ngữ
@@ -113,7 +113,7 @@ Thuộc tính là một cặp khóa-giá trị, và một khai báo có thể ch
   - Sử dụng z-index
   - Khả năng tương thích và trình duyệt.
 
-### OOCSS và BEM
+### OOCSS and BEM
 
 Chúng tôi khuyến khích một số sự kết hợp giữa OOCSS và BEM cho những lý do sau:
 
