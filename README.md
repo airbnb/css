@@ -1,34 +1,34 @@
 # Airbnb CSS / Sass Styleguide
 
-*Một cách tiếp cận hợp lý nhất với CSS và SASS*
+*A mostly reasonable approach to CSS and Sass*
 
-## Mục lục
+## Table of Contents
 
-  1. [Thuật ngữ](#terminology)
-    - [Khai báo](#rule-declaration)
+  1. [Terminology](#terminology)
+    - [Rule Declaration](#rule-declaration)
     - [Selectors](#selectors)
-    - [Thuộc tính](#properties)
+    - [Properties](#properties)
   1. [CSS](#css)
-    - [Quy cách](#formatting)
-    - [Chú thích](#comments)
-    - [OOCSS và BEM](#oocss-and-bem)
+    - [Formatting](#formatting)
+    - [Comments](#comments)
+    - [OOCSS and BEM](#oocss-and-bem)
     - [ID Selectors](#id-selectors)
     - [JavaScript hooks](#javascript-hooks)
-    - [Đường viền](#border)
+    - [Border](#border)
   1. [Sass](#sass)
-    - [Cú pháp](#syntax)
-    - [Thứ tự](#ordering-of-property-declarations)
-    - [Biến](#variables)
+    - [Syntax](#syntax)
+    - [Ordering](#ordering-of-property-declarations)
+    - [Variables](#variables)
     - [Mixins](#mixins)
-    - [Mở rộng directive](#extend-directive)
-    - [Selectors lồng nhau](#nested-selectors)
+    - [Extend directive](#extend-directive)
+    - [Nested selectors](#nested-selectors)
   1. [Translation](#translation)
 
-## Thuật ngữ
+## Terminology
 
-### Khai báo
+### Rule declaration
 
-Một "khai báo" là tên gọi của một selector (hoặc một nhóm các selectors) với một nhóm các thuộc tính. Dưới đây là ví dụ:
+A “rule declaration” is the name given to a selector (or a group of selectors) with an accompanying group of properties. Here's an example:
 
 ```css
 .listing {
@@ -39,7 +39,7 @@ Một "khai báo" là tên gọi của một selector (hoặc một nhóm các s
 
 ### Selectors
 
-Trong một khai báo, "selectors" là phần sẽ xác định xem phần tử nào trong DOM sẽ được style bởi các thuộc tính xác định. Selectors có thể tương ứng với các phần tử HTML, cũng như class hay ID của phần tử, hoặc bất kì thuộc tính nào của nó. Dưới đây là ví dụ về selectors:
+In a rule declaration, “selectors” are the bits that determine which elements in the DOM tree will be styled by the defined properties. Selectors can match HTML elements, as well as an element's class, ID, or any of its attributes. Here are some examples of selectors:
 
 ```css
 .my-element-class {
@@ -51,9 +51,9 @@ Trong một khai báo, "selectors" là phần sẽ xác định xem phần tử 
 }
 ```
 
-### Thuộc tính
+### Properties
 
-Thuộc tính là một cặp khóa-giá trị, và một khai báo có thể chứa một hoặc nhiều khai báo của thuộc tính. Cách khai báo của thuộc tính như sau:
+Finally, properties are what give the selected elements of a rule declaration their style. Properties are key-value pairs, and a rule declaration can contain one or more property declarations. Property declarations look like this:
 
 ```css
 /* some selector */ {
@@ -64,19 +64,19 @@ Thuộc tính là một cặp khóa-giá trị, và một khai báo có thể ch
 
 ## CSS
 
-### Quy cách
+### Formatting
 
-* Sử dụng soft tabs (2 dấu cách) cho khoảng cách thụt vào (indentation)
-* Nên sử dụng dấu gạch ngang trong camelCasing của tên class.
-  - Dấu gạch dưới và PascalCasing sẽ không sao nếu bạn sử dụng BEM (xem [OOCSS and BEM](#oocss-and-bem) dưới đây).
-* Không sử dụng ID Selectors.
-* Khi sử dụng nhiều selector trong một khai báo, đặt mỗi selector trên một dòng kẻ.
-* Trước dấu ngoặc nhọn `{` phải có một dấu cách trong khai báo.
-* Trong thuộc tính, đặt một dấu cách đứng sau dấu hai chấm `:` .
-* Đặt dấu đóng ngoặc nhọn `}` của một khai báo trên một dòng kẻ mới.
-* Đặt một dòng kẻ trống giữa các khai báo.
+* Use soft tabs (2 spaces) for indentation
+* Prefer dashes over camelCasing in class names.
+  - Underscores and PascalCasing are okay if you are using BEM (see [OOCSS and BEM](#oocss-and-bem) below).
+* Do not use ID selectors
+* When using multiple selectors in a rule declaration, give each selector its own line.
+* Put a space before the opening brace `{` in rule declarations
+* In properties, put a space after, but not before, the `:` character.
+* Put closing braces `}` of rule declarations on a new line
+* Put blank lines between rule declarations
 
-**Không tốt**
+**Bad**
 
 ```css
 .avatar{
@@ -90,7 +90,7 @@ Thuộc tính là một cặp khóa-giá trị, và một khai báo có thể ch
 }
 ```
 
-**Tốt**
+**Good**
 
 ```css
 .avatar {
@@ -105,36 +105,36 @@ Thuộc tính là một cặp khóa-giá trị, và một khai báo có thể ch
 }
 ```
 
-### Chú thích
+### Comments
 
-* Nên dùng hai gạch (`//`) để đặt chú thích.
-* Nên đặt chú thích trên một dòng kẻ riêng, không đặt ở cuối dòng kẻ.
-* Viết chú thích chi tiết cho những dòng code mà không thể hiện được ý nghĩa rõ ràng khi đọc, ví dụ:
-  - Sử dụng z-index
-  - Khả năng tương thích và trình duyệt.
+* Prefer line comments (`//` in Sass-land) to block comments.
+* Prefer comments on their own line. Avoid end-of-line comments.
+* Write detailed comments for code that isn't self-documenting:
+  - Uses of z-index
+  - Compatibility or browser-specific hacks
 
 ### OOCSS and BEM
 
-Chúng tôi khuyến khích một số sự kết hợp giữa OOCSS và BEM cho những lý do sau:
+We encourage some combination of OOCSS and BEM for these reasons:
 
-  * Nó giúp tạo ra mối quan hệ chặt chẽ rõ ràng giữa CSS và HTML
-  * Nó giúp tạo ra những thành phần có thể tái sử dụng.
-  * Nó cho phép ít lồng nhau (nested) và giảm sự riêng biệt 
-  * Nó giúp xây dựng stylesheets có khả năng mở rộng
+  * It helps create clear, strict relationships between CSS and HTML
+  * It helps us create reusable, composable components
+  * It allows for less nesting and lower specificity
+  * It helps in building scalable stylesheets
 
-**OOCSS**, hay "CSS hướng đối tượng", là một phương pháp để viết code CSS mà khuyến khích bạn định hình stylesheets như một sự tập hợp của nhiều "đối tượng" (object): có thể tái sử dụng, có thể lặp lại độc lập xuyên suốt toàn bộ một trang web.
+**OOCSS**, or “Object Oriented CSS”, is an approach for writing CSS that encourages you to think about your stylesheets as a collection of “objects”: reusable, repeatable snippets that can be used independently throughout a website.
 
   * Nicole Sullivan's [OOCSS wiki](https://github.com/stubbornella/oocss/wiki)
-  * Smashing Magazine's [Giới thiệu về OOCSS](http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/)
+  * Smashing Magazine's [Introduction to OOCSS](http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/)
 
-**BEM**, hay "Block-Element-Modifier", là một quy ước đặt tên cho classes trong HTML và CSS. Ban đầu nó được phát triển bởi Yandex với codebases lớn, có khả năng mở rộng, và có thể coi như một tập hợp của các hướng dẫn cho việc thực hiện OOCSS.
+**BEM**, or “Block-Element-Modifier”, is a _naming convention_ for classes in HTML and CSS. It was originally developed by Yandex with large codebases and scalability in mind, and can serve as a solid set of guidelines for implementing OOCSS.
 
   * CSS Trick's [BEM 101](https://css-tricks.com/bem-101/)
-  * Harry Roberts' [Giới thiệt về BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
+  * Harry Roberts' [introduction to BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
 
-Chúng tôi khuyến nghị sử dụng một biến thể của BEM với PascalCased "blocks", mà làm việc riêng biệt khá hiệu quả với các thành phần (components) (e.g. React). Dấu gạch dưới và gạch ngang vẫn được sử dụng cho thành phần modifiers và thành phần con.
+We recommend a variant of BEM with PascalCased “blocks”, which works particularly well when combined with components (e.g. React). Underscores and dashes are still used for modifiers and children.
 
-**Ví dụ**
+**Example**
 
 ```jsx
 // ListingCard.jsx
@@ -161,29 +161,29 @@ function ListingCard() {
 .ListingCard__content { }
 ```
 
-  * `.ListingCard` là một "block" và đại diện cho thành phần cao hơn
-  * `.ListingCard__title` là một "phần tử" and biểu diễn như là một phần tử con của `.ListingCard` để tạo thành "block".
-  * `.ListingCard--featured` là một "modifier" và đại diện cho các trạng thái khác nhau hay các biến thể của `.ListingCard` block.
+  * `.ListingCard` is the “block” and represents the higher-level component
+  * `.ListingCard__title` is an “element” and represents a descendant of `.ListingCard` that helps compose the block as a whole.
+  * `.ListingCard--featured` is a “modifier” and represents a different state or variation on the `.ListingCard` block.
 
-### ID Selectors 
+### ID selectors
 
-Trong khi có thể chọn các phần tử theo ID trong CSS, nó vẫn không nên được sử dụng. ID selectors giới thiệu một sự riêng biệt [sự riêng biệt](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) không cần thiết cho các khai báo của bạn và không thể tái sử dụng lại được.
+While it is possible to select elements by ID in CSS, it should generally be considered an anti-pattern. ID selectors introduce an unnecessarily high level of [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) to your rule declarations, and they are not reusable.
 
-Để biết thêm về chủ đề này, đọc [CSS Wizardry's article](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/) on dealing with specificity.
+For more on this subject, read [CSS Wizardry's article](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/) on dealing with specificity.
 
 ### JavaScript hooks
 
-Tránh việc binding cùng một class trong CSS và JavaScript. Việc làm đó có thể gây lãng phí thời gian ở mức nhẹ nhất khi lập trình viên phải kiểm tra chéo mỗi class khi thay đổi. Và trong trường hợp xấu nhất, lập trình viên có thể sẽ phải đối mặt với việc phá vỡ sự hoạt động của function.
+Avoid binding to the same class in both your CSS and JavaScript. Conflating the two often leads to, at a minimum, time wasted during refactoring when a developer must cross-reference each class they are changing, and at its worst, developers being afraid to make changes for fear of breaking functionality.
 
-Chúng tôi khuyến nghị tạo ra các class riêng cho JavaScript để bind, tiền tố bắt đầu với `.js-`:
+We recommend creating JavaScript-specific classes to bind to, prefixed with `.js-`:
 
 ```html
 <button class="btn btn-primary js-request-to-book">Request to Book</button>
 ```
 
-### Đường viền
+### Border
 
-Sử dụng `0` thay vì `none` để xác định rằng đối tượng này không có đường viền.
+Use `0` instead of `none` to specify that a style has no border.
 
 **Bad**
 
@@ -203,16 +203,16 @@ Sử dụng `0` thay vì `none` để xác định rằng đối tượng này k
 
 ## Sass
 
-### Cú pháp
+### Syntax
 
-* Sử dụng `.scss` cú pháp, không bao giờ nên sử dụng cú pháp gốc của `.sass`
-* Sắp xếp CSS và `@include` theo một logic (xem ở dưới)
+* Use the `.scss` syntax, never the original `.sass` syntax
+* Order your regular CSS and `@include` declarations logically (see below)
 
-### Sắp xếp các khai báo thuộc tính
+### Ordering of property declarations
 
-1. Khai báo thuộc tính
+1. Property declarations
 
-    Khai báo toàn bộ thuộc tính cơ bản trước, những gì không phải là `@include` hay khai báo lồng (nested) selector.
+    List all standard property declarations, anything that isn't an `@include` or a nested selector.
 
     ```scss
     .btn-green {
@@ -222,9 +222,9 @@ Sử dụng `0` thay vì `none` để xác định rằng đối tượng này k
     }
     ```
 
-2. Khai báo `@include`
+2. `@include` declarations
 
-    Nhóm `@include` ở cuối cùng để dễ dàng đọc toàn bộ selector.
+    Grouping `@include`s at the end makes it easier to read the entire selector.
 
     ```scss
     .btn-green {
@@ -235,9 +235,9 @@ Sử dụng `0` thay vì `none` để xác định rằng đối tượng này k
     }
     ```
 
-3. Selectors lồng nhau
+3. Nested selectors
 
-    Selectors lồng nhau, _nếu cần thiết_ , đặt ở cuối cùng, và không có gì viết sau nó nữa. Thêm khoảng trắng giữa khai báo và selector lồng nhau, cũng như giữa các phần tử con. Áp dụng toàn bộ hướng dẫn ở trên cho selector lồng nhau.
+    Nested selectors, _if necessary_, go last, and nothing goes after them. Add whitespace between your rule declarations and nested selectors, as well as between adjacent nested selectors. Apply the same guidelines as above to your nested selectors.
 
     ```scss
     .btn {
@@ -251,21 +251,21 @@ Sử dụng `0` thay vì `none` để xác định rằng đối tượng này k
     }
     ```
 
-### Biến
+### Variables
 
-Nên dùng gạch ngang giữa tên biến (e.g. `$my-variable`) thay vì camelCased or snake_cased. Nó cũng được phép dùng để đặt tiền tố cho tên biến nếu có ý định sử dụng trong cùng một file với dấu gạch dưới (e.g. `$_my-variable`).
+Prefer dash-cased variable names (e.g. `$my-variable`) over camelCased or snake_cased variable names. It is acceptable to prefix variable names that are intended to be used only within the same file with an underscore (e.g. `$_my-variable`).
 
 ### Mixins
 
-Mixins nên được sử dụng để không lặp lại các đoạn code giống nhau với phương châm (DRY - Don't-Repeat-Yourself) trong code của bạn, thêm sự rõ ràng, hoặc tách sự phức tạp - theo cách tương tự mà function được đặt tên. Mixins cho phép không có đối số có thể hữu ích cho việc này, nhưng chú ý rằng nếu bạn không nén lại (e.g. gzip), nó có thể đóng góp vào việc trùng lặp code không cần thiết.
+Mixins should be used to DRY up your code, add clarity, or abstract complexity--in much the same way as well-named functions. Mixins that accept no arguments can be useful for this, but note that if you are not compressing your payload (e.g. gzip), this may contribute to unnecessary code duplication in the resulting styles.
 
 ### Extend directive
 
-Nên tránh sử dụng `@extend` vì nó có một hành vi nguy hiểm tiềm tàng, đặc biệt khi sử dụng các selectors lồng nhau. Thậm chí mở rộng top-level placeholder selectors có thể gây ra vấn đề nếu thứ tự của selector kết thúc thay đổi sau đó (e.g. nếu họ đang ở một tệp tin khác, và thứ tự của các tệp tin được tải thay đổi.). Bạn có thể không lặp lại đoạn code của mình với mixins.
+`@extend` should be avoided because it has unintuitive and potentially dangerous behavior, especially when used with nested selectors. Even extending top-level placeholder selectors can cause problems if the order of selectors ends up changing later (e.g. if they are in other files and the order the files are loaded shifts). Gzipping should handle most of the savings you would have gained by using `@extend`, and you can DRY up your stylesheets nicely with mixins.
 
-### Selectors lồng nhau
+### Nested selectors
 
-**ĐỪNG selectors lồng hơn 3 cấp độ!**
+**Do not nest selectors more than three levels deep!**
 
 ```scss
 .page-container {
@@ -277,20 +277,20 @@ Nên tránh sử dụng `@extend` vì nó có một hành vi nguy hiểm tiềm 
 }
 ```
 
-Khi selectors trở nên như vậy, bạn có thể đã viết CSS theo:
+When selectors become this long, you're likely writing CSS that is:
 
-* Liên kết chặt với HTML (dễ đổ vỡ) *hoặc*
-* Quá cụ thể (powerful) *—hoặc—*
-* Không tái sử dụng
+* Strongly coupled to the HTML (fragile) *—OR—*
+* Overly specific (powerful) *—OR—*
+* Not reusable
 
 
-Lặp lại: **không bao giờ được lồng ID selectors!**
+Again: **never nest ID selectors!**
 
-Nếu bạn phải sử dụng ID selector ngay từ đầu (và bạn thực sự không nên làm thế), nó không bảo giờ nên được lồng nhau. Nếu bạn thấy mình làm điều này, bạn cần phải xem xét lại code HTML, hoặc tìm hiểu tại sao lại cần cụ thể đến như vậy. Nếu bạn đang viết HTML và CSS tốt, bạn **không bao giờ nên** cần phải làm điều này.
+If you must use an ID selector in the first place (and you should really try not to), they should never be nested. If you find yourself doing this, you need to revisit your markup, or figure out why such strong specificity is needed. If you are writing well formed HTML and CSS, you should **never** need to do this.
 
-## Dịch
+## Translation
 
-  Styleguide này cũng có sẵn trong các ngôn ngữ khác:
+  This style guide is also available in other languages:
 
   - ![tw](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Taiwan.png) **Chinese (Traditional)**: [ArvinH/css-style-guide](https://github.com/ArvinH/css-style-guide)
   - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese (Simplified)**: [Zhangjd/css-style-guide](https://github.com/Zhangjd/css-style-guide)
