@@ -1,0 +1,92 @@
+# sass-lint configuration to follow the AirBNB CSS styleguide
+# https://github.com/airbnb/css/
+options:
+  formatter: stylish
+  merge-default-rules: false
+rules:
+
+  # Flag issues that would require non-trivial refactoring as warnings
+  class-name-format:
+    - 1
+    - convention: hyphenatedbem
+  placeholder-name-format:
+    - 1
+    - convention: hyphenatedlowercase
+  nesting-depth:
+    - 1
+    - max-depth: 3
+  no-ids: 1
+  no-important: 1
+  no-misspelled-properties:
+    - 1
+    - extra-properties:
+       - "-moz-border-radius-topleft"
+       - "-moz-border-radius-topright"
+       - "-moz-border-radius-bottomleft"
+       - "-moz-border-radius-bottomright"
+  variable-name-format:
+    - 1
+    - allow-leading-underscore: true
+      convention: hyphenatedlowercase
+  no-extends: 1
+
+  # Flag items that are preferential rather than mandatory as warnings
+  no-css-comments: 1
+
+  # Flag more easily resolved items are errors
+  indentation:
+    - 2
+    - size: 2
+  final-newline:
+    - 2
+    - include: true
+  no-trailing-whitespace: 2
+  border-zero:
+    - 2
+    - convention: '0'
+  brace-style:
+    - 2
+    - allow-single-line: true
+  clean-import-paths:
+    - 2
+    - filename-extension: false
+      leading-underscore: false
+  no-debug: 2
+  no-empty-rulesets: 2
+  no-invalid-hex: 2
+  no-mergeable-selectors: 2
+  no-trailing-zero: 2
+  no-url-protocols: 2
+  quotes:
+    - 2
+    - style: double
+  space-after-bang:
+    - 2
+    - include: false
+  space-after-colon:
+    - 2
+    - include: true
+  space-after-comma:
+    - 2
+    - include: true
+  space-before-bang:
+    - 2
+    - include: true
+  space-before-brace:
+    - 2
+    - include: true
+  space-before-colon: 2
+  space-between-parens:
+    - 2
+    - include: false
+  trailing-semicolon: 2
+  url-quotes: 2
+  single-line-per-selector: 2
+  one-declaration-per-line: 2
+  empty-line-between-blocks: 2
+  zero-unit: 2
+
+  # Missing rules
+  # There are no sass-lint rules for the following AirBNB style items, but thess
+  # - Put comments on their own line
+  # - Put property delcarations before mixins
