@@ -237,6 +237,9 @@ Use `0` instead of `none` to specify that a style has no border.
 
 3. Nested selectors
 
+    Warning: It is always better to avoid nested selectors since they increase the specificity of the selector and may cause undesirable 
+    problems sometimes. for detailed explanation refer https://www.sitepoint.com/beware-selector-nesting-sass/
+    
     Nested selectors, _if necessary_, go last, and nothing goes after them. Add whitespace between your rule declarations and nested selectors, as well as between adjacent nested selectors. Apply the same guidelines as above to your nested selectors.
 
     ```scss
