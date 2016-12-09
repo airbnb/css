@@ -122,7 +122,7 @@ Kami mendorong beberapa kombinasi dari OOCSS dan BEM untuk beberapa alasan berik
   * Membuat nesting lebih sedikit dan lebih spesifik
   * Membantu dalam membangun stylesheets yang scalable
 
-**OOCSS**, atau “Object Oriented CSS”, adalah sebuah pendekatan dalam menulis CSS yang mendorong Anda untuk berpikir mengenai <em><stylesheets/em> sebagai sebuah kumpulan “objects”: <em>reusable</em>, potongan code yang bisa digunakan berulang secara independent didalam sebuah website.
+**OOCSS**, atau “Object Oriented CSS”, adalah sebuah pendekatan dalam menulis CSS yang mendorong Anda untuk berpikir mengenai <em>stylesheets</em> sebagai sebuah kumpulan “objects”: <em>reusable</em>, potongan code yang bisa digunakan berulang secara independent didalam sebuah website.
 
   * Nicole Sullivan's [OOCSS wiki](https://github.com/stubbornella/oocss/wiki)
   * Smashing Magazine's [Introduction to OOCSS](http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/)
