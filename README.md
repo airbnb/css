@@ -2,9 +2,9 @@
 
 *A mostly reasonable approach to CSS and Sass*
 
-## Table of Contents
+## Daftar Isi
 
-  1. [Terminology](#terminology)
+  1. [Terminologi](#terminologi)
     - [Rule Declaration](#rule-declaration)
     - [Selectors](#selectors)
     - [Properties](#properties)
@@ -24,11 +24,11 @@
     - [Nested selectors](#nested-selectors)
   1. [Translation](#translation)
 
-## Terminology
+## Terminologi
 
 ### Rule declaration
 
-A “rule declaration” is the name given to a selector (or a group of selectors) with an accompanying group of properties. Here's an example:
+“Rule declaration” adalah nama yang diberikan pada suatu <em>selector<em> (atau group dari beberapa <em>selector<em>) dengan properti-properti di yang berada dalamnya. Berikut contohnya:
 
 ```css
 .listing {
@@ -39,7 +39,7 @@ A “rule declaration” is the name given to a selector (or a group of selector
 
 ### Selectors
 
-In a rule declaration, “selectors” are the bits that determine which elements in the DOM tree will be styled by the defined properties. Selectors can match HTML elements, as well as an element's class, ID, or any of its attributes. Here are some examples of selectors:
+Di deklarasi rule, “<em>selector<em>” dijelaskan sebagai sebuah aturan yang menjelaskan bagaimana sebuah element di dalam sebuah <em>DOM Tree<em> akan di beri <em>style<em> berdasarkan properti yang dijabarkan di dalamnya. <em>Selector<em> bisa menggunakan HTML Element, class dari HTML element, ID, atau attribute apapun yang terdapat di HTML element tersebut. Berikut beberapa contoh selectors:
 
 ```css
 .my-element-class {
@@ -53,7 +53,7 @@ In a rule declaration, “selectors” are the bits that determine which element
 
 ### Properties
 
-Finally, properties are what give the selected elements of a rule declaration their style. Properties are key-value pairs, and a rule declaration can contain one or more property declarations. Property declarations look like this:
+Akhirnya, Properti (en :“<em>property<em>”) adalah <em>style<em> apapun yang akan diterapkan pada element terpilih. Properti adalah sebuah pasangan key dan value dengan deklarasi rule yang bisa memuat satu atau lebih deklarasi dari sebuah properti. Deklarasi properti akan terlihat seperti berikut:
 
 ```css
 /* some selector */ {
@@ -66,17 +66,17 @@ Finally, properties are what give the selected elements of a rule declaration th
 
 ### Formatting
 
-* Use soft tabs (2 spaces) for indentation
-* Prefer dashes over camelCasing in class names.
-  - Underscores and PascalCasing are okay if you are using BEM (see [OOCSS and BEM](#oocss-and-bem) below).
-* Do not use ID selectors
-* When using multiple selectors in a rule declaration, give each selector its own line.
-* Put a space before the opening brace `{` in rule declarations
-* In properties, put a space after, but not before, the `:` character.
-* Put closing braces `}` of rule declarations on a new line
-* Put blank lines between rule declarations
+* Gunakan “<em>soft tabs<em>” (2 spasi) untuk indentasi
+* Lebih baik <em>dashes<em> dibandingkan <em>camelCase<em> di dalam nama class.
+  - Garis bawah (_) dan <em>PascalCasing<em> tidak mengapa apabila Anda menggunakan BEM (lihat pembahasan [OOCSS and BEM](#oocss-and-bem) dibawah).
+* Jangan gunakan ID selectors
+* Ketika menggunakan “<em>multiple selectors<em>” di deklarasi rule, tambahkan baris baru ke masing-masing selector tersebut.
+* Tambahkan spasi sebelum kurung kurawal (<em>brace<em>) pembuka `{` di deklarasi rule.
+* Di properti, tambahkan spasi setelahnya, tapi tidak sebelumnya dari karakter `:`.
+* Tambahkan baris baru pada kurung kurawal (<em>brace<em>) penutup  `}` dari deklarasi rule.
+* Tambahkan baris kosong antara deskripsi rule.
 
-**Bad**
+**Jangan**
 
 ```css
 .avatar{
@@ -90,7 +90,7 @@ Finally, properties are what give the selected elements of a rule declaration th
 }
 ```
 
-**Good**
+**Sebaiknya**
 
 ```css
 .avatar {
@@ -107,11 +107,11 @@ Finally, properties are what give the selected elements of a rule declaration th
 
 ### Comments
 
-* Prefer line comments (`//` in Sass-land) to block comments.
-* Prefer comments on their own line. Avoid end-of-line comments.
-* Write detailed comments for code that isn't self-documenting:
-  - Uses of z-index
-  - Compatibility or browser-specific hacks
+* Lebih baik menggunakan <em>comment<em> sebaris (`//` di dalam Sass) dibandingkan blok comment.
+* Lebih baik comment di barisnya sendiri. Hindari comments pada baris paling terakhir.
+* Tulis dengan detail comment dari sebuah code yang tidak mempunyai dokumentasi sendiri, misal:
+  - Penggunaan z-index
+  - Kompatibilitas atau hack dari sebuah browser-specific
 
 ### OOCSS and BEM
 
