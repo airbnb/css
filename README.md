@@ -66,14 +66,14 @@ Akhirnya, Properti (en :“<em>property</em>”) adalah <em>style</em> apapun ya
 
 ### Formatting
 
-* Gunakan “<em>soft tabs<em>” (2 spasi) untuk indentasi
-* Lebih baik <em>dashes<em> dibandingkan <em>camelCase<em> di dalam nama class.
-  - Garis bawah (_) dan <em>PascalCasing<em> tidak mengapa apabila Anda menggunakan BEM (lihat pembahasan [OOCSS and BEM](#oocss-and-bem) dibawah).
+* Gunakan “<em>soft tabs</em>” (2 spasi) untuk indentasi
+* Lebih baik <em>dashes</em> dibandingkan <em>camelCase</em> di dalam nama class.
+  - Garis bawah (_) dan <em>PascalCasing</em> tidak mengapa apabila Anda menggunakan BEM (lihat pembahasan [OOCSS and BEM](#oocss-and-bem) dibawah).
 * Jangan gunakan ID selectors
-* Ketika menggunakan “<em>multiple selectors<em>” di deklarasi rule, tambahkan baris baru ke masing-masing selector tersebut.
-* Tambahkan spasi sebelum kurung kurawal (<em>brace<em>) pembuka `{` di deklarasi rule.
+* Ketika menggunakan “<em>multiple selectors</em>” di deklarasi rule, tambahkan baris baru ke masing-masing selector tersebut.
+* Tambahkan spasi sebelum kurung kurawal (<em>brace</em>) pembuka `{` di deklarasi rule.
 * Di properti, tambahkan spasi setelahnya, tapi tidak sebelumnya dari karakter `:`.
-* Tambahkan baris baru pada kurung kurawal (<em>brace<em>) penutup  `}` dari deklarasi rule.
+* Tambahkan baris baru pada kurung kurawal (<em>brace</em>) penutup  `}` dari deklarasi rule.
 * Tambahkan baris kosong antara deskripsi rule.
 
 **Jangan**
@@ -107,7 +107,7 @@ Akhirnya, Properti (en :“<em>property</em>”) adalah <em>style</em> apapun ya
 
 ### Comments
 
-* Lebih baik menggunakan <em>comment<em> sebaris (`//` di dalam Sass) dibandingkan blok comment.
+* Lebih baik menggunakan <em>comment</em> sebaris (`//` di dalam Sass) dibandingkan blok comment.
 * Lebih baik comment di barisnya sendiri. Hindari comments pada baris paling terakhir.
 * Tulis dengan detail comment dari sebuah code yang tidak mempunyai dokumentasi sendiri, misal:
   - Penggunaan z-index
@@ -115,12 +115,12 @@ Akhirnya, Properti (en :“<em>property</em>”) adalah <em>style</em> apapun ya
 
 ### OOCSS and BEM
 
-We encourage some combination of OOCSS and BEM for these reasons:
+Kami mendorong beberapa kombinasi dari OOCSS dan BEM untuk beberapa alasan berikut:
 
-  * It helps create clear, strict relationships between CSS and HTML
-  * It helps us create reusable, composable components
-  * It allows for less nesting and lower specificity
-  * It helps in building scalable stylesheets
+  * Membantu menulis code dengan lebih jelas, memperjelas hubungan antara CSS dan HTML
+  * Membantu kita membuat code reusable, <em>composable components</em>
+  * Membuat nesting lebih sedikit dan lebih spesifik
+  * Membantu dalam membangun stylesheets yang scalable
 
 **OOCSS**, or “Object Oriented CSS”, is an approach for writing CSS that encourages you to think about your stylesheets as a collection of “objects”: reusable, repeatable snippets that can be used independently throughout a website.
 
@@ -185,7 +185,7 @@ We recommend creating JavaScript-specific classes to bind to, prefixed with `.js
 
 Use `0` instead of `none` to specify that a style has no border.
 
-**Bad**
+**Jangan**
 
 ```css
 .foo {
@@ -193,7 +193,7 @@ Use `0` instead of `none` to specify that a style has no border.
 }
 ```
 
-**Good**
+**Sebaiknya**
 
 ```css
 .foo {
