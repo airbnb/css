@@ -28,7 +28,7 @@
 
 ### Rule declaration
 
-“Rule declaration” adalah nama yang diberikan pada suatu <em>selector<em> (atau group dari beberapa <em>selector<em>) dengan properti-properti di yang berada dalamnya. Berikut contohnya:
+“Rule declaration” adalah nama yang diberikan pada suatu <em>selector</em> (atau group dari beberapa <em>selector</em>) dengan properti-properti di yang berada dalamnya. Berikut contohnya:
 
 ```css
 .listing {
@@ -39,7 +39,7 @@
 
 ### Selectors
 
-Di deklarasi rule, “<em>selector<em>” dijelaskan sebagai sebuah aturan yang menjelaskan bagaimana sebuah element di dalam sebuah <em>DOM Tree<em> akan di beri <em>style<em> berdasarkan properti yang dijabarkan di dalamnya. <em>Selector<em> bisa menggunakan HTML Element, class dari HTML element, ID, atau attribute apapun yang terdapat di HTML element tersebut. Berikut beberapa contoh selectors:
+Di deklarasi rule, “<em>selector</em>” dijelaskan sebagai sebuah aturan yang menjelaskan bagaimana sebuah element di dalam sebuah <em>DOM Tree</em> akan di beri <em>style</em> berdasarkan properti yang dijabarkan di dalamnya. <em>Selector</em> bisa menggunakan HTML Element, class dari HTML element, ID, atau attribute apapun yang terdapat di HTML element tersebut. Berikut beberapa contoh selectors:
 
 ```css
 .my-element-class {
@@ -53,7 +53,7 @@ Di deklarasi rule, “<em>selector<em>” dijelaskan sebagai sebuah aturan yang 
 
 ### Properties
 
-Akhirnya, Properti (en :“<em>property<em>”) adalah <em>style<em> apapun yang akan diterapkan pada element terpilih. Properti adalah sebuah pasangan key dan value dengan deklarasi rule yang bisa memuat satu atau lebih deklarasi dari sebuah properti. Deklarasi properti akan terlihat seperti berikut:
+Akhirnya, Properti (en :“<em>property</em>”) adalah <em>style</em> apapun yang akan diterapkan pada element terpilih. Properti adalah sebuah pasangan key dan value dengan deklarasi rule yang bisa memuat satu atau lebih deklarasi dari sebuah properti. Deklarasi properti akan terlihat seperti berikut:
 
 ```css
 /* some selector */ {
