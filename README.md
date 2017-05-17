@@ -4,25 +4,25 @@
 
 ## Table of Contents
 
-  1. [Terminology](#terminology)
+1. [Terminology](#terminology)
     - [Rule Declaration](#rule-declaration)
     - [Selectors](#selectors)
     - [Properties](#properties)
-  1. [CSS](#css)
+1. [CSS](#css)
     - [Formatting](#formatting)
     - [Comments](#comments)
     - [OOCSS and BEM](#oocss-and-bem)
     - [ID Selectors](#id-selectors)
     - [JavaScript hooks](#javascript-hooks)
     - [Border](#border)
-  1. [Sass](#sass)
+1. [Sass](#sass)
     - [Syntax](#syntax)
     - [Ordering](#ordering-of-property-declarations)
     - [Variables](#variables)
     - [Mixins](#mixins)
     - [Extend directive](#extend-directive)
     - [Nested selectors](#nested-selectors)
-  1. [Translation](#translation)
+1. [Translation](#translation)
 
 ## Terminology
 
@@ -61,6 +61,8 @@ Finally, properties are what give the selected elements of a rule declaration th
   color: #333;
 }
 ```
+
+**[⬆ back to top](#table-of-contents)**
 
 ## CSS
 
@@ -200,6 +202,7 @@ Use `0` instead of `none` to specify that a style has no border.
   border: 0;
 }
 ```
+**[⬆ back to top](#table-of-contents)**
 
 ## Sass
 
@@ -288,6 +291,8 @@ Again: **never nest ID selectors!**
 
 If you must use an ID selector in the first place (and you should really try not to), they should never be nested. If you find yourself doing this, you need to revisit your markup, or figure out why such strong specificity is needed. If you are writing well formed HTML and CSS, you should **never** need to do this.
 
+**[⬆ back to top](#table-of-contents)**
+
 ## Translation
 
   This style guide is also available in other languages:
@@ -301,3 +306,5 @@ If you must use an ID selector in the first place (and you should really try not
   - ![es](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Spain.png) **Spanish**: [ismamz/guia-de-estilo-css](https://github.com/ismamz/guia-de-estilo-css)
   - ![vn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Vietnam.png) **Vietnamese**: [trungk18/css-style-guide](https://github.com/trungk18/css-style-guide)
   - ![id](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Indonesia.png) **Bahasa Indonesia**: [mazipan/css-style-guide](https://github.com/mazipan/css-style-guide)
+
+**[⬆ back to top](#table-of-contents)**
