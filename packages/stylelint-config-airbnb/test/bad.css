@@ -1,0 +1,23 @@
+.avatar{
+    border-radius:50%;
+    border:2px solid white; }
+.no, .nope, .not_good {
+  border: none;
+}
+#lol-no {
+  border: none;
+}
+
+.foo {
+  border: none;
+}
+
+.page-container {
+  .content {
+    .profile {
+      .toodeep{
+
+      }
+    }
+  }
+}
