@@ -21,7 +21,10 @@
     "stylelint-config",
     "stylelint-config-airbnb"
   ],
-  "author": "Stephen Edgar",
+  "author": {
+    "name": "Stephen Edgar",
+    "url": "https://twitter.com/netweb"
+  },
   "contributors": [
     {
       "name": "Christopher Voigt",

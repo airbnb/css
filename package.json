@@ -22,7 +22,10 @@
     "lint",
     "stylelint"
   ],
-  "author": "Stephen Edgar",
+  "author": {
+    "name": "Stephen Edgar",
+    "url": "https://twitter.com/netweb"
+  },
   "contributors": [
     {
       "name": "Christopher Voigt",
