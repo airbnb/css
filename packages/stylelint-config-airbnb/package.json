@@ -4,8 +4,10 @@
   "description": "Airbnb's stylelint config, following our styleguide",
   "main": "index.js",
   "scripts": {
+    "prelint": "editorconfig-tools check . test/",
     "lint": "eslint .",
-    "test": "npm run lint"
+    "test": "npm run --silent lint",
+    "travis": "npm run --silent test"
   },
   "repository": {
     "type": "git",
@@ -20,6 +22,12 @@
     "stylelint-config-airbnb"
   ],
   "author": "Stephen Edgar",
+  "contributors": [
+    {
+      "name": "Christopher Voigt",
+      "url": "https://twitter.com/chlorophyllkid"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/airbnb/css/issues"
@@ -35,5 +43,8 @@
   "peerDependencies": {
     "stylelint": "^6.9.0",
     "stylelint-scss": "^1.2.1"
+  },
+  "dependencies": {
+    "editorconfig-tools": "^0.1.1"
   }
 }

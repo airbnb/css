@@ -1,0 +1,40 @@
+{
+  "name": "airbnb-style",
+  "version": "0.0.0",
+  "description": "A mostly reasonable approach to CSS.",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "cd packages/stylelint-config-airbnb && npm prune && npm install",
+    "lint": "markdownlint --config linters/.markdownlint.json README.md packages/stylelint-config-airbnb/README.md",
+    "pretest": "npm run --silent lint",
+    "test": "cd packages/stylelint-config-airbnb && npm test",
+    "pretravis": "npm run --silent lint",
+    "travis": "cd packages/stylelint-config-airbnb && npm run travis"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/airbnb/css.git"
+  },
+  "keywords": [
+    "styleguide",
+    "airbnb",
+    "css",
+    "lint",
+    "stylelint"
+  ],
+  "author": "Stephen Edgar",
+  "contributors": [
+    {
+      "name": "Christopher Voigt",
+      "url": "https://twitter.com/chlorophyllkid"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/airbnb/css/issues"
+  },
+  "homepage": "https://github.com/airbnb/css",
+  "devDependencies": {
+    "markdownlint-cli": "^0.3.1"
+  }
+}
