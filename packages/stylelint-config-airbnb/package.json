@@ -6,7 +6,9 @@
   "scripts": {
     "prelint": "editorconfig-tools check . test/",
     "lint": "eslint .",
-    "test": "npm run --silent lint",
+    "pretest": "npm run --silent lint",
+    "test": "npm run --silent tests-only",
+    "tests-only": "ava ./test/test-*.js",
     "travis": "npm run --silent test"
   },
   "repository": {
@@ -48,6 +50,7 @@
     "stylelint-scss": "^1.2.1"
   },
   "dependencies": {
+    "ava": "0.23.0",
     "editorconfig-tools": "^0.1.1"
   }
 }
