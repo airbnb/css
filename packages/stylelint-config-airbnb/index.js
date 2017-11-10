@@ -19,7 +19,6 @@ module.exports = {
     'selector-list-comma-newline-after': 'always',
     'selector-no-id': true,
 
-    'scss/dollar-variable-pattern': '^foo',
     'scss/at-extend-no-missing-placeholder': true,
 
     'declaration-property-value-blacklist': {

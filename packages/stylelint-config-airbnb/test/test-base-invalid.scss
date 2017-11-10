@@ -5,19 +5,27 @@
   border: none;
 }
 #lol-no {
+  @extend .avatar;
   border: none;
 }
+
+// .bad-comment { color: pink }
 
 .foo {
   border: none;
 }
-
+.bar { color : pink }
+/*foobar*/
 .page-container {
   .content {
     .profile {
-      .toodeep{
+      .image {
+        .toodeep {
 
+        }
       }
     }
   }
 }
+
+@media {}
