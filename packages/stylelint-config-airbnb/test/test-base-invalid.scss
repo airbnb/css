@@ -11,8 +11,7 @@ $BadVariable: none;
   border: none;
 }
 
-// .bad-comment { color: pink }
-
+// bad comment
 .foo {
   border: none;
 }
@@ -21,10 +20,8 @@ $BadVariable: none;
 .page-container {
   .content {
     .profile {
-      .image {
-        .toodeep {
+      .toodeep {
 
-        }
       }
     }
   }

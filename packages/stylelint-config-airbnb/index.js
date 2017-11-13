@@ -3,27 +3,19 @@ module.exports = {
     'stylelint-scss',
   ],
   rules: {
+    indentation: 2,
+    'max-nesting-depth': 2,
+    'selector-no-id': true,
+    'selector-list-comma-newline-after': 'always',
+    'rule-non-nested-empty-line-before': ['always', { ignore: ['after-comment'] }],
+    'no-invalid-double-slash-comments': true,
+    'comment-empty-line-before': ['always', { ignore: ['stylelint-commands'] }],
     'at-rule-empty-line-before': 'never',
     'block-opening-brace-space-before': 'always',
-    'comment-empty-line-before': ['always', {
-      ignore: ['stylelint-commands'],
-    }],
     'declaration-colon-space-after': 'always',
     'declaration-colon-space-before': 'never',
-    indentation: 2,
-    'max-nesting-depth': 3,
-    'no-invalid-double-slash-comments': true,
-    'rule-non-nested-empty-line-before': ['always', {
-      ignore: ['after-comment'],
-    }],
-    'selector-list-comma-newline-after': 'always',
-    'selector-no-id': true,
-
     'scss/dollar-variable-pattern': '^[_a-z][\\w-]*$',
     'scss/at-extend-no-missing-placeholder': true,
-
-    'declaration-property-value-blacklist': {
-      '/^border/': ['none'],
-    },
+    'declaration-property-value-blacklist': { '/^border/': ['none'] },
   },
 };
