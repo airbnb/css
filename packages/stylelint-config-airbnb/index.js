@@ -19,6 +19,7 @@ module.exports = {
     'selector-list-comma-newline-after': 'always',
     'selector-no-id': true,
 
+    'scss/dollar-variable-pattern': '^[_a-z][\\w-]*$',
     'scss/at-extend-no-missing-placeholder': true,
 
     'declaration-property-value-blacklist': {

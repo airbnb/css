@@ -31,7 +31,7 @@ test('warnings with invalid css', t => {
     const { errored, results } = data;
     const { warnings } = results[0];
     t.truthy(errored, 'errored');
-    t.is(warnings.length, 20, 'flags one warning');
+    t.is(warnings.length, 21, 'flags one warning');
 
     t.is(warnings[0].text,
       'Unexpected empty line before at-rule (at-rule-empty-line-before)',
@@ -114,13 +114,13 @@ test('warnings with invalid css', t => {
     );
 
     t.is(warnings[16].text,
-      'Expected a placeholder selector (e.g. %placeholder) to be used in ' +
-      '@extend (scss/at-extend-no-missing-placeholder)',
+      'Expected $ variable name to match specified pattern (scss/dollar-variable-pattern)',
       'correct warning text'
     );
 
     t.is(warnings[17].text,
-      'Unexpected value "none" for property "border" (declaration-property-value-blacklist)',
+      'Expected a placeholder selector (e.g. %placeholder) to be used in ' +
+      '@extend (scss/at-extend-no-missing-placeholder)',
       'correct warning text'
     );
 
@@ -130,6 +130,11 @@ test('warnings with invalid css', t => {
     );
 
     t.is(warnings[19].text,
+      'Unexpected value "none" for property "border" (declaration-property-value-blacklist)',
+      'correct warning text'
+    );
+
+    t.is(warnings[20].text,
       'Unexpected value "none" for property "border" (declaration-property-value-blacklist)',
       'correct warning text'
     );
