@@ -1,0 +1,16 @@
+
+/* spacing */
+.avatar {
+  line-height: .75;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.name {
+  border: 0;
+}
+
+/* multiple selectors */
+.yes,
+.sure,
+.good { }

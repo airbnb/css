@@ -1,0 +1,16 @@
+
+/* OOCSS and BEM */
+.ListingCard { }
+
+.ListingCard--featured { }
+
+.ListingCard__title { }
+
+.ListingCard__content { }
+
+
+/* tag selectors */
+a { }
+
+/* attribute selectors */
+[aria-hidden] { }
