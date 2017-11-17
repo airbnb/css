@@ -1,10 +1,12 @@
 module.exports = {
   plugins: [
     'stylelint-scss',
+    'stylelint-order',
   ],
   rules: {
     indentation: 2,
     'max-nesting-depth': 2,
+    'number-leading-zero': 'never',
     'selector-no-id': true,
     'selector-list-comma-newline-after': 'always',
     'rule-non-nested-empty-line-before': ['always', { ignore: ['after-comment'] }],
@@ -14,8 +16,10 @@ module.exports = {
     'block-opening-brace-space-before': 'always',
     'declaration-colon-space-after': 'always',
     'declaration-colon-space-before': 'never',
+    'declaration-property-value-blacklist': { '/^border/': ['none'] },
     'scss/dollar-variable-pattern': '^[_a-z][\\w-]*$',
     'scss/at-extend-no-missing-placeholder': true,
-    'declaration-property-value-blacklist': { '/^border/': ['none'] },
+    'scss/double-slash-comment-inline': 'never',
+    'order/order': ['declarations', 'at-rules', 'rules'],
   },
 };
