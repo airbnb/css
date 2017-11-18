@@ -19,6 +19,11 @@ module.exports = {
     'scss/dollar-variable-pattern': '^[_a-z][\\w-]*$',
     'scss/at-extend-no-missing-placeholder': true,
     'scss/double-slash-comment-inline': 'never',
-    'order/order': ['declarations', 'at-rules', 'rules'],
+    'order/order': [
+      'declarations',
+      { type: 'at-rule' },
+      { type: 'at-rule', hasBlock: true },
+      'rules',
+    ],
   },
 };

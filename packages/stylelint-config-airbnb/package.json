@@ -42,12 +42,12 @@
     "eslint": "^3.0.1",
     "eslint-config-airbnb-base": "^4.0.0",
     "eslint-plugin-import": "^1.10.2",
-    "stylelint": "^6.9.0",
+    "stylelint": "8.2.0",
     "stylelint-order": "^0.7.0",
     "stylelint-scss": "^1.2.1"
   },
   "peerDependencies": {
-    "stylelint": "^6.9.0",
+    "stylelint": "^8.0.0",
     "stylelint-order": "^0.7.0",
     "stylelint-scss": "^1.2.1"
   },
