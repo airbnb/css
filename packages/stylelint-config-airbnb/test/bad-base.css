@@ -1,0 +1,37 @@
+
+/* selector */
+#lol_no { }
+
+
+/* quotes */
+.icon:before {
+  content: '\3e';
+}
+
+
+/* spacing */
+.avatar{
+    line-height: 0.75;
+  border     : 2px solid white;
+}
+.name { border:none; background: pink; }
+
+
+/* multiple selectors */
+.no, .nope, .not_good { }
+
+
+/* @-rules */
+@media print {
+  background: pink;
+}
+@media (min-width: 768px) {
+  font-size: 18px;
+}
+
+/* comments */
+.ListingCard--featured {
+  background: pink; /* try to avoid this */
+}
+/* too close */
+.ListingCard__title { }

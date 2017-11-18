@@ -1,0 +1,62 @@
+
+$Capital-letter: 1em;
+$_Capital-letter: 1em;
+$123-is-not-allowed: 1em;
+
+$weird-stuff-!@#$*: 1em;
+
+
+// nested selectors
+.page-container {
+
+  .content {
+
+    .profile {
+
+      .too-deep { }
+    }
+  }
+}
+
+
+// extend
+.Card { }
+
+.ListingCard {
+  @extend .Card;
+}
+
+
+// order
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+.box--red {
+  @include border-radius(10px);
+  top: 0;
+}
+
+.box--green {
+
+  .content { }
+
+  top: 0;
+}
+
+.box--red {
+  @media print {
+    background: white;
+  }
+
+  @include border-radius(10px);
+}
+
+.box--blue {
+
+  .content { }
+
+  @media print {
+    background: white;
+  }
+}

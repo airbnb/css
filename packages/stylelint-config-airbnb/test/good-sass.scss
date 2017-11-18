@@ -1,0 +1,61 @@
+
+$global-variable: 1em;
+$_private-variable: 1em;
+$number-123: 1em;
+
+$kebab-case: 1em;
+$snake_case: 1em;
+$camelCase: 1em;
+
+
+// nested selectors
+.page-container {
+
+  .content {
+
+    .profile { }
+  }
+}
+
+// OOCSS and BEM selectors
+.ListingCard {
+
+  &--featured { }
+
+  &__title { }
+
+  &__content {
+
+    &--alternative { }
+  }
+}
+
+
+// comments
+.ListingCard--featured {
+  // something fancy
+  background: pink;
+
+  // very long comments
+  // are okay
+  margin: 0 15px;
+}
+
+
+// order
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+.box {
+  top: 0;
+  background: pink;
+
+  @include border-radius(10px);
+
+  @media print {
+    background: white;
+  }
+
+  .content { }
+}

@@ -4,21 +4,34 @@ module.exports = {
     'stylelint-order',
   ],
   rules: {
+    // Base rules
     indentation: 2,
-    'max-nesting-depth': 2,
     'number-leading-zero': 'never',
-    'selector-no-id': true,
+    'string-quotes': 'double',
+    'selector-max-id': 0,
     'selector-list-comma-newline-after': 'always',
-    'rule-non-nested-empty-line-before': ['always', { ignore: ['after-comment'] }],
-    'comment-empty-line-before': ['always', { ignore: ['stylelint-commands'] }],
+    'rule-empty-line-before': [
+      'always',
+      { ignore: ['after-comment'] },
+    ],
+    'comment-empty-line-before': [
+      'always',
+      { except: ['first-nested'] },
+    ],
     'block-opening-brace-space-before': 'always',
     'declaration-colon-space-after': 'always',
     'declaration-colon-space-before': 'never',
+    'declaration-block-single-line-max-declarations': 1,
     'declaration-property-value-blacklist': { '/^border/': ['none'] },
-    'at-rule-empty-line-before': ['always', { except: ['first-nested'] }],
-    'scss/dollar-variable-pattern': '^[_a-z][\\w-]*$',
+    'at-rule-empty-line-before': [
+      'always',
+      { ignore: ['after-comment'], except: ['first-nested'] },
+    ],
+
+    // Sass rules
+    'max-nesting-depth': 2,
+    'scss/dollar-variable-pattern': '^_?[a-z]+[\\w-]*$',
     'scss/at-extend-no-missing-placeholder': true,
-    'scss/double-slash-comment-inline': 'never',
     'order/order': [
       'declarations',
       { type: 'at-rule' },
