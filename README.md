@@ -23,6 +23,7 @@
     - [Extend directive](#extend-directive)
     - [Nested selectors](#nested-selectors)
 1. [Translation](#translation)
+1. [License](#license)
 
 ## Terminology
 
