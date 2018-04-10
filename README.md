@@ -1,4 +1,4 @@
-# Airbnb CSS / Sass Styleguide
+# Knowbly CSS / Sass Styleguide (inspired by Airbnb styleguide)
 
 *A mostly reasonable approach to CSS and Sass*
 
@@ -33,8 +33,8 @@ A “rule declaration” is the name given to a selector (or a group of selector
 
 ```css
 .listing {
-  font-size: 18px;
-  line-height: 1.2;
+    font-size: 18px;
+    line-height: 1.2;
 }
 ```
 
@@ -44,11 +44,11 @@ In a rule declaration, “selectors” are the bits that determine which element
 
 ```css
 .my-element-class {
-  /* ... */
+    /* ... */
 }
 
 [aria-hidden] {
-  /* ... */
+    /* ... */
 }
 ```
 
@@ -58,8 +58,8 @@ Finally, properties are what give the selected elements of a rule declaration th
 
 ```css
 /* some selector */ {
-  background: #f1f1f1;
-  color: #333;
+    background: #f1f1f1;
+    color: #333;
 }
 ```
 
@@ -69,7 +69,7 @@ Finally, properties are what give the selected elements of a rule declaration th
 
 ### Formatting
 
-* Use soft tabs (2 spaces) for indentation
+* Use soft tabs (4 spaces) for indentation
 * Prefer dashes over camelCasing in class names.
   - Underscores and PascalCasing are okay if you are using BEM (see [OOCSS and BEM](#oocss-and-bem) below).
 * Do not use ID selectors
@@ -83,13 +83,13 @@ Finally, properties are what give the selected elements of a rule declaration th
 
 ```css
 .avatar{
-    border-radius:50%;
-    border:2px solid white; }
+  border-radius:50%;
+  border:2px solid white; }
 .no, .nope, .not_good {
-    // ...
+  // ...
 }
 #lol-no {
-  // ...
+    // ...
 }
 ```
 
@@ -97,24 +97,85 @@ Finally, properties are what give the selected elements of a rule declaration th
 
 ```css
 .avatar {
-  border-radius: 50%;
-  border: 2px solid white;
+    border-radius: 50%;
+    border: 2px solid white;
 }
 
 .one,
 .selector,
 .per-line {
-  // ...
+    // ...
 }
 ```
 
 ### Comments
 
-* Prefer line comments (`//` in Sass-land) to block comments.
-* Prefer comments on their own line. Avoid end-of-line comments.
+* Prefer DocBlock-esque multi-line comment for large comments.
+* Prefer line comments (`//` in Sass-land) for short comments.
 * Write detailed comments for code that isn't self-documenting:
-  - Uses of z-index
+  - Uses of z-index, overflow, etc
   - Compatibility or browser-specific hacks
+
+***Good***
+
+```scss
+.page-head--masthead {
+    overflow: hidden; // short comment
+}
+```
+
+```scss
+/**
+ * Large site headers act more like mastheads. They have a faux-fluid-height
+ * which is controlled by the wrapping element inside it.
+ *
+ * 1. Mastheads will typically have dark backgrounds, so we need to make sure
+ *    the contrast is okay. This value is subject to change as the background
+ *    image changes.
+ * 2. We need to delegate a lot of the masthead’s layout to its wrapper element
+ *    rather than the masthead itself: it is to this wrapper that most things
+ *    are positioned.
+ * 3. The wrapper needs positioning context for us to lay our nav and masthead
+ *    text in.
+ * 4. Faux-fluid-height technique: simply create the illusion of fluid height by
+ *    creating space via a percentage padding, and then position everything over
+ *    the top of that. This percentage gives us a 16:9 ratio.
+ * 5. When the viewport is at 758px wide, our 16:9 ratio means that the masthead
+ *    is currently rendered at 480px high. Let’s…
+ * 6. …seamlessly snip off the fluid feature at this height, and…
+ * 7. …fix the height at 480px. This means that we should see no jumps in height
+ *    as the masthead moves from fluid to fixed. This actual value takes into
+ *    account the padding and the top border on the header itself.
+ */
+
+.page-head--masthead {
+    @include vendor(background-size, cover);
+    @include media-query(lap-and-up) {
+        background-image: url(/img/css/masthead-medium.jpg);
+    }
+
+    @include media-query(desk) {
+        background-image: url(/img/css/masthead-large.jpg);
+    }
+
+    margin-bottom: 0;
+    background: url(/img/css/masthead.jpg) center center #2e2620;
+    color: $color-masthead; /* [1] */
+    border-top-color: $color-masthead;
+    border-bottom-width: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) inset;
+
+    > .wrapper { /* [2] */
+        position: relative; /* [3] */
+        padding-top: 56.25%; /* [4] */
+
+        @media screen and (min-width: 758px) { /* [5] */
+            padding-top: 0; /* [6] */
+            height: $header-max-height - double($spacing-unit) - $header-border-width; /* [7] */
+        }
+    }
+}
+```
 
 ### OOCSS and BEM
 
@@ -135,38 +196,36 @@ We encourage some combination of OOCSS and BEM for these reasons:
   * CSS Trick's [BEM 101](https://css-tricks.com/bem-101/)
   * Harry Roberts' [introduction to BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
 
-We recommend a variant of BEM with PascalCased “blocks”, which works particularly well when combined with components (e.g. React). Underscores and dashes are still used for modifiers and children.
+~~We recommend a variant of BEM with PascalCased “blocks”, which works particularly well when combined with components (e.g. React).~~ Underscores and dashes are still used for modifiers and children.
 
 **Example**
 
-```jsx
-// ListingCard.jsx
-function ListingCard() {
-  return (
-    <article class="ListingCard ListingCard--featured">
-
-      <h1 class="ListingCard__title">Adorable 2BR in the sunny Mission</h1>
-
-      <div class="ListingCard__content">
-        <p>Vestibulum id ligula porta felis euismod semper.</p>
-      </div>
-
+```vue
+// ListingCard.vue
+<template>
+    <article class="listing-card listing-card--featured">
+        <h1 class="listing-card__title">Adorable 2BR in the sunny Mission</h1>
+        <div class="listing-card__content">
+            <p>Vestibulum id ligula porta felis euismod semper.</p>
+        </div>
     </article>
-  );
+</template>
+```
+
+```scss
+/* listing-card.scss */
+.listing-card {
+    &--featured { }
 }
+    
+    .listing-card__title { }
+    
+    .listing-card__content { }
 ```
 
-```css
-/* ListingCard.css */
-.ListingCard { }
-.ListingCard--featured { }
-.ListingCard__title { }
-.ListingCard__content { }
-```
-
-  * `.ListingCard` is the “block” and represents the higher-level component
-  * `.ListingCard__title` is an “element” and represents a descendant of `.ListingCard` that helps compose the block as a whole.
-  * `.ListingCard--featured` is a “modifier” and represents a different state or variation on the `.ListingCard` block.
+  * `.listing-card` is the “block” and represents the higher-level component
+  * `.listing-card__title` is an “element” and represents a descendant of `.listing-card` that helps compose the block as a whole.
+  * `.listing-card--featured` is a “modifier” and represents a different state or variation on the `.listing-card` block.
 
 ### ID selectors
 
@@ -192,7 +251,7 @@ Use `0` instead of `none` to specify that a style has no border.
 
 ```css
 .foo {
-  border: none;
+    border: none;
 }
 ```
 
@@ -200,7 +259,7 @@ Use `0` instead of `none` to specify that a style has no border.
 
 ```css
 .foo {
-  border: 0;
+    border: 0;
 }
 ```
 **[⬆ back to top](#table-of-contents)**
@@ -214,28 +273,29 @@ Use `0` instead of `none` to specify that a style has no border.
 
 ### Ordering of property declarations
 
-1. Property declarations
+1. `@include` declarations
+
+    Grouping `@include`s at the start makes it easier to override them.
+
+    ```scss
+    .btn-green {
+        @include transition(background 0.5s ease);
+
+        background: green;
+        font-weight: bold;
+        // ...
+    }
+    ```
+
+2. Property declarations
 
     List all standard property declarations, anything that isn't an `@include` or a nested selector.
 
     ```scss
     .btn-green {
-      background: green;
-      font-weight: bold;
-      // ...
-    }
-    ```
-
-2. `@include` declarations
-
-    Grouping `@include`s at the end makes it easier to read the entire selector.
-
-    ```scss
-    .btn-green {
-      background: green;
-      font-weight: bold;
-      @include transition(background 0.5s ease);
-      // ...
+        background: green;
+        font-weight: bold;
+        // ...
     }
     ```
 
@@ -245,13 +305,14 @@ Use `0` instead of `none` to specify that a style has no border.
 
     ```scss
     .btn {
-      background: green;
-      font-weight: bold;
-      @include transition(background 0.5s ease);
+        @include transition(background 0.5s ease);
 
-      .icon {
-        margin-right: 10px;
-      }
+        background: green;
+        font-weight: bold;
+
+        .icon {
+            margin-right: 10px;
+        }
     }
     ```
 
@@ -273,11 +334,11 @@ Mixins should be used to DRY up your code, add clarity, or abstract complexity--
 
 ```scss
 .page-container {
-  .content {
-    .profile {
-      // STOP!
+    .content {
+        p {
+            // STOP!
+        }
     }
-  }
 }
 ```
 
@@ -291,25 +352,6 @@ When selectors become this long, you're likely writing CSS that is:
 Again: **never nest ID selectors!**
 
 If you must use an ID selector in the first place (and you should really try not to), they should never be nested. If you find yourself doing this, you need to revisit your markup, or figure out why such strong specificity is needed. If you are writing well formed HTML and CSS, you should **never** need to do this.
-
-**[⬆ back to top](#table-of-contents)**
-
-## Translation
-
-  This style guide is also available in other languages:
-
-  - ![id](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Indonesia.png) **Bahasa Indonesia**: [mazipan/css-style-guide](https://github.com/mazipan/css-style-guide)
-  - ![tw](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Taiwan.png) **Chinese (Traditional)**: [ArvinH/css-style-guide](https://github.com/ArvinH/css-style-guide)
-  - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese (Simplified)**: [Zhangjd/css-style-guide](https://github.com/Zhangjd/css-style-guide)
-  - ![fr](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/France.png) **French**: [mat-u/css-style-guide](https://github.com/mat-u/css-style-guide)
-  - ![ja](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Japan.png) **Japanese**: [nao215/css-style-guide](https://github.com/nao215/css-style-guide)
-  - ![ko](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/South-Korea.png) **Korean**: [CodeMakeBros/css-style-guide](https://github.com/CodeMakeBros/css-style-guide)
-  - ![PT-BR](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Brazil.png) **Portuguese (Brazil)**: [felipevolpatto/css-style-guide](https://github.com/felipevolpatto/css-style-guide)
-  - ![pt-PT](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Portugal.png) **Portuguese (Portugal)**: [SandroMiguel/airbnb-css-style-guide](https://github.com/SandroMiguel/airbnb-css-style-guide)
-  - ![ru](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Russia.png) **Russian**: [Nekorsis/css-style-guide](https://github.com/Nekorsis/css-style-guide)
-  - ![es](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Spain.png) **Spanish**: [ismamz/guia-de-estilo-css](https://github.com/ismamz/guia-de-estilo-css)
-  - ![vn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Vietnam.png) **Vietnamese**: [trungk18/css-style-guide](https://github.com/trungk18/css-style-guide)
-  - ![vn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Italy.png) **Italian**: [antoniofull/linee-guida-css](https://github.com/antoniofull/linee-guida-css)
 
 **[⬆ back to top](#table-of-contents)**
 
