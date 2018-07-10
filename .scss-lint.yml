@@ -6,9 +6,6 @@ linters:
     enabled: true
     convention: zero
 
-  BemDepth:
-    enabled: true
-
   DeclarationOrder:
     enabled: false
 
@@ -26,21 +23,11 @@ linters:
     prefix: _
 
   PropertySortOrder:
-    enabled: false
+    order: smacss
 
   QualifyingElement:
     enabled: false
 
-  SelectorFormat:
-    enabled: true
-    convention: hyphenated_BEM
-    class_convention: ^(?!js-).*
-    class_convention_explanation: should not be written in the form js-*
-
   SingleLinePerProperty:
     enabled: true
     allow_single_line_rule_sets: false
-
-  StringQuotes:
-    enabled: true
-    style: double_quotes

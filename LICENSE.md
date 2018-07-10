@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2015 Airbnb
+Copyright for portions of this project are held by Airbnb, 2015 as part of project css. All other copyright for this project are held by Einstein Industries, Inc.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
