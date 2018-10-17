@@ -9,6 +9,7 @@
 1. [CSS](#css)
     - [Formatting](#formatting)
     - [Comments](#comments)
+    - [DO NOT USE](#do-not-use)
     - [OOCSS and BEM](#oocss-and-bem)
     - [ID Selectors](#id-selectors)
     - [JavaScript hooks](#javascript-hooks)
@@ -112,7 +113,7 @@ Finally, properties are what give the selected elements of a rule declaration th
   - Uses of z-index
   - Compatibility or browser-specific hacks
 
-### DO NOT USE 
+### DO NOT USE
 * Inline styles. They are not reusable and can't be overridden in css files.
 * White space in file names. They complicate shell scipts.
 * `display: table` you should never need this.
