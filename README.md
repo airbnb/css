@@ -112,6 +112,12 @@ Finally, properties are what give the selected elements of a rule declaration th
   - Uses of z-index
   - Compatibility or browser-specific hacks
 
+### DO NOT USE 
+* Inline styles. They are not reusable and can't be overridden in css files.
+* White space in file names. They complicate shell scipts.
+* `display: table` you should never need this.
+* Hardcoded width of elements containing text that might be i18n-ed. e.g. buttons and links almost never have fixed width. 
+
 ### OOCSS and BEM
 
 We encourage some combination of OOCSS and BEM for these reasons:
