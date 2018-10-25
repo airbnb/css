@@ -119,6 +119,10 @@ Finally, properties are what give the selected elements of a rule declaration th
 * `display: table` you should never need this.
 * Hardcoded width of elements containing text that might be i18n-ed. e.g. buttons and links almost never have fixed width. 
 
+### \<IMG> or background-image
+* Use `<IMG>` (with `alt` text) when the image has an important semantic meaning. This ensures that the meaning of the image can be communicated in all user-agents, including screen readers.
+* Use CSS `background-image` if the image is not part of the content (e.g. icons).
+
 ### OOCSS and BEM
 
 We encourage some combination of OOCSS and BEM for these reasons:
