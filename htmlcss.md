@@ -6,6 +6,7 @@
     - [Indentation](#indentation)
     - [Capitalization](#capitalization)
     - [Action items](#action-items)
+    - [File names](#file-names)
 1. [HTML](#html)
     - [HTML validity](#html-validity)
     - [Semantics](#semantics)
@@ -21,7 +22,8 @@
 1. [CSS](#css)
     - [Formatting](#formatting)
     - [Comments](#comments)
-    - [DO NOT USE](#do-not-use)
+    - [Inline styles](#inline-styles)
+    - [Elements width](#elements-width)
     - [OOCSS and BEM](#oocss-and-bem)
     - [ID Selectors](#id-selectors)
     - [JavaScript hooks](#javascript-hooks)
@@ -101,6 +103,9 @@ color: #e5e5e5;
   <li>Oranges</li>
 </ul>
 ```
+
+### File names
+Do not use white space in file names. They complicate shell scripts
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -337,11 +342,21 @@ When line-wrapping, each continuation line should be indented at least 4 additio
   - Uses of z-index
   - Compatibility or browser-specific hacks
 
-### DO NOT USE
-* Inline styles. They are not reusable and can't be overridden in css files.
-* White space in file names. They complicate shell scipts.
-* `display: table` you should never need this.
-* Hardcoded width of elements containing text that might be i18n-ed. e.g. buttons and links almost never have fixed width. 
+### Inline styles
+* Do not use inline-styles. They are not reusable and hard to override.
+
+**Bad**
+```html
+<a style="color:red;">red link</a>
+```
+
+**Good**
+```html
+<a class="highlighted-link">red link</a>
+```
+
+### Elements width
+Do no hardcode width of elements containing text that might be i18n-ed. e.g. buttons and links almost never have fixed width.
 
 ### \<IMG> or background-image
 * Use `<IMG>` (with `alt` text) when the image has an important semantic meaning. This ensures that the meaning of the image can be communicated in all user-agents, including screen readers.
