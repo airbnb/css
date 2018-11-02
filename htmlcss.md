@@ -10,10 +10,14 @@
     - [HTML validity](#html-validity)
     - [Semantics](#semantics)
     - [Multimedia fallback](#multimedia-fallback)
-    - [Separation of Concerns](#separation-of-concerns)
-    - [Entity References](#entity-references)
-    - [Optional Tags](#optional-tags)
+    - [Separation of concerns](#separation-of-concerns)
+    - [Entity references](#entity-references)
+    - [Optional tags](#optional-tags)
     - [type attributes](#type-attributes)
+1. [HTLM Formatting](#html-formatting)
+    - [General formatting](#general-formatting)
+    - [HTML line-wrapping](#html-line-wrapping)
+    - [HTML quotation marks](#html-quotation-marks)
 1. [CSS](#css)
     - [Formatting](#formatting)
     - [Comments](#comments)
@@ -211,6 +215,74 @@ The currency symbol for the Euro is “€”.
 ```html
 <link rel="stylesheet" href="https://www.google.com/css/maia.css">
 <script src="https://www.google.com/js/gweb/analytics/autotrack.js"></script>
+```
+
+**[⬆ back to top](#table-of-contents)**
+
+## HTML Formatting
+### General Formatting
+Use a new line for every block, list, or table element, and indent every such child element.
+
+Independent of the styling of an element (as CSS allows elements to assume a different role per display property), put every block, list, or table element on a new line.
+
+Also, indent them if they are child elements of a block, list, or table element.
+
+```html
+<blockquote>
+  <p><em>Space</em>, the final frontier.</p>
+</blockquote>
+```
+
+```html
+<ul>
+  <li>Moe</li>
+  <li>Larry</li>
+  <li>Curly</li>
+</ul>
+```
+
+### HTML line-wrapping
+Break long lines (optional).
+
+While there is no column limit recommendation for HTML, you may consider wrapping long lines if it significantly improves readability.
+
+When line-wrapping, each continuation line should be indented at least 4 additional spaces from the original line.
+
+```html
+<md-progress-circular md-mode="indeterminate" class="md-accent"
+    ng-show="ctrl.loading" md-diameter="35">
+</md-progress-circular>
+```
+
+```html
+<md-progress-circular
+    md-mode="indeterminate"
+    class="md-accent"
+    ng-show="ctrl.loading"
+    md-diameter="35">
+</md-progress-circular>
+```
+
+```html
+<md-progress-circular md-mode="indeterminate"
+                      class="md-accent"
+                      ng-show="ctrl.loading"
+                      md-diameter="35">
+</md-progress-circular>
+```
+
+### HTML quotation marks
+* When quoting attributes values, use double quotation marks.
+* Use double ("") rather than single quotation marks ('') around attribute values.
+
+**Bad**
+```html
+<a class='maia-button maia-button-secondary'>Sign in</a>
+```
+
+**Good**
+```html
+<a class="maia-button maia-button-secondary">Sign in</a>
 ```
 
 **[⬆ back to top](#table-of-contents)**
