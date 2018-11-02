@@ -1,4 +1,4 @@
-# HTML, CSS, Sass and BEM style guide
+# HTML, CSS and Sass style guide
 
 ## Table of Contents
 
