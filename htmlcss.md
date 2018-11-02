@@ -194,9 +194,68 @@ color: #e5e5e5;
 ```
 
 ### Separation of concerns
+Separate structure from presentation from behavior.
+
+That is, make sure documents and templates contain only HTML and HTML that is solely serving structural purposes. Move everything presentational into style sheets, and everything behavioral into scripts.
+
+Separating structure from presentation from behavior is important for maintenance reasons. It is always more expensive to change HTML documents and templates than it is to update style sheets and scripts.
+
+**Bad**
+```html
+<!DOCTYPE html>
+<title>HTML sucks</title>
+<link rel="stylesheet" href="base.css" media="screen">
+<link rel="stylesheet" href="grid.css" media="screen">
+<link rel="stylesheet" href="print.css" media="print">
+<h1 style="font-size: 1em;">HTML sucks</h1>
+<p>I’ve read about this on a few sites but now I’m sure:
+  <u>HTML is stupid!!1</u>
+<center>I can’t believe there’s no way to control the styling of
+  my website without doing everything all over again!</center>
+```
+
+**Good**
+```html
+<!DOCTYPE html>
+<title>My first CSS-only redesign</title>
+<link rel="stylesheet" href="default.css">
+<h1>My first CSS-only redesign</h1>
+<p>I’ve read about this on a few sites but today I’m actually
+  doing it: separating concerns and avoiding anything in the HTML of
+  my website that is presentational.
+<p>It’s awesome!
+```
+
 ### Entity references
-### Optional tags
+* Do not use entity references.
+* There is no need to use entity references like `&mdash;`, `&rdquo;`, or `&#x263a;`
+* The only exceptions are characters with special meaning (like `<` and `&`) and “invisible” characters (like no-break spaces).
+
+**Bad**
+```html
+The currency symbol for the Euro is &ldquo;&eur;&rdquo;.
+```
+
+**Good**
+```html
+The currency symbol for the Euro is “€”.
+```
+
 ### `type` attributes](#type-attributes)
+* Omit `type` attributes for style sheets and scripts.
+
+
+**Bad**
+```html
+<link rel="stylesheet" href="https://www.google.com/css/maia.css" type="text/css">
+<script src="https://www.google.com/js/gweb/analytics/autotrack.js" type="text/javascript"></script>
+```
+
+**Good**
+```html
+<link rel="stylesheet" href="https://www.google.com/css/maia.css">
+<script src="https://www.google.com/js/gweb/analytics/autotrack.js"></script>
+```
 
 **[⬆ back to top](#table-of-contents)**
 
