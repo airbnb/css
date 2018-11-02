@@ -10,7 +10,7 @@
     - [Indentation](#indentation)
     - [Capitalization](#capitalization)
     - [Action items](#action-items)
-1. [HRML](#html)
+1. [HTML](#html)
     - [HTML validity](#html-validity)
     - [Semantics](#semantics)
     - [Multimedia fallback](#multimedia-fallback)
@@ -141,6 +141,62 @@ color: #e5e5e5;
   <li>Oranges</li>
 </ul>
 ```
+
+**[⬆ back to top](#table-of-contents)**
+
+## HTML
+### HTML validity
+* Use valid HTML where possible.
+* Use tools such as the [W3C HTML validator](https://validator.w3.org/nu/) to test.
+
+**Bad**
+```
+<title>Test</title>
+<article>This is only a test.
+```
+
+**Good**
+```
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Test</title>
+<article>This is only a test.</article>
+```
+
+### Semantics
+* Use HTML according to its purpose.
+
+**Bad**
+```
+<div onclick="goToRecommendations();">All recommendations</div>
+```
+
+**Good**
+```
+<a href="recommendations/">All recommendations</a>
+```
+
+### Multimedia fallback
+* For images, videos, animated objects via canvas, make sure to offer alternative access. 
+* For images that means use of meaningful alternative text (`alt`)
+* For video and audio provide transcripts and captions, if available.
+* Alternative contents is important for accessibility reasons: A blind user has few cues what an image is about without @alt
+* Images whose `alt` attributes introduces redundancy, and images whose purpose is decorative, use no alternative text, as in `alt=""`
+
+**Bad**
+```
+<img src="spreadsheet.png">
+```
+
+**Good**
+```
+<img src="spreadsheet.png" alt="Spreadsheet screenshot.">
+```
+
+### Separation of concerns
+### Entity references
+### Optional tags
+### `type` attributes](#type-attributes)
 
 **[⬆ back to top](#table-of-contents)**
 
