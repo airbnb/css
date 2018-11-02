@@ -65,6 +65,7 @@ Finally, properties are what give the selected elements of a rule declaration th
 
 ## General formatting
 
+### Indentation
 * Use soft tabs (2 spaces) for indentation
 * Don’t use tabs or mix tabs and spaces for indentation.
 
@@ -80,6 +81,35 @@ Finally, properties are what give the selected elements of a rule declaration th
 .example {
   color: blue;
 }
+```
+
+### Capitalization
+* Use only lowercase.
+* All code has to be lowercase: This applies to 
+   * HTML element names
+   * attributes
+   * attribute values (unless text/CDATA)
+   * CSS selectors
+   * properties and property values (with the exception of strings).
+   
+**Bad**
+```
+<A HREF="/">Home</A>
+```
+
+**Good**
+```
+<img src="google.png" alt="Google">
+```
+
+**Bad**
+```
+color: #E5E5E5;
+```
+
+**Good**
+```
+color: #e5e5e5;
 ```
 
 **[⬆ back to top](#table-of-contents)**
