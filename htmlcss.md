@@ -7,6 +7,8 @@
     - [Selectors](#selectors)
     - [Properties](#properties)
 1. [General formatting](#general-formatting)
+    - [Indentation](#indentation)
+    - [Capitalization](#capitalization)
 1. [CSS](#css)
     - [Formatting](#formatting)
     - [Comments](#comments)
