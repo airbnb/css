@@ -81,14 +81,14 @@ Finally, properties are what give the selected elements of a rule declaration th
 * Don’t use tabs or mix tabs and spaces for indentation.
 
 **Examples**
-```
+```html
 <ul>
   <li>Fantastic
   <li>Great
 </ul>
 ```
 
-```
+```css
 .example {
   color: blue;
 }
@@ -104,22 +104,22 @@ Finally, properties are what give the selected elements of a rule declaration th
    * properties and property values (with the exception of strings).
    
 **Bad**
-```
+```html
 <A HREF="/">Home</A>
 ```
 
 **Good**
-```
+```html
 <img src="google.png" alt="Google">
 ```
 
 **Bad**
-```
+```css
 color: #E5E5E5;
 ```
 
 **Good**
-```
+```css
 color: #e5e5e5;
 ```
 
@@ -129,12 +129,12 @@ color: #e5e5e5;
 * Append a contact (username or mailing list) in parentheses as with the format TODO(contact).
 * Append action items after a colon as in TODO: action item.
 
-```
+```html
 {# TODO(john.doe): revisit centering #}
 <center>Test</center>
 ```
 
-```
+```html
 <!-- TODO: remove optional tags -->
 <ul>
   <li>Apples</li>
@@ -150,13 +150,13 @@ color: #e5e5e5;
 * Use tools such as the [W3C HTML validator](https://validator.w3.org/nu/) to test.
 
 **Bad**
-```
+```html
 <title>Test</title>
 <article>This is only a test.
 ```
 
 **Good**
-```
+```html
 <!DOCTYPE html>
 <meta charset="utf-8">
 <title>Test</title>
@@ -167,12 +167,12 @@ color: #e5e5e5;
 * Use HTML according to its purpose.
 
 **Bad**
-```
+```html
 <div onclick="goToRecommendations();">All recommendations</div>
 ```
 
 **Good**
-```
+```html
 <a href="recommendations/">All recommendations</a>
 ```
 
@@ -184,12 +184,12 @@ color: #e5e5e5;
 * Images whose `alt` attributes introduces redundancy, and images whose purpose is decorative, use no alternative text, as in `alt=""`
 
 **Bad**
-```
+```html
 <img src="spreadsheet.png">
 ```
 
 **Good**
-```
+```html
 <img src="spreadsheet.png" alt="Spreadsheet screenshot.">
 ```
 
