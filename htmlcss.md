@@ -9,6 +9,7 @@
 1. [General formatting](#general-formatting)
     - [Indentation](#indentation)
     - [Capitalization](#capitalization)
+    - [Action items](#action-items)
 1. [CSS](#css)
     - [Formatting](#formatting)
     - [Comments](#comments)
@@ -112,6 +113,25 @@ color: #E5E5E5;
 **Good**
 ```
 color: #e5e5e5;
+```
+
+### Action items(#action-items)
+* Mark todos and action items with TODO.
+* Highlight todos by using the keyword TODO only, not other common formats like @@.
+* Append a contact (username or mailing list) in parentheses as with the format TODO(contact).
+* Append action items after a colon as in TODO: action item.
+
+```
+{# TODO(john.doe): revisit centering #}
+<center>Test</center>
+```
+
+```
+<!-- TODO: remove optional tags -->
+<ul>
+  <li>Apples</li>
+  <li>Oranges</li>
+</ul>
 ```
 
 **[⬆ back to top](#table-of-contents)**
