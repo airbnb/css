@@ -1,3 +1,3 @@
 # Style guides
 
-- [html, css, sass, bem](./htmlcss.md)
+- [html, css, sass](./htmlcss.md)
