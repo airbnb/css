@@ -6,6 +6,7 @@
     - [Rule Declaration](#rule-declaration)
     - [Selectors](#selectors)
     - [Properties](#properties)
+1. [General formatting](#general-formatting)
 1. [CSS](#css)
     - [Formatting](#formatting)
     - [Comments](#comments)
@@ -62,11 +63,31 @@ Finally, properties are what give the selected elements of a rule declaration th
 
 **[⬆ back to top](#table-of-contents)**
 
+## General formatting
+
+* Use soft tabs (2 spaces) for indentation
+* Don’t use tabs or mix tabs and spaces for indentation.
+
+**Examples**
+```
+<ul>
+  <li>Fantastic
+  <li>Great
+</ul>
+```
+
+```
+.example {
+  color: blue;
+}
+```
+
+**[⬆ back to top](#table-of-contents)**
+
 ## CSS
 
 ### Formatting
 
-* Use soft tabs (2 spaces) for indentation
 * Use dashes in class names.
   - Underscores and PascalCasing are okay if you are using BEM (see [OOCSS and BEM](#oocss-and-bem) below).
 * Do not use ID selectors
