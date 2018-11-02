@@ -17,7 +17,7 @@
     - [Separation of Concerns](#separation-of-concerns)
     - [Entity References](#entity-references)
     - [Optional Tags](#optional-tags)
-    - [`type` attributes](#type-attributes)
+    - [type attributes](#type-attributes)
 1. [CSS](#css)
     - [Formatting](#formatting)
     - [Comments](#comments)
