@@ -85,7 +85,7 @@ color: #E5E5E5;
 color: #e5e5e5;
 ```
 
-### Action items(#action-items)
+### Action items
 * Mark todos and action items with TODO.
 * Highlight todos by using the keyword TODO only, not other common formats like @@.
 * Append a contact (username or mailing list) in parentheses as with the format TODO(contact).
@@ -206,7 +206,7 @@ The currency symbol for the Euro is &ldquo;&eur;&rdquo;.
 The currency symbol for the Euro is “€”.
 ```
 
-### `type` attributes](#type-attributes)
+### `type` attributes
 * Omit `type` attributes for style sheets and scripts.
 
 
