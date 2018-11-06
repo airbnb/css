@@ -35,6 +35,9 @@
     - [Mixins](#mixins)
     - [Extend directive](#extend-directive)
     - [Nested selectors](#nested-selectors)
+    - [BEM element nesting](#bem-element-nesting)
+    - [BEM modifier usage](#bem-modifier-usage)
+    - [BEM blocks in blocks](#bem-blocks-in-blocks)
 
 ## General formatting
 
@@ -537,5 +540,206 @@ When selectors become this long, you're likely writing CSS that is:
 Again: **never nest ID selectors!**
 
 If you must use an ID selector in the first place (and you should really try not to), they should never be nested. If you find yourself doing this, you need to revisit your markup, or figure out why such strong specificity is needed. If you are writing well formed HTML and CSS, you should **never** need to do this.
+
+### BEM element nesting
+
+#### Bad
+
+```scss
+.menu {
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    a {
+      color: $my-blue;
+      text-decoration: none;
+    }
+  }
+}
+```
+
+```html
+<ul class="menu">
+  <li><a href="#">My Link</a></li>
+  <li><a href="#">My Second Link</a></li>
+</ul>
+```
+
+#### Good
+
+```scss
+.menu {
+  &__item {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__link {
+    color: $my-blue;
+    text-decoration: none;
+  }
+}
+```
+
+```html
+<ul class="menu">
+  <li class="menu__item"><a href="#" class="menu__link">My Link</a></li>
+  <li class="menu__item"><a href="#" class="menu__link">My Second Link</a></li>
+</ul>
+```
+
+### BEM modifier usage
+
+#### Bad
+
+```scss
+.menu {
+  &__item {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    &:first-child .menu__link {
+      border-left: 1px solid $my-blue;
+    }
+  }
+
+  &__link {
+    color: $my-blue;
+    text-decoration: none;
+  }
+
+  &__active {
+    color: $my-green;
+  }
+}
+```
+
+```html
+<ul class="menu">
+  <li class="menu__item">
+    <a href="#" class="menu__link">My Link</a>
+  </li>
+  <li class="menu__item">
+    <a href="#" class="menu__link menu__active">My Second Link</a>
+  </li>
+</ul>
+```
+
+
+#### Good
+
+```scss
+.menu {
+  &__item {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__link {
+    color: $my-blue;
+    text-decoration: none;
+
+    &--first {
+      border-left: 1px solid $my-blue;
+    }
+
+    &--active {
+      color: $my-green;
+    }
+  }
+}
+```
+
+```html
+<ul class="menu">
+  <li class="menu__item">
+    <a href="#" class="menu__link menu__link--first">My Link</a>
+  </li>
+  <li class="menu__item">
+    <a href="#" class="menu__link menu__link--active">My Second Link</a>
+  </li>
+</ul>
+```
+
+
+### BEM blocks in blocks
+
+#### Bad
+
+```scss
+// header.scss
+.header {
+  &__menu {
+    // ...
+  }
+
+  .button {
+    margin: 0;
+  }
+}
+
+// button.scss
+.button {
+  background: $my-blue;
+  color: $white;
+  margin: 5px 0;
+  padding: 10px;
+
+  &--primary {
+    background: $my-green;
+  }
+}
+```
+
+```html
+<div class="header">
+  <ul class="header__menu">...</ul>
+  <a href="#" class="button button--primary">
+    My awesome Button
+  </a>
+</div>
+```
+
+
+#### Good
+
+```scss
+// header.scss
+.header {
+  &__menu {
+    // ...
+  }
+}
+
+// button.scss
+.button {
+  background: $my-blue;
+  color: $white;
+  margin: 5px 0;
+  padding: 10px;
+
+  &--primary {
+    background: $my-green;
+  }
+
+  &--no-margin {
+    margin: 0;
+  }
+}
+```
+
+```html
+<div class="header">
+  <ul class="header__menu">...</ul>
+  <a href="#" class="button button--primary button--no-margin">
+    My awesome Button
+  </a>
+</div>
+```
 
 **[⬆ back to top](#table-of-contents)**
