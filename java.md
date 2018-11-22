@@ -810,17 +810,17 @@ Note that the casing of the original words is almost entirely disregarded. Examp
   <tr>
     <td>"XML HTTP request"</td>
     <td><pre lang="java">XmlHttpRequest</pre></td>
-    <td><code class="badcode">XMLHTTPRequest`</td>
+    <td><pre lang="java">XMLHTTPRequest</pre></td>
   </tr>
   <tr>
     <td>"new customer ID"</td>
     <td><pre lang="java">newCustomerId</pre></td>
-    <td><code class="badcode">newCustomerID`</td>
+    <td><pre lang="java">newCustomerID</pre></td>
   </tr>
   <tr>
     <td>"inner stopwatch"</td>
     <td><pre lang="java">innerStopwatch</pre></td>
-    <td><code class="badcode">innerStopWatch`</td>
+    <td><pre lang="java">innerStopWatch</pre></td>
   </tr>
   <tr>
     <td>"supports IPv6 on iOS?"</td>
@@ -892,8 +892,8 @@ name, not with a reference or expression of that class's type.
 ```java
 Foo aFoo = ...;
 Foo.aStaticMethod(); // good
-<span class="badcode">aFoo.aStaticMethod();</span> // bad
-<span class="badcode">somethingThatYieldsAFoo().aStaticMethod();</span> // very bad
+aFoo.aStaticMethod(); // bad
+somethingThatYieldsAFoo().aStaticMethod(); // very bad
 ```
 
 ### 6.4 Finalizers: not used
