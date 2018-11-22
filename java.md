@@ -1,7 +1,7 @@
 # Java Style Guide
 
 ## Table of Contents
-1. [Introduction](#introduction)
+1. [1. Introduction](#1-introduction)
    1. [Terminology notes](#terminology-notes)
    1. [Guide notes](#guide-notes)
 1. [Source file basics](#source-file-basics)
@@ -37,7 +37,7 @@
    1. [The summary fragment](#the-summary-fragment)
    1. [Where Javadoc is used](#where-javadoc-is-used)
 
-## Introduction
+## 1. Introduction
 
 This document serves as the **complete** definition of Java coding standards (inspired by 
 [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)). A Java source 
