@@ -2,7 +2,7 @@
 
 ## Table of Contents
 
-[1. Introduction](#1-introduction)
+[1. Introduction](#1-introduction)  
 &nbsp;&nbsp;[1.1. Terminology notes](#11-terminology-notes)  
 &nbsp;[1.2. Guide notes](#12-guide-notes)  
 [2. Source file basics](#2-source-file-basics)  
@@ -103,7 +103,7 @@ anywhere in a source file. This implies that:
 #### 2.3.2 Special escape sequences
 
 For any character that has a
-<a href="http://docs.oracle.com/javase/tutorial/java/data/characters.html">special escape sequence</a>
+[special escape sequence](http://docs.oracle.com/javase/tutorial/java/data/characters.html)
 (`\b`,
 `\t`,
 `\n`,
@@ -113,8 +113,8 @@ For any character that has a
 `\'` and
 `\\`), that sequence
 is used rather than the corresponding octal
-(e.g.&#160;<code class="badcode">\012`) or Unicode
-(e.g.&#160;<code class="badcode">\u000a`) escape.
+(e.g.&#160;`\012`) or Unicode
+(e.g.&#160;`\u000a`) escape.
 
 #### 2.3.3 Non-ASCII characters
 
@@ -163,12 +163,10 @@ Examples:
   </tr>
 </tbody></table>
 
-<p class="tip">**Tip:** Never make your code less readable simply out of fear that
+**Tip:** Never make your code less readable simply out of fear that
 some programs might not handle non-ASCII characters properly. If that should happen, those
 programs are **broken** and they must be **fixed**.
 
-
-<a name="filestructure"></a>
 ## 3 Source file structure
 
 A source file consists of, **in order**:
@@ -188,10 +186,9 @@ If license or copyright information belongs in a file, it belongs here.
 
 ### 3.2 Package statement
 
-The package statement is **not line-wrapped**. The column limit (Section 4.4,
-<a href="#s4.4-column-limit">Column limit: 100</a>) does not apply to package statements.
+The package statement is **not line-wrapped**. The column limit ([Column limit: 100](#column-limit-100))
+does not apply to package statements.
 
-<a name="imports"></a>
 ### 3.3 Import statements
 
 #### 3.3.1 No wildcard imports
@@ -200,18 +197,15 @@ The package statement is **not line-wrapped**. The column limit (Section 4.4,
 
 #### 3.3.2 No line-wrapping
 
-Import statements are **not line-wrapped**. The column limit (Section 4.4,
-<a href="#s4.4-column-limit">Column limit: 100</a>) does not apply to import
-statements.
+Import statements are **not line-wrapped**. The column limit ([Column limit: 100](#column-limit-100))
+does not apply to import statements.
 
 #### 3.3.3 Ordering and spacing
 
 Imports are ordered as follows:
 
-
 1. All static imports in a single block.
 1. All non-static imports in a single block.
-
 
 If there are both static and non-static imports, a single blank line separates the two
 blocks. There are no other blank lines between import statements.
@@ -221,7 +215,6 @@ this is not the same as the import _statements_ being in ASCII sort order, since
 sorts before ';'.)
 
 
-
 #### 3.3.4 No static import for classes
 
 Static import is not used for static nested classes. They are imported with
@@ -229,12 +222,10 @@ normal imports.
 
 ### 3.4 Class declaration
 
-<a name="oneclassperfile"></a>
 #### 3.4.1 Exactly one top-level class declaration
 
 Each top-level class resides in a source file of its own.
 
-<a name="s3.4.2-class-member-ordering"></a>
 #### 3.4.2 Ordering of class contents
 
 The order you choose for the members and initializers of your class can have a great effect on
@@ -246,22 +237,19 @@ maintainer could explain if asked. For example, new methods are not just habitua
 of the class, as that would yield "chronological by date added" ordering, which is not a logical
 ordering.
 
-
-
-<a name="overloads"></a>
-<h5 id="s3.4.2.1-overloads-never-split">3.4.2.1 Overloads: never split</h5>
+##### 3.4.2.1 Overloads: never split
 
 When a class has multiple constructors, or multiple methods with the same name, these appear
 sequentially, with no other code in between (not even private members).
 
 ## 4 Formatting
 
-<p class="terminology">**Terminology Note:** _block-like construct_ refers to
-the body of a class, method or constructor. Note that, by Section 4.8.3.1 on
-<a href="#s4.8.3.1-array-initializers">array initializers</a>, any array initializer
+**Terminology Note:** _block-like construct_ refers to the body of a class, method or constructor. 
+Note that, by Section 4.8.3.1 on
+
+[array initializers](#array-initializers), any array initializer
 _may_ optionally be treated as if it were a block-like construct.
 
-<a name="braces"></a>
 ### 4.1 Braces
 
 #### 4.1.1 Braces are used where optional
@@ -277,25 +265,21 @@ body is empty or contains only a single statement.
 #### 4.1.2 Nonempty blocks: K &amp; R style
 
 Braces follow the Kernighan and Ritchie style
-("<a href="http://www.codinghorror.com/blog/2012/07/new-programming-jargon.html">Egyptian brackets</a>")
+([Egyptian brackets](http://www.codinghorror.com/blog/2012/07/new-programming-jargon.html))
 for _nonempty_ blocks and block-like constructs:
 
-<ul>
 1. No line break before the opening brace.
-
 1. Line break after the opening brace.
-
 1. Line break before the closing brace.
-
 1. Line break after the closing brace, _only if_ that brace terminates a statement or
   terminates the body of a method, constructor, or _named_ class.
   For example, there is _no_ line break after the brace if it is followed by
   `else` or a comma.
-</ul>
 
 Examples:
 
-<pre class="prettyprint lang-java">return () -&gt; {
+```java
+return () -&gt; {
   while (condition()) {
     method();
   }
@@ -316,16 +300,14 @@ return new MyClass() {
     }
   }
 };
-</pre>
+```
 
-A few exceptions for enum classes are given in Section 4.8.1,
-<a href="#s4.8.1-enum-classes">Enum classes</a>.
+A few exceptions for enum classes are given in Section 4.8.1, [Enum classes](#enum-classes).
 
-<a name="emptyblocks"></a>
 #### 4.1.3 Empty blocks: may be concise
 
 An empty block or block-like construct may be in K &amp; R style (as described in
-<a href="#s4.1.2-blocks-k-r-style">Section 4.1.2</a>). Alternatively, it may be closed immediately
+[Section 4.1.2](#nonempty-blocks-k-r-style). Alternatively, it may be closed immediately
 after it is opened, with no characters or line break in between
 (`{}`), **unless** it is part of a
 _multi-block statement_ (one that directly contains multiple blocks:
@@ -334,71 +316,68 @@ _multi-block statement_ (one that directly contains multiple blocks:
 
 Examples:
 
-<pre class="prettyprint lang-java">  // This is acceptable
+```java
+// This is acceptable
   void doNothing() {}
 
   // This is equally acceptable
   void doNothingElse() {
   }
-</pre>
-<pre class="prettyprint lang-java badcode">  // This is not acceptable: No concise empty blocks in a multi-block statement
+```
+
+```java
+// This is not acceptable: No concise empty blocks in a multi-block statement
   try {
     doSomething();
   } catch (Exception e) {}
-</pre>
+```
 
 ### 4.2 Block indentation: +2 spaces
 
 Each time a new block or block-like construct is opened, the indent increases by two
 spaces. When the block ends, the indent returns to the previous indent level. The indent level
 applies to both code and comments throughout the block. (See the example in Section 4.1.2,
-<a href="#s4.1.2-blocks-k-r-style">Nonempty blocks: K &amp; R Style</a>.)
+[Nonempty blocks: K &amp; R Style](#nonempty-blocks-k-r-style))
 
 ### 4.3 One statement per line
 
 Each statement is followed by a line break.
 
-<a name="columnlimit"></a>
 ### 4.4 Column limit: 100
 
 Java code has a column limit of 100 characters. A "character" means any Unicode code point.
 Except as noted below, any line that would exceed this limit must be line-wrapped, as explained in
-Section 4.5, <a href="#s4.5-line-wrapping">Line-wrapping</a>.
+Section 4.5, [Line-wrapping](#line-wrapping).
 
 
 <p class="tip">Each Unicode code point counts as one character, even if its display width is
-greater or less. For example, if using
-<a href="https://en.wikipedia.org/wiki/Halfwidth_and_fullwidth_forms">fullwidth characters</a>,
+greater or less. For example, if using [fullwidth characters](https://en.wikipedia.org/wiki/Halfwidth_and_fullwidth_forms),
 you may choose to wrap the line earlier than where this rule strictly requires.
 
 **Exceptions:**
 
-
 1. Lines where obeying the column limit is not possible (for example, a long URL in Javadoc,
   or a long JSNI method reference).
-
 1. `package` and
   `import` statements (see Sections
-  3.2 <a href="#s3.2-package-statement">Package statement</a> and
-  3.3 <a href="#s3.3-import-statements">Import statements</a>).
-
+  3.2 [Package statement](#32-package statement) and
+  3.3 [Import statements](#33-import-statements)).
 1. Command lines in a comment that may be cut-and-pasted into a shell.
-
 
 ### 4.5 Line-wrapping
 
-<p class="terminology">**Terminology Note:** When code that might otherwise legally
+**Terminology Note:** When code that might otherwise legally
 occupy a single line is divided into multiple lines, this activity is called
 _line-wrapping_.
 
 There is no comprehensive, deterministic formula showing _exactly_ how to line-wrap in
 every situation. Very often there are several valid ways to line-wrap the same piece of code.
 
-<p class="note">**Note:** While the typical reason for line-wrapping is to avoid
+**Note:** While the typical reason for line-wrapping is to avoid
 overflowing the column limit, even code that would in fact fit within the column limit _may_
 be line-wrapped at the author's discretion.
 
-<p class="tip">**Tip:** Extracting a method or local variable may solve the problem
+**Tip:** Extracting a method or local variable may solve the problem
 without the need to line-wrap.
 
 #### 4.5.1 Where to break
@@ -410,9 +389,7 @@ The prime directive of line-wrapping is: prefer to break at a
 1. When a line is broken at a _non-assignment_ operator the break comes _before_
   the symbol. (Note that this is not the same practice used in Google style for other languages,
   such as C++ and JavaScript.)
-    <ul>
     1. This also applies to the following "operator-like" symbols:
-        <ul>
         1. the dot separator (`.`)
         1. the two colons of a method reference
           (`::`)
@@ -420,18 +397,12 @@ The prime directive of line-wrapping is: prefer to break at a
           (`&lt;T extends Foo &amp; Bar&gt;`)
         1. a pipe in a catch block
           (`catch (FooException | BarException e)`).
-        </ul>
-      
-    </ul>
-  
 
 1. When a line is broken at an _assignment_ operator the break typically comes
   _after_ the symbol, but either way is acceptable.
-    <ul>
     1. This also applies to the "assignment-operator-like" colon in an enhanced
       `for` ("foreach") statement.
-    </ul>
-  
+    
 
 1. A method or constructor name stays attached to the open parenthesis
   (`(`) that follows it.
