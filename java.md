@@ -483,73 +483,48 @@ Javadoc, a single ASCII space also appears in the following places **only**.
   `catch`, from an open parenthesis
   (`(`)
   that follows it on that line
-
 1. Separating any reserved word, such as
   `else` or
   `catch`, from a closing curly brace
   (`}`) that precedes it on that line
-
 1. Before any open curly brace
   (`{`), with two exceptions:
-  <ul>
   1. `@SomeAnnotation({a, b})` (no space is used)
-
   1. `String[][] x = {{"foo"}};` (no space is required
     between `{{`, by item 8 below)
-  </ul>
-  
-
 1. On both sides of any binary or ternary operator. This also applies to the following
   "operator-like" symbols:
-  <ul>
   1. the ampersand in a conjunctive type bound:
     `&lt;T extends Foo &amp; Bar&gt;`
-
   1. the pipe for a catch block that handles multiple exceptions:
     `catch (FooException | BarException e)`
-
   1. the colon (`:`) in an enhanced
     `for` ("foreach") statement
-
   1. the arrow in a lambda expression:
     `(String str) -&gt; str.length()`
-  </ul>
     but not
-
-  <ul>
   1. the two colons (`::`) of a method reference, which
     is written like `Object::toString`
   1. the dot separator (`.`), which is written like
     `object.toString()`
-  </ul>
-  
-
 1. After `,:;` or the closing parenthesis
   (`)`) of a cast
-
 1. On both sides of the double slash (`//`) that
   begins an end-of-line comment. Here, multiple spaces are allowed, but not required.
-
 1. Between the type and variable of a declaration:
   `List&lt;String&gt; list`
-
 1. _Optional_ just inside both braces of an array initializer
-  <ul>
   1. `new int[] {5, 6}` and
     `new int[] { 5, 6 }` are both valid
-  </ul>
-  
-
 1. Between a type annotation and `[]` or
   `...`.
-
 
 This rule is never interpreted as requiring or forbidding additional space at the start or
 end of a line; it addresses only _interior_ space.
 
 #### 4.6.3 Horizontal alignment: never required
 
-<p class="terminology">**Terminology Note:** _Horizontal alignment_ is the
+**Terminology Note:** _Horizontal alignment_ is the
 practice of adding a variable number of additional spaces in your code with the goal of making
 certain tokens appear directly below certain other tokens on previous lines.
 
@@ -558,14 +533,15 @@ even required to _maintain_ horizontal alignment in places where it was already 
 
 Here is an example without alignment, then using alignment:
 
-<pre class="prettyprint lang-java">private int x; // this is fine
+```java 
+private int x; // this is fine
 private Color color; // this too
 
 private int   x;      // permitted, but future edits
 private Color color;  // may leave it unaligned
-</pre>
+```
 
-<p class="tip">**Tip:** Alignment can aid readability, but it creates problems for
+**Tip:** Alignment can aid readability, but it creates problems for
 future maintenance.  Consider a future change that needs to touch just one line. This change may
 leave the formerly-pleasing formatting mangled, and that is **allowed**. More often
 it prompts the coder (perhaps you) to adjust whitespace on nearby lines as well, possibly
@@ -573,7 +549,6 @@ triggering a cascading series of reformattings. That one-line change now has a "
 This can at worst result in pointless busywork, but at best it still corrupts version history
 information, slows down reviewers and exacerbates merge conflicts.
 
-<a name="parentheses"></a>
 ### 4.7 Grouping parentheses: recommended
 
 Optional grouping parentheses are omitted only when author and reviewer agree that there is no
@@ -588,7 +563,8 @@ operator precedence table memorized.
 After each comma that follows an enum constant, a line break is optional. Additional blank
 lines (usually just one) are also allowed. This is one possibility:
 
-<pre class="prettyprint lang-java">private enum Answer {
+```java
+private enum Answer {
   YES {
     @Override public String toString() {
       return "yes";
@@ -598,18 +574,18 @@ lines (usually just one) are also allowed. This is one possibility:
   NO,
   MAYBE
 }
-</pre>
+```
 
 An enum class with no methods and no documentation on its constants may optionally be formatted
 as if it were an array initializer (see Section 4.8.3.1 on
 <a href="#s4.8.3.1-array-initializers">array initializers</a>).
 
-<pre class="prettyprint lang-java">private enum Suit { CLUBS, HEARTS, SPADES, DIAMONDS }
-</pre>
+```java
+private enum Suit { CLUBS, HEARTS, SPADES, DIAMONDS }
+```
 
 Since enum classes _are classes_, all other rules for formatting classes apply.
 
-<a name="localvariables"></a>
 #### 4.8.2 Variable declarations
 
 <h5 id="s4.8.2.1-variables-per-declaration">4.8.2.1 One variable per declaration</h5>
