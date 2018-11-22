@@ -1,6 +1,43 @@
 # Java Style Guide
 
-## 1 Introduction
+## Table of Contents
+1. [Introduction](#introduction)
+  - [Terminology notes](#terminology-notes)
+  - [Guide notes](#guide-notes)
+1. [Source file basics](#source-file-basics)
+  - [File name](#file-name)
+  - [File encoding](#file-encoding)
+  - [Special characters](#special-characters)
+1. [Source file structure](#source-file-structure)
+  - [License or copyright information](#license-or-copyright-information)
+  - [Package statement](#package-statement)
+  - [Import statements](#import-statements)
+  - [Class declaration](#class-declaration)
+1. [Formatting](#formatting)
+  - [Braces](#braces)
+  - [Block indentation](#block-indentation)
+  - [One statement per line](#one-statement-per-line)
+  - [Column limit 100](#column-limit-100)
+  - [Line-wrapping](#line-wrapping)
+  - [Where to break](#where-to-break)
+  - [Whitespace](#whitespace)
+  - [Grouping parentheses: recommended](#grouping-parentheses-recommended)
+  - [Specific constructs](#specific-constructs)
+1. [Naming](#naming)
+  - [Rules common to all identifiers](#rules-common-to-all-identifiers)
+  - [Rules by identifier type](#rules-by-identifier-type)
+  - [Camel case: defined](#camel-case-defined)
+1. [Programming practices](#programming-practices)
+  - [@Override: always used](#@override-always-used)
+  - [Caught exceptions: not ignored](#caught-exceptions-not-ignored)
+  - [Static members: qualified using class](#static-members-qualified-using-class)
+  - [Finalizers: not used](#finalizers-not-used)
+1. [Javadoc](#javadoc)
+  - [Formatting](#formatting)
+  - [The summary fragment](#the-summary-fragment)
+  - [Where Javadoc is used](#where-javadoc-is-used)
+
+## Introduction
 
 This document serves as the **complete** definition of Java coding standards (inspired by 
 [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)). A Java source 
@@ -12,7 +49,7 @@ focuses primarily on the **hard-and-fast rules** that we follow universally, and
 avoids giving _advice_ that isn't clearly enforceable (whether by human or tool).
 
 
-### 1.1 Terminology notes
+### Terminology notes
 
 In this document, unless otherwise clarified:
 
@@ -30,14 +67,14 @@ In this document, unless otherwise clarified:
 
 Other "terminology notes" will appear occasionally throughout the document.
 
-### 1.2 Guide notes
+### Guide notes
 
 Example code in this document is **non-normative**. That is, while the examples
 are in Google Style, they may not illustrate the _only_ stylish way to represent the
 code. Optional formatting choices made in examples should not be enforced as rules.
 
 
-## 2 Source file basics
+## Source file basics
 
 ### 2.1 File name
 
