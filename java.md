@@ -2,42 +2,42 @@
 
 ## Table of Contents
 
-[1. Introduction](#1-introduction)  
-&nbsp;&nbsp;[1.1. Terminology notes](#11-terminology-notes)  
-&nbsp;[1.2. Guide notes](#12-guide-notes)  
-[2. Source file basics](#2-source-file-basics)  
+[1 Introduction](#1-introduction)  
+&nbsp;&nbsp;[1.1 Terminology notes](#11-terminology-notes)  
+&nbsp;[1.2 Guide notes](#12-guide-notes)  
+[2 Source file basics](#2-source-file-basics)  
 &nbsp;&nbsp;[2.1 File name](#21-file-name)  
-&nbsp;&nbsp;[2.2. File encoding: UTF-8](#22-file-encoding-utf-8)  
+&nbsp;&nbsp;[2.2 File encoding: UTF-8](#22-file-encoding-utf-8)  
 &nbsp;&nbsp;[2.3 Special characters](#23-special-characters)  
-[3. Source file structure](#3-source-file-structure)  
-&nbsp;&nbsp;[3.1. License or copyright information, if present](#31-license-or-copyright-information-if-present)  
-&nbsp;&nbsp;[3.2. Package statement](#32-package-statement)  
-&nbsp;&nbsp;[3.3. Import statements](#33-import-statements)  
-&nbsp;&nbsp;[3.4. Class declaration](#34-class-declaration)  
-[4. Formatting](#4-formatting)  
-&nbsp;&nbsp;[4.1. Braces](#41-braces)  
-&nbsp;&nbsp;[4.2. Block indentation: +2 spaces](#42-block-indentation-2-spaces)  
-&nbsp;&nbsp;[4.3. One statement per line](#43-one-statement-per-line)  
-&nbsp;&nbsp;[4.4. Column limit 100](#44-column-limit-100)  
-&nbsp;&nbsp;[4.5. Line-wrapping](#45-line-wrapping)  
-&nbsp;&nbsp;[4.6. Whitespace](#46-whitespace)  
-&nbsp;&nbsp;[4.7. Grouping parentheses: recommended](#47-grouping-parentheses-recommended)  
-&nbsp;&nbsp;[4.8. Specific constructs](#48-specific-constructs)  
-[5. Naming](#5-naming)  
-&nbsp;&nbsp;[5.1. Rules common to all identifiers](#51-rules-common-to-all-identifiers)  
-&nbsp;&nbsp;[5.2. Rules by identifier type](#52-rules-by-identifier-type)  
-&nbsp;&nbsp;[5.3. Camel case: defined](#53-camel-case-defined)  
-[6. Programming practices](#6-programming-practices)  
-&nbsp;&nbsp;[6.1. @Override: always used](#61-override-always-used)  
-&nbsp;&nbsp;[6.2. Caught exceptions: not ignored](#62-caught-exceptions-not-ignored)  
-&nbsp;&nbsp;[6.3. Static members: qualified using class](#63-static-members-qualified-using-class)  
-&nbsp;&nbsp;[6.4. Finalizers: not used](#64-finalizers-not-used)  
-[7. Javadoc](#7-javadoc)  
-&nbsp;&nbsp;[7.1. Formatting](#71-formatting)  
-&nbsp;&nbsp;[7.2. The summary fragment](#72-the-summary-fragment)  
-&nbsp;&nbsp;[7.3. Where Javadoc is used](#73-where-javadoc-is-used)  
+[3 Source file structure](#3-source-file-structure)  
+&nbsp;&nbsp;[3.1 License or copyright information, if present](#31-license-or-copyright-information-if-present)  
+&nbsp;&nbsp;[3.2 Package statement](#32-package-statement)  
+&nbsp;&nbsp;[3.3 Import statements](#33-import-statements)  
+&nbsp;&nbsp;[3.4 Class declaration](#34-class-declaration)  
+[4 Formatting](#4-formatting)  
+&nbsp;&nbsp;[4.1 Braces](#41-braces)  
+&nbsp;&nbsp;[4.2 Block indentation: +2 spaces](#42-block-indentation-2-spaces)  
+&nbsp;&nbsp;[4.3 One statement per line](#43-one-statement-per-line)  
+&nbsp;&nbsp;[4.4 Column limit 100](#44-column-limit-100)  
+&nbsp;&nbsp;[4.5 Line-wrapping](#45-line-wrapping)  
+&nbsp;&nbsp;[4.6 Whitespace](#46-whitespace)  
+&nbsp;&nbsp;[4.7 Grouping parentheses: recommended](#47-grouping-parentheses-recommended)  
+&nbsp;&nbsp;[4.8 Specific constructs](#48-specific-constructs)  
+[5 Naming](#5-naming)  
+&nbsp;&nbsp;[5.1 Rules common to all identifiers](#51-rules-common-to-all-identifiers)  
+&nbsp;&nbsp;[5.2 Rules by identifier type](#52-rules-by-identifier-type)  
+&nbsp;&nbsp;[5.3 Camel case: defined](#53-camel-case-defined)  
+[6 Programming practices](#6-programming-practices)  
+&nbsp;&nbsp;[6.1 @Override: always used](#61-override-always-used)  
+&nbsp;&nbsp;[6.2 Caught exceptions: not ignored](#62-caught-exceptions-not-ignored)  
+&nbsp;&nbsp;[6.3 Static members: qualified using class](#63-static-members-qualified-using-class)  
+&nbsp;&nbsp;[6.4 Finalizers: not used](#64-finalizers-not-used)  
+[7 Javadoc](#7-javadoc)  
+&nbsp;&nbsp;[7.1 Formatting](#71-formatting)  
+&nbsp;&nbsp;[7.2 The summary fragment](#72-the-summary-fragment)  
+&nbsp;&nbsp;[7.3 Where Javadoc is used](#73-where-javadoc-is-used)  
 
-## 1. Introduction
+## 1 Introduction
 
 This document serves as the **complete** definition of Java coding standards (inspired by 
 [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)). A Java source 
@@ -49,7 +49,7 @@ focuses primarily on the **hard-and-fast rules** that we follow universally, and
 avoids giving _advice_ that isn't clearly enforceable (whether by human or tool).
 
 
-### 1.1. Terminology notes
+### 1.1 Terminology notes
 In this document, unless otherwise clarified:
 
 1. The term _class_ is used inclusively to mean an "ordinary" class, enum class,
@@ -62,12 +62,12 @@ In this document, unless otherwise clarified:
 
 Other "terminology notes" will appear occasionally throughout the document.
 
-### 1.2. Guide notes
+### 1.2 Guide notes
 Example code in this document is **non-normative**. That is, while the examples
 are in Google Style, they may not illustrate the _only_ stylish way to represent the
 code. Optional formatting choices made in examples should not be enforced as rules.
 
-## 2. Source file basics
+## 2 Source file basics
 ### 2.1 File name
 The source file name consists of the case-sensitive name of the top-level class it contains
 (of which there is [exactly one](#one-top-level-class)), plus the
