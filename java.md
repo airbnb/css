@@ -906,7 +906,7 @@ very carefully, and _then_ don't do it.
 
 ## 7 Javadoc
 ### 7.1 Formatting
-#### 7.1.1 General form
+### 7.1.1 General form
 
 The _basic_ formatting of Javadoc blocks is as seen in this example:
 
