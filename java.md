@@ -409,47 +409,25 @@ _Multiple_ consecutive blank lines are permitted, but never required (or encoura
 Beyond where required by the language or other style rules, and apart from literals, comments and
 Javadoc, a single ASCII space also appears in the following places **only**.
 
-1. Separating any reserved word, such as
-  `if`,
-  `for` or
-  `catch`, from an open parenthesis
-  (`(`)
-  that follows it on that line
-1. Separating any reserved word, such as
-  `else` or
-  `catch`, from a closing curly brace
-  (`}`) that precedes it on that line
-1. Before any open curly brace
-  (`{`), with two exceptions:
-  1. `@SomeAnnotation({a, b})` (no space is used)
-  1. `String[][] x = {{"foo"}};` (no space is required
-    between `{{`, by item 8 below)
-1. On both sides of any binary or ternary operator. This also applies to the following
-  "operator-like" symbols:
-  1. the ampersand in a conjunctive type bound:
-    `&lt;T extends Foo &amp; Bar&gt;`
-  1. the pipe for a catch block that handles multiple exceptions:
-    `catch (FooException | BarException e)`
-  1. the colon (`:`) in an enhanced
-    `for` ("foreach") statement
-  1. the arrow in a lambda expression:
-    `(String str) -&gt; str.length()`
+1. Separating any reserved word, such as `if`, `for` or `catch`, from an open parenthesis (`(`) that follows it on that line
+1. Separating any reserved word, such as `else` or `catch`, from a closing curly brace (`}`) that precedes it on that line
+1. Before any open curly brace (`{`), with two exceptions:
+   - `@SomeAnnotation({a, b})` (no space is used)
+   - `String[][] x = {{"foo"}};` (no space is required between `{{`, by item 8 below)
+1. On both sides of any binary or ternary operator. This also applies to the following "operator-like" symbols:
+   - the ampersand in a conjunctive type bound: `<T extends Foo & Bar>`
+   - the pipe for a catch block that handles multiple exceptions: `catch (FooException | BarException e)`
+   - the colon (`:`) in an enhanced `for` ("foreach") statement
+   - the arrow in a lambda expression: `(String str) -> str.length()`
     but not
-  1. the two colons (`::`) of a method reference, which
-    is written like `Object::toString`
-  1. the dot separator (`.`), which is written like
-    `object.toString()`
-1. After `,:;` or the closing parenthesis
-  (`)`) of a cast
-1. On both sides of the double slash (`//`) that
-  begins an end-of-line comment. Here, multiple spaces are allowed, but not required.
-1. Between the type and variable of a declaration:
-  `List&lt;String&gt; list`
+   - the two colons (`::`) of a method reference, which is written like `Object::toString`
+   - the dot separator (`.`), which is written like `object.toString()`
+1. After `,:;` or the closing parenthesis (`)`) of a cast
+1. On both sides of the double slash (`//`) that begins an end-of-line comment. Here, multiple spaces are allowed, but not required.
+1. Between the type and variable of a declaration: `List<String> list`
 1. _Optional_ just inside both braces of an array initializer
-  1. `new int[] {5, 6}` and
-    `new int[] { 5, 6 }` are both valid
-1. Between a type annotation and `[]` or
-  `...`.
+   - `new int[] {5, 6}` and `new int[] { 5, 6 }` are both valid
+1. Between a type annotation and `[]` or `...`.
 
 This rule is never interpreted as requiring or forbidding additional space at the start or
 end of a line; it addresses only _interior_ space.
