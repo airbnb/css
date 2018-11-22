@@ -2,27 +2,26 @@
 
 ## Table of Contents
 [1. Introduction](#1-introduction)  
-[1.1. Terminology notes](#11-terminology-notes)  
-[1.2. Guide notes](#12-guide-notes)  
+   [1.1. Terminology notes](#11-terminology-notes)  
+   [1.2. Guide notes](#12-guide-notes)  
 [2. Source file basics](#2-source-file-basics)  
 [2.1 File name](#21-file-name)  
-[2.2. File encoding](#22-file-encoding)  
+[2.2. File encoding: UTF-8](#22-file-encoding-utf-8)  
 [2.3 Special characters](#23-special-characters)  
 [3. Source file structure](#3-source-file-structure)  
-[3.1. License or copyright information](#31-license-or-copyright-information)  
+[3.1. License or copyright information, if present](#31-license-or-copyright-information-if-present)  
 [3.2. Package statement](#32-package-statement)  
 [3.3. Import statements](#33-import-statements)  
 [3.4. Class declaration](#34-class-declaration)  
 [4. Formatting](#4-formatting)  
 [4.1. Braces](#41-braces)  
-[4.2. Block indentation](#42-block-indentation)  
+[4.2. Block indentation: +2 spaces](#42-block-indentation-2-spaces)  
 [4.3. One statement per line](#43-one-statement-per-line)  
 [4.4. Column limit 100](#44-column-limit-100)  
 [4.5. Line-wrapping](#45-line-wrapping)  
-[4.6. Where to break](#46-where-to-break)  
-[4.7. Whitespace](#47-whitespace)  
-[4.8. Grouping parentheses: recommended](#48-grouping-parentheses-recommended)  
-[4.9. Specific constructs](#49-specific-constructs)  
+[4.6. Whitespace](#46-whitespace)  
+[4.7. Grouping parentheses: recommended](#47-grouping-parentheses-recommended)  
+[4.8. Specific constructs](#48-specific-constructs)  
 [5. Naming](#5-naming)  
 [5.1. Rules common to all identifiers](#51-rules-common-to-all-identifiers)  
 [5.2. Rules by identifier type](#52-rules-by-identifier-type)  
@@ -184,7 +183,6 @@ A source file consists of, **in order**:
 ### 3.1 License or copyright information, if present
 
 If license or copyright information belongs in a file, it belongs here.
-
 
 
 ### 3.2 Package statement
