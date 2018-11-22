@@ -119,25 +119,25 @@ Examples:
       <th>Discussion</th>
     </tr>
     <tr>
-      <td>`String unitAbbrev = "&#956;s";`</td>
+      <td><pre lang="java">String unitAbbrev = "&#956;s";</pre></td>
       <td>Best: perfectly clear even without a comment.</td>
     </tr>
     <tr>
-      <td>`String unitAbbrev = "\u03bcs"; // "&#956;s"`</td>
+      <td><pre lang="java">String unitAbbrev = "\u03bcs"; // "&#956;s"</pre></td>
       <td>Allowed, but there's no reason to do this.</td>
     </tr>
     <tr>
-      <td>`String unitAbbrev = "\u03bcs";
-        // Greek letter mu, "s"`</td>
+      <td><pre lang="java">String unitAbbrev = "\u03bcs";
+        // Greek letter mu, "s"</pre></td>
       <td>Allowed, but awkward and prone to mistakes.</td>
     </tr>
     <tr>
-      <td>`String unitAbbrev = "\u03bcs";`</td>
+      <td><pre lang="java">String unitAbbrev = "\u03bcs";</pre></td>
       <td>Poor: the reader has no idea what this is.</td>
     </tr>
     <tr>
-       <td>`return '\ufeff' + content;
-         // byte order mark`</td>
+       <td><pre lang="java">return '\ufeff' + content;
+         // byte order mark</pre></td>
        <td>Good: use escapes for non-printable characters, and comment if necessary.</td>
     </tr>
   </tbody>
@@ -809,28 +809,28 @@ Note that the casing of the original words is almost entirely disregarded. Examp
   </tr>
   <tr>
     <td>"XML HTTP request"</td>
-    <td>`XmlHttpRequest`</td>
+    <td><pre lang="java">XmlHttpRequest</pre></td>
     <td><code class="badcode">XMLHTTPRequest`</td>
   </tr>
   <tr>
     <td>"new customer ID"</td>
-    <td>`newCustomerId`</td>
+    <td><pre lang="java">newCustomerId</pre></td>
     <td><code class="badcode">newCustomerID`</td>
   </tr>
   <tr>
     <td>"inner stopwatch"</td>
-    <td>`innerStopwatch`</td>
+    <td><pre lang="java">innerStopwatch</pre></td>
     <td><code class="badcode">innerStopWatch`</td>
   </tr>
   <tr>
     <td>"supports IPv6 on iOS?"</td>
-    <td>`supportsIpv6OnIos`</td>
-    <td><code class="badcode">supportsIPv6OnIOS`</td>
+    <td><pre lang="java">supportsIpv6OnIos</pre></td>
+    <td><pre lang="java">supportsIPv6OnIOS`</pre></td>
   </tr>
   <tr>
     <td>"YouTube importer"</td>
-    <td>`YouTubeImporter`<br>
-        `YoutubeImporter`*</td>
+    <td><pre lang="java">YouTubeImporter</pre><br>
+      <pre lang="java">YoutubeImporter</pre>*</td>
     <td></td>
   </tr>
 </tbody></table>
@@ -987,7 +987,7 @@ Javadoc is not always present on a method that overrides a supertype method.
 Other classes and members have Javadoc _as needed or desired_.
 
 Whenever an implementation comment would be used to define the overall purpose or behavior of a
-class or member, that comment is written as Javadoc instead (using <code>/**`).
+class or member, that comment is written as Javadoc instead (using `/**`).
 
 Non-required Javadoc is not strictly required to follow the formatting rules of Sections
 7.1.2, 7.1.3, and 7.2, though it is of course recommended.
