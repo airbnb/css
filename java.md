@@ -340,11 +340,9 @@ applies to both code and comments throughout the block. (See the example in Sect
 [Nonempty blocks: K &amp; R Style](#nonempty-blocks-k-r-style))
 
 ### 4.3 One statement per line
-
 Each statement is followed by a line break.
 
 ### 4.4 Column limit: 100
-
 Java code has a column limit of 100 characters. A "character" means any Unicode code point.
 Except as noted below, any line that would exceed this limit must be line-wrapped, as explained in
 Section 4.5, [Line-wrapping](#line-wrapping).
@@ -365,7 +363,6 @@ you may choose to wrap the line earlier than where this rule strictly requires.
 1. Command lines in a comment that may be cut-and-pasted into a shell.
 
 ### 4.5 Line-wrapping
-
 **Terminology Note:** When code that might otherwise legally
 occupy a single line is divided into multiple lines, this activity is called
 _line-wrapping_.
@@ -380,11 +377,10 @@ be line-wrapped at the author's discretion.
 **Tip:** Extracting a method or local variable may solve the problem
 without the need to line-wrap.
 
-#### 4.5.1 Where to break
 
+#### 4.5.1 Where to break
 The prime directive of line-wrapping is: prefer to break at a
 **higher syntactic level**. Also:
-
 
 1. When a line is broken at a _non-assignment_ operator the break comes _before_
   the symbol. (Note that this is not the same practice used in Google style for other languages,
@@ -413,23 +409,20 @@ The prime directive of line-wrapping is: prefer to break at a
 1. A line is never broken adjacent to the arrow in a lambda, except that a
   break may come immediately after the arrow if the body of the lambda consists
   of a single unbraced expression. Examples:
-<pre class="prettyprint lang-java">MyLambda&lt;String, Long, Object&gt; lambda =
+```java
+MyLambda&lt;String, Long, Object&gt; lambda =
     (String label, Long value, Object obj) -&gt; {
         ...
     };
 
 Predicate&lt;String&gt; predicate = str -&gt;
     longExpressionInvolving(str);
-</pre>
+```
   
-
-
-<p class="note">**Note:** The primary goal for line wrapping is to have clear
+**Note:** The primary goal for line wrapping is to have clear
 code, _not necessarily_ code that fits in the smallest number of lines.
 
-<a name="indentation"></a>
 #### 4.5.2 Indent continuation lines at least +4 spaces
-
 When line-wrapping, each line after the first (each _continuation line_) is indented
 at least +4 from the original line.
 
@@ -442,23 +435,16 @@ the discouraged practice of using a variable number of spaces to align certain t
 previous lines.
 
 ### 4.6 Whitespace
-
 #### 4.6.1 Vertical Whitespace
-
 A single blank line always appears:
-
 
 1. _Between_ consecutive members or initializers of a class: fields, constructors,
   methods, nested classes, static initializers, and instance initializers.
-  <ul>
   1. <span class="exception">**Exception:** A blank line between two consecutive
     fields (having no other code between them) is optional. Such blank lines are used as needed to
     create _logical groupings_ of fields.</span>
   1. <span class="exception">**Exception:** Blank lines between enum constants are
     covered in <a href="#s4.8.1-enum-classes">Section 4.8.1</a>.</span>
-  </ul>
-  
-
 1. As required by other sections of this document (such as Section 3,
   <a href="#s3-source-file-structure">Source file structure</a>, and Section 3.3,
   <a href="#s3.3-import-statements">Import statements</a>).
@@ -472,10 +458,8 @@ discouraged.
 _Multiple_ consecutive blank lines are permitted, but never required (or encouraged).
 
 #### 4.6.2 Horizontal whitespace
-
 Beyond where required by the language or other style rules, and apart from literals, comments and
 Javadoc, a single ASCII space also appears in the following places **only**.
-
 
 1. Separating any reserved word, such as
   `if`,
@@ -550,16 +534,13 @@ This can at worst result in pointless busywork, but at best it still corrupts ve
 information, slows down reviewers and exacerbates merge conflicts.
 
 ### 4.7 Grouping parentheses: recommended
-
 Optional grouping parentheses are omitted only when author and reviewer agree that there is no
 reasonable chance the code will be misinterpreted without them, nor would they have made the code
 easier to read. It is _not_ reasonable to assume that every reader has the entire Java
 operator precedence table memorized.
 
 ### 4.8 Specific constructs
-
 #### 4.8.1 Enum classes
-
 After each comma that follows an enum constant, a line break is optional. Additional blank
 lines (usually just one) are also allowed. This is one possibility:
 
@@ -587,30 +568,23 @@ private enum Suit { CLUBS, HEARTS, SPADES, DIAMONDS }
 Since enum classes _are classes_, all other rules for formatting classes apply.
 
 #### 4.8.2 Variable declarations
-
 ##### 4.8.2.1 One variable per declaration
-
 Every variable declaration (field or local) declares only one variable: declarations such as
-<code class="badcode">int a, b;` are not used.
+`int a, b;` are not used.
 
 **Exception:** Multiple variable declarations are acceptable in the header of a
 `for` loop.
 
 ##### 4.8.2.2 Declared when needed
-
 Local variables are **not** habitually declared at the start of their containing
 block or block-like construct. Instead, local variables are declared close to the point they are
 first used (within reason), to minimize their scope. Local variable declarations typically have
 initializers, or are initialized immediately after declaration.
 
 #### 4.8.3 Arrays
-
 ##### 4.8.3.1 Array initializers: can be "block-like"
-
 Any array initializer may _optionally_ be formatted as if it were a "block-like
-construct." For example, the following are all valid (**not** an exhaustive
-list):
-
+construct." For example, the following are all valid (**not** an exhaustive list):
 
 ```java 
 new int[] {           new int[] {
@@ -625,13 +599,11 @@ new int[] {             3,
 ```
 
 ##### 4.8.3.2 No C-style array declarations
-
 The square brackets form a part of the _type_, not the variable:
 `String[] args`, not
 `String args[]`.
 
 #### 4.8.4 Switch statements
-
 **Terminology Note:** Inside the braces of a
 _switch block_ are one or more _statement groups_. Each statement group consists of
 one or more _switch labels_ (either `case FOO:` or
@@ -639,7 +611,6 @@ one or more _switch labels_ (either `case FOO:` or
 the _last_ statement group, _zero_ or more statements).
 
 ##### 4.8.4.1 Indentation
-
 As with any other block, the contents of a switch block are indented +2.
 
 After a switch label, there is a line break, and the indentation level is increased +2, exactly
@@ -647,7 +618,6 @@ as if a block were being opened. The following switch label returns to the previ
 level, as if a block had been closed.
 
 ##### 4.8.4.2 Fall-through: commented
-
 Within a switch block, each statement group either terminates abruptly (with a
 `break`,
 `continue`,
@@ -675,7 +645,6 @@ Notice that no comment is needed after `case 1:`, only
 at the end of the statement group.
 
 ##### 4.8.4.3 The `default` case is present
-
 Each switch statement includes a `default` statement
 group, even if it contains no code.
 
@@ -684,9 +653,7 @@ the `default` statement group, _if_ it includes
 explicit cases covering _all_ possible values of that type. This enables IDEs or other static
 analysis tools to issue a warning if any cases were missed.
 
-
 #### 4.8.5 Annotations
-
 Annotations applying to a class, method or constructor appear immediately after the
 documentation block, and each annotation is listed on a line of its own (that is, one annotation
 per line). These line breaks do not constitute line-wrapping (Section
@@ -715,20 +682,18 @@ for example:
 There are no specific rules for formatting annotations on parameters, local variables, or types.
 
 #### 4.8.6 Comments
-
 This section addresses _implementation comments_. Javadoc is addressed separately in
-Section 7, <a href="#s7-javadoc">Javadoc</a>.
+Section 7, [Javadoc](#7-javadoc)</a>.
 
 Any line break may be preceded by arbitrary whitespace followed by an implementation comment.
 Such a comment renders the line non-blank.
 
 ##### 4.8.6.1 Block comment style
-
 Block comments are indented at the same level as the surrounding code. They may be in
 `/* ... */` style or
 `// ...` style. For multi-line
 `/* ... */` comments, subsequent lines must start with
-<code>*` aligned with the <code>*` on the previous line.
+`*` aligned with the `*` on the previous line.
 
 ```java
 /*
@@ -745,7 +710,6 @@ re-wrap the lines when necessary (paragraph-style). Most formatters don't re-wra
 `// ...` style comment blocks.
 
 #### 4.8.7 Modifiers
-
 Class and member modifiers, when present, appear in the order
 recommended by the Java Language Specification:
 
@@ -754,15 +718,12 @@ public protected private abstract default static final transient volatile synchr
 ```
 
 #### 4.8.8 Numeric Literals
-
 `long`-valued integer literals use an uppercase `L` suffix, never
 lowercase (to avoid confusion with the digit `1`). For example, `3000000000L`
 rather than `3000000000l`.
 
 ## 5 Naming
-
 ### 5.1 Rules common to all identifiers
-
 Identifiers use only ASCII letters and digits, and, in a small number of cases noted below,
 underscores. Thus each valid identifier name is matched by the regular expression
 `\w+` .
@@ -771,16 +732,13 @@ In Google Style, special prefixes or suffixes are **not** used. For example, the
 names are not Google Style: `name_`, `mName`, `s_name` and `kName`.
 
 ### 5.2 Rules by identifier type
-
 #### 5.2.1 Package names
-
 Package names are all lowercase, with consecutive words simply concatenated together (no
 underscores). For example, `com.example.deepspace`, not
 `com.example.deepSpace` or
 `com.example.deep_space`.
 
 #### 5.2.2 Class names
-
 Class names are written in [UpperCamelCase](#53-camel-case)
 
 Class names are typically nouns or noun phrases. For example,
@@ -798,7 +756,6 @@ with `Test`. For example,
 `HashIntegrationTest`.
 
 #### 5.2.3 Method names
-
 Method names are written in [lowerCamelCase](#53-camel-case).
 
 Method names are typically verbs or verb phrases. For example,
@@ -807,7 +764,7 @@ Method names are typically verbs or verb phrases. For example,
 
 Underscores may appear in JUnit _test_ method names to separate logical components of the
 name, with _each_ component written in [lowerCamelCase](#53-camel-case).
-One typical pattern is <code><i>&lt;methodUnderTest&gt;</i>_<i>&lt;state&gt;</i>`,
+One typical pattern is `<i>&lt;methodUnderTest&gt;</i>_<i>&lt;state&gt;</i>`,
 for example `pop_emptyStack`. There is no One Correct
 Way to name test methods.
 
@@ -845,7 +802,6 @@ static final String[] nonEmptyArray = {"these", "can", "change"};
 These names are typically nouns or noun phrases.
 
 #### 5.2.5 Non-constant field names
-
 Non-constant field names (static or otherwise) are written
 in [lowerCamelCase](#53-camel-case).
 
@@ -854,39 +810,33 @@ These names are typically nouns or noun phrases.  For example,
 `index`.
 
 #### 5.2.6 Parameter names
-
 Parameter names are written in [lowerCamelCase](#53-camel-case).
 
 One-character parameter names in public methods should be avoided.
 
 #### 5.2.7 Local variable names
-
 Local variable names are written in [lowerCamelCase](#53-camel-case).
 
 Even when final and immutable, local variables are not considered to be constants, and should not
 be styled as constants.
 
 #### 5.2.8 Type variable names
-
 Each type variable is named in one of two styles:
 
 1. A single capital letter, optionally followed by a single numeral (such as
   `E`, `T`,
   `X`, `T2`)
-1. A name in the form used for classes (see Section 5.2.2,
-  <a href="#s5.2.2-class-names">Class names</a>), followed by the capital letter
+1. A name in the form used for classes (see Section 5.2.2, [Class names](#522-class-names)), followed by the capital letter
   `T` (examples:
   `RequestT`,
   `FooBarT`).
 
 ### 5.3 Camel case: defined
-
 Sometimes there is more than one reasonable way to convert an English phrase into camel case,
 such as when acronyms or unusual constructs like "IPv6" or "iOS" are present. To improve
 predictability, Google Style specifies the following (nearly) deterministic scheme.
 
 Beginning with the prose form of the name:
-
 
 1. Convert the phrase to plain ASCII and remove any apostrophes. For example, "M&#252;ller's
   algorithm" might become "Muellers algorithm".
@@ -947,9 +897,7 @@ language: for example "nonempty" and "non-empty" are both correct, so the method
 
 
 ## 6 Programming Practices
-
 ### 6.1 `@Override`: always used
-
 A method is marked with the `@Override` annotation
 whenever it is legal.  This includes a class method overriding a superclass method, a class method
 implementing an interface method, and an interface method respecifying a superinterface
@@ -960,7 +908,6 @@ method.
 `@Deprecated`.
 
 ### 6.2 Caught exceptions: not ignored
-
 Except as noted below, it is very rarely correct to do nothing in response to a caught
 exception. (Typical responses are to log it, or if it is considered "impossible", rethrow it as an
 `AssertionError`.)
@@ -992,7 +939,6 @@ try {
 ```
 
 ### 6.3 Static members: qualified using class
-
 When a reference to a static class member must be qualified, it is qualified with that class's
 name, not with a reference or expression of that class's type.
 
@@ -1004,7 +950,6 @@ Foo.aStaticMethod(); // good
 ```
 
 ### 6.4 Finalizers: not used
-
 It is **extremely rare** to override `Object.finalize`.
 
 **Tip:** Don't do it. If you absolutely must, first read and understand
@@ -1014,7 +959,6 @@ very carefully, and _then_ don't do it.
 
 ## 7 Javadoc
 ### 7.1 Formatting
-
 #### 7.1.1 General form
 
 The _basic_ formatting of Javadoc blocks is as seen in this example:
@@ -1038,30 +982,26 @@ of the Javadoc block (including comment markers) can fit on a single line. Note 
 applies when there are no block tags such as <code>@return`.
 
 #### 7.1.2 Paragraphs
-
 One blank line&#8212;that is, a line containing only the aligned leading asterisk
 (`*`)&#8212;appears between paragraphs, and before the group of block tags if
 present. Each paragraph but the first has `&lt;p&gt;` immediately before the first word,
 with no space after.
 
 #### 7.1.3 Block tags
-
-Any of the standard "block tags" that are used appear in the order <code>@param`,
+Any of the standard "block tags" that are used appear in the order `@param`,
 `@return`, `@throws`, `@deprecated`, and these four types never
 appear with an empty description. When a block tag doesn't fit on a single line, continuation lines
-are indented four (or more) spaces from the position of the <code>@`.
-
+are indented four (or more) spaces from the position of the `@`.
 
 ### 7.2 The summary fragment
-
 Each Javadoc block begins with a brief **summary fragment**. This
 fragment is very important: it is the only part of the text that appears in certain contexts such as
 class and method indexes.
 
 This is a fragment&#8212;a noun phrase or verb phrase, not a complete sentence. It does
 **not** begin with `A {@code Foo} is a...`, or
-<code class="badcode">This method returns...`, nor does it form a complete imperative sentence
-like <code class="badcode">Save the record.`. However, the fragment is capitalized and
+`This method returns...`, nor does it form a complete imperative sentence
+like `Save the record.`. However, the fragment is capitalized and
 punctuated as if it were a complete sentence.
 
 **Tip:** A common mistake is to write simple Javadoc in the form
@@ -1069,15 +1009,14 @@ punctuated as if it were a complete sentence.
 changed to `/** Returns the customer ID. */`.
 
 ### 7.3 Where Javadoc is used
-
 At the _minimum_, Javadoc is present for every
 `public` class, and every
 `public` or
 `protected` member of such a class, with a few exceptions
 noted below.
 
-Additional Javadoc content may also be present, as explained in Section 7.3.4,
-<a href="#s7.3.4-javadoc-non-required">Non-required Javadoc</a>.
+Additional Javadoc content may also be present, as explained in Section 7.3.4, 
+[Non-required Javadoc](#734-non-required-javadoc).
 
 #### 7.3.1 Exception: self-explanatory methods
 Javadoc is optional for "simple, obvious" methods like
