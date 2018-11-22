@@ -1,5 +1,5 @@
 # Style guides
 
-- [html, css, sass](./htmlcss.md)
-- [javascript](./javascript.md)
-- [java](./java.html)
+- [html, css, sass](./htmlcssguide.md)
+- [javascript](./javascriptguide.md)
+- [java](./javaguide.html)
