@@ -573,10 +573,9 @@ at the end of the statement group.
 Each switch statement includes a `default` statement
 group, even if it contains no code.
 
-**Exception:** A switch statement for an <code>enum` type _may_ omit
-the `default` statement group, _if_ it includes
-explicit cases covering _all_ possible values of that type. This enables IDEs or other static
-analysis tools to issue a warning if any cases were missed.
+**Exception:** A switch statement for an `enum` type _may_ omit the `default` statement group, 
+_if_ it includes explicit cases covering _all_ possible values of that type. This enables IDEs 
+or other static analysis tools to issue a warning if any cases were missed.
 
 #### 4.8.5 Annotations
 Annotations applying to a class, method or constructor appear immediately after the
