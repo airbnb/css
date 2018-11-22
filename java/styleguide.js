@@ -247,7 +247,7 @@ function LinkifyHeader(header, fileName, sizePixels) {
   link.href = '#' + header.id;
   link.setAttribute('alt', 'link to ' + header.id);
   link.innerHTML =
-      '<img src="include/' + fileName + '"' +
+      '<img src="' + fileName + '"' +
       ' width=' + sizePixels +
       ' height=' + sizePixels +
       ' style="float:left;position:relative;bottom:5px;">';
