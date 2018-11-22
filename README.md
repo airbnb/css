@@ -2,4 +2,4 @@
 
 - [html, css, sass](./htmlcss.md)
 - [javascript](./javascript.md)
-- [java](./java.html)
+- [java](./java/java.html)
