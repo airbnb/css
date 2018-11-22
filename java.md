@@ -1,9 +1,9 @@
 # Java Style Guide
 
 ## Table of Contents
-[1. Introduction](#1-introduction)
-[1.1. Terminology notes](#1-1-terminology-notes)
-[1.2. Guide notes](#1-2-guide-notes)
+[1. Introduction](#1-introduction)  
+[1.1. Terminology notes](#11-terminology-notes)  
+[1.2. Guide notes](#12-guide-notes)  
 [Source file basics](#source-file-basics)
    1. [File name](#file-name)
    1. [File encoding](#file-encoding)
@@ -49,7 +49,7 @@ focuses primarily on the **hard-and-fast rules** that we follow universally, and
 avoids giving _advice_ that isn't clearly enforceable (whether by human or tool).
 
 
-### Terminology notes
+### 1.1. Terminology notes
 
 In this document, unless otherwise clarified:
 
@@ -67,7 +67,7 @@ In this document, unless otherwise clarified:
 
 Other "terminology notes" will appear occasionally throughout the document.
 
-### Guide notes
+### 1.2. Guide notes
 
 Example code in this document is **non-normative**. That is, while the examples
 are in Google Style, they may not illustrate the _only_ stylish way to represent the
