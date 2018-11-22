@@ -4,7 +4,7 @@
 [1. Introduction](#1-introduction)  
 [1.1. Terminology notes](#11-terminology-notes)  
 [1.2. Guide notes](#12-guide-notes)  
-[2. Source file basics](#2-source-file-basics) 
+[2. Source file basics](#2-source-file-basics)  
 [2.1 File name](#21-file-name)  
 [2.2. File encoding](#22-file-encoding)  
 [2.3 Special characters](#23-special-characters)  
@@ -74,7 +74,7 @@ are in Google Style, they may not illustrate the _only_ stylish way to represent
 code. Optional formatting choices made in examples should not be enforced as rules.
 
 
-## Source file basics
+## 2. Source file basics
 
 ### 2.1 File name
 
