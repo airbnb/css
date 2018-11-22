@@ -588,7 +588,7 @@ Since enum classes _are classes_, all other rules for formatting classes apply.
 
 #### 4.8.2 Variable declarations
 
-<h5 id="s4.8.2.1-variables-per-declaration">4.8.2.1 One variable per declaration</h5>
+##### 4.8.2.1 One variable per declaration
 
 Every variable declaration (field or local) declares only one variable: declarations such as
 <code class="badcode">int a, b;` are not used.
@@ -596,7 +596,7 @@ Every variable declaration (field or local) declares only one variable: declarat
 **Exception:** Multiple variable declarations are acceptable in the header of a
 `for` loop.
 
-<h5 id="s4.8.2.2-variables-limited-scope">4.8.2.2 Declared when needed</h5>
+##### 4.8.2.2 Declared when needed
 
 Local variables are **not** habitually declared at the start of their containing
 block or block-like construct. Instead, local variables are declared close to the point they are
@@ -605,13 +605,15 @@ initializers, or are initialized immediately after declaration.
 
 #### 4.8.3 Arrays
 
-<h5 id="s4.8.3.1-array-initializers">4.8.3.1 Array initializers: can be "block-like"</h5>
+##### 4.8.3.1 Array initializers: can be "block-like"
 
 Any array initializer may _optionally_ be formatted as if it were a "block-like
 construct." For example, the following are all valid (**not** an exhaustive
 list):
 
-<pre class="prettyprint lang-java">new int[] {           new int[] {
+
+```java 
+new int[] {           new int[] {
   0, 1, 2, 3            0,
 }                       1,
                         2,
@@ -620,25 +622,23 @@ new int[] {             3,
   2, 3
 }                     new int[]
                           {0, 1, 2, 3}
-</pre>
+```
 
-<h5 id="s4.8.3.2-array-declarations">4.8.3.2 No C-style array declarations</h5>
+##### 4.8.3.2 No C-style array declarations
 
 The square brackets form a part of the _type_, not the variable:
 `String[] args`, not
-<code class="badcode">String args[]`.
+`String args[]`.
 
 #### 4.8.4 Switch statements
 
-
-
-<p class="terminology">**Terminology Note:** Inside the braces of a
+**Terminology Note:** Inside the braces of a
 _switch block_ are one or more _statement groups_. Each statement group consists of
 one or more _switch labels_ (either `case FOO:` or
 `default:`), followed by one or more statements (or, for
 the _last_ statement group, _zero_ or more statements).
 
-<h5 id="s4.8.4.1-switch-indentation">4.8.4.1 Indentation</h5>
+##### 4.8.4.1 Indentation
 
 As with any other block, the contents of a switch block are indented +2.
 
@@ -646,8 +646,7 @@ After a switch label, there is a line break, and the indentation level is increa
 as if a block were being opened. The following switch label returns to the previous indentation
 level, as if a block had been closed.
 
-<a name="fallthrough"></a>
-<h5 id="s4.8.4.2-switch-fall-through">4.8.4.2 Fall-through: commented</h5>
+##### 4.8.4.2 Fall-through: commented
 
 Within a switch block, each statement group either terminates abruptly (with a
 `break`,
@@ -658,7 +657,8 @@ comment that communicates the idea of fall-through is sufficient (typically
 `// fall through`). This special comment is not required in
 the last statement group of the switch block. Example:
 
-<pre class="prettyprint lang-java">switch (input) {
+```java
+switch (input) {
   case 1:
   case 2:
     prepareOneOrTwo();
@@ -669,12 +669,12 @@ the last statement group of the switch block. Example:
   default:
     handleLargeNumber(input);
 }
-</pre>
+```
 
 Notice that no comment is needed after `case 1:`, only
 at the end of the statement group.
 
-<h5 id="s4.8.4.3-switch-default">4.8.4.3 The <code>default` case is present</h5>
+##### 4.8.4.3 The `default` case is present
 
 Each switch statement includes a `default` statement
 group, even if it contains no code.
@@ -685,38 +685,35 @@ explicit cases covering _all_ possible values of that type. This enables IDEs or
 analysis tools to issue a warning if any cases were missed.
 
 
-
-<a name="annotations"></a>
 #### 4.8.5 Annotations
 
 Annotations applying to a class, method or constructor appear immediately after the
 documentation block, and each annotation is listed on a line of its own (that is, one annotation
 per line). These line breaks do not constitute line-wrapping (Section
-4.5, <a href="#s4.5-line-wrapping">Line-wrapping</a>), so the indentation level is not
+4.5, [Line-wrapping](#45-line-wrapping)), so the indentation level is not
 increased. Example:
 
-<pre class="prettyprint lang-java">@Override
+```java 
+@Override
 @Nullable
 public String getNameIfPresent() { ... }
-</pre>
-
-<p class="exception">**Exception:** A _single_ parameterless annotation
+```
+**Exception:** A _single_ parameterless annotation
 _may_ instead appear together with the first line of the signature, for example:
 
-<pre class="prettyprint lang-java">@Override public int hashCode() { ... }
-</pre>
+```java
+@Override public int hashCode() { ... }
+```
 
 Annotations applying to a field also appear immediately after the documentation block, but in
 this case, _multiple_ annotations (possibly parameterized) may be listed on the same line;
 for example:
 
-<pre class="prettyprint lang-java">@Partial @Mock DataLoader loader;
-</pre>
-
+```java
+@Partial @Mock DataLoader loader;
+```
 There are no specific rules for formatting annotations on parameters, local variables, or types.
 
-
-<a name="comments"></a>
 #### 4.8.6 Comments
 
 This section addresses _implementation comments_. Javadoc is addressed separately in
@@ -725,7 +722,7 @@ Section 7, <a href="#s7-javadoc">Javadoc</a>.
 Any line break may be preceded by arbitrary whitespace followed by an implementation comment.
 Such a comment renders the line non-blank.
 
-<h5 id="s4.8.6.1-block-comment-style">4.8.6.1 Block comment style</h5>
+##### 4.8.6.1 Block comment style
 
 Block comments are indented at the same level as the surrounding code. They may be in
 `/* ... */` style or
@@ -733,63 +730,58 @@ Block comments are indented at the same level as the surrounding code. They may 
 `/* ... */` comments, subsequent lines must start with
 <code>*` aligned with the <code>*` on the previous line.
 
-<pre class="prettyprint lang-java">/*
+```java
+/*
  * This is          // And so           /* Or you can
  * okay.            // is this.          * even do this. */
  */
-</pre>
-
+```
 
 Comments are not enclosed in boxes drawn with asterisks or other characters.
 
-<p class="tip">**Tip:** When writing multi-line comments, use the
+**Tip:** When writing multi-line comments, use the
 `/* ... */` style if you want automatic code formatters to
 re-wrap the lines when necessary (paragraph-style). Most formatters don't re-wrap lines in
 `// ...` style comment blocks.
 
- 
-
-<a name="modifiers"></a>
 #### 4.8.7 Modifiers
 
 Class and member modifiers, when present, appear in the order
 recommended by the Java Language Specification:
 
-
-<pre>public protected private abstract default static final transient volatile synchronized native strictfp
-</pre>
+```java 
+public protected private abstract default static final transient volatile synchronized native strictfp
+```
 
 #### 4.8.8 Numeric Literals
 
-<code>long`-valued integer literals use an uppercase <code>L` suffix, never
-lowercase (to avoid confusion with the digit <code>1`). For example, <code>3000000000L`
-rather than <code class="badcode">3000000000l`.
+`long`-valued integer literals use an uppercase `L` suffix, never
+lowercase (to avoid confusion with the digit `1`). For example, `3000000000L`
+rather than `3000000000l`.
 
-<a name="naming"></a>
 ## 5 Naming
 
 ### 5.1 Rules common to all identifiers
 
 Identifiers use only ASCII letters and digits, and, in a small number of cases noted below,
 underscores. Thus each valid identifier name is matched by the regular expression
-<code>\w+` .
+`\w+` .
 
 In Google Style, special prefixes or suffixes are **not** used. For example, these
-names are not Google Style: <code class="badcode">name_`, <code class="badcode">mName`,
-<code class="badcode">s_name` and <code class="badcode">kName`.
+names are not Google Style: `name_`, `mName`, `s_name` and `kName`.
 
 ### 5.2 Rules by identifier type
 
 #### 5.2.1 Package names
 
 Package names are all lowercase, with consecutive words simply concatenated together (no
-underscores). For example, <code>com.example.deepspace`, not
-<code class="badcode">com.example.deepSpace` or
-<code class="badcode">com.example.deep_space`.
+underscores). For example, `com.example.deepspace`, not
+`com.example.deepSpace` or
+`com.example.deep_space`.
 
 #### 5.2.2 Class names
 
-Class names are written in <a href="#s5.3-camel-case">UpperCamelCase</a>.
+Class names are written in [UpperCamelCase](#53-camel-case)
 
 Class names are typically nouns or noun phrases. For example,
 `Character` or
@@ -807,19 +799,18 @@ with `Test`. For example,
 
 #### 5.2.3 Method names
 
-Method names are written in <a href="#s5.3-camel-case">lowerCamelCase</a>.
+Method names are written in [lowerCamelCase](#53-camel-case).
 
 Method names are typically verbs or verb phrases. For example,
 `sendMessage` or
 `stop`.
 
 Underscores may appear in JUnit _test_ method names to separate logical components of the
-name, with _each_ component written in <a href="#s5.3-camel-case">lowerCamelCase</a>.
+name, with _each_ component written in [lowerCamelCase](#53-camel-case).
 One typical pattern is <code><i>&lt;methodUnderTest&gt;</i>_<i>&lt;state&gt;</i>`,
 for example `pop_emptyStack`. There is no One Correct
 Way to name test methods.
 
-<a name="constants"></a>
 #### 5.2.4 Constant names
 
 Constant names use `CONSTANT_CASE`: all uppercase
@@ -831,7 +822,8 @@ detectable side effects. This includes primitives, Strings, immutable types, and
 collections of immutable types. If any of the instance's observable state can change, it is not a
 constant. Merely _intending_ to never mutate the object is not enough. Examples:
 
-<pre class="prettyprint lang-java">// Constants
+```java
+// Constants
 static final int NUMBER = 5;
 static final ImmutableList&lt;String&gt; NAMES = ImmutableList.of("Ed", "Ann");
 static final ImmutableMap&lt;String, Integer&gt; AGES = ImmutableMap.of("Ed", 35, "Ann", 32);
@@ -848,14 +840,14 @@ static final ImmutableMap&lt;String, SomeMutableType&gt; mutableValues =
     ImmutableMap.of("Ed", mutableInstance, "Ann", mutableInstance2);
 static final Logger logger = Logger.getLogger(MyClass.getName());
 static final String[] nonEmptyArray = {"these", "can", "change"};
-</pre>
+```
 
 These names are typically nouns or noun phrases.
 
 #### 5.2.5 Non-constant field names
 
 Non-constant field names (static or otherwise) are written
-in <a href="#s5.3-camel-case">lowerCamelCase</a>.
+in [lowerCamelCase](#53-camel-case).
 
 These names are typically nouns or noun phrases.  For example,
 `computedValues` or
@@ -863,13 +855,13 @@ These names are typically nouns or noun phrases.  For example,
 
 #### 5.2.6 Parameter names
 
-Parameter names are written in <a href="#s5.3-camel-case">lowerCamelCase</a>.
+Parameter names are written in [lowerCamelCase](#53-camel-case).
 
 One-character parameter names in public methods should be avoided.
 
 #### 5.2.7 Local variable names
 
-Local variable names are written in <a href="#s5.3-camel-case">lowerCamelCase</a>.
+Local variable names are written in [lowerCamelCase](#53-camel-case).
 
 Even when final and immutable, local variables are not considered to be constants, and should not
 be styled as constants.
@@ -878,21 +870,15 @@ be styled as constants.
 
 Each type variable is named in one of two styles:
 
-<ul>
 1. A single capital letter, optionally followed by a single numeral (such as
   `E`, `T`,
   `X`, `T2`)
-  
-
 1. A name in the form used for classes (see Section 5.2.2,
   <a href="#s5.2.2-class-names">Class names</a>), followed by the capital letter
   `T` (examples:
   `RequestT`,
   `FooBarT`).
-</ul>
 
-<a name="acronyms"></a>
-<a name="camelcase"></a>
 ### 5.3 Camel case: defined
 
 Sometimes there is more than one reasonable way to convert an English phrase into camel case,
@@ -904,28 +890,17 @@ Beginning with the prose form of the name:
 
 1. Convert the phrase to plain ASCII and remove any apostrophes. For example, "M&#252;ller's
   algorithm" might become "Muellers algorithm".
-
 1. Divide this result into words, splitting on spaces and any remaining punctuation (typically
   hyphens).
-
-  <ul>
   1. _Recommended:_ if any word already has a conventional camel-case appearance in common
     usage, split this into its constituent parts (e.g., "AdWords" becomes "ad&#160;words"). Note
     that a word such as "iOS" is not really in camel case _per se_; it defies _any_
     convention, so this recommendation does not apply.
-  </ul>
-  
-
 1. Now lowercase _everything_ (including acronyms), then uppercase only the first
   character of:
-  <ul>
   1. ... each word, to yield _upper camel case_, or
   1. ... each word except the first, to yield _lower camel case_
-  </ul>
-  
-
 1. Finally, join all the words into a single identifier.
-
 
 Note that the casing of the original words is almost entirely disregarded. Examples:
 
@@ -965,7 +940,7 @@ Note that the casing of the original words is almost entirely disregarded. Examp
 
 *Acceptable, but not recommended.
 
-<p class="note">**Note:** Some words are ambiguously hyphenated in the English
+**Note:** Some words are ambiguously hyphenated in the English
 language: for example "nonempty" and "non-empty" are both correct, so the method names
 `checkNonempty` and
 `checkNonEmpty` are likewise both correct.
@@ -973,18 +948,17 @@ language: for example "nonempty" and "non-empty" are both correct, so the method
 
 ## 6 Programming Practices
 
-### 6.1 <code>@Override`: always used
+### 6.1 `@Override`: always used
 
 A method is marked with the `@Override` annotation
 whenever it is legal.  This includes a class method overriding a superclass method, a class method
 implementing an interface method, and an interface method respecifying a superinterface
 method.
 
-<p class="exception">**Exception:**
+**Exception:**
 `@Override` may be omitted when the parent method is
 `@Deprecated`.
 
-<a name="caughtexceptions"></a>
 ### 6.2 Caught exceptions: not ignored
 
 Except as noted below, it is very rarely correct to do nothing in response to a caught
@@ -994,74 +968,70 @@ exception. (Typical responses are to log it, or if it is considered "impossible"
 When it truly is appropriate to take no action whatsoever in a catch block, the reason this is
 justified is explained in a comment.
 
-<pre class="prettyprint lang-java">try {
+```java
+try {
   int i = Integer.parseInt(response);
   return handleNumericResponse(i);
 } catch (NumberFormatException ok) {
   // it's not numeric; that's fine, just continue
 }
 return handleTextResponse(response);
-</pre>
+```
 
-<p class="exception">**Exception:** In tests, a caught exception may be ignored
+**Exception:** In tests, a caught exception may be ignored
 without comment _if_ its name is or begins with `expected`. The
 following is a very common idiom for ensuring that the code under test _does_ throw an
 exception of the expected type, so a comment is unnecessary here.
 
-<pre class="prettyprint lang-java">try {
+```java
+try {
   emptyStack.pop();
   fail();
 } catch (NoSuchElementException expected) {
 }
-</pre>
+```
 
 ### 6.3 Static members: qualified using class
 
 When a reference to a static class member must be qualified, it is qualified with that class's
 name, not with a reference or expression of that class's type.
 
-<pre class="prettyprint lang-java">Foo aFoo = ...;
+```java
+Foo aFoo = ...;
 Foo.aStaticMethod(); // good
 <span class="badcode">aFoo.aStaticMethod();</span> // bad
 <span class="badcode">somethingThatYieldsAFoo().aStaticMethod();</span> // very bad
-</pre>
+```
 
-<a name="finalizers"></a>
 ### 6.4 Finalizers: not used
 
-It is **extremely rare** to override <code class="prettyprint
-lang-java">Object.finalize`.
+It is **extremely rare** to override `Object.finalize`.
 
-<p class="tip">**Tip:** Don't do it. If you absolutely must, first read and understand
-
-
-  <a href="http://books.google.com/books?isbn=8131726592">_Effective Java_ Item 7,</a>
-
-"Avoid Finalizers," very carefully, and _then_ don't do it.
+**Tip:** Don't do it. If you absolutely must, first read and understand
+[_Effective Java_ Item 7](http://books.google.com/books?isbn=8131726592) "Avoid Finalizers," 
+very carefully, and _then_ don't do it.
 
 
-<a name="javadoc"></a>
 ## 7 Javadoc
-
-
-
 ### 7.1 Formatting
 
 #### 7.1.1 General form
 
 The _basic_ formatting of Javadoc blocks is as seen in this example:
 
-<pre class="prettyprint lang-java">/**
+```java
+/**
  * Multiple lines of Javadoc text are written here,
  * wrapped normally...
  */
 public int method(String p1) { ... }
-</pre>
+```
 
 ... or in this single-line example:
 
-<pre class="prettyprint lang-java">/** An especially short bit of Javadoc. */
-</pre>
+```java
+/** An especially short bit of Javadoc. */
+```
 
 The basic form is always acceptable. The single-line form may be substituted when the entirety
 of the Javadoc block (including comment markers) can fit on a single line. Note that this only
@@ -1070,16 +1040,14 @@ applies when there are no block tags such as <code>@return`.
 #### 7.1.2 Paragraphs
 
 One blank line&#8212;that is, a line containing only the aligned leading asterisk
-(<code>*`)&#8212;appears between paragraphs, and before the group of block tags if
-present. Each paragraph but the first has <code>&lt;p&gt;` immediately before the first word,
+(`*`)&#8212;appears between paragraphs, and before the group of block tags if
+present. Each paragraph but the first has `&lt;p&gt;` immediately before the first word,
 with no space after.
-
-<a name="s7.1.3-javadoc-at-clauses"></a>
 
 #### 7.1.3 Block tags
 
 Any of the standard "block tags" that are used appear in the order <code>@param`,
-<code>@return`, <code>@throws`, <code>@deprecated`, and these four types never
+`@return`, `@throws`, `@deprecated`, and these four types never
 appear with an empty description. When a block tag doesn't fit on a single line, continuation lines
 are indented four (or more) spaces from the position of the <code>@`.
 
@@ -1091,16 +1059,15 @@ fragment is very important: it is the only part of the text that appears in cert
 class and method indexes.
 
 This is a fragment&#8212;a noun phrase or verb phrase, not a complete sentence. It does
-**not** begin with <code class="badcode">A {@code Foo} is a...`, or
+**not** begin with `A {@code Foo} is a...`, or
 <code class="badcode">This method returns...`, nor does it form a complete imperative sentence
 like <code class="badcode">Save the record.`. However, the fragment is capitalized and
 punctuated as if it were a complete sentence.
 
-<p class="tip">**Tip:** A common mistake is to write simple Javadoc in the form
-<code class="badcode">/** @return the customer ID */`. This is incorrect, and should be
+**Tip:** A common mistake is to write simple Javadoc in the form
+`/** @return the customer ID */`. This is incorrect, and should be
 changed to `/** Returns the customer ID. */`.
 
-<a name="s7.3.3-javadoc-optional"></a> 
 ### 7.3 Where Javadoc is used
 
 At the _minimum_, Javadoc is present for every
@@ -1113,12 +1080,11 @@ Additional Javadoc content may also be present, as explained in Section 7.3.4,
 <a href="#s7.3.4-javadoc-non-required">Non-required Javadoc</a>.
 
 #### 7.3.1 Exception: self-explanatory methods
-
 Javadoc is optional for "simple, obvious" methods like
 `getFoo`, in cases where there _really and truly_ is
 nothing else worthwhile to say but "Returns the foo".
 
-<p class="note">**Important:** it is not appropriate to cite this exception to justify
+**Important:** it is not appropriate to cite this exception to justify
 omitting relevant information that a typical reader might need to know. For example, for a method
 named `getCanonicalName`, don't omit its documentation
 (with the rationale that it would say only)
@@ -1129,13 +1095,9 @@ if a typical reader may have no idea
 what the term "canonical name" means!
 
 #### 7.3.2 Exception: overrides
-
 Javadoc is not always present on a method that overrides a supertype method.
 
-
-
 #### 7.3.4 Non-required Javadoc
-
 Other classes and members have Javadoc _as needed or desired_.
 
 Whenever an implementation comment would be used to define the overall purpose or behavior of a
