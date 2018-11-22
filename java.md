@@ -50,58 +50,43 @@ avoids giving _advice_ that isn't clearly enforceable (whether by human or tool)
 
 
 ### 1.1. Terminology notes
-
 In this document, unless otherwise clarified:
-
 
 1. The term _class_ is used inclusively to mean an "ordinary" class, enum class,
   interface or annotation type (`@interface`).
-
 1. The term _member_ (of a class) is used inclusively to mean a nested class, field,
   method, _or constructor_; that is, all top-level contents of a class except initializers
   and comments.
-
 1. The term _comment_ always refers to _implementation_ comments. We do not
   use the phrase "documentation comments", instead using the common term "Javadoc."
-
 
 Other "terminology notes" will appear occasionally throughout the document.
 
 ### 1.2. Guide notes
-
 Example code in this document is **non-normative**. That is, while the examples
 are in Google Style, they may not illustrate the _only_ stylish way to represent the
 code. Optional formatting choices made in examples should not be enforced as rules.
 
-
 ## 2. Source file basics
-
 ### 2.1 File name
-
 The source file name consists of the case-sensitive name of the top-level class it contains
 (of which there is [exactly one](#one-top-level-class)), plus the
 `.java` extension.
 
 ### 2.2 File encoding: UTF-8
-
 Source files are encoded in **UTF-8**.
 
 ### 2.3 Special characters
-
 #### 2.3.1 Whitespace characters
 
 Aside from the line terminator sequence, the **ASCII horizontal space
 character** (**0x20**) is the only whitespace character that appears
 anywhere in a source file. This implies that:
 
-
 1. All other whitespace characters in string and character literals are escaped.
-
 1. Tab characters are **not** used for indentation.
 
-
 #### 2.3.2 Special escape sequences
-
 For any character that has a
 [special escape sequence](http://docs.oracle.com/javase/tutorial/java/data/characters.html)
 (`\b`,
@@ -117,7 +102,6 @@ is used rather than the corresponding octal
 (e.g.&#160;`\u000a`) escape.
 
 #### 2.3.3 Non-ASCII characters
-
 For the remaining non-ASCII characters, either the actual Unicode character
 (e.g.&#160;`&#8734;`) or the equivalent Unicode escape
 (e.g.&#160;`\u221e`) is used. The choice depends only on
@@ -128,49 +112,43 @@ outside string literals and comments are strongly discouraged.
 Unicode characters are used, an explanatory comment can be very helpful.
 
 Examples:
-
 <table>
-  <tbody><tr>
-    <th>Example</th>
-    <th>Discussion</th>
-  </tr>
-
-  <tr>
-    <td>`String unitAbbrev = "&#956;s";`</td>
-    <td>Best: perfectly clear even without a comment.</td>
-  </tr>
-
-  <tr>
-    <td>`String unitAbbrev = "\u03bcs"; // "&#956;s"`</td>
-    <td>Allowed, but there's no reason to do this.</td>
-  </tr>
-
-  <tr>
-    <td>`String unitAbbrev = "\u03bcs";
-      // Greek letter mu, "s"`</td>
-    <td>Allowed, but awkward and prone to mistakes.</td>
-  </tr>
-
-  <tr>
-    <td><code class="badcode">String unitAbbrev = "\u03bcs";`</td>
-    <td>Poor: the reader has no idea what this is.</td>
-  </tr>
-
-  <tr>
-     <td>`return '\ufeff' + content;
-       // byte order mark`</td>
-     <td>Good: use escapes for non-printable characters, and comment if necessary.</td>
-  </tr>
-</tbody></table>
+  <tbody>
+    <tr>
+      <th>Example</th>
+      <th>Discussion</th>
+    </tr>
+    <tr>
+      <td>`String unitAbbrev = "&#956;s";`</td>
+      <td>Best: perfectly clear even without a comment.</td>
+    </tr>
+    <tr>
+      <td>`String unitAbbrev = "\u03bcs"; // "&#956;s"`</td>
+      <td>Allowed, but there's no reason to do this.</td>
+    </tr>
+    <tr>
+      <td>`String unitAbbrev = "\u03bcs";
+        // Greek letter mu, "s"`</td>
+      <td>Allowed, but awkward and prone to mistakes.</td>
+    </tr>
+    <tr>
+      <td>`String unitAbbrev = "\u03bcs";`</td>
+      <td>Poor: the reader has no idea what this is.</td>
+    </tr>
+    <tr>
+       <td>`return '\ufeff' + content;
+         // byte order mark`</td>
+       <td>Good: use escapes for non-printable characters, and comment if necessary.</td>
+    </tr>
+  </tbody>
+</table>
 
 **Tip:** Never make your code less readable simply out of fear that
 some programs might not handle non-ASCII characters properly. If that should happen, those
 programs are **broken** and they must be **fixed**.
 
 ## 3 Source file structure
-
 A source file consists of, **in order**:
-
 
 1. License or copyright information, if present
 1. Package statement
@@ -180,28 +158,21 @@ A source file consists of, **in order**:
 **Exactly one blank line** separates each section that is present.
 
 ### 3.1 License or copyright information, if present
-
 If license or copyright information belongs in a file, it belongs here.
 
-
 ### 3.2 Package statement
-
 The package statement is **not line-wrapped**. The column limit ([Column limit: 100](#column-limit-100))
 does not apply to package statements.
 
 ### 3.3 Import statements
-
 #### 3.3.1 No wildcard imports
-
 **Wildcard imports**, static or otherwise, **are not used**.
 
 #### 3.3.2 No line-wrapping
-
 Import statements are **not line-wrapped**. The column limit ([Column limit: 100](#column-limit-100))
 does not apply to import statements.
 
 #### 3.3.3 Ordering and spacing
-
 Imports are ordered as follows:
 
 1. All static imports in a single block.
@@ -214,20 +185,15 @@ Within each block the imported names appear in ASCII sort order. (**Note:**
 this is not the same as the import _statements_ being in ASCII sort order, since '.'
 sorts before ';'.)
 
-
 #### 3.3.4 No static import for classes
-
 Static import is not used for static nested classes. They are imported with
 normal imports.
 
 ### 3.4 Class declaration
-
 #### 3.4.1 Exactly one top-level class declaration
-
 Each top-level class resides in a source file of its own.
 
 #### 3.4.2 Ordering of class contents
-
 The order you choose for the members and initializers of your class can have a great effect on
 learnability. However, there's no single correct recipe for how to do it; different classes may
 order their contents in different ways.
@@ -238,12 +204,10 @@ of the class, as that would yield "chronological by date added" ordering, which 
 ordering.
 
 ##### 3.4.2.1 Overloads: never split
-
 When a class has multiple constructors, or multiple methods with the same name, these appear
 sequentially, with no other code in between (not even private members).
 
 ## 4 Formatting
-
 **Terminology Note:** _block-like construct_ refers to the body of a class, method or constructor. 
 Note that, by Section 4.8.3.1 on
 
@@ -251,9 +215,7 @@ Note that, by Section 4.8.3.1 on
 _may_ optionally be treated as if it were a block-like construct.
 
 ### 4.1 Braces
-
 #### 4.1.1 Braces are used where optional
-
 Braces are used with
 `if`,
 `else`,
@@ -263,7 +225,6 @@ Braces are used with
 body is empty or contains only a single statement.
 
 #### 4.1.2 Nonempty blocks: K &amp; R style
-
 Braces follow the Kernighan and Ritchie style
 ([Egyptian brackets](http://www.codinghorror.com/blog/2012/07/new-programming-jargon.html))
 for _nonempty_ blocks and block-like constructs:
@@ -277,7 +238,6 @@ for _nonempty_ blocks and block-like constructs:
   `else` or a comma.
 
 Examples:
-
 ```java
 return () -&gt; {
   while (condition()) {
@@ -305,7 +265,6 @@ return new MyClass() {
 A few exceptions for enum classes are given in Section 4.8.1, [Enum classes](#enum-classes).
 
 #### 4.1.3 Empty blocks: may be concise
-
 An empty block or block-like construct may be in K &amp; R style (as described in
 [Section 4.1.2](#nonempty-blocks-k-r-style). Alternatively, it may be closed immediately
 after it is opened, with no characters or line break in between
@@ -315,7 +274,6 @@ _multi-block statement_ (one that directly contains multiple blocks:
 `try/catch/finally`).
 
 Examples:
-
 ```java
 // This is acceptable
   void doNothing() {}
@@ -333,7 +291,6 @@ Examples:
 ```
 
 ### 4.2 Block indentation: +2 spaces
-
 Each time a new block or block-like construct is opened, the indent increases by two
 spaces. When the block ends, the indent returns to the previous indent level. The indent level
 applies to both code and comments throughout the block. (See the example in Section 4.1.2,
@@ -347,13 +304,11 @@ Java code has a column limit of 100 characters. A "character" means any Unicode 
 Except as noted below, any line that would exceed this limit must be line-wrapped, as explained in
 Section 4.5, [Line-wrapping](#line-wrapping).
 
-
-<p class="tip">Each Unicode code point counts as one character, even if its display width is
+**Tip:** Each Unicode code point counts as one character, even if its display width is
 greater or less. For example, if using [fullwidth characters](https://en.wikipedia.org/wiki/Halfwidth_and_fullwidth_forms),
 you may choose to wrap the line earlier than where this rule strictly requires.
 
 **Exceptions:**
-
 1. Lines where obeying the column limit is not possible (for example, a long URL in Javadoc,
   or a long JSNI method reference).
 1. `package` and
@@ -377,7 +332,6 @@ be line-wrapped at the author's discretion.
 **Tip:** Extracting a method or local variable may solve the problem
 without the need to line-wrap.
 
-
 #### 4.5.1 Where to break
 The prime directive of line-wrapping is: prefer to break at a
 **higher syntactic level**. Also:
@@ -393,19 +347,14 @@ The prime directive of line-wrapping is: prefer to break at a
           (`&lt;T extends Foo &amp; Bar&gt;`)
         1. a pipe in a catch block
           (`catch (FooException | BarException e)`).
-
 1. When a line is broken at an _assignment_ operator the break typically comes
   _after_ the symbol, but either way is acceptable.
     1. This also applies to the "assignment-operator-like" colon in an enhanced
       `for` ("foreach") statement.
-    
-
 1. A method or constructor name stays attached to the open parenthesis
   (`(`) that follows it.
-
 1. A comma (`,`) stays attached to the token that
   precedes it.
-
 1. A line is never broken adjacent to the arrow in a lambda, except that a
   break may come immediately after the arrow if the body of the lambda consists
   of a single unbraced expression. Examples:
@@ -430,7 +379,7 @@ When there are multiple continuation lines, indentation may be varied beyond +4 
 desired. In general, two continuation lines use the same indentation level if and only if they
 begin with syntactically parallel elements.
 
-Section 4.6.3 on <a href="#s4.6.3-horizontal-alignment">Horizontal alignment</a> addresses
+Section 4.6.3 on [Horizontal alignment](#463-horizontal-alignment) addresses
 the discouraged practice of using a variable number of spaces to align certain tokens with
 previous lines.
 
@@ -440,15 +389,14 @@ A single blank line always appears:
 
 1. _Between_ consecutive members or initializers of a class: fields, constructors,
   methods, nested classes, static initializers, and instance initializers.
-  1. <span class="exception">**Exception:** A blank line between two consecutive
+  1. **Exception:** A blank line between two consecutive
     fields (having no other code between them) is optional. Such blank lines are used as needed to
     create _logical groupings_ of fields.</span>
-  1. <span class="exception">**Exception:** Blank lines between enum constants are
-    covered in <a href="#s4.8.1-enum-classes">Section 4.8.1</a>.</span>
-1. As required by other sections of this document (such as Section 3,
-  <a href="#s3-source-file-structure">Source file structure</a>, and Section 3.3,
-  <a href="#s3.3-import-statements">Import statements</a>).
-
+  1. **Exception:** Blank lines between enum constants are
+    covered in [Section 4.8.1 Enum classes](#481-enum-classes)
+1. As required by other sections of this document (such as 
+  [Section 3, Source file structure](#3-source-file-sstructure), and 
+  [Section 3.3 Import statements](#33-import-statements)).
 
 A single blank line may also appear anywhere it improves readability, for example between
 statements to organize the code into logical subsections. A blank line before the first member or
@@ -558,8 +506,7 @@ private enum Answer {
 ```
 
 An enum class with no methods and no documentation on its constants may optionally be formatted
-as if it were an array initializer (see Section 4.8.3.1 on
-<a href="#s4.8.3.1-array-initializers">array initializers</a>).
+as if it were an array initializer (see Section 4.8.3.1 on [array initializers](#4831-array-initializers)
 
 ```java
 private enum Suit { CLUBS, HEARTS, SPADES, DIAMONDS }
