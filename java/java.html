@@ -225,12 +225,21 @@ normal imports.</p>
 <p>The order you choose for the members and initializers of your class can have a great effect on
 learnability. However, there's no single correct recipe for how to do it; different classes may
 order their contents in different ways.</p>
+  
+<p>Recommended order of class contents is:</p>
+<ol>
+  <li>Static fields.</li>
+  <li>Non-static static fields.</li>
+  <li>Constructors.</li>
+  <li>Public methods.</li>
+  <li>Other methods.</li>
+</ol>
 
-<p>What is important is that each class uses <strong><em>some</em> logical order</strong>, which its
-maintainer could explain if asked. For example, new methods are not just habitually added to the end
-of the class, as that would yield "chronological by date added" ordering, which is not a logical
-ordering.</p>
 
+<p>This order may be changed for some classes assuming that improves readability. What is important is that 
+each class uses <strong><em>some</em> logical order</strong>, which its maintainer could explain if asked. 
+For example, new methods are not just habitually added to the end of the class, as that would yield 
+"chronological by date added" ordering, which is not a logical ordering.</p>
 
 
 <a name="overloads"></a>
