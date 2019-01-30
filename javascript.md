@@ -3108,7 +3108,7 @@
 
   <a name="naming--camelCase"></a><a name="22.2"></a>
   - [23.2](#naming--camelCase) Use camelCase when naming objects, functions, and instances. eslint: [`camelcase`](https://eslint.org/docs/rules/camelcase.html)
-
+    Function names are typically verbs or verb phrases.
     ```javascript
     // bad
     const OBJEcttsssss = {};
@@ -3117,7 +3117,7 @@
 
     // good
     const thisIsMyObject = {};
-    function thisIsMyFunction() {}
+    function calculatePrice() {}
     ```
 
   <a name="naming--PascalCase"></a><a name="22.3"></a>
