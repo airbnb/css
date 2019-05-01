@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'taun_elango_abiramiregular';
+    src: url('taun_elango_abirami.eot');
+    src: url('taun_elango_abirami.eot?#iefix') format('embedded-opentype'),
+         url('taun_elango_abirami.woff') format('woff'),
+         url('taun_elango_abirami.ttf') format('truetype'),
+         url('taun_elango_abirami.svg#taun_elango_abiramiregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'Kamban';
+    src: url('taun_elango_kamban.eot');
+    src: url('taun_elango_kamban.eot') format('embedded-opentype'), 
+        url('taun_elango_kamban.woff') format('woff'), 
+        url('taun_elango_kamban.ttf') format('truetype'), 
+        url('taun_elango_kamban.svg') format('svg');
+}
+@font-face {
+    font-family: 'taun_elango_anjali';
+    src: url('taun_elango_anjali.eot');
+    src: url('taun_elango_anjali.eot?#iefix') format('embedded-opentype'),
+         url('taun_elango_anjali.woff') format('woff'),
+         url('taun_elango_anjali.ttf') format('truetype'),
+         url('taun_elango_anjali.svg#taun_elango_anjali') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'taun_elango_cholaa';
+    src: url('taun_elango_cholaa.eot');
+    src: url('taun_elango_cholaa.eot?#iefix') format('embedded-opentype'),
+         url('taun_elango_cholaa.woff') format('woff'),
+         url('taun_elango_cholaa.ttf') format('truetype'),
+         url('taun_elango_cholaa.svg#taun_elango_cholaa') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'Panchali';
+    src: url('taun_elango_panchali.eot');
+    src: url('taun_elango_panchali.eot?#iefix') format('embedded-opentype'),
+         url('taun_elango_panchali.woff') format('woff'),
+         url('TAUN_Elango_Panchali.TTF') format('truetype'),
+         url('taun_elango_panchali.svg#TAUN_Elango_Panchali') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
