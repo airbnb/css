@@ -325,10 +325,10 @@ If this h1 style is used in a new context, we need to do extra work to locate an
 ```scss
 .selector {
   //...
-  &:after {
+  @media (min-width: $bp-tablet) {
     //...
   }
-  @media (min-width: $bp-tablet) {
+  &:after {
     //...
   }
   &.selector--modifier {
