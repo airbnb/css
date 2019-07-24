@@ -292,6 +292,255 @@ Again: **never nest ID selectors!**
 
 If you must use an ID selector in the first place (and you should really try not to), they should never be nested. If you find yourself doing this, you need to revisit your markup, or figure out why such strong specificity is needed. If you are writing well formed HTML and CSS, you should **never** need to do this.
 
+## Scoutside CSS Implementation
+
+### Use BEM.
+
+It may seem a little tricky and tedious at first, but writing clean, unnested BEM reduces nasty css side-effects and makes it easy to understand how classes relate to one another.
+
+Another important benefit of BEM is portability. We write every component as if it could be used in a totally different context than the one it was created for, so that when it is used in a new context, we have no new css to write or modify.
+
+### Definition of "nesting"
+
+These guidelines are largely based around the problems created by nested css and how to avoid them. It's important to distinguish here, that we are only referring to the kind of nesting that limits a selector's styles to a specific context. There are some types of nesting that we do not discourage and that are practical to use.
+
+**Problematic Nesting**
+
+```scss
+.template-product {
+  .product-details {
+    h1 {
+      font-size: 36px;
+      text-transform: uppercase;
+      color: $color-blue;
+    }
+  }
+}
+```
+
+If this h1 style is used in a new context, we need to do extra work to locate and unnest these styles.
+
+**Practical Nesting**
+
+```scss
+.selector {
+  //...
+  &:after {
+    //...
+  }
+  &.selector--modifier {
+    //...
+  }
+  @media (min-width: $bp-tablet) {
+    //...
+  }
+}
+```
+
+Everything written within the selector above is technically also considered nesting, however, since it directly relates to the selector and does not limit it to a specific context, it makes sense to nest psuedo-elements, modifier classes, and media queries.
+
+### Only nest css when there are no other practical options.
+
+Nesting css puts our styles in highly specific contexts and makes it difficult to move components around the site. We should write anything as if it could be reused in a different context from the one it was originally designed for. This way we save precious time and energy when components pop up in different places, as designers build new pages, features, etc.
+
+**Bad**
+```scss
+.template-product {
+  .product-details {
+    h1 {
+      font-size: 36px;
+      text-transform: uppercase;
+      color: $color-blue;
+    }
+  }
+}
+
+// Crap!! This same heading style is used in the new product slider section.
+```
+
+**Good**
+```scss
+.main-heading {
+  font-size: 36px;
+  &.main-heading--caps {
+    text-transform: uppercase;
+  }
+  &.main-heading--blue {
+    color: $color-blue;
+  }
+}
+```
+```html
+<h1 class="main-heading main-heading--caps main-heading--blue">
+  I'm product details heading. I need to be an h1 for SEO.
+</h1>
+
+<h2 class="main-heading main-heading--caps main-heading--blue">
+  I'm that new slider section heading, but I look exact same as the product details heading.
+</h2>
+```
+
+**Pro-tip**
+
+If you decide there's no other option than to nest, you can use the parent selector (&) in the following way, so that your class name still exists in as few places as possible in the repo, so that it's easy to find.
+
+**Bad**
+
+```scss
+// _index.scss
+.selector {
+  //...
+}
+
+// _slider.scss 
+.slick-slider {
+  .selector {
+    //...
+  }
+}
+
+// _modal.scss
+.modal {
+  .selector {
+    //...
+  }
+}
+
+/* Crap! When I search the repo for .selector, it's in 3 different places.
+Now I have to spend time finding where I should make my change */
+```
+
+**Good**
+
+```scss
+.selector {
+  //...
+  .slick-slider & {
+    // Compiles to .slick-slider .selector
+  }
+  .modal & {
+    // Compiles to .modal .selector
+  }
+}
+
+/* Nice! My selector only exists one place in the repo. I don't have to dig through a bunch of files of nested code
+to see where my change needs to be made.*/
+```
+
+Again, this should be used as a secondary option.
+
+### Only use classes to write styles. No IDs or html tags.
+
+**Bad**
+
+```scss
+button {
+  appearance: none;
+  border: 1px solid $color-black;
+  border-radius: 4px;
+  color: $color-black;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+// Crap, I need these exact styles on an <a> tag
+```
+
+**Good**
+
+```scss
+.btn {
+  appearance: none;
+  border: 1px solid $color-black;
+  border-radius: 4px;
+  color: $color-black;
+  font-weight: 700;
+  cursor: pointer;
+}
+```
+```html
+<button class="btn">
+  I'm a button
+</button>
+
+<a class="btn" href="http://www.coolstore.com">
+  I'm a link (but look the same as the button)
+</a>
+```
+
+By giving everything a class name, our styles are portable and markup-independent. It might seem difficult to give everything a class name, but the BEM convention makes this easier. Because this style of coding is so "class driven", it is makes sense to have the class attribute as the first attribute on any element.
+
+### Write media queries within selectors.
+
+Nesting all styles within a single media query for each breakpoint causes excessive scrolling and the mental burden of remembering what the styles were at previous breakpoints.
+
+When searching a repo for a selector whose styles you need to modify, it is much nicer to find that selector in one place, rather than 10. For this reason, it's best to put the media queries within each selector, so when we search for a selector in the repo, there is one place we can go to see everything about it.
+
+**Bad**
+```scss
+.block__element {
+  font-size: 12px;
+}
+@media (min-width: $bp-tablet) {
+  .block__element {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+@media (min-width: $bp-desktop) {
+  .block__element {
+    justify-content: space-between;
+  }
+}
+```
+
+**Good**
+```scss
+.block__element {
+  font-size: 12px;
+  @media (min-width: $bp-tablet) {
+    display: flex;
+    justify-content: space-around;
+  }
+  @media (min-width: $bp-desktop) {
+    justify-content: space-between;
+  }
+}
+```
+
+### Use data attributes a Javascript selectors
+
+By using a data attribute as a selector, we can kill two birds with one stone. Not only do we get a selector, but we can also store a value in the data attribute for use in our Javacript. We also segment functionality to something unrelated to css, which makes is easier to see what is affecting a component and how. Lastly, if the class name changes on an element, it still retains it's Javascript functionality.
+
+**Bad**
+```html
+<button class="btn btn--blue" data-variant-id="{{ product.variants.first.id }}">Add to Cart</button>
+```
+```js
+$('.product-actions .btn').click(function() {
+  const variantId = $(this).attr('data-variant-id');
+  CartJS.addItem(variantId, 1);
+})
+
+// Crap!! Someone changed .btn to .button and now no one can add to cart!!!
+```
+
+**Good**
+```html
+<button class="btn btn--blue" data-add-to-cart="{{ product.variants.first.id }}">Add to Cart</button>
+```
+```js
+$('[data-add-to-cart]').on('click', function(){
+  const variantId = $(this).attr('data-add-to-cart');
+  CartJS.addItem(variantId, 1);
+});
+```
+
+### Use min-width breakpoints
+
+The web community has long touted the benefits of mobile-first development. We should use min-width breakpoints as the standard on any new project.
+
+
 **[⬆ back to top](#table-of-contents)**
 
 ## Translation
