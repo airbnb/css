@@ -328,10 +328,10 @@ If this h1 style is used in a new context, we need to do extra work to locate an
   &:after {
     //...
   }
-  &.selector--modifier {
+  @media (min-width: $bp-tablet) {
     //...
   }
-  @media (min-width: $bp-tablet) {
+  &.selector--modifier {
     //...
   }
 }
