@@ -294,7 +294,7 @@ If you must use an ID selector in the first place (and you should really try not
 
 ## Scoutside CSS Implementation
 
-### Use BEM.
+### Use BEM
 
 It may seem a little tricky and tedious at first, but writing clean, unnested BEM reduces nasty css side-effects and makes it easy to understand how classes relate to one another.
 
@@ -337,9 +337,9 @@ If this h1 style is used in a new context, we need to do extra work to locate an
 }
 ```
 
-Everything written within the selector above is technically also considered nesting, however, since it directly relates to the selector and does not limit it to a specific context, it makes sense to nest psuedo-elements, modifier classes, and media queries.
+Everything written within the selector above is technically also considered nesting, however, since it directly relates to the selector and does not limit it to a specific context, it makes sense to nest media queries, psuedo-elements, modifier classes.
 
-### Only nest css when there are no other practical options.
+### Only nest css when there are no other practical options
 
 Nesting css puts our styles in highly specific contexts and makes it difficult to move components around the site. We should write anything as if it could be reused in a different context from the one it was originally designed for. This way we save precious time and energy when components pop up in different places, as designers build new pages, features, etc.
 
@@ -470,7 +470,7 @@ button {
 
 By giving everything a class name, our styles are portable and markup-independent. It might seem difficult to give everything a class name, but the BEM convention makes this easier. Because this style of coding is so "class driven", it is makes sense to have the class attribute as the first attribute on any element.
 
-### Write media queries within selectors.
+### Write media queries within selectors
 
 Nesting all styles within a single media query for each breakpoint causes excessive scrolling and the mental burden of remembering what the styles were at previous breakpoints.
 
