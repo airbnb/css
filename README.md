@@ -355,7 +355,7 @@ Nesting css puts our styles in highly specific contexts and makes it difficult t
   }
 }
 
-// Crap!! This same heading style is used in the new product slider section.
+// Crap!! This same heading style is used in the new slider section on the homepage.
 ```
 
 **Good**
@@ -376,7 +376,7 @@ Nesting css puts our styles in highly specific contexts and makes it difficult t
 </h1>
 
 <h2 class="main-heading main-heading--caps main-heading--blue">
-  I'm that new slider section heading, but I look exact same as the product details heading.
+  I'm that new slider section heading. I look exact same as the product details heading.
 </h2>
 ```
 
@@ -395,7 +395,7 @@ If you decide there's no other option than to nest, you can use the parent selec
   }
 }
 
-/* Nice! My selector only exists one place in the repo. I don't have to dig through a bunch of files of nested code
+/* Nice! My selector only exists in one place in the scss directory. I don't have to dig through a bunch of files of nested code
 to see where my change needs to be made.*/
 ```
 
@@ -421,8 +421,8 @@ As compared to:
   }
 }
 
-/* Crap! When I search the repo for .selector, it's in 3 different places.
-Now I have to spend time finding where I should make my change */
+/* Crap! When I search the repo for .selector, it's in 3 different places. Now I have to spend time finding 
+where I should make my change */
 ```
 
 ### Only use classes to write styles. No IDs or html tags.
