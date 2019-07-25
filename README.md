@@ -337,7 +337,7 @@ If this h1 style is used in a new context, we need to do extra work to locate an
 }
 ```
 
-Everything written within the selector above is technically also considered nesting, however, since it directly relates to the selector and does not limit it to a specific context, it makes sense to nest media queries, psuedo-elements, modifier classes.
+Everything written within the selector above is technically also considered nesting, however, since it directly relates to the selector and does not limit it to a specific context, it makes sense to nest media queries, psuedo-elements, and modifier classes.
 
 ### Only nest css when there are no other practical options
 
@@ -382,9 +382,24 @@ Nesting css puts our styles in highly specific contexts and makes it difficult t
 
 **Pro-tip**
 
-If you decide there's no other option than to nest, you can use the parent selector (&) in the following way, so that your class name still exists in as few places as possible in the repo, so that it's easy to find.
+If you decide there's no other option than to nest, you can use the parent selector (&) in the following way, so that your selector  exists in as few places as possible in the repo, making it easy to find and debug.
 
-**Bad**
+```scss
+.selector {
+  //...
+  .slick-slider & {
+    // Compiles to .slick-slider .selector
+  }
+  .modal & {
+    // Compiles to .modal .selector
+  }
+}
+
+/* Nice! My selector only exists one place in the repo. I don't have to dig through a bunch of files of nested code
+to see where my change needs to be made.*/
+```
+
+As compared to:
 
 ```scss
 // _index.scss
@@ -409,25 +424,6 @@ If you decide there's no other option than to nest, you can use the parent selec
 /* Crap! When I search the repo for .selector, it's in 3 different places.
 Now I have to spend time finding where I should make my change */
 ```
-
-**Good**
-
-```scss
-.selector {
-  //...
-  .slick-slider & {
-    // Compiles to .slick-slider .selector
-  }
-  .modal & {
-    // Compiles to .modal .selector
-  }
-}
-
-/* Nice! My selector only exists one place in the repo. I don't have to dig through a bunch of files of nested code
-to see where my change needs to be made.*/
-```
-
-Again, this should be used as a secondary option.
 
 ### Only use classes to write styles. No IDs or html tags.
 
