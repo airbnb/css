@@ -174,16 +174,6 @@ While it is possible to select elements by ID in CSS, it should generally be con
 
 For more on this subject, read [CSS Wizardry's article](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/) on dealing with specificity.
 
-### JavaScript hooks
-
-Avoid binding to the same class in both your CSS and JavaScript. Conflating the two often leads to, at a minimum, time wasted during refactoring when a developer must cross-reference each class they are changing, and at its worst, developers being afraid to make changes for fear of breaking functionality.
-
-We recommend creating JavaScript-specific classes to bind to, prefixed with `.js-`:
-
-```html
-<button class="btn btn-primary js-request-to-book">Request to Book</button>
-```
-
 ### Border
 
 Use `0` instead of `none` to specify that a style has no border.
@@ -266,31 +256,6 @@ Mixins should be used to DRY up your code, add clarity, or abstract complexity--
 ### Extend directive
 
 `@extend` should be avoided because it has unintuitive and potentially dangerous behavior, especially when used with nested selectors. Even extending top-level placeholder selectors can cause problems if the order of selectors ends up changing later (e.g. if they are in other files and the order the files are loaded shifts). Gzipping should handle most of the savings you would have gained by using `@extend`, and you can DRY up your stylesheets nicely with mixins.
-
-### Nested selectors
-
-**Do not nest selectors more than three levels deep!**
-
-```scss
-.page-container {
-  .content {
-    .profile {
-      // STOP!
-    }
-  }
-}
-```
-
-When selectors become this long, you're likely writing CSS that is:
-
-* Strongly coupled to the HTML (fragile) *—OR—*
-* Overly specific (powerful) *—OR—*
-* Not reusable
-
-
-Again: **never nest ID selectors!**
-
-If you must use an ID selector in the first place (and you should really try not to), they should never be nested. If you find yourself doing this, you need to revisit your markup, or figure out why such strong specificity is needed. If you are writing well formed HTML and CSS, you should **never** need to do this.
 
 ## Scoutside CSS Implementation
 
@@ -421,7 +386,7 @@ As compared to:
   }
 }
 
-/* Crap! When I search the repo for .selector, it's in 3 different places. Now I have to spend time finding 
+/* Crap! When I search the repo for .selector, it's in 3 different places and 3 different files. Now I have to spend time finding 
 where I should make my change */
 ```
 
@@ -506,7 +471,7 @@ When searching a repo for a selector whose styles you need to modify, it is much
 
 ### Use data attributes a Javascript selectors
 
-By using a data attribute as a selector, we can kill two birds with one stone. Not only do we get a selector, but we can also store a value in the data attribute for use in our Javacript. We also segment functionality to something unrelated to css, which makes is easier to see what is affecting a component and how. Lastly, if the class name changes on an element, it still retains it's Javascript functionality.
+By using a data attribute as a selector, we can kill two birds with one stone. Not only do we get a selector, but we can also store a value in the data attribute for use in our Javascript. We also segment functionality to something unrelated to css, which makes is easier to see what is affecting a component and how. Lastly, if the class name changes on an element, it still retains it's Javascript functionality.
 
 **Bad**
 ```html
