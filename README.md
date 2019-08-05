@@ -13,7 +13,6 @@
     - [Comments](#comments)
     - [OOCSS and BEM](#oocss-and-bem)
     - [ID Selectors](#id-selectors)
-    - [JavaScript hooks](#javascript-hooks)
     - [Border](#border)
 1. [Sass](#sass)
     - [Syntax](#syntax)
@@ -21,7 +20,7 @@
     - [Variables](#variables)
     - [Mixins](#mixins)
     - [Extend directive](#extend-directive)
-    - [Nested selectors](#nested-selectors)
+1. [Scoutside CSS Implemenation](#scoutside-css-implementation)
 1. [Translation](#translation)
 1. [License](#license)
 
