@@ -26,7 +26,10 @@
     <module name="FileTabCharacter">
         <property name="eachLine" value="true"/>
     </module>
-
+    <module name="NewlineAtEndOfFile">
+        <property name="fileExtensions" value="java, properties, xml"/>
+    </module>
+        
     <module name="TreeWalker">
         <module name="OuterTypeFilename"/>
         <module name="IllegalTokenText">
@@ -91,6 +94,8 @@
         <module name="ModifierOrder"/>
         <module name="EmptyLineSeparator">
             <property name="allowNoEmptyLineBetweenFields" value="true"/>
+            <property name="allowMultipleEmptyLines" value="false"/>
+            <property name="allowMultipleEmptyLinesInsideClassMembers" value="false"/>
         </module>
         <module name="SeparatorWrap">
             <property name="id" value="SeparatorWrapDot"/>
