@@ -27,6 +27,8 @@
 
 ## Terminology
 
+CSS(Cascading Style Sheet) is a stylesheet language used to describe the presentation of a document written in HTML or XML.
+
 ### Rule declaration
 
 A “rule declaration” is the name given to a selector (or a group of selectors) with an accompanying group of properties. Here's an example:
