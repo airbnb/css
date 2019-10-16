@@ -9,8 +9,8 @@ linters:
   BemDepth:
     enabled: true
 
-  DeclarationOrder:
-    enabled: false
+  DeclarationOrder: 
+    enabled: true
 
   ExtendDirective:
     enabled: true
