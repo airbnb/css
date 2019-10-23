@@ -3,7 +3,7 @@ severity: error
 linters:
 
   BorderZero:
-    enabled: true
+    enabled: false
     convention: zero
 
   BemDepth:
