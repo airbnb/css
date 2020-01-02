@@ -4,26 +4,28 @@
 
 ## Table of Contents
 
-1. [Terminology](#terminology)
-    - [Rule Declaration](#rule-declaration)
+- [Airbnb CSS / Sass Styleguide](#airbnb-css--sass-styleguide)
+  - [Table of Contents](#table-of-contents)
+  - [Terminology](#terminology)
+    - [Rule declaration](#rule-declaration)
     - [Selectors](#selectors)
     - [Properties](#properties)
-1. [CSS](#css)
+  - [CSS](#css)
     - [Formatting](#formatting)
     - [Comments](#comments)
     - [OOCSS and BEM](#oocss-and-bem)
-    - [ID Selectors](#id-selectors)
+    - [ID selectors](#id-selectors)
     - [JavaScript hooks](#javascript-hooks)
     - [Border](#border)
-1. [Sass](#sass)
+  - [Sass](#sass)
     - [Syntax](#syntax)
-    - [Ordering](#ordering-of-property-declarations)
+    - [Ordering of property declarations](#ordering-of-property-declarations)
     - [Variables](#variables)
     - [Mixins](#mixins)
     - [Extend directive](#extend-directive)
     - [Nested selectors](#nested-selectors)
-1. [Translation](#translation)
-1. [License](#license)
+  - [Translation](#translation)
+  - [License](#license)
 
 ## Terminology
 
@@ -71,7 +73,7 @@ Finally, properties are what give the selected elements of a rule declaration th
 
 * Use soft tabs (2 spaces) for indentation.
 * Prefer dashes over camelCasing in class names.
-  - Underscores and PascalCasing are okay if you are using BEM (see [OOCSS and BEM](#oocss-and-bem) below).
+  * Underscores and PascalCasing are okay if you are using BEM (see [OOCSS and BEM](#oocss-and-bem) below).
 * Do not use ID selectors.
 * When using multiple selectors in a rule declaration, give each selector its own line.
 * Put a space before the opening brace `{` in rule declarations.
