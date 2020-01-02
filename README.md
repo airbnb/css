@@ -69,15 +69,15 @@ Finally, properties are what give the selected elements of a rule declaration th
 
 ### Formatting
 
-- Use soft tabs (2 spaces) for indentation
-- Prefer dashes over camelCasing in class names.
+* Use soft tabs (2 spaces) for indentation.
+* Prefer dashes over camelCasing in class names.
   - Underscores and PascalCasing are okay if you are using BEM (see [OOCSS and BEM](#oocss-and-bem) below).
-- Do not use ID selectors
-- When using multiple selectors in a rule declaration, give each selector its own line.
-- Put a space before the opening brace `{` in rule declarations
-- In properties, put a space after, but not before, the `:` character.
-- Put closing braces `}` of rule declarations on a new line
-- Put blank lines between rule declarations
+* Do not use ID selectors.
+* When using multiple selectors in a rule declaration, give each selector its own line.
+* Put a space before the opening brace `{` in rule declarations.
+* In properties, put a space after, but not before, the `:` character.
+* Put closing braces `}` of rule declarations on a new line.
+* Put blank lines between rule declarations.
 
 **Bad**
 
@@ -306,7 +306,7 @@ If you must use an ID selector in the first place (and you should really try not
   - ![ko](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/South-Korea.png) **Korean**: [CodeMakeBros/css-style-guide](https://github.com/CodeMakeBros/css-style-guide)
   - ![PT-BR](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Brazil.png) **Portuguese (Brazil)**: [felipevolpatto/css-style-guide](https://github.com/felipevolpatto/css-style-guide)
   - ![pt-PT](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Portugal.png) **Portuguese (Portugal)**: [SandroMiguel/airbnb-css-style-guide](https://github.com/SandroMiguel/airbnb-css-style-guide)
-  - ![ru](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Russia.png) **Russian**: [Nekorsis/css-style-guide](https://github.com/Nekorsis/css-style-guide)
+  - ![ru](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Russia.png) **Russian**: [rtplv/airbnb-css-ru](https://github.com/rtplv/airbnb-css-ru)
   - ![es](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Spain.png) **Spanish**: [ismamz/guia-de-estilo-css](https://github.com/ismamz/guia-de-estilo-css)
   - ![vn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Vietnam.png) **Vietnamese**: [trungk18/css-style-guide](https://github.com/trungk18/css-style-guide)
   - ![vn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Italy.png) **Italian**: [antoniofull/linee-guida-css](https://github.com/antoniofull/linee-guida-css)
