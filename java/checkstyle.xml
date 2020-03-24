@@ -240,5 +240,8 @@
         </module>
         <module name="CommentsIndentation"/>
         <module name="DeclarationOrder"/>
+        <module name="SingleSpaceSeparator">
+            <property name="validateComments" value="true"/>
+        </module>
     </module>
 </module>
