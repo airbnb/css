@@ -29,7 +29,8 @@
 
 ### Declaration qaydası
 
-A “rule declaration” is the name given to a selector (or a group of selectors) with an accompanying group of properties. Here's an example:
+Declaration Qaydası Seçicilərə və ya seçicilər qrupuna verilən addır , propertilərlə birlikdə istifadə edilir. Nümunə aşağıda verilmişdir:
+
 
 ```css
 .listing {
@@ -38,9 +39,11 @@ A “rule declaration” is the name given to a selector (or a group of selector
 }
 ```
 
-### Selectors
+### Seçicilər
 
-In a rule declaration, “selectors” are the bits that determine which elements in the DOM tree will be styled by the defined properties. Selectors can match HTML elements, as well as an element's class, ID, or any of its attributes. Here are some examples of selectors:
+Declaration qaydasına əsasən "seçicilər" Dom ağacındakı elementləri təyin edilmiş propertilərə əsasən stilləşdirən bitlərdir.
+Seçicilər HTML elementlərinə  həm də elementlərin class ID yada başqa atributlarına uyğunlaşır. Aşağıda nümunə verilmişdir:
+
 
 ```css
 .my-element-class {
@@ -53,8 +56,8 @@ In a rule declaration, “selectors” are the bits that determine which element
 ```
 
 ### Properties
+Son olaraq Propertilər seçilmiş elementlərə təyin edilən dizayn qayadalrıdır.Propertilər key-value cütlüyündən ibarətdir. Propertilərə nümunə aşağıdakı kimidir:
 
-Finally, properties are what give the selected elements of a rule declaration their style. Properties are key-value pairs, and a rule declaration can contain one or more property declarations. Property declarations look like this:
 
 ```css
 /* some selector */ {
@@ -63,7 +66,7 @@ Finally, properties are what give the selected elements of a rule declaration th
 }
 ```
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ başa qayıt](#mündəricat)**
 
 ## CSS
 
