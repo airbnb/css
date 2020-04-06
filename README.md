@@ -1,33 +1,33 @@
-# Airbnb CSS / Sass Styleguide
+# Airbnb CSS / Sass Still Bələdçisi
 
-*A mostly reasonable approach to CSS and Sass*
+*CSS və Sass-a əsaslı bir yanaşma*
 
-## Table of Contents
+## Mündəricat
 
-1. [Terminology](#terminology)
-    - [Rule Declaration](#rule-declaration)
-    - [Selectors](#selectors)
+1. [Terminologiya](#terminologiya)
+    - [Declaration qaydası](#declaration-qaydasi)
+    - [Seçicilər](#seçicilər)
     - [Properties](#properties)
 1. [CSS](#css)
-    - [Formatting](#formatting)
-    - [Comments](#comments)
-    - [OOCSS and BEM](#oocss-and-bem)
-    - [ID Selectors](#id-selectors)
+    - [Format](#format)
+    - [Commentlər](#commentlər)
+    - [OOCSS və BEM](#oocss-ve-bem)
+    - [ID Seçicilər](#id-seciciler)
     - [JavaScript hooks](#javascript-hooks)
     - [Border](#border)
 1. [Sass](#sass)
-    - [Syntax](#syntax)
-    - [Ordering](#ordering-of-property-declarations)
-    - [Variables](#variables)
-    - [Mixins](#mixins)
-    - [Extend directive](#extend-directive)
-    - [Nested selectors](#nested-selectors)
-1. [Translation](#translation)
-1. [License](#license)
+    - [Sintaksis](#sintaksis)
+    - [Property sılaması](#ordering-of-property-declarations)
+    - [Dəyişkənlər](#variables)
+    - [Mixinlər](#mixins)
+    - [Genişləndirilmiş directive](#extend-directive)
+    - [Nested seçicilər](#nested-selectors)
+1. [Tərcümələr](#translation)
+1. [Lisenziya](#license)
 
-## Terminology
+## terminologiya
 
-### Rule declaration
+### Declaration qaydası
 
 A “rule declaration” is the name given to a selector (or a group of selectors) with an accompanying group of properties. Here's an example:
 
