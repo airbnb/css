@@ -10,7 +10,7 @@
     - [Properties](#properties)
 1. [CSS](#css)
     - [Format](#format)
-    - [Commentlər](#commentlər)
+    - [Commentlər](#şərhlər)
     - [OOCSS və BEM](#oocss-ve-bem)
     - [ID Seçicilər](#id-seciciler)
     - [JavaScript hooks](#javascript-hooks)
@@ -70,19 +70,19 @@ Son olaraq Propertilər seçilmiş elementlərə təyin edilən dizayn qayadalr�
 
 ## CSS
 
-### Formatting
+### Formatlama
 
-* Use soft tabs (2 spaces) for indentation.
-* Prefer dashes over camelCasing in class names.
-  - Underscores and PascalCasing are okay if you are using BEM (see [OOCSS and BEM](#oocss-and-bem) below).
-* Do not use ID selectors.
-* When using multiple selectors in a rule declaration, give each selector its own line.
-* Put a space before the opening brace `{` in rule declarations.
-* In properties, put a space after, but not before, the `:` character.
-* Put closing braces `}` of rule declarations on a new line.
-* Put blank lines between rule declarations.
+* Abzas üçün yumuşaq nişan istifadə edin (2 boşluq)   .
+* Class adlarında camelCase əvəzinə tirelərdən istifadə edin.
+  - Lakin BEM istifadə edirsinizsə  alt-tire və PascalCase istifadə edə bilərsiniz ([OOCSS and BEM](#oocss-and-bem)).
+*  ID seçicilər istifadə etməyin.
+* Bir neçə sellectoru birlikdə istifadə etdikdə hərəsi üçün bir sətir istifadə edin.
+*  `{`-dan sonra boşluq istifadə edin .
+*   `:` -dan sonra boşluq istifadə edin (əvvəl yox).
+*  `}` -ı yeni sətirdə istifadə edin.
+* Hər bir deklarasiyadan sonra boş bir sətir buraxın.
 
-**Bad**
+**Pisdir**
 
 ```css
 .avatar{
@@ -96,7 +96,7 @@ Son olaraq Propertilər seçilmiş elementlərə təyin edilən dizayn qayadalr�
 }
 ```
 
-**Good**
+**Yaxşıdır**
 
 ```css
 .avatar {
@@ -111,33 +111,34 @@ Son olaraq Propertilər seçilmiş elementlərə təyin edilən dizayn qayadalr�
 }
 ```
 
-### Comments
+### Şərhlər
 
-* Prefer line comments (`//` in Sass-land) to block comments.
-* Prefer comments on their own line. Avoid end-of-line comments.
-* Write detailed comments for code that isn't self-documenting:
-  - Uses of z-index
-  - Compatibility or browser-specific hacks
+* Sətir şərhlərindən istifadə edin (`//` in Sass-land) .
+* Öz sətiriniz üçün şərhlərinizdən istifadə edin. Sonda şərh yazmaqdan çəkinin.
+* Kod üçün ətraflı şərh yazın lakin bu dokumentasiya olmasın:
+  - Z-indexin istifadəsi
+  - Fərdi brauzerlər və uyğunluq üçün CSS hiylələri
 
-### OOCSS and BEM
+### OOCSS və BEM
 
-We encourage some combination of OOCSS and BEM for these reasons:
+Aşağıdaki səbəblərə görə OOCSS və BEM istifadəsini tövsiyə edirik.
 
-  * It helps create clear, strict relationships between CSS and HTML
-  * It helps us create reusable, composable components
-  * It allows for less nesting and lower specificity
-  * It helps in building scalable stylesheets
+  * CSS və HTML arasında təmiz və dəqiq əlaqələr yaradırıq.
+  * Yenidən istifadə edilə bilən və birləşdirilə bilən komponentlər yarada bilirik.
+  * Daha az nesting və daha az spesifikliyə imkan verir.
+  * Ölçüləndirilə bilən still faylı yaratmağımıza kömək edir.
 
-**OOCSS**, or “Object Oriented CSS”, is an approach for writing CSS that encourages you to think about your stylesheets as a collection of “objects”: reusable, repeatable snippets that can be used independently throughout a website.
+**OOCSS**, və ya “Object Oriented CSS”, CSS kodlarımıza obyektlər kollektivi kimi yanaşmağımıza kömək edir.
 
   * Nicole Sullivan's [OOCSS wiki](https://github.com/stubbornella/oocss/wiki)
   * Smashing Magazine's [Introduction to OOCSS](http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/)
 
-**BEM**, or “Block-Element-Modifier”, is a _naming convention_ for classes in HTML and CSS. It was originally developed by Yandex with large codebases and scalability in mind, and can serve as a solid set of guidelines for implementing OOCSS.
+**BEM**, or “Block-Element-Modifier”, CSS-da _adlandırma_üsuludur_ . It was originally developed by Yandex with large codebases and scalability in mind, and can serve as a solid set of guidelines for implementing OOCSS.
+Yandex tərəfindən yaradılmışdır və OOCSS-ya solid qaydalar dəsti olaraq xidmət edir.
 
   * CSS Trick's [BEM 101](https://css-tricks.com/bem-101/)
   * Harry Roberts' [introduction to BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
-
+  * Simuratli's [BEM nədir?](https://medium.com/pragmatech/bem-n%C9%99dir-da8052081e18)
 We recommend a variant of BEM with PascalCased “blocks”, which works particularly well when combined with components (e.g. React). Underscores and dashes are still used for modifiers and children.
 
 **Example**
