@@ -294,7 +294,7 @@ Seçiciləriniz çox uzun olduğu zaman sizin CSS kodunuz:
 * Yenidən istifadəyə qapalı
 
 
-Yenidən: ** iç içə seçicilərə ID seçici istifadə etməyin!**
+Yenidən: **iç içə seçicilərə ID seçici istifadə etməyin!**
 Əgər məcburi olaraq ID seçici istifadə etməliyiksə heç vaxt nested seçici içərisinə daxil olmamalıdır. Bunu etsəniz belə niyə bu qədər güclü bir spesifikliyə ehtiyac olduğunu nəzərdən keçirməlisiniz.Əgər əla formatda bir HTML və ya CSS yazmaq istəyirsinizsə **heç vaxt** bunu etməyə ehtiyac duymayın.
 
 **[⬆ Başa qayıt](#table-of-contents)**
