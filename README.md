@@ -262,46 +262,46 @@ Borderin olmadığını bildirmək üçün  `none` əvəzinə `0` dan istifadə 
 
 ### Variables (dəyişkənlər)
 
- Dash-cased dəyişkən adlarına üstünkük verin  (`$my-variable`) over camelCased or snake_cased variable names. It is acceptable to prefix variable names that are intended to be used only within the same file with an underscore (e.g. `$_my-variable`).
+ camelCased və ya snake_cased əvəzinə Dash-cased dəyişkən adlarına üstünkük verin  (`$my-variable`) . Alt tiredən istidadə edilən dəyişkənlər ancaq eyni səhifədə istifadə edilmirsə işlədilər bilər vəə alt tire dəyişkən adının önünə təyin edilir. ( `$_my-variable`).
 
-### Mixins
-
-Mixins should be used to DRY up your code, add clarity, or abstract complexity--in much the same way as well-named functions. Mixins that accept no arguments can be useful for this, but note that if you are not compressing your payload (e.g. gzip), this may contribute to unnecessary code duplication in the resulting styles.
+### Mixinlər
+Yaxşı adlandırılmış funksiyalar kimi Mixinlərdə kodunuzu quru tutmaq və təmiz tutmaq üçün istifadə edilməlidir.
+Mixinlər bunun üçün olduqca faydalıdır lakin gzip kimi faly kiçildicilər istifadə etmirsinizsə bu sizin faylınızda çoxlu kod təkrarı yarada bilər.
 
 ### Extend directive
 
-`@extend` should be avoided because it has unintuitive and potentially dangerous behavior, especially when used with nested selectors. Even extending top-level placeholder selectors can cause problems if the order of selectors ends up changing later (e.g. if they are in other files and the order the files are loaded shifts). Gzipping should handle most of the savings you would have gained by using `@extend`, and you can DRY up your stylesheets nicely with mixins.
+Xüsusi ilə nested sellectorlar ilə `@extend` qeyri-ixtiyari və təhlükəli olduğun üçün çəkinilməlidir. Üst səviyyədəki bir seçiciyə tətbiq edilən `@extend` sonralar o seçicinin sırasının dəyişdirilməsi zaman problem yarada bilir(məsələn faylların növbəli oxunmasına əsasən.). Gzippingi istifadə etdiyinizdə siz `@extend`də edə biləcəyiniz bütün şeyləri əhatə edə bilirsiniz və mixinlər istifadə edərək kodunuzu təmiz və quru tuta bilərsiniz.
 
-### Nested selectors
 
-**Do not nest selectors more than three levels deep!**
+### Nested seçicilər
+
+**3 səviyyədən çox nested element istifadə etməyin**
 
 ```scss
 .page-container {
   .content {
     .profile {
-      // STOP!
+      // DAYANIN!
     }
   }
 }
 ```
 
-When selectors become this long, you're likely writing CSS that is:
+Seçiciləriniz çox uzun olduğu zaman sizin CSS kodunuz:
 
-* Strongly coupled to the HTML (fragile) *—OR—*
-* Overly specific (powerful) *—OR—*
-* Not reusable
+* HTML(kövrək) ilə güclü bağlılıq *—və ya—*
+* Həddindən artıq spesifik (güclü) *—və ya—*
+* Yenidən istifadəyə qapalı
 
 
-Again: **never nest ID selectors!**
+Yenidən: ** iç içə seçicilərə ID seçici istifadə etməyin!**
+Əgər məcburi olaraq ID seçici istifadə etməliyiksə heç vaxt nested seçici içərisinə daxil olmamalıdır. Bunu etsəniz belə niyə bu qədər güclü bir spesifikliyə ehtiyac olduğunu nəzərdən keçirməlisiniz.Əgər əla formatda bir HTML və ya CSS yazmaq istəyirsinizsə **heç vaxt** bunu etməyə ehtiyac duymayın.
 
-If you must use an ID selector in the first place (and you should really try not to), they should never be nested. If you find yourself doing this, you need to revisit your markup, or figure out why such strong specificity is needed. If you are writing well formed HTML and CSS, you should **never** need to do this.
-
-**[⬆ back to top](#table-of-contents)**
+**[⬆ Başa qayıt](#table-of-contents)**
 
 ## Translation
 
-  This style guide is also available in other languages:
+  Aşağıdakı dillərdə bu mənbələrə çata bilərsiniz:
 
   - ![id](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Indonesia.png) **Bahasa Indonesia**: [mazipan/css-style-guide](https://github.com/mazipan/css-style-guide)
   - ![tw](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/Taiwan.png) **Chinese (Traditional)**: [ArvinH/css-style-guide](https://github.com/ArvinH/css-style-guide)
