@@ -136,12 +136,13 @@ Aşağıdaki səbəblərə görə OOCSS və BEM istifadəsini tövsiyə edirik.
 **BEM**, or “Block-Element-Modifier”, CSS-da _adlandırma_üsuludur_ . It was originally developed by Yandex with large codebases and scalability in mind, and can serve as a solid set of guidelines for implementing OOCSS.
 Yandex tərəfindən yaradılmışdır və OOCSS-ya solid qaydalar dəsti olaraq xidmət edir.
 
-  * CSS Trick's [BEM 101](https://css-tricks.com/bem-101/)
-  * Harry Roberts' [introduction to BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
-  * Simuratli's [BEM nədir?](https://medium.com/pragmatech/bem-n%C9%99dir-da8052081e18)
-We recommend a variant of BEM with PascalCased “blocks”, which works particularly well when combined with components (e.g. React). Underscores and dashes are still used for modifiers and children.
+  * CSS Tricksdən [BEM 101](https://css-tricks.com/bem-101/)
+  * Harry Robertsin [introduction to BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
+  * Simuratlinin [BEM nədir?](https://medium.com/pragmatech/bem-n%C9%99dir-da8052081e18)
 
-**Example**
+Biz  BEM-i  PascalCased “blocklarla” istifadəsini məsləhət görürük, çünki komponentlərlə birləşəndə olduqca yaxşı və rahat istifadə edilir. (e.g. React). Alt tire və tirelər  modifierlər and childrenlərdə istifadə edilir.
+
+**Nümunə**
 
 ```jsx
 // ListingCard.jsx
@@ -168,21 +169,21 @@ function ListingCard() {
 .ListingCard__content { }
 ```
 
-  * `.ListingCard` is the “block” and represents the higher-level component
-  * `.ListingCard__title` is an “element” and represents a descendant of `.ListingCard` that helps compose the block as a whole.
-  * `.ListingCard--featured` is a “modifier” and represents a different state or variation on the `.ListingCard` block.
+  * `.ListingCard`  higher-level componenti göstərən blokdur.
+  * `.ListingCard__title` is an “elementdir” və `.ListingCard`ın övladıdır. Blokun bit bütün olaraq yaradılmasına kömək edir.
+  * `.ListingCard--featured`  “modifierdir” və  `.ListingCard` elementinin fərqli dizaynlarını əhatə edir.
 
-### ID selectors
+### ID seçicilər
 
-While it is possible to select elements by ID in CSS, it should generally be considered an anti-pattern. ID selectors introduce an unnecessarily high level of [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) to your rule declarations, and they are not reusable.
+CSSdə İD seçicilər mövcud olsalarda, ümumən anti-pattern hesab edilirlər. İD seçicilədən istifadə sizin deklarasiyanıza lazımsız dərəcədə yüksək [özünəməxsusluq](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) qazandırır bu isə kodlarınızın yenidən istifadəsinə imkan vermir.
 
-For more on this subject, read [CSS Wizardry's article](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/) on dealing with specificity.
+Bu mözu haqqında daha çox öyrənmək üçün [CSS Wizardry'ın məqaləsinə](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/) nəzər yetirin.
 
 ### JavaScript hooks
 
-Avoid binding to the same class in both your CSS and JavaScript. Conflating the two often leads to, at a minimum, time wasted during refactoring when a developer must cross-reference each class they are changing, and at its worst, developers being afraid to make changes for fear of breaking functionality.
+CSS və Javascriptinizi eyni class-a bağlamaqdan çəkinin. İkisini qarışdırmaq bu layihə üzərində işləyən başqa bir developerin əlavə zaman sərf etməsinə və bu kod üzərində dəyişiklik etdikdə funksionallığın qırılmasından qorxmasına səbəb olacaq.
 
-We recommend creating JavaScript-specific classes to bind to, prefixed with `.js-`:
+Biz JavaScript üçün təyin edilən class-ların  `.js-` ön şəkilçisi ilə istifadəsini məsləhət görürük:
 
 ```html
 <button class="btn btn-primary js-request-to-book">Request to Book</button>
@@ -190,7 +191,7 @@ We recommend creating JavaScript-specific classes to bind to, prefixed with `.js
 
 ### Border
 
-Use `0` instead of `none` to specify that a style has no border.
+Borderin olmadığını bildirmək üçün  `none` əvəzinə `0` dan istifadə edin.
 
 **Bad**
 
@@ -211,16 +212,16 @@ Use `0` instead of `none` to specify that a style has no border.
 
 ## Sass
 
-### Syntax
+### Syntax (Sintaksis)
 
-* Use the `.scss` syntax, never the original `.sass` syntax
-* Order your regular CSS and `@include` declarations logically (see below)
+* Həmişə `.scss` sintaksisi istifadə edin,  `.sass` deyil
+* CSS-lərinizin `@include` deklarasiyalarının  məntiqi sırası:
 
-### Ordering of property declarations
+### Properti deklarasiyaları
 
 1. Property declarations
 
-    List all standard property declarations, anything that isn't an `@include` or a nested selector.
+       `@include` və ya iç-içə olmayan  propertilərinizi standart şəkildə sıralayın.
 
     ```scss
     .btn-green {
@@ -232,7 +233,7 @@ Use `0` instead of `none` to specify that a style has no border.
 
 2. `@include` declarations
 
-    Grouping `@include`s at the end makes it easier to read the entire selector.
+    `@include`nin sonda istifadəsi oxunmanı asanlaşdırır.
 
     ```scss
     .btn-green {
@@ -243,9 +244,9 @@ Use `0` instead of `none` to specify that a style has no border.
     }
     ```
 
-3. Nested selectors
+3. İç-içə seçicilər
 
-    Nested selectors, _if necessary_, go last, and nothing goes after them. Add whitespace between your rule declarations and nested selectors, as well as between adjacent nested selectors. Apply the same guidelines as above to your nested selectors.
+    Nested seçicilərdə, _əgər vacibdirsə_, sonda istifadə edin, onlardan əvvəl heçnə istifadə etməyin. İç içə seçicilər arasında  boşluq buraxın.  Bütün nested seçicilərrinizə eyni üsulu tətbiq edin.
 
     ```scss
     .btn {
@@ -259,9 +260,9 @@ Use `0` instead of `none` to specify that a style has no border.
     }
     ```
 
-### Variables
+### Variables (dəyişkənlər)
 
-Prefer dash-cased variable names (e.g. `$my-variable`) over camelCased or snake_cased variable names. It is acceptable to prefix variable names that are intended to be used only within the same file with an underscore (e.g. `$_my-variable`).
+ Dash-cased dəyişkən adlarına üstünkük verin  (`$my-variable`) over camelCased or snake_cased variable names. It is acceptable to prefix variable names that are intended to be used only within the same file with an underscore (e.g. `$_my-variable`).
 
 ### Mixins
 
