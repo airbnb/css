@@ -257,25 +257,12 @@ While there is no column limit recommendation for HTML, you may consider wrappin
 When line-wrapping, each continuation line should be indented at least 4 additional spaces from the original line.
 
 ```html
-<md-progress-circular md-mode="indeterminate" class="md-accent"
-    ng-show="ctrl.loading" md-diameter="35">
-</md-progress-circular>
-```
-
-```html
 <md-progress-circular
-    md-mode="indeterminate"
-    class="md-accent"
-    ng-show="ctrl.loading"
-    md-diameter="35">
-</md-progress-circular>
-```
-
-```html
-<md-progress-circular md-mode="indeterminate"
-                      class="md-accent"
-                      ng-show="ctrl.loading"
-                      md-diameter="35">
+  md-mode="indeterminate"
+  class="md-accent"
+  ng-show="ctrl.loading"
+  md-diameter="35"
+>
 </md-progress-circular>
 ```
 
