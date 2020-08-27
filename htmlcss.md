@@ -254,7 +254,7 @@ Break long lines (optional).
 
 While there is no column limit recommendation for HTML, you may consider wrapping long lines if it significantly improves readability.
 
-When line-wrapping, each continuation line should be indented at least 4 additional spaces from the original line.
+When line-wrapping, each continuation line should be indented 2 spaces from the original line.
 
 ```html
 <md-progress-circular
