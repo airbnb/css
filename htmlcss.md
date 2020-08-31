@@ -256,14 +256,61 @@ While there is no column limit recommendation for HTML, you may consider wrappin
 
 When line-wrapping, each continuation line should be indented 2 spaces from the original line.
 
+#### BAD
+Too long line, too many attributes in single line
+
 ```html
-<md-progress-circular
-  md-mode="indeterminate"
-  class="md-accent"
-  ng-show="ctrl.loading"
-  md-diameter="35"
+<img src="images/Search.svg" class="img-big" alt="search">
+```
+
+#### BAD
+Each element should be on a new line
+
+```html
+<img src="images/Search.svg"
+     class="img-big"
+     alt="search">
+```
+
+#### BAD
+attributes should be indented with 2 spaces
+
+```html
+<img
+src="images/Search.svg"
+class="img-big"
+alt="search">
+```
+
+#### BAD
+closing  braket(`>`) should be on the new line
+
+```html
+<img
+  src="images/Search.svg"
+  class="img-big"
+  alt="search">
+```
+
+#### BAD
+closing  braket(`>`) should be alined as open tag
+
+```html
+<img
+  src="images/Search.svg"
+  class="img-big"
+  alt="search"
+  >
+```
+
+#### GOOD
+```html
+
+<img
+  src="images/Search.svg"
+  class="img-big"
+  alt="search"
 >
-</md-progress-circular>
 ```
 
 ### HTML quotation marks
