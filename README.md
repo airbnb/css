@@ -84,7 +84,8 @@ Finally, properties are what give the selected elements of a rule declaration th
 ```css
 .avatar{
     border-radius:50%;
-    border:2px solid white; }
+    border:2px solid white; 
+    }
 .no, .nope, .not_good {
     // ...
 }
@@ -228,8 +229,8 @@ Use `0` instead of `none` to specify that a style has no border.
 
 2. `@include` declarations
 
-    Grouping `@include`s at the end makes it easier to read the entire selector.
-
+    Grouping `@include`s at the end makes it easier to read the entire selector. you sh
+old be color code hex format.
     ```scss
     .btn-green {
       background: green;
