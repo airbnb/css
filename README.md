@@ -170,6 +170,13 @@ function ListingCard() {
 
 ### ID selectors
 
+The CSS ID selector matches an element based on the value of the element’s id attribute. In order for the element to be selected, its id attribute must match exactly the value given in the selector.
+Example:-
+<pre class="brush: css no-line-numbers notranslate language-css"><code class=" language-css"><span class="token comment">/* The element with id="demo" */</span>
+<span class="token selector"><span class="token id">#demo</span></span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> red <span class="token number">2</span><span class="token unit">px</span> solid<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+
 While it is possible to select elements by ID in CSS, it should generally be considered an anti-pattern. ID selectors introduce an unnecessarily high level of [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) to your rule declarations, and they are not reusable.
 
 For more on this subject, read [CSS Wizardry's article](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/) on dealing with specificity.
