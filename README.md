@@ -261,7 +261,7 @@ Use `0` instead of `none` to specify that a style has no border.
 
     ```scss
    .some-class.another-class { }
-    ```scss
+    ```
 
     You can do this while nesting by using the &.
 
@@ -269,7 +269,7 @@ Use `0` instead of `none` to specify that a style has no border.
     .some-class {
         &.another-class {}
     }
-    ```scss
+    ```
 
     # Using the & with pseudo classes
 
@@ -279,7 +279,7 @@ Use `0` instead of `none` to specify that a style has no border.
       &:hover { }
       &:active { }
     }
-    ```scss
+    ```
 
     This compiles to : 
 
@@ -287,7 +287,7 @@ Use `0` instead of `none` to specify that a style has no border.
     .button:visited { }
     .button:hover { }
     .button:active { }
-    ```css
+    ```
 
 ### Variables
 
