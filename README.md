@@ -271,7 +271,7 @@ Use `0` instead of `none` to specify that a style has no border.
     }
     ```
 
-    # Using the & with pseudo classes
+    Using the & with pseudo classes
 
     ```scss
     .button {
