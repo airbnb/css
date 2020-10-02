@@ -255,6 +255,40 @@ Use `0` instead of `none` to specify that a style has no border.
     }
     ```
 
+3. The Sass Ampersand
+
+    The & is an extremely useful feature in Sass (and Less). It’s used when nesting. It can be a nice time-saver when you know how to use it, or a bit of a time-waster when you’re struggling and could have written the same code in regular CSS.
+
+    ```scss
+   .some-class.another-class { }
+    ```scss
+
+    You can do this while nesting by using the &.
+
+    ```scss
+    .some-class {
+        &.another-class {}
+    }
+    ```scss
+
+    # Using the & with pseudo classes
+
+    ```scss
+    .button {
+      &:visited { }
+      &:hover { }
+      &:active { }
+    }
+    ```scss
+
+    This compiles to : 
+
+    ```css
+    .button:visited { }
+    .button:hover { }
+    .button:active { }
+    ```css
+
 ### Variables
 
 Prefer dash-cased variable names (e.g. `$my-variable`) over camelCased or snake_cased variable names. It is acceptable to prefix variable names that are intended to be used only within the same file with an underscore (e.g. `$_my-variable`).
