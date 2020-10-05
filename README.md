@@ -137,7 +137,7 @@ We encourage some combination of OOCSS and BEM for these reasons:
 
 We recommend a variant of BEM with PascalCased “blocks”, which works particularly well when combined with components (e.g. React). Underscores and dashes are still used for modifiers and children.
 
-**Example**
+**Examples which may help you**
 
 ```jsx
 // ListingCard.jsx
