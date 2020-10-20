@@ -1,3 +1,4 @@
+#this is a open source project u can understand easily each sections are well defined.
 # Airbnb CSS / Sass Styleguide
 
 *A mostly reasonable approach to CSS and Sass*
