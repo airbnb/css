@@ -63,6 +63,9 @@
     <module name="NoLineWrap">
       <property name="tokens" value="PACKAGE_DEF, IMPORT, STATIC_IMPORT"/>
     </module>
+    <module name="VisibilityModifier">
+      <property name="protectedAllowed" value="true"/>
+    </module>
     <module name="EmptyBlock">
       <property name="option" value="TEXT"/>
       <property name="tokens"
