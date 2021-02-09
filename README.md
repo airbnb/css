@@ -319,7 +319,7 @@ Nesting css puts our styles in highly specific contexts and makes it difficult t
   }
 }
 
-// Crap!! This same heading style is used in the new slider section on the homepage.
+// Dang!! This same heading style is used in the new slider section on the homepage. I now have to unnest these style.
 ```
 
 **Good**
@@ -385,7 +385,7 @@ As compared to:
   }
 }
 
-/* Crap! When I search the repo for .selector, it's in 3 different places and 3 different files. Now I have to spend time finding 
+/* Dang! When I search the repo for .selector, it's in 3 different places and 3 different files. Now I have to spend time finding 
 where I should make my change */
 ```
 
@@ -403,7 +403,7 @@ button {
   cursor: pointer;
 }
 
-// Crap, I need these exact styles on an <a> tag
+// Dang! I need these exact styles on an <a> tag
 ```
 
 **Good**
@@ -482,7 +482,7 @@ $('.product-actions .btn').click(function() {
   CartJS.addItem(variantId, 1);
 })
 
-// Crap!! Someone changed .btn to .button and now no one can add to cart!!!
+// Oh no!! Someone changed .btn to .button and now no one can add to cart!!!
 ```
 
 **Good**
