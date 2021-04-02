@@ -85,10 +85,10 @@ Finally, properties are what give the selected elements of a rule declaration th
 .avatar{
     border-radius:50%;
     border:2px solid white; }
-.no, .nope, .not_good {
+.no, .nope, .not_good, .what-are-you-even-doing {
     // ...
 }
-#lol-no {
+#lol-no, #bruh {
   // ...
 }
 ```
@@ -103,7 +103,8 @@ Finally, properties are what give the selected elements of a rule declaration th
 
 .one,
 .selector,
-.per-line {
+.per-line,
+.is-the-best-technique {
   // ...
 }
 ```
