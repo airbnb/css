@@ -860,6 +860,10 @@ with <code class="prettyprint lang-java">Test</code>. For example,
 <code class="prettyprint lang-java">sendMessage</code> or
 <code class="prettyprint lang-java">stop</code>.</p>
 
+<p>Getters and setter should have <code class="prettyprint lang-java">getProperty</code>
+and <code class="prettyprint lang-java">setProperty</code> names respectively. The only exception is
+getters for boolean values: they should be <code class="prettyprint lang-java">isProperty</code>.</p>
+
 <p>Underscores may appear in JUnit <em>test</em> method names to separate logical components of the
 name, with <em>each</em> component written in <a href="#s5.3-camel-case">lowerCamelCase</a>.
 One typical pattern is <code><i>&lt;methodUnderTest&gt;</i>_<i>&lt;state&gt;</i></code>,
