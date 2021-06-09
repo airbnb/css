@@ -46,36 +46,35 @@ can't write a code that fail some test, remove it.
   })
   ```
   
-## Don't call `solution` function in 'before'. Call it in tests.
+## Don't call `solution` function in 'beforeAll'. Call it in tests.
   
   **BAD**
   ```javascript
-  let solution;
-  let result;
+  describe(`The 'function'`, () => {
+   const solution = require('./solution).solution
+   let result;
   
-  before(() => {
-    solution = require('./solution).solution
-    result = solution();
+   beforeAll(() => {
+     result = solution();
+   });
+  
+   it(`should do something`, () => {
+     expect(result).toBeTruthy();
+   });
   });
-  
-  it('Does something', () => {
-    expect(result).toBeTruthy();
-  })
   ```
   
   **GOOD**
   ```javascript
-  let solution;
+  describe(`The 'function'`, () => {
+   const solution = require('./solution);
   
-  before(() => {
-    solution = require('./solution).solution
-  });  
-  
-  it('Does something', () => {
-    const result = solution();
-    
-    expect(result).toBeTruthy();
-  })
+   it(`should do something`, () => {
+     const result = solution();
+
+     expect(result).toBeTruthy();
+   });
+  });
   ```
   
 ## Valid and short test case
