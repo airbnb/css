@@ -23,35 +23,13 @@ same reason.
 Try to write the solution TDD way (running tests after
 each change). The next failing test should be the next logical step. If you 
 can't write a code that fail some test, remove it.
-
-## Require test file in `before` hook
-
-  **BAD**
-  ```javascript
-  const { solution } = require('./solution);
-  
-  describe('', () => {
-    // ...
-  })
-  ```
-  
-  **GOOD**
-  ```javascript
-  describe('', () => {
-    let solution;
-
-    before(() => {
-      solution = require('./solution).solution
-    })
-  })
-  ```
   
 ## Don't call `solution` function in 'beforeAll'. Call it in tests.
   
   **BAD**
   ```javascript
   describe(`The 'function'`, () => {
-   const solution = require('./solution).solution
+   const solution = require('./solution);
    let result;
   
    beforeAll(() => {
