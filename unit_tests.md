@@ -23,6 +23,21 @@ same reason.
 Try to write the solution TDD way (running tests after
 each change). The next failing test should be the next logical step. If you 
 can't write a code that fail some test, remove it.
+
+## First two tests should validate that function is declared and data type the function returns.
+
+```js
+  describe(`The 'functionName'`, () => {
+   const functionName = require('./functionName);
+  
+  it(`should be declared`, () => {
+    expect(functionName).toBeInstanceOf(Function);
+  });
+
+  it(`should return 'datatype'`, () => {
+    expect(typeof functionName(param)).toBe('datatype');
+  });
+```
   
 ## Don't call `solution` function in 'beforeAll'. Call it in tests.
   
