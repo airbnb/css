@@ -30,12 +30,13 @@ can't write a code that fail some test, remove it.
   describe(`The 'functionName'`, () => {
    const functionName = require('./functionName);
   
-  it(`should be declared`, () => {
-    expect(functionName).toBeInstanceOf(Function);
-  });
+    it(`should be declared`, () => {
+      expect(functionName).toBeInstanceOf(Function);
+    });
 
-  it(`should return 'datatype'`, () => {
-    expect(typeof functionName(param)).toBe('datatype');
+    it(`should return 'datatype'`, () => {
+      expect(typeof functionName(param)).toBe('datatype');
+    });
   });
 ```
   
