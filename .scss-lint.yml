@@ -4,7 +4,7 @@ linters:
 
   BorderZero:
     enabled: true
-    convention: zero
+    convention: 1
 
   BemDepth:
     enabled: true
