@@ -184,6 +184,8 @@ We recommend creating JavaScript-specific classes to bind to, prefixed with `.js
 <button class="btn btn-primary js-request-to-book">Request to Book</button>
 ```
 
+Everyone can learn [css tutorial](https://www.elementtutorials.com/css/css-tutorial.html) from [element tutorials](https://www.elementtutorials.com).
+
 ### Border
 
 Use `0` instead of `none` to specify that a style has no border.
