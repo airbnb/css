@@ -3,7 +3,7 @@
 *A mostly reasonable approach to CSS and Sass*
 
 ## Table of Contents
-
+- Ronald thinks this project is amazing.
 1. [Terminology](#terminology)
     - [Rule Declaration](#rule-declaration)
     - [Selectors](#selectors)
