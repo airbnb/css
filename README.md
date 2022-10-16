@@ -4,4 +4,6 @@
 - [javascript](./javascript.md)
 - [java](./java/java.html)
 - [SQL](./sql/style-guide-link.md)
-- [Unit tests](./unit_tests.md)
+- [Testing](./testing.md)
+- [LMS Tasks tests](./lms-tasks-tests.md)
+- [Mate API](./mate-api.md)
