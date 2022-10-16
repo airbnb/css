@@ -23,14 +23,14 @@ Why? To be ORM agnostic and have control over the data flow. E.g. if one day we 
   
 
 ```javascript
-// bad
+// ❌ bad
 class FindUserUseCase {
   run(options) {
     return UserModel.findOne({ where: options });
   }
 }
 
-// good
+// ✅ good
 class FindUserUseCase {
   run(options) {
     return this.userRepository.find({ where: options });
@@ -49,7 +49,7 @@ Why? To be ORM agnostic, again. We shouldn't rely on specific ORM methods where 
   
 
 ```javascript
-// bad
+// ❌ bad
 class UserRepository() {
   async find(options) {
     return this.models.User.find({
@@ -69,7 +69,7 @@ class UpdateUser {
 }
 
 
-// good
+// ✅ good
 class UserRepository() {
   async find(options) {
     return this.models.User.find({
@@ -124,7 +124,7 @@ Why? For better consistency. If you write \`get\` you guarantee that value is re
   
 
 ```javascript
-// bad
+// ❌ bad
 class UserRepository {
   async findOne(options) {
     const result = await this.models.User.findOne({ where: options});
@@ -147,7 +147,7 @@ class UserRepository {
   }
 }
 
-// bad
+// ❌ bad
 class UserRepository {
   async getOne(options) {
     const result = await this.models.User.findOne({ where: options});
@@ -156,7 +156,7 @@ class UserRepository {
   }
 }
 
-// good
+// ✅ good
 class UserRepository {
   async getOne(options) {
     const result = await this.models.User.findOne({ where: options});
@@ -216,7 +216,7 @@ Why? Easier to re-use and test the behavior
   
 
 ```javascript
-// bad
+// ❌ bad
 class UserRepository {
   async getOne(options) {
     const result = await this.models.User.findOne({ where: options});
@@ -239,7 +239,7 @@ await expect(UserRepository.getOne())
     })
   );
 
-// good
+// ✅ good
 class UserRepository {
   async getOne(options) {
     const result = await this.models.User.findOne({ where: options});
@@ -278,12 +278,12 @@ Why? GraphQL clients like [Apollo](https://www.apollographql.com/docs/react/) su
   
 
 ```bash
-// bad
+// ❌ bad
 extend type Mutation {
   updateProfile(values: UpdateProfileValues): Boolean!
 }
 
-// good
+// ✅ good
 extend type Mutation {
   updateProfile(values: UpdateProfileValues): User!
 }

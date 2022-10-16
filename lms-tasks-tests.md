@@ -53,7 +53,7 @@ can't write a code that fail some test, remove it.
   
 ## 2.5. Don't call `solution` function in 'beforeAll'. Call it in tests.
   
-  **BAD**
+  **❌ Bad**
   ```javascript
   describe(`The 'function'`, () => {
    const solution = require('./solution);
@@ -69,7 +69,7 @@ can't write a code that fail some test, remove it.
   });
   ```
   
-  **GOOD**
+  **✅ GOOD**
   ```javascript
   describe(`The 'function'`, () => {
    const solution = require('./solution);
@@ -115,10 +115,10 @@ Both `it` and `test` do the same thing, but their names are different and with t
 
   Every test case should test a separate behavior. Also, tests with the same names are merged while showing results to the end-user. This way test results become unreadable.
 
-  **Bad**
+  **❌ Bad**
   ![Bad example](https://mate-academy-images.s3.eu-central-1.amazonaws.com/image_11_fa10c44aef.png)
   
-  **Good**
+  **✅ GOOD**
   ```javascript
   it(`should return shuffled array with different elements`, () => {
    expect(shuffleArray([2, 5, 1, 3, 4, 7], 3))

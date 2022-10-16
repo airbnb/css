@@ -35,7 +35,7 @@ There should be only necessary and valid steps in a single test case. If a singl
   
 
 ```javascript
-// bad
+// ❌ bad
 it(`should work`, () => {
  expect(sum(2, 3)).toBe(5);
  expect(sum(0, 0)).toBe(0);
@@ -43,7 +43,7 @@ it(`should work`, () => {
  expect(sum(-1, 0)).toBe(-1);
 })
 
-// good
+// ✅ good
 it(`should return a sum of positive numbers`, () => {
  expect(sum(2, 3)).toBe(5);
 });
@@ -72,14 +72,14 @@ Write a module name that is tested in the **describe** block for the unit and 
   
 
 ```javascript
-// bad
+// ❌ bad
 describe('', () => {
  it(`Function 'sum' should return 0 if adding zeroes`, () => {})
  it(`Function 'sum' should have property 'age'`, () => {})
  it(`Function 'sum' should return 0 if called without arguments`, () => {})
 });
 
-// good
+// ✅ good
 describe(`Function 'sum':`, () => {
  it(`should return 0 if adding zeroes`, () => {})
  it(`should have property 'age'`, () => {})
@@ -98,10 +98,10 @@ describe(`Function 'sum':`, () => {
   
 
 ```javascript
-// bad
+// ❌ bad
 it('Works without arguments', () => {})
 
-// good
+// ✅ good
 it('should return 0 when called without arguments', () => {})
 ```
 
@@ -112,12 +112,12 @@ it('should return 0 when called without arguments', () => {})
   
 
 ```javascript
-// bad
+// ❌ bad
 it(`adds zeroes and returns 0`, () => {});
 it(`has property 'age'`, () => {});
 it(`returns 0 if called without arguments`, () => {});
 
-// good
+// ✅ good
 it(`should return 0 if adding zeroes`, () => {});
 it(`should have property 'age'`, () => {});
 it(`should return 0 if called without arguments`, () => {});
@@ -128,13 +128,13 @@ it(`should return 0 if called without arguments`, () => {});
   
 
 ```javascript
-// bad
+// ❌ bad
 describe('', () => {
   it('BaseRobot class should create a robot', () => {});
   it('FlyingRobot class should create a flying robot', () => {});
 });
 
-// good
+// ✅ good
 describe('BaseRobot class', () => {
   it('should create a robot', () => {});
 });
@@ -154,15 +154,15 @@ Why? To be tool-agnostic. It's possible to update factories in one place instead
 
   
 
-**note:** If your project doesn't have factories infrastructure, time to create it
+**💡 Note:** If your project doesn't have factories infrastructure, time to create it
 
   
 
 ```javascript
-// bad
+// ❌ bad
 const user = await User.create();
 
-// good
+// ✅ good
 const user = await userFactory.create();
 ```
 
@@ -179,10 +179,10 @@ Why? Again, to be tool-agnostic and don't rely on existing infrastructure. One d
 ```javascript
 await client.signUp({ email: 'bob@gmail.com' });
 
-// bad
+// ❌ bad
 const user = await UserModel.findOne({ where: { email: 'bob@gmail.com' }}) // direct DB call is prohibited
 
-// good
+// ✅ good
 const user = await client.getUser({ email: 'bob@gmail.com' }) // use API client to make sure user is created
 ```
 
