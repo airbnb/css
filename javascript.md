@@ -3009,7 +3009,7 @@ eslint: [`spaced-comment`](https://eslint.org/docs/rules/spaced-comment)
 
   
 
-```plain
+```javascript
 // bad
 //is current tab
 const active = true;
@@ -3230,7 +3230,7 @@ eslint: [`newline-per-chained-call`](https://eslint.org/docs/rules/newline-per-
 
   
 
-```plain
+```javascript
 // bad
 $('#items').find('.selected').highlight().end().find('.open').updateCount();
 
@@ -3589,7 +3589,7 @@ eslint: [`comma-style`](https://eslint.org/docs/rules/comma-style.html)
 
   
 
-```plain
+```javascript
 // bad
 const story = [
     once

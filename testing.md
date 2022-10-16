@@ -158,7 +158,7 @@ Why? To be tool-agnostic. It's possible to update factories in one place instead
 
   
 
-```plain
+```javascript
 // bad
 const user = await User.create();
 
@@ -176,7 +176,7 @@ Why? Again, to be tool-agnostic and don't rely on existing infrastructure. One d
 
   
 
-```plain
+```javascript
 await client.signUp({ email: 'bob@gmail.com' });
 
 // bad
