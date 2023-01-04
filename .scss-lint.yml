@@ -16,7 +16,7 @@ linters:
     enabled: true
 
   LeadingZero:
-    enabled: false
+    enabled: true
 
   NameFormat:
     enabled: true
