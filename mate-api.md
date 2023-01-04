@@ -1,21 +1,25 @@
-# Mate API Style Guide <!-- omit in toc  -->
+# Mate API Style Guide <!-- omit in toc -->
 
 [go/mate-api-style-guide](http://go/mate-api-style-guide)
 
-- [Mate API Style Guide](#mate-api-style-guide)
-  - [1\. Data fetching](#1-data-fetching)
-      - [1.1. Use repository instead of explicit ORM methods to fetch data from DB](#11-use-repository-instead-of-explicit-orm-methods-to-fetch-data-from-db)
-      - [1.2. Always use plain objects instead of ORM instances. Avoid using ORM specific methods outside of the repository](#12-always-use-plain-objects-instead-of-orm-instances-avoid-using-orm-specific-methods-outside-of-the-repository)
-      - [1.3. Use `find` and `get` prefixes to specify whether method returns `null` or throws an Error](#13-use-find-and-get-prefixes-to-specify-whether-method-returns-null-or-throws-an-error)
-      - [1.4. Store common entity related errors in constants](#14-store-common-entity-related-errors-in-constants)
-  - [2\. GraphQL](#2-graphql)
-      - [2.1. Always include modified objects in mutation responses](#21-always-include-modified-objects-in-mutation-responses)
-      - [2.2. Do not add foreign keys to the GraphQL schema until it's really needed](#22-do-not-add-foreign-keys-to-the-graphql-schema-until-its-really-needed)
-  - [3\. Models](#3-models)
-      - [3.1. Extend `ModelBase` while writing new Model](#31-extend-modelbase-while-writing-new-model)
-      - [3.2. Nullable fields should be marked explicitly](#32-nullable-fields-should-be-marked-explicitly)
-      - [3.3. Related model should **always** be marked as nullable even if foreign key has `not_null` constraint](#33-related-model-should-always-be-marked-as-nullable-even-if-foreign-key-has-not_null-constraint)
-
+- [1\. Data fetching](#1-data-fetching)
+    - [1.1. Use repository instead of explicit ORM methods to fetch data from DB](#11-use-repository-instead-of-explicit-orm-methods-to-fetch-data-from-db)
+    - [1.2. Always use plain objects instead of ORM instances. Avoid using ORM specific methods outside of the repository](#12-always-use-plain-objects-instead-of-orm-instances-avoid-using-orm-specific-methods-outside-of-the-repository)
+    - [1.3. Use `find` and `get` prefixes to specify whether method returns `null` or throws an Error](#13-use-find-and-get-prefixes-to-specify-whether-method-returns-null-or-throws-an-error)
+    - [1.4. Store common entity related errors in constants](#14-store-common-entity-related-errors-in-constants)
+- [2\. GraphQL](#2-graphql)
+    - [2.1. Always include modified objects in mutation responses](#21-always-include-modified-objects-in-mutation-responses)
+    - [2.2. Do not add foreign keys to the GraphQL schema until it's really needed](#22-do-not-add-foreign-keys-to-the-graphql-schema-until-its-really-needed)
+    - [2.3. Use @Query, @Mutation, @Child decorators while creating resolvers](#23-use-query-mutation-child-decorators-while-creating-resolvers)
+    - [2.4. Write resolver class name in Uppercase](#24-write-resolver-class-name-in-uppercase)
+    - [2.5. Resolver name should end with Resolver, not Query/Mutation/Child](#25-resolver-name-should-end-with-resolver-not-querymutationchild)
+- [3\. Models](#3-models)
+    - [3.1. Extend `ModelBase` while writing new Model](#31-extend-modelbase-while-writing-new-model)
+    - [3.2. Nullable fields should be marked explicitly](#32-nullable-fields-should-be-marked-explicitly)
+    - [3.3. Related model should **always** be marked as nullable even if foreign key has `not_null` constraint](#33-related-model-should-always-be-marked-as-nullable-even-if-foreign-key-has-not_null-constraint)
+    - [4.1. Use seeders for modifying data and migrations for modifying DB structure](#41-use-seeders-for-modifying-data-and-migrations-for-modifying-db-structure)
+    - [4.2. Follow naming template for seeders and migrations](#42-follow-naming-template-for-seeders-and-migrations)
+    - [4.3. Use Enum data type for enumerable values instead of String + Check Constraint](#43-use-enum-data-type-for-enumerable-values-instead-of-string--check-constraint)
 1\. Data fetching
 -----------------
 
@@ -324,6 +328,80 @@ type CourseUser {
 }
 ```
 
+#### 2.3. Use @Query, @Mutation, @Child decorators while creating resolvers
+>❓ It's a part of moving to Dependency Injection pattern in API, and decorators are more self explainable. Now `makeResolver` and `makeAuthResolver` functions are deprecated
+
+```typescript
+// ❌ bad
+export const chatLessonResolver = makeAuthResolver<
+  // ... types go here
+>(
+  GetChatLessonUseCase,
+  (_, chat) => ({ chatId: chat.id }),
+);
+
+
+// ✅ good
+@Child<
+  // ... types go here
+  >({
+    Handler: GetChatLessonUseCase,
+    auth: true,
+    mapOptions: (args, parent) => ({
+      chatId: chat.id,
+    }),
+  })
+
+export class GetCareerTestQuestionsResolver {}
+```
+
+#### 2.4. Write resolver class name in Uppercase
+```typescript
+// ❌ bad
+// ... resolver definition
+
+export class careerTestQuestionTitleResolver {}
+
+// ✅ good
+// ... resolver definition
+
+export class CareerTestQuestionTitleResolver {}
+```
+
+#### 2.5. Resolver name should end with Resolver, not Query/Mutation/Child
+>❓Why? Every communication to API happens via resolvers. To keep the consistency it's obligatory to use the same name pattern
+
+```typescript
+// ❌ bad
+// ... resolver definition
+
+export class CareerTestQuestionTitleChild {}
+
+// ✅ good
+// ... resolver definition
+
+export class CareerTestQuestionTitleResolver {}
+
+// ❌ bad
+// ... resolver definition
+
+export class getCareerTestQuestionsQuery {}
+
+// ✅ good
+// ... resolver definition
+
+export class GetCareerTestQuestionsResolver {}
+
+// ❌ bad
+// ... resolver definition
+
+export class createCareerTestMutation {}
+
+// ✅ good
+// ... resolver definition
+
+export class CreateCareerTestResolver {}
+```
 3\. Models
 ----------
 
@@ -450,4 +528,94 @@ if (User.typingSpeedTests?.length > 0) {
   // ...
 }
 
+```
+
+4\. Database
+
+#### 4.1. Use seeders for modifying data and migrations for modifying DB structure
+
+It is mandatory to understand the major difference between seeders and migrations:
+- **seeders** are used to modify the database content (adding or removing entries)
+- **migrations** are used to modify the database structure (adding new table/column, managing constraints, etc)
+
+Besides seeders are not executed in CI/Tests while migrations are
+
+#### 4.2. Follow naming template for seeders and migrations
+
+The template is: `{action}-{object}-{subject}` in an imperative form
+
+- **action** explains what should migration/seeder do
+- **object** means primary action target
+- **(optional) subject** gives context about the place where the action happens
+
+
+```
+// ❌ bad
+seeders/adding-translates.js
+
+// ✅ good
+seeders/add-translates-for-chat-page.js
+
+// ❌ bad
+migration/add-first-name.js
+
+// ✅ good
+migration/add-first-name-column-to-users.js
+
+// ❌ bad
+migration/rename-table.js
+
+// ✅ good
+migration/rename-users-table.js
+
+// ❌ bad
+migration/add-columns-to-users.js
+
+// ✅ good
+migration/add-chat-related-columns-to-users-table.js
+
+// ❌ bad
+migration/update-courses-slug-unique-constraint.js
+
+// ✅ good
+migration/update-slug-constraint-in-courses-table
+```
+
+#### 4.3. Use Enum data type for enumerable values instead of String + Check Constraint
+
+>❓Why? It's more clear and obvious. There are a lot of examples with check constraint in the existing codebase but we're moving out of them. 
+
+```javascript
+// ❌ bad
+await queryInterface
+  .addColumn('users', 'student_status', {
+    type: Sequelize.STRING,
+    defaultValue: 'PRE_COURSE',
+  })
+  .then(() => (
+    queryInterface.addConstraint('users', ['student_status'], {
+      type: 'check',
+      name: 'student_statuses',
+      where: {
+        student_status: [
+          'PRE_COURSE',
+          'STUDYING',
+          'EMPLOYMENT',
+          ]
+      }
+    })))
+
+// ✅ good
+await queryInterface.addColumn(
+  'users',
+  'student_status',
+  {
+    type: Sequelize.ENUM(
+      'PRE_COURSE', 
+      'STUDYING',
+      'EMPLOYMENT'
+    ),
+    defaultValue: 'PRE_COURSE',
+  },
+);
 ```
