@@ -110,7 +110,7 @@ letter-spacing: 0.06em; // 2/32 = ~0.06
 
 ❌ bad
 
-Foundation provides set of atomic indents classes but they apply `!important` flag and are inconsystem with our system
+Foundation provides set of atomic indents classes but they apply `!important` flag and are inconsistent with our system
 
 ```jsx
 <ul>
