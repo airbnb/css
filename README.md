@@ -9,3 +9,4 @@ This document contains style guides used at Mate academy. For easier markdown ed
 - [Testing](./testing.md)
 - [LMS Tasks tests](./lms-tasks-tests.md)
 - [Mate API](./mate-api.md)
+- [Mate Frontend](./mate-frontend.md)
