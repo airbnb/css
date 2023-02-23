@@ -2891,7 +2891,7 @@ if (
 // ✅ good
 if (
   foo === 123
-  && bar === 'abc'
+    && bar === 'abc'
 ) {
   thing1();
 }
@@ -2899,8 +2899,8 @@ if (
 // ✅ good
 if (
   (foo === 123 || bar === 'abc')
-  && doesItLookGoodWhenItBecomesThatLong()
-  && isThisReallyHappening()
+    && doesItLookGoodWhenItBecomesThatLong()
+    && isThisReallyHappening()
 ) {
   thing1();
 }
