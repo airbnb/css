@@ -572,7 +572,6 @@ Each type variable is named in one of two styles:
 *   A single capital letter, optionally followed by a single numeral (such as `E`, `T`, `X`, `T2`)
 *   A name in the form used for classes (see Section 5.2.2, [Class names](#s5.2.2-class-names)), followed by the capital letter `T` (examples: `RequestT`, `FooBarT`).
 
-# TODO: I stopped here!!!!! Continue below
 ### 5.3 Camel case: defined
 
 Sometimes there is more than one reasonable way to convert an English phrase into camel case, such as when acronyms or unusual constructs like "IPv6" or "iOS" are present. To improve predictability, Google Style specifies the following (nearly) deterministic scheme.
