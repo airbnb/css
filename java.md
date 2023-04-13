@@ -1,5 +1,88 @@
-Google Java Style Guide
+Google Java Style Guide <!-- omit in toc -->
 =======================
+- [1 Introduction](#1-introduction)
+  - [1.1 Terminology notes](#11-terminology-notes)
+  - [1.2 Guide notes](#12-guide-notes)
+- [2 Source file basics](#2-source-file-basics)
+  - [2.1 File name](#21-file-name)
+  - [2.2 File encoding: UTF-8](#22-file-encoding-utf-8)
+  - [2.3 Special characters](#23-special-characters)
+    - [2.3.1 Whitespace characters](#231-whitespace-characters)
+    - [2.3.2 Special escape sequences](#232-special-escape-sequences)
+    - [2.3.3 Non-ASCII characters](#233-non-ascii-characters)
+- [3 Source file structure](#3-source-file-structure)
+  - [3.1 License or copyright information, if present](#31-license-or-copyright-information-if-present)
+  - [3.2 Package statement](#32-package-statement)
+  - [3.3 Import statements](#33-import-statements)
+    - [3.3.1 No wildcard imports](#331-no-wildcard-imports)
+    - [3.3.2 No line-wrapping](#332-no-line-wrapping)
+    - [3.3.3 Ordering and spacing](#333-ordering-and-spacing)
+    - [3.3.4 No static import for classes](#334-no-static-import-for-classes)
+  - [3.4 Class declaration](#34-class-declaration)
+    - [3.4.1 Exactly one top-level class declaration](#341-exactly-one-top-level-class-declaration)
+    - [3.4.2 Ordering of class contents](#342-ordering-of-class-contents)
+      - [3.4.2.1 Overloads: never split](#3421-overloads-never-split)
+- [4 Formatting](#4-formatting)
+  - [4.1 Braces](#41-braces)
+    - [4.1.1 Braces are used where optional](#411-braces-are-used-where-optional)
+    - [4.1.2 Nonempty blocks: K \& R style](#412-nonempty-blocks-k--r-style)
+    - [4.1.3 Empty blocks: may be concise](#413-empty-blocks-may-be-concise)
+  - [4.2 Block indentation: +2 spaces](#42-block-indentation-2-spaces)
+  - [4.3 One statement per line](#43-one-statement-per-line)
+  - [4.4 Column limit: 100](#44-column-limit-100)
+  - [4.5 Line-wrapping](#45-line-wrapping)
+    - [4.5.1 Where to break](#451-where-to-break)
+    - [4.5.2 Indent continuation lines at least +4 spaces](#452-indent-continuation-lines-at-least-4-spaces)
+  - [4.6 Whitespace](#46-whitespace)
+    - [4.6.1 Vertical Whitespace](#461-vertical-whitespace)
+    - [4.6.2 Horizontal whitespace](#462-horizontal-whitespace)
+    - [4.6.3 Horizontal alignment: never required](#463-horizontal-alignment-never-required)
+  - [4.7 Grouping parentheses: recommended](#47-grouping-parentheses-recommended)
+  - [4.8 Specific constructs](#48-specific-constructs)
+    - [4.8.1 Enum classes](#481-enum-classes)
+    - [4.8.2 Variable declarations](#482-variable-declarations)
+      - [4.8.2.1 One variable per declaration](#4821-one-variable-per-declaration)
+      - [4.8.2.2 Declared when needed](#4822-declared-when-needed)
+    - [4.8.3 Arrays](#483-arrays)
+      - [4.8.3.1 Array initializers: can be "block-like"](#4831-array-initializers-can-be-block-like)
+      - [4.8.3.2 No C-style array declarations](#4832-no-c-style-array-declarations)
+    - [4.8.4 Switch statements](#484-switch-statements)
+      - [4.8.4.1 Indentation](#4841-indentation)
+      - [4.8.4.2 Fall-through: commented](#4842-fall-through-commented)
+      - [4.8.4.3 The `default` case is present](#4843-the-default-case-is-present)
+    - [4.8.5 Annotations](#485-annotations)
+    - [4.8.6 Comments](#486-comments)
+      - [4.8.6.1 Block comment style](#4861-block-comment-style)
+    - [4.8.7 Modifiers](#487-modifiers)
+    - [4.8.8 Numeric Literals](#488-numeric-literals)
+- [5 Naming](#5-naming)
+  - [5.1 Rules common to all identifiers](#51-rules-common-to-all-identifiers)
+  - [5.2 Rules by identifier type](#52-rules-by-identifier-type)
+    - [5.2.1 Package names](#521-package-names)
+    - [5.2.2 Class names](#522-class-names)
+    - [5.2.3 Method names](#523-method-names)
+    - [5.2.4 Constant names](#524-constant-names)
+    - [5.2.5 Non-constant field names](#525-non-constant-field-names)
+    - [5.2.6 Parameter names](#526-parameter-names)
+    - [5.2.7 Local variable names](#527-local-variable-names)
+    - [5.2.8 Type variable names](#528-type-variable-names)
+  - [5.3 Camel case: defined](#53-camel-case-defined)
+- [6 Programming Practices](#6-programming-practices)
+  - [6.1 `@Override`: always used](#61-override-always-used)
+  - [6.2 Caught exceptions: not ignored](#62-caught-exceptions-not-ignored)
+  - [6.3 Static members: qualified using class](#63-static-members-qualified-using-class)
+  - [6.4 Finalizers: not used](#64-finalizers-not-used)
+- [7 Javadoc](#7-javadoc)
+  - [7.1 Formatting](#71-formatting)
+    - [7.1.1 General form](#711-general-form)
+    - [7.1.2 Paragraphs](#712-paragraphs)
+    - [7.1.3 Block tags](#713-block-tags)
+  - [7.2 The summary fragment](#72-the-summary-fragment)
+  - [7.3 Where Javadoc is used](#73-where-javadoc-is-used)
+    - [7.3.1 Exception: self-explanatory methods](#731-exception-self-explanatory-methods)
+    - [7.3.2 Exception: overrides](#732-exception-overrides)
+    - [7.3.4 Non-required Javadoc](#734-non-required-javadoc)
+
 
 1 Introduction
 --------------
@@ -588,27 +671,27 @@ Beginning with the prose form of the name:
 
 Note that the casing of the original words is almost entirely disregarded. Examples:
 
-1) 
+1)
     Prose form: "XML HTTP request"
     Correct: `XmlHttpRequest`
     Incorrect: `XMLHTTPRequest`
 
-2) 
+2)
     Prose form: "new customer ID"
     Correct: `newCustomerId`
     Incorrect: `newCustomerID`
 
-3) 
+3)
     Prose form: "inner stopwatch"
     Correct: `innerStopwatch`
     Incorrect: `innerStopWatch`
 
-4) 
+4)
     Prose form: "supports IPv6 on iOS?"
     Correct: `supportsIpv6OnIos`
     Incorrect: `supportsIPv6OnIOS`
 
-5) 
+5)
     Prose form: "YouTube importer"
     Correct: `YouTubeImporter`, `YoutubeImporter`
 

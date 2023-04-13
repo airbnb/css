@@ -19,4 +19,10 @@ export const STYLE_GUIDES: StyleGuide[] = [
       path.join(process.cwd(), 'htmlcss.md'),
     ],
   },
+  {
+    tag: 'java-style-guides',
+    files: [
+      path.join(process.cwd(), 'java.md'),
+    ],
+  },
 ];
