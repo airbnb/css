@@ -1,0 +1,34 @@
+{
+  "name": "@mate-academy/style-guides",
+  "version": "1.0.0",
+  "description": "This document contains style guides used at Mate academy. For easier markdown editing use VSCode with [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one) extension.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ingest": "tsx -r dotenv/config scripts/ingest-data.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mate-academy/style-guides.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mate-academy/style-guides/issues"
+  },
+  "homepage": "https://github.com/mate-academy/style-guides#readme",
+  "dependencies": {
+    "@pinecone-database/pinecone": "^0.0.12",
+    "langchain": "^0.0.47"
+  },
+  "devDependencies": {
+    "@mate-academy/eslint-config-internal": "^1.1.0",
+    "@types/node": "^18.15.11",
+    "@typescript-eslint/eslint-plugin": "^5.58.0",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.38.0",
+    "tsx": "^3.12.6",
+    "typescript": "^5.0.4"
+  }
+}
