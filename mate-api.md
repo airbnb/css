@@ -25,11 +25,11 @@
 
 #### 1.1. Use repository instead of explicit ORM methods to fetch data from DB
 
-  
+
 
 >❓Why? To be ORM agnostic and have control over the data flow. E.g. if one day we decide to change the fetching method for the user, we can do it in one place - UserRepository.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -47,15 +47,15 @@ class FindUserUseCase {
 }
 ```
 
-  
+
 
 #### 1.2. Always use plain objects instead of ORM instances. Avoid using ORM specific methods outside of the repository
 
-  
+
 
 >❓Why? To be ORM agnostic, again. We shouldn't rely on specific ORM methods where they are not needed
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -72,7 +72,7 @@ class UpdateUser {
     const user = await this.userRepository.find({
       id: options.id
     });
-    
+
     await user.update(options.values); // .update is an ORM method
   }
 }
@@ -117,20 +117,20 @@ class UpdateUser {
 }
 ```
 
-  
+
 
 #### 1.3. Use `find` and `get` prefixes to specify whether method returns `null` or throws an Error
 
-  
 
-\- **get** \- throws an error  
+
+\- **get** \- throws an error
 \- **find** \- returns null or empty array
 
-  
+
 
 >❓Why? For better consistency. If you write \`get\` you guarantee that value is returned and extra \`null\` checks are redundant
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -138,7 +138,7 @@ class UserRepository {
   async findOne(options) {
     const result = await this.models.User.findOne({ where: options});
 
-    if (!result) { 
+    if (!result) {
       throw new Error(UserErrors.NotFound);
     }
 
@@ -148,7 +148,7 @@ class UserRepository {
   async findAll(options) {
     const result = await this.models.User.findAll({ where: options});
 
-    if (result.length === 0) { 
+    if (result.length === 0) {
       throw new Error(UserErrors.NotFound);
     }
 
@@ -170,7 +170,7 @@ class UserRepository {
   async getOne(options) {
     const result = await this.models.User.findOne({ where: options});
 
-    if (!result) { 
+    if (!result) {
       throw new Error(UserErrors.NotFound);
     }
 
@@ -189,7 +189,7 @@ class UserRepository {
   async getAll(options) {
     const result = await this.findAll(options);
 
-    if (result.length === 0) { 
+    if (result.length === 0) {
       throw new Error(UserErrors.NotFound);
     }
 
@@ -205,7 +205,7 @@ class UserRepository {
   async getOne(options) {
     const result = await this.findOne(options);
 
-    if (!result) { 
+    if (!result) {
       throw new Error(UserErrors.NotFound);
     }
 
@@ -214,15 +214,51 @@ class UserRepository {
 }
 ```
 
-  
 
-#### 1.4. Store common entity related errors in constants
 
-  
+#### 1.4. Use data-loaders instead of ORM methods in `find` and `get` methods
+
+
+
+>❓Why? If the record is already fetched, it's better to use it instead of fetching it again. Data-loaders are used to cache the fetched data and return it if it's already fetched. Also, lots of separate DB calls are merged into one batch call in data-loader case. See examples of data-loaders in *.loaders folders in api modules.
+
+
+
+```javascript
+// ❌ bad
+// Several SQL queries may be executed during one API call
+class UserRepository {
+  async findOne(options) {
+    return this.models.User.findOne({ where: options});
+  }
+
+  async findAll(options) {
+    return this.models.User.findAll({ where: options});
+  }
+}
+
+// ✅ good
+// All related SQL queries are merged into one batch DB call
+class UserRepository {
+  async findOne(options) {
+    return this.loaders.userByOptions.load(options);
+  }
+
+  async findAll(options) {
+    return this.loaders.userByOptions.loadMany(options);
+  }
+}
+```
+
+
+
+#### 1.5. Store common entity related errors in constants
+
+
 
 >❓Why? Easier to re-use and test the behavior
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -230,7 +266,7 @@ class UserRepository {
   async getOne(options) {
     const result = await this.models.User.findOne({ where: options});
 
-    if (!result) { 
+    if (!result) {
       throw new Error('User not found');
     }
 
@@ -253,7 +289,7 @@ class UserRepository {
   async getOne(options) {
     const result = await this.models.User.findOne({ where: options});
 
-    if (!result) { 
+    if (!result) {
       throw new Error(UserErrors.NotFound);
     }
 
@@ -272,19 +308,19 @@ await expect(UserRepository.getOne())
   );
 ```
 
-  
+
 
 2\. GraphQL
 -----------
 
 #### 2.1. Always include modified objects in mutation responses
 
-  
 
->❓Why? GraphQL clients like [Apollo](https://www.apollographql.com/docs/react/) support auto update cache. If a cached object _already_ exists with this key, Apollo Client overwrites any existing fields that are also included in the mutation response (other existing fields are preserved).  
+
+>❓Why? GraphQL clients like [Apollo](https://www.apollographql.com/docs/react/) support auto update cache. If a cached object _already_ exists with this key, Apollo Client overwrites any existing fields that are also included in the mutation response (other existing fields are preserved).
 [Read more here](https://www.apollographql.com/docs/react/data/mutations/#include-modified-objects-in-mutation-responses)
 
-  
+
 
 ```bash
 // ❌ bad
@@ -509,9 +545,9 @@ export class User extends ModelBase<User> {
 // ----
 
 console.log(User.domain) // 'undefined' or 'null'
-if (User.typingSpeedTests.length > 0) { 
-  // Error, typingSpeedTests is 'undefined' or 'null' 
-} 
+if (User.typingSpeedTests.length > 0) {
+  // Error, typingSpeedTests is 'undefined' or 'null'
+}
 
 // ✅ good
 export class User extends ModelBase<User> {
@@ -583,7 +619,7 @@ migration/update-slug-constraint-in-courses-table
 
 #### 4.3. Use Enum data type for enumerable values instead of String + Check Constraint
 
->❓Why? It's more clear and obvious. There are a lot of examples with check constraint in the existing codebase but we're moving out of them. 
+>❓Why? It's more clear and obvious. There are a lot of examples with check constraint in the existing codebase but we're moving out of them.
 
 ```javascript
 // ❌ bad
@@ -611,7 +647,7 @@ await queryInterface.addColumn(
   'student_status',
   {
     type: Sequelize.ENUM(
-      'PRE_COURSE', 
+      'PRE_COURSE',
       'STUDYING',
       'EMPLOYMENT'
     ),
