@@ -7,6 +7,7 @@ This document contains style guides used at Mate academy. For easier markdown ed
 - [java](./java/java.html)
 - [SQL](./sql/style-guide-link.md)
 - [Testing](./testing.md)
+- [E2E Testing](./e2e-testing.md)
 - [LMS Tasks tests](./lms-tasks-tests.md)
 - [Mate API](./mate-api.md)
 - [Mate Frontend](./mate-frontend.md)
