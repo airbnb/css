@@ -16,6 +16,7 @@
   - [3.3. Use one spec file per one test](#33-use-one-spec-file-per-one-test)
   - [3.4. Before block should not contain common test data preparation](#34-before-block-should-not-contain-common-test-data-preparation)
   - [3.5. Test block should only contain test steps_and_assertions](#35-test-block-should-only-contain-test-steps-and-assertions)
+  - [3.6. Before block should not contain test steps](#36-before-block-should-not-contain-test-steps)
 - [4\. Assertions](#4-assertions)
   - [4.1 One assertion per one test step method](#41-one-assertion-per-one-test-step-method)
   - [4.2 Use expect for assertions](#42-use-expect-for-assertions)
@@ -342,6 +343,45 @@ test('should allow to successfully create course',
     await createCoursePage.fillCourseName(name);
     ...
     await createCoursePage.assertCourseCreatedMessage();
+  });
+
+```
+
+#### 3.6. Before block should not contain test steps
+
+Please do not add the test steps to the before block. All test steps should be added to the test block.
+
+
+```typescript
+// ❌ not recommended
+test.beforeEach( async ({ page }) => {
+  signInPage = new SignInPage(page);
+  forgotPasswordPage = new ForgotPasswordPage(page);
+
+  await signInPage.visit();
+});
+
+test('should redirect to sign in page after submitting form',
+  async ({}) => {
+    await signInPage.clickResetPasswordLink();
+    await forgotPasswordPage.assertOpened();
+    ...
+  });
+
+
+
+// ✅ recommended
+test.beforeEach(({ page }) => {
+  signInPage = new SignInPage(page);
+  forgotPasswordPage = new ForgotPasswordPage(page);
+});
+
+test('should redirect to sign in page after submitting form',
+  async ({ }) => {
+    await signInPage.visit();
+    await signInPage.clickResetPasswordLink();
+    await forgotPasswordPage.assertOpened();
+    ...
   });
 
 ```
