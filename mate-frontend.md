@@ -5,6 +5,7 @@
 - [1. General](#1-general)
     - [1.1. Always add NoSSR to AuthUser query on landings](#11-always-add-nossr-to-authuser-query-on-landings)
     - [1.2. Rename old components before refactoring](#12-rename-old-components-before-refactoring)
+    - [1.3. Create new components for A/B tests](#13-create-new-components-for-ab-tests)
 - [2. CSS](#2-css)
     - [2.1. Use `rem-calc` function for "size" and "indent" values instead of hardcoding pixels](#21-use-rem-calc-function-for-size-and-indent-values-instead-of-hardcoding-pixels)
     - [2.2. Use `em` units for font-related properties](#22-use-em-units-for-font-related-properties)
@@ -49,6 +50,34 @@ export const ChatDeprecated: FC<Props> // ...
 
 // new component - components/Chat/Chat.tsx
 export const Chat: FC<Props> // ...
+```
+
+#### 1.3. Create new components for A/B tests
+When we run A/B tests, there's often a need to create new components. It's better to create new components instead of adding new props to existing ones. It will be easier to clean up afterward
+
+But how to handle naming in this case? Adding the `Deprecated` suffix doesn't seem right because the component doesn't become deprecated. The best solution is to add `V1`, `V2`, and so on suffixes to a new component, where `V[number]` stands for the variant of the test
+
+```jsx
+// ❌ bad
+// old component - components/Chat/Chat.tsx
+export const Chat: FC<Props> // ...
+
+// new component - components/ChatNew/ChatNew.tsx
+export const ChatNew: FC<Props> // ...
+
+// ❌ bad
+// old component - components/ChatDeprecated/ChatDeprecated.tsx
+export const ChatDeprecated: FC<Props> // ...
+
+// new component - components/Chat/Chat.tsx
+export const Chat: FC<Props> // ...
+
+// ✅ good
+// old component - components/Chat/Chat.tsx
+export const Chat: FC<Props> // ...
+
+// new component - components/ChatV[1,2,3]/ChatV[1,2,3].tsx
+export const ChatV1: FC<Props> // ...
 ```
 
 ## 2. CSS
