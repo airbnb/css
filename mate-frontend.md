@@ -10,6 +10,11 @@
     - [2.1. Use `rem-calc` function for "size" and "indent" values instead of hardcoding pixels](#21-use-rem-calc-function-for-size-and-indent-values-instead-of-hardcoding-pixels)
     - [2.2. Use `em` units for font-related properties](#22-use-em-units-for-font-related-properties)
     - [2.3. Prefer internal atomic styles for indents](#23-prefer-internal-atomic-styles-for-indents)
+- [3. UI kit](#3-ui-kit)
+    - [3.1 Follow process of adding new UI elements](#31-follow-process-of-adding-new-ui-elements)
+    - [3.2 DO NOT EXTEND visuals of existing components by adding props like `isLarge`, `isRounded`, `isSomethingElse`](#32-do-not-extend-visuals-of-existing-components-by-adding-props-like-islarge-isrounded-issomethingelse)
+    - [3.3 Always add new components to the UI kit. Follow figma naming](#33-always-add-new-components-to-the-ui-kit-follow-figma-naming)
+    - [3.4 Document props using js-doc comments](#34-document-props-using-js-doc-comments)
 
 ## 1. General
 #### 1.1. Always add NoSSR to AuthUser query on landings
@@ -144,7 +149,7 @@ Foundation provides set of atomic indents classes but they apply `!important` fl
 ```jsx
 <ul>
   // applies margin-bottom: 1rem!important;
-  <li className="margin-bottom-1"> 
+  <li className="margin-bottom-1">
     // content
   </li>
 </ul>
@@ -160,3 +165,35 @@ Foundation provides set of atomic indents classes but they apply `!important` fl
 </ul>
 ```
 
+## 3. UI kit
+
+The design system is built with [Storybook](https://storybook.js.org/) and deployed to [go/ui-kit](http://go/ui-kit) ([vpn](https://docs.google.com/document/d/1ybmBdRVKVhtMcbfIo54TxTCyDSat6Yp7IJdx4ekIO-U/edit#heading=h.bcp79hz4l863) is required)
+
+#### 3.1 Follow process of adding new UI elements
+
+In most cases it's possible to re-use existing code. Follow [this process](https://www.figma.com/file/ByAcTgdyQNDRct9HSyqh8R/Component-or-Style?type=whiteboard&node-id=0%3A1&t=jaOix2bCWscYlOMe-1) to make a decision
+
+#### 3.2 DO NOT EXTEND visuals of existing components by adding props like `isLarge`, `isRounded`, `isSomethingElse`
+
+In 99% of cases, we just don't need it. We should either keep the existing styles or change them in all places instead. Discuss it with responsible designers and decide how to proceed
+
+#### 3.3 Always add new components to the UI kit. Follow figma naming
+
+This just makes other developers' and designers' lives easier. Naming in Figma and code should be the same. It helps to identify existing components fast
+
+#### 3.4 Document props using js-doc comments
+Storybook parses js-doc and converts it into a description block
+
+✅ good
+```tsx
+interface CustomProps {
+  /** Describes the visual appearance of the button */
+  mode?: ButtonMode;
+  /** Describes the size of the button */
+  size?: ButtonSize;
+  /** Function Component Icon on the left side, typically used to render SVG icons. */
+  LeftIcon?: FCIcon;
+  /** Function Component Icon on the right side, typically used to render SVG icons. */
+  ...
+}
+```
