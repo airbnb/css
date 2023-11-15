@@ -1,15 +1,13 @@
 # JS Style Guide <!-- omit in toc -->
 
-[go/js-style-guide](http://go/js-style-guide)
-
-- [1\. Types](#1-types)
+- [1. Types](#1-types)
     - [**1.1. Primitives**: When you access a primitive type you work directly on its value.](#11-primitives-when-you-access-a-primitive-type-you-work-directly-on-its-value)
     - [**1.2. Complex**: When you access a complex type you work on a reference to its value.](#12-complex-when-you-access-a-complex-type-you-work-on-a-reference-to-its-value)
-- [2\. References](#2-references)
+- [2. References](#2-references)
     - [2.1. Use `const` for all of your references; avoid using `var`.](#21-useconstfor-all-of-your-references-avoid-usingvar)
     - [2.2. If you must reassign references, use `let` instead of `var`.](#22-if-you-must-reassign-references-useletinstead-ofvar)
     - [2.3. Note that both `let` and `const` are block-scoped.](#23-note-that-bothletandconstare-block-scoped)
-- [3\. Objects](#3-objects)
+- [3. Objects](#3-objects)
     - [3.1. Use the literal syntax for object creation.](#31-use-the-literal-syntax-for-object-creation)
     - [3.2. Use computed property names when creating objects with dynamic property names.](#32-use-computed-property-names-when-creating-objects-with-dynamic-property-names)
     - [3.3. Use object method shorthand.](#33-use-object-method-shorthand)
@@ -18,7 +16,7 @@
     - [3.6. Only quote properties that are invalid identifiers.](#36only-quote-properties-that-are-invalid-identifiers)
     - [3.7. Do not call `Object.prototype` methods directly, such as `hasOwnProperty`, `propertyIsEnumerable`, and `isPrototypeOf`.](#37-do-not-callobjectprototypemethods-directly-such-ashasownpropertypropertyisenumerable-andisprototypeof)
     - [3.8. Prefer the object spread operator over `Object.assign` to shallow-copy objects. Use the object rest operator to get a new object with certain properties omitted.](#38-prefer-the-object-spread-operator-overobjectassignto-shallow-copy-objects-use-the-object-rest-operator-to-get-a-new-object-with-certain-properties-omitted)
-- [4\. Arrays](#4-arrays)
+- [4. Arrays](#4-arrays)
     - [4.1. Use the literal syntax for array creation.](#41-use-the-literal-syntax-for-array-creation)
     - [4.2. Use Array#push instead of direct assignment to add items to an array.](#42-usearraypushinstead-of-direct-assignment-to-add-items-to-an-array)
     - [4.3. Use array spreads `...` to copy arrays.](#43-use-array-spreadsto-copy-arrays)
@@ -27,17 +25,17 @@
     - [4.6. Use `Array.from` instead of spread `...` for mapping over iterables, because it avoids creating an intermediate array.](#46-usearrayfrominstead-of-spreadfor-mapping-over-iterables-because-it-avoids-creating-an-intermediate-array)
     - [4.7. Use return statements in array method callbacks. It’s ok to omit the return if the function body consists of a single statement returning an expression without side effects, following  8.2.](#47-use-return-statements-in-array-method-callbacks-its-ok-to-omit-the-return-if-the-function-body-consists-of-a-single-statement-returning-an-expression-without-side-effects-following-82)
     - [4.8. Use line breaks after open and before close array brackets if an array has multiple lines](#48-use-line-breaks-after-open-and-before-close-array-brackets-if-an-array-has-multiple-lines)
-- [5\. Destructuring](#5-destructuring)
+- [5. Destructuring](#5-destructuring)
     - [5.1. Use object destructuring when accessing and using multiple properties of an object.](#51-use-object-destructuring-when-accessing-and-using-multiple-properties-of-an-object)
     - [5.2. Use array destructuring.](#52-use-array-destructuring)
     - [5.3. Use object destructuring for multiple return values, not array destructuring.](#53use-object-destructuring-for-multiple-return-values-not-array-destructuring)
-- [6\. Strings](#6-strings)
+- [6. Strings](#6-strings)
     - [6.1. Use single quotes `''` for strings.](#61-use-single-quotesfor-strings)
     - [6.2. Long strings should not be written across multiple lines using string concatenation.](#62-long-strings-should-not-be-written-across-multiple-lines-using-string-concatenation)
     - [6.3. When programmatically building up strings, use template strings instead of concatenation.](#63-when-programmatically-building-up-strings-use-template-strings-instead-of-concatenation)
     - [6.4. ❗Never use `eval()` on a string, it opens too many vulnerabilities.](#64-never-useevalon-a-string-it-opens-too-many-vulnerabilities)
     - [6.5. Do not unnecessarily escape characters in strings.](#65-do-not-unnecessarily-escape-characters-in-strings)
-- [7\. Functions](#7-functions)
+- [7. Functions](#7-functions)
     - [7.1. Use named function expressions instead of function declarations.](#71-use-named-function-expressions-instead-of-function-declarations)
     - [7.2. Wrap immediately invoked function expressions in parentheses.](#72-wrap-immediately-invoked-function-expressions-in-parentheses)
     - [7.3. Never declare a function in a non-function block (`if`, `while`, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears.](#73-never-declare-a-function-in-a-non-function-block-ifwhile-etc-assign-the-function-to-a-variable-instead-browsers-will-allow-you-to-do-it-but-they-all-interpret-it-differently-which-is-bad-news-bears)
@@ -47,28 +45,28 @@
     - [7.7. Use default parameter syntax rather than mutating function arguments.](#77-use-default-parameter-syntax-rather-than-mutating-function-arguments)
     - [7.8. Avoid side effects with default parameters.](#78-avoid-side-effects-with-default-parameters)
     - [7.9. Always put default parameters last.](#79-always-put-default-parameters-last)
-    - [7.10. If parameters number is greater than 3, put them into `options` parameter](#710-if-parameters-number-is-greater-than-3-put-them-into-options-parameter)
+    - [7.10. If parameters number is greater than 2, put them into `options` parameter](#710-if-parameters-number-is-greater-than-2-put-them-into-options-parameter)
     - [7.11. Never use the Function constructor to create a new function.](#711-never-use-the-function-constructor-to-create-a-new-function)
     - [7.12 Spacing in a function signature.](#712-spacing-in-a-function-signature)
     - [7.13 Never mutate parameters.](#713-never-mutate-parameters)
     - [7.14 Never reassign parameters.](#714-never-reassign-parameters)
     - [7.15. Prefer the use of the spread operator `...` to call variadic functions.](#715-prefer-the-use-of-the-spread-operatorto-call-variadic-functions)
     - [7.16. Functions with multiline signatures, or invocations, should be indented just like every other multiline list in this guide: with each item on a line by itself, with a trailing comma on the last item.](#716-functions-with-multiline-signatures-or-invocations-should-be-indented-just-like-every-other-multiline-list-in-this-guide-with-each-item-on-a-line-by-itself-with-a-trailing-comma-on-the-last-item)
-- [8\. Arrow Functions](#8-arrow-functions)
+- [8. Arrow Functions](#8-arrow-functions)
     - [8.1. When you must use an anonymous function (as when passing an inline callback), use arrow function notation.](#81-when-you-must-use-an-anonymous-function-as-when-passing-an-inline-callback-use-arrow-function-notation)
     - [8.2. If the function body consists of a single statement returning an expression without side effects, omit the braces and use the implicit return. Otherwise, keep the braces and use a `return` statement.](#82-if-the-function-body-consists-of-a-single-statement-returning-anexpressionwithout-side-effects-omit-the-braces-and-use-the-implicit-return-otherwise-keep-the-braces-and-use-areturnstatement)
     - [8.3. In case the expression spans over multiple lines, wrap it in parentheses for better readability.](#83-in-case-the-expression-spans-over-multiple-lines-wrap-it-in-parentheses-for-better-readability)
     - [8.4. If your function takes a single argument and doesn’t use braces, omit the parentheses. Otherwise, always include parentheses around arguments for clarity and consistency.](#84-if-your-function-takes-a-single-argument-and-doesnt-use-braces-omit-the-parentheses-otherwise-always-include-parentheses-around-arguments-for-clarity-and-consistency)
     - [8.5. Avoid confusing arrow function syntax (`=>`) with comparison operators (`<=`, `>=`).](#85-avoid-confusing-arrow-function-syntax--with-comparison-operators-)
     - [8.6. Enforce the location of arrow function bodies with implicit returns.](#86-enforce-the-location-of-arrow-function-bodies-with-implicit-returns)
-- [9\. Classes & Constructors](#9-classes--constructors)
+- [9. Classes \& Constructors](#9-classes--constructors)
     - [9.1. Always use `class`. Avoid manipulating `prototype` directly.](#91-always-useclass-avoid-manipulatingprototypedirectly)
     - [9.2. Use `extends` for inheritance.](#92-useextendsfor-inheritance)
     - [9.3. Methods can return `this` to help with method chaining.](#93-methods-can-returnthisto-help-with-method-chaining)
     - [9.4. It’s okay to write a custom `toString()` method, just make sure it works successfully and causes no side effects.](#94-its-okay-to-write-a-customtostringmethod-just-make-sure-it-works-successfully-and-causes-no-side-effects)
     - [9.5. Classes have a default constructor if one is not specified. An empty constructor function or one that just delegates to a parent class is unnecessary.](#95-classes-have-a-default-constructor-if-one-is-not-specified-an-empty-constructor-function-or-one-that-just-delegates-to-a-parent-class-is-unnecessary)
     - [9.6. Avoid duplicate class members.](#96-avoid-duplicate-class-members)
-- [10\. Modules](#10-modules)
+- [10. Modules](#10-modules)
     - [10.1. Always use modules (`import`/`export`) over a non-standard module system. You can always transpile to your preferred module system.](#101-always-use-modules-importexport-over-a-non-standard-module-system-you-can-always-transpile-to-your-preferred-module-system)
     - [10.2. Do not use wildcard imports.](#102-do-not-use-wildcard-imports)
     - [10.3. And do not export directly from an import.](#103-and-do-not-export-directly-from-an-import)
@@ -78,15 +76,15 @@
     - [10.7. Put all `import`s above non-import statements.](#107-put-allimports-above-non-import-statements)
     - [10.9. Multiline imports should be indented just like multiline array and object literals.](#109-multiline-imports-should-be-indented-just-like-multiline-array-and-object-literals)
     - [10.9. Disallow Webpack loader syntax in module import statements.](#109-disallow-webpack-loader-syntax-in-module-import-statements)
-- [11\. Iterators and Generators](#11-iterators-and-generators)
+- [11. Iterators and Generators](#11-iterators-and-generators)
     - [11.1. Don’t use iterators. Prefer JavaScript’s higher-order functions instead of loops like `for-in` or `for-of`.](#111-dont-use-iterators-prefer-javascripts-higher-order-functions-instead-of-loops-likefor-inorfor-of)
     - [11.2. Don’t use generators for now in browsers.](#112-dont-use-generators-for-now-in-browsers)
     - [11.3. If you must use generators, make sure their function signature is spaced properly.](#113-if-you-must-use-generators-make-sure-their-function-signature-is-spaced-properly)
-- [12\. Properties](#12-properties)
+- [12. Properties](#12-properties)
     - [12.1. Use dot notation when accessing properties.](#121-use-dot-notation-when-accessing-properties)
     - [12.3. Use bracket notation `[]` when accessing properties with a variable.](#123-use-bracket-notationwhen-accessing-properties-with-a-variable)
     - [12.3. Use exponentiation operator `**` when calculating exponentiations.](#123-use-exponentiation-operatorwhen-calculating-exponentiations)
-    - [13\. Variables](#13-variables)
+    - [13. Variables](#13-variables)
     - [13.1. Always use `const` or `let` to declare variables. Not doing so will result in global variables. We want to avoid polluting the global namespace. Captain Planet warned us of that.](#131-always-useconstorletto-declare-variables-not-doing-so-will-result-in-global-variables-we-want-to-avoid-polluting-the-global-namespace-captain-planet-warned-us-of-that)
     - [13.3. Use one `const` or `let` declaration per variable or assignment.](#133-use-oneconstorletdeclaration-per-variable-or-assignment)
     - [13.3. Group all your `const`s and then group all your `let`s.](#133-group-all-yourconsts-and-then-group-all-yourlets)
@@ -95,12 +93,12 @@
     - [13.6. Avoid using unary increments and decrements (`++`, `--`).](#136avoid-using-unary-increments-and-decrements---)
     - [13.7. Avoid linebreaks before or after `=` in an assignment. If your assignment violates `max-len`, surround the value in parens.](#137-avoid-linebreaks-before-or-afterin-an-assignment-if-your-assignment-violatesmax-len-surround-the-value-in-parens)
     - [13.9. Disallow unused variables.](#139-disallow-unused-variables)
-- [14\. Hoisting](#14-hoisting)
-    - [14.1. `var` declarations get hoisted to the top of their closest enclosing function scope, their assignment does not. `const` and `let` declarations are blessed with a new concept called Temporal Dead Zones (TDZ). It’s important to know why [typeof is no longer safe](http://es-discourse.com/t/why-typeof-is-no-longer-safe/15).](#141vardeclarations-get-hoisted-to-the-top-of-their-closest-enclosing-function-scope-their-assignment-does-notconstandletdeclarations-are-blessed-with-a-new-concept-calledtemporal-dead-zones-tdz-its-important-to-know-whytypeof-is-no-longer-safe)
+- [14. Hoisting](#14-hoisting)
+    - [14.1. `var` declarations get hoisted to the top of their closest enclosing function scope, their assignment does not. `const` and `let` declarations are blessed with a new concept called Temporal Dead Zones (TDZ). It’s important to know why typeof is no longer safe.](#141vardeclarations-get-hoisted-to-the-top-of-their-closest-enclosing-function-scope-their-assignment-does-notconstandletdeclarations-are-blessed-with-a-new-concept-calledtemporal-dead-zones-tdz-its-important-to-know-whytypeof-is-no-longer-safe)
     - [14.2. Anonymous function expressions hoist their variable name, but not the function assignment.](#142-anonymous-function-expressions-hoist-their-variable-name-but-not-the-function-assignment)
     - [14.3. Named function expressions hoist the variable name, not the function name or the function body.](#143-named-function-expressions-hoist-the-variable-name-not-the-function-name-or-the-function-body)
     - [14.4. Function declarations hoist their name and the function body.](#144-function-declarations-hoist-their-name-and-the-function-body)
-- [15\. Comparison Operators & Equality](#15-comparison-operators--equality)
+- [15. Comparison Operators \& Equality](#15-comparison-operators--equality)
     - [15.1. Use `===` and `!==` over `==` and `!=`.](#151-useandoverand)
     - [15.2. Conditional statements such as the `if` statement evaluate their expression using coercion with the `ToBoolean` abstract method and always follow these simple rules:](#152-conditional-statements-such-as-theifstatement-evaluate-their-expression-using-coercion-with-thetobooleanabstract-method-and-always-follow-these-simple-rules)
     - [15.3. Use shortcuts for booleans, but explicit comparisons for strings and numbers.](#153use-shortcuts-for-booleans-but-explicit-comparisons-for-strings-and-numbers)
@@ -108,22 +106,22 @@
     - [15.6. Use braces to create blocks in `case` and `default` clauses that contain lexical declarations (e.g. `let`, `const`, `function`, and `class`).](#156-use-braces-to-create-blocks-incaseanddefaultclauses-that-contain-lexical-declarations-egletconstfunction-andclass)
     - [15.6. Ternaries should not be nested. Enforce newlines between operands of ternary expressions.](#156-ternaries-should-not-be-nested-enforce-newlines-between-operands-of-ternary-expressions)
     - [15.7. Avoid unneeded ternary statements.](#157-avoid-unneeded-ternary-statements)
-    - [15.8 When mixing operators, enclose them in parentheses. The only exception is the standard arithmetic operators (`+`, `-`, `*`, & `/`) since their precedence is broadly understood.](#158when-mixing-operators-enclose-them-in-parentheses-the-only-exception-is-the-standard-arithmetic-operators----since-their-precedence-is-broadly-understood)
-- [16\. Blocks](#16-blocks)
+    - [15.8 When mixing operators, enclose them in parentheses. The only exception is the standard arithmetic operators (`+`, `-`, `*`, \& `/`) since their precedence is broadly understood.](#158when-mixing-operators-enclose-them-in-parentheses-the-only-exception-is-the-standard-arithmetic-operators----since-their-precedence-is-broadly-understood)
+- [16. Blocks](#16-blocks)
     - [16.1. Enforce consistent brace style for all control statements.](#161-enforce-consistent-brace-style-for-all-control-statements)
     - [16.2. If you’re using multi-line blocks with `if` and `else`, put `else` on the same line as your `if` block’s closing brace.](#162-if-youre-using-multi-line-blocks-withifandelse-putelseon-the-same-line-as-yourifblocks-closing-brace)
     - [16.4. If an `if` block always executes a `return` statement, the subsequent `else` block is unnecessary. A `return` in an `else if` block following an `if` block that contains a `return` can be separated into multiple `if` blocks.](#164-if-anifblock-always-executes-areturnstatement-the-subsequentelseblock-is-unnecessary-areturnin-anelse-ifblock-following-anifblock-that-contains-areturncan-be-separated-into-multipleifblocks)
-- [17\. Control Statements](#17-control-statements)
+- [17. Control Statements](#17-control-statements)
     - [17.1 In case your control statement (`if`, `while` etc.) gets too long or exceeds the maximum line length, each (grouped) condition could be put into a new line. The logical operator should begin the line.](#171in-case-your-control-statement-ifwhileetc-gets-too-long-or-exceeds-the-maximum-line-length-each-grouped-condition-could-be-put-into-a-new-line-the-logical-operator-should-begin-the-line)
     - [17.2 Don’t use selection operators in place of control statements.](#172dont-use-selection-operators-in-place-of-control-statements)
-- [18\. Comments](#18-comments)
+- [18. Comments](#18-comments)
     - [18.1 Use `/** ... */` for multi-line comments.](#181use--for-multi-line-comments)
     - [18.2. Use `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment unless it’s on the first line of a block.](#182-usefor-single-line-comments-place-single-line-comments-on-a-newline-above-the-subject-of-the-comment-put-an-empty-line-before-the-comment-unless-its-on-the-first-line-of-a-block)
     - [18.3. Start all comments with a space to make it easier to read.](#183start-all-comments-with-a-space-to-make-it-easier-to-read)
     - [18.4. Prefixing your comments with `FIXME` or `TODO` helps other developers quickly understand if you’re pointing out a problem that needs to be revisited, or if you’re suggesting a solution to the problem that needs to be implemented. These are different than regular comments because they are actionable. The actions are `FIXME: -- need to figure this out` or `TODO: -- need to implement`.](#184prefixing-your-comments-withfixmeortodohelps-other-developers-quickly-understand-if-youre-pointing-out-a-problem-that-needs-to-be-revisited-or-if-youre-suggesting-a-solution-to-the-problem-that-needs-to-be-implemented-these-are-different-than-regular-comments-because-they-are-actionable-the-actions-arefixme----need-to-figure-this-outortodo----need-to-implement)
     - [18.5. Use `// FIXME:` to annotate problems.](#185use-fixmeto-annotate-problems)
     - [18.6. Use `// TODO:` to annotate solutions to problems.](#186use-todoto-annotate-solutions-to-problems)
-    - [19\. Whitespace](#19-whitespace)
+    - [19. Whitespace](#19-whitespace)
     - [19.1. Use soft tabs (space character) set to 2 spaces.](#191use-soft-tabs-space-character-set-to-2-spaces)
     - [19.2. Place 1 space before the leading brace.](#192place-1-space-before-the-leading-brace)
     - [19.3. Place 1 space before the opening parenthesis in control statements (`if`, `while` etc.). Place no space between the argument list and the function name in function calls and declarations.](#193place-1-space-before-the-opening-parenthesis-in-control-statements-ifwhileetc-place-no-space-between-the-argument-list-and-the-function-name-in-function-calls-and-declarations)
@@ -142,19 +140,19 @@
     - [19.16 Enforce spacing between keys and values in object literal properties.](#1916enforce-spacing-between-keys-and-values-in-object-literal-properties)
     - [19.17 Avoid trailing spaces at the end of lines.](#1917avoid-trailing-spaces-at-the-end-of-lines)
     - [19.18 Avoid multiple empty lines and only allow one newline at the end of files.](#1918avoid-multiple-empty-lines-and-only-allow-one-newline-at-the-end-of-files)
-- [20\. Commas](#20-commas)
-    - [20.1. Leading commas: **Nope.**](#201leading-commasnope)
-    - [20.2. Additional trailing comma: **Yup.**](#202additional-trailing-commayup)
-- [21\. Semicolons](#21-semicolons)
-    - [21.1. **Yup.**](#211-yup)
-- [22\. Type Casting & Coercion](#22-type-casting--coercion)
+- [20. Commas](#20-commas)
+    - [20.1. Leading commas: **Nope.** ](#201leading-commasnope)
+    - [20.2. Additional trailing comma: **Yup.** ](#202additional-trailing-commayup)
+- [21. Semicolons](#21-semicolons)
+    - [21.1. **Yup.** ](#211-yup)
+- [22. Type Casting \& Coercion](#22-type-casting--coercion)
     - [22.1. Perform type coercion at the beginning of the statement.](#221perform-type-coercion-at-the-beginning-of-the-statement)
     - [22.2 Strings:](#222strings)
     - [22.3. Numbers: Use `Number` for type casting and `parseInt` always with a radix for parsing strings.](#223-numbers-usenumberfor-type-casting-andparseintalways-with-a-radix-for-parsing-strings)
     - [22.4. Bitwise operators: no](#224-bitwise-operators-no)
     - [22.5. If for whatever reason you are doing something wild and `parseInt` is your bottleneck and need to use Bitshift for performance reasons, leave a comment explaining why and what you’re doing.](#225if-for-whatever-reason-you-are-doing-something-wild-andparseintis-your-bottleneck-and-need-to-use-bitshift-forperformance-reasons-leave-a-comment-explaining-why-and-what-youre-doing)
     - [22.6 Booleans:](#226booleans)
-- [23\. Naming Conventions](#23-naming-conventions)
+- [23. Naming Conventions](#23-naming-conventions)
     - [23.1 Avoid single letter names. Be descriptive with your naming.](#231avoid-single-letter-names-be-descriptive-with-your-naming)
     - [23.2. Use camelCase when naming objects, functions, and instances. Function names are typically verbs or verb phrases.](#232-use-camelcase-when-naming-objects-functions-and-instances-function-names-are-typically-verbs-or-verb-phrases)
     - [23.3. Use PascalCase only when naming constructors or classes.](#233-use-pascalcase-only-when-naming-constructors-or-classes)
@@ -166,20 +164,20 @@
     - [23.9 Acronyms and initialisms should always be all capitalized, or all lowercased.](#239acronyms-and-initialisms-should-always-be-all-capitalized-or-all-lowercased)
     - [23.10 You may optionally uppercase a constant only if it (1) is exported, (2) is a `const` (it can not be reassigned), and (3) the programmer can trust it (and its nested properties) to never change.](#2310you-may-optionally-uppercase-a-constant-only-if-it-1-is-exported-2-is-aconstit-can-not-be-reassigned-and-3-the-programmer-can-trust-it-and-its-nested-properties-to-never-change)
     - [23.11 Don't shorten variables or functions names](#2311-dont-shorten-variables-or-functions-names)
-- [24\. Accessors](#24-accessors)
+- [24. Accessors](#24-accessors)
     - [24.1 Accessor functions for properties are not required.](#241accessor-functions-for-properties-are-not-required)
     - [24.2 Do not use JavaScript getters/setters as they cause unexpected side effects and are harder to test, maintain, and reason about. Instead, if you do make accessor functions, use `getVal()` and `setVal('hello')`.](#242do-not-use-javascript-getterssetters-as-they-cause-unexpected-side-effects-and-are-harder-to-test-maintain-and-reason-about-instead-if-you-do-make-accessor-functions-usegetvalandsetvalhello)
     - [24.3 If the property/method is a `boolean`, use `isVal()` or `hasVal()`.](#243if-the-propertymethod-is-aboolean-useisvalorhasval)
     - [24.4 It’s okay to create `get()` and `set()` functions, but be consistent.](#244its-okay-to-creategetandsetfunctions-but-be-consistent)
-- [25\. ECMAScript 5 Compatibility](#25-ecmascript-5-compatibility)
-    - [25.1. Refer to Kangax’s ES5 [compatibility table](https://kangax.github.io/es5-compat-table/).](#251-refer-tokangaxs-es5compatibility-table)
-- [26\. ECMAScript 6+ (ES 2015+) Styles](#26-ecmascript-6-es-2015-styles)
+- [25. ECMAScript 5 Compatibility](#25-ecmascript-5-compatibility)
+    - [25.1. Refer to Kangax’s ES5 compatibility table.](#251-refer-tokangaxs-es5compatibility-table)
+- [26. ECMAScript 6+ (ES 2015+) Styles](#26-ecmascript-6-es-2015-styles)
     - [26.1 This is a collection of links to the various ES6+ features.](#261this-is-a-collection-of-links-to-the-various-es6-features)
     - [26.2 Do not use TC39 proposals that have not reached stage 3.](#262do-not-usetc39-proposalsthat-have-not-reached-stage-3)
-- [27\. Standard Library](#27-standard-library)
+- [27. Standard Library](#27-standard-library)
     - [27.1. Use `Number.isNaN` instead of global `isNaN`.](#271usenumberisnaninstead-of-globalisnan)
     - [27.2. Use `Number.isFinite` instead of global `isFinite`.](#272usenumberisfiniteinstead-of-globalisfinite)
-- [28\. Testing](#28-testing)
+- [28. Testing](#28-testing)
     - [28.1. **Yup.**](#281yup)
     - [28.2. **No, but seriously**:](#282no-but-seriously)
 - [Performance](#performance)
@@ -193,9 +191,8 @@
     - [**Books**](#books)
     - [**Blogs**](#blogs)
     - [**Podcasts**](#podcasts)
-**💡 note**: this guide assumes you are using [Babel](https://babeljs.io/), and requires that you use [babel-preset-airbnb](https://npmjs.com/babel-preset-airbnb) or the equivalent. It also assumes you are installing shims/polyfills in your app, with [airbnb-browser-shims](https://npmjs.com/airbnb-browser-shims) or the equivalent.
 
-  
+
 
 1\. Types
 ---------
@@ -218,7 +215,7 @@ console.log(foo, bar); // => 1, 9
 
 *   *   Symbols cannot be faithfully polyfilled, so they should not be used when targeting browsers/environments that don’t support them natively.
 
-  
+
 
 #### **1.2. Complex**: When you access a complex type you work on a reference to its value.
 
@@ -233,7 +230,7 @@ bar[0] = 9;
 console.log(foo[0], bar[0]); // => 9, 9
 ```
 
-  
+
 
 2\. References
 --------------
@@ -242,11 +239,11 @@ console.log(foo[0], bar[0]); // => 9, 9
 
 eslint: [`prefer-const`](https://eslint.org/docs/rules/prefer-const.html), [`no-const-assign`](https://eslint.org/docs/rules/no-const-assign.html)
 
-  
+
 
 >❓Why? This ensures that you can’t reassign your references, which can lead to bugs and difficult to comprehend code.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -258,17 +255,17 @@ const a = 1;
 const b = 2;
 ```
 
-  
+
 
 #### 2.2. If you must reassign references, use `let` instead of `var`.
 
 eslint: [`no-var`](https://eslint.org/docs/rules/no-var.html)
 
-  
+
 
 >❓Why? `let` is block-scoped rather than function-scoped like `var`.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -280,33 +277,33 @@ let count = 1;
 if (true) {count += 1;}
 ```
 
-  
+
 
 #### 2.3. Note that both `let` and `const` are block-scoped.
 
 ```javascript
 // const and let only exist in the blocks they are defined in.
-{ 
-  let a = 1; 
-  const b = 1; 
+{
+  let a = 1;
+  const b = 1;
 }
 
 console.log(a); // ReferenceError
 console.log(b); // ReferenceError
 ```
 
-  
+
 
 3\. Objects
 -----------
 
-  
+
 
 #### 3.1. Use the literal syntax for object creation.
 
 eslint: [`no-new-object`](https://eslint.org/docs/rules/no-new-object.html)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -316,15 +313,15 @@ const item = new Object();
 const item = {};
 ```
 
-  
+
 
 #### 3.2. Use computed property names when creating objects with dynamic property names.
 
-  
+
 
 >❓Why? They allow you to define all the properties of an object in one place.
 
-  
+
 
 ```bash
 function getKey(k) {
@@ -346,13 +343,13 @@ const obj = {
 };
 ```
 
-  
+
 
 #### 3.3. Use object method shorthand.
 
 eslint: [`object-shorthand`](https://eslint.org/docs/rules/object-shorthand.html)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -372,17 +369,17 @@ const atom = {
 };
 ```
 
-  
+
 
 #### 3.4. Use property value shorthand.
 
 eslint: [`object-shorthand`](https://eslint.org/docs/rules/object-shorthand.html)
 
-  
+
 
 >❓Why? It is shorter to write and descriptive.
 
-  
+
 
 ```javascript
 const lukeSkywalker = 'Luke Skywalker';
@@ -398,15 +395,15 @@ const obj = {
 };
 ```
 
-  
+
 
 #### 3.6. Group your shorthand properties at the beginning of your object declaration.
 
-  
+
 
 >❓Why? It’s easier to tell which properties are using the shorthand.
 
-  
+
 
 ```javascript
 const anakinSkywalker = 'Anakin Skywalker';
@@ -433,17 +430,17 @@ const obj = {
 };
 ```
 
-  
+
 
 #### 3.6. Only quote properties that are invalid identifiers.
 
 eslint: [`quote-props`](https://eslint.org/docs/rules/quote-props.html)
 
-  
+
 
 >❓Why? In general we consider it subjectively easier to read. It improves syntax highlighting, and is also more easily optimized by many JS engines.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -461,17 +458,17 @@ const good = {
 };
 ```
 
-  
+
 
 #### 3.7. Do not call `Object.prototype` methods directly, such as `hasOwnProperty`, `propertyIsEnumerable`, and `isPrototypeOf`.
 
 eslint: [`no-prototype-builtins`](https://eslint.org/docs/rules/no-prototype-builtins)
 
-  
+
 
 >❓Why? These methods may be shadowed by properties on the object in question - consider `{ hasOwnProperty: false }` - or, the object may be a null object (`Object.create(null)`).
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -481,46 +478,46 @@ console.log(object.hasOwnProperty(key));
 console.log(Object.prototype.hasOwnProperty.call(object, key));
 
 // best
-const has = Object.prototype.hasOwnProperty; 
+const has = Object.prototype.hasOwnProperty;
 // cache the lookup once, in module scope./* or */import has from 'has'; // https://www.npmjs.com/package/has// ...
 
 console.log(has.call(object, key));
 ```
 
-  
+
 
 #### 3.8. Prefer the object spread operator over [`Object.assign`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) to shallow-copy objects. Use the object rest operator to get a new object with certain properties omitted.
 
-  
+
 
 ```javascript
 // very bad
-const original = { 
-  a: 1, 
-  b: 2 
+const original = {
+  a: 1,
+  b: 2
 };
 
 const copy = Object.assign(original, { c: 3 }); // this mutates `original` ಠ_ಠ
 delete copy.a; // so does this
 
 // ❌ bad
-const original = { 
-  a: 1, 
-  b: 2 
+const original = {
+  a: 1,
+  b: 2
 };
-const copy = Object.assign({}, original, { c: 3 }); 
+const copy = Object.assign({}, original, { c: 3 });
 // copy => { a: 1, b: 2, c: 3 }
 
 // ✅ good
 const original = { a: 1, b: 2 };
-const copy = { ...original, c: 3 }; 
+const copy = { ...original, c: 3 };
 // copy => { a: 1, b: 2, c: 3 }
 
-const { a, ...noA } = copy; 
+const { a, ...noA } = copy;
 // noA => { b: 2, c: 3 }
 ```
 
-  
+
 
 4\. Arrays
 ----------
@@ -529,7 +526,7 @@ const { a, ...noA } = copy;
 
 eslint: [`no-array-constructor`](https://eslint.org/docs/rules/no-array-constructor.html)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -539,7 +536,7 @@ const items = new Array();
 const items = [];
 ```
 
-  
+
 
 #### 4.2. Use [Array#push](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/push) instead of direct assignment to add items to an array.
 
@@ -553,7 +550,7 @@ someStack[someStack.length] = 'abracadabra';
 someStack.push('abracadabra');
 ```
 
-  
+
 
 #### 4.3. Use array spreads `...` to copy arrays.
 
@@ -570,11 +567,11 @@ for (let i = 0; i < len; i += 1) {
 const itemsCopy = [...items];
 ```
 
-  
+
 
 #### 4.4 To convert an iterable object to an array, use spreads `...` instead of [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from).
 
-  
+
 
 ```javascript
 const foo = document.querySelectorAll('.foo');
@@ -586,18 +583,18 @@ const nodes = Array.from(foo);
 const nodes = [...foo];
 ```
 
-  
+
 
 #### 4.5. Use [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) for converting an array-like object to an array.
 
-  
+
 
 ```javascript
-const arrLike = { 
-  0: 'foo', 
-  1: 'bar', 
-  2: 'baz', 
-  length: 3 
+const arrLike = {
+  0: 'foo',
+  1: 'bar',
+  2: 'baz',
+  length: 3
 };
 
 // ❌ bad
@@ -607,7 +604,7 @@ const arr = Array.prototype.slice.call(arrLike);
 const arr = Array.from(arrLike);
 ```
 
-  
+
 
 #### 4.6. Use [`Array.from`](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/from) instead of spread `...` for mapping over iterables, because it avoids creating an intermediate array.
 
@@ -619,13 +616,13 @@ const baz = [...foo].map(bar);
 const baz = Array.from(foo, bar);
 ```
 
-  
+
 
 #### 4.7. Use return statements in array method callbacks. It’s ok to omit the return if the function body consists of a single statement returning an expression without side effects, following  [8.2.](https://app.clickup.com/24383048/v/dc/q83j8-12520/q83j8-29741?block=block-1661efd9-3924-4ae4-a25a-c1d0326734aa)
 
 eslint: [`array-callback-return`](https://eslint.org/docs/rules/array-callback-return)
 
-  
+
 
 ```javascript
 // ✅ good
@@ -671,7 +668,7 @@ inbox.filter((msg) => {
 });
 ```
 
-  
+
 
 #### 4.8. Use line breaks after open and before close array brackets if an array has multiple lines
 
@@ -709,7 +706,7 @@ const numberInArray = [
 ];
 ```
 
-  
+
 
 5\. Destructuring
 -----------------
@@ -718,11 +715,11 @@ const numberInArray = [
 
 eslint: [`prefer-destructuring`](https://eslint.org/docs/rules/prefer-destructuring)
 
-  
+
 
 >❓Why? Destructuring saves you from creating temporary references for those properties.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -745,13 +742,13 @@ function getFullName({ firstName, lastName }) {
 }
 ```
 
-  
+
 
 #### 5.2. Use array destructuring.
 
 eslint: [`prefer-destructuring`](https://eslint.org/docs/rules/prefer-destructuring)
 
-  
+
 
 ```javascript
 const arr = [1, 2, 3, 4];
@@ -764,15 +761,15 @@ const second = arr[1];
 const [first, second] = arr;
 ```
 
-  
+
 
 #### 5.3. Use object destructuring for multiple return values, not array destructuring.
 
-  
+
 
 >❓Why? You can add new properties over time or change the order of things without breaking call sites.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -794,7 +791,7 @@ function processInput(input) {
 const { left, top } = processInput(input);
 ```
 
-  
+
 
 6\. Strings
 -----------
@@ -803,7 +800,7 @@ const { left, top } = processInput(input);
 
 eslint: [`quotes`](https://eslint.org/docs/rules/quotes.html)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -816,15 +813,15 @@ const name = `Capt. Janeway`;
 const name = 'Capt. Janeway';
 ```
 
-  
+
 
 #### 6.2. Long strings should not be written across multiple lines using string concatenation.
 
-  
+
 
 >❓Why? Broken strings are painful to work with and make code less searchable.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -842,17 +839,17 @@ const errorMessage = 'This is a super long error that was thrown because ' +
 const errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
 ```
 
-  
+
 
 #### 6.3. When programmatically building up strings, use template strings instead of concatenation.
 
 eslint: [`prefer-template`](https://eslint.org/docs/rules/prefer-template.html) [`template-curly-spacing`](https://eslint.org/docs/rules/template-curly-spacing)
 
-  
+
 
 >❓Why? Template strings give you a readable, concise syntax with proper newlines and string interpolation features.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -876,23 +873,23 @@ function sayHi(name) {
 }
 ```
 
-  
+
 
 #### 6.4. ❗Never use `eval()` on a string, it opens too many vulnerabilities.
 
 eslint: [`no-eval`](https://eslint.org/docs/rules/no-eval)
 
-  
+
 
 #### 6.5. Do not unnecessarily escape characters in strings.
 
 eslint: [`no-useless-escape`](https://eslint.org/docs/rules/no-useless-escape)
 
-  
+
 
 >❓Why? Backslashes harm readability, thus they should only be present when necessary.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -903,22 +900,22 @@ const foo = '\'this\' is "quoted"';
 const foo = `my name is '${name}'`;
 ```
 
-  
+
 
 7\. Functions
 -------------
 
-  
+
 
 #### 7.1. Use named function expressions instead of function declarations.
 
 eslint: [`func-style`](https://eslint.org/docs/rules/func-style)
 
-  
+
 
 >❓Why? Function declarations are hoisted, which means that it’s easy - too easy - to reference the function before it is defined in the file. This harms readability and maintainability. If you find that a function’s definition is large or complex enough that it is interfering with understanding the rest of the file, then perhaps it’s time to extract it to its own module! Don’t forget to explicitly name the expression, regardless of whether or not the name is inferred from the containing variable (which is often the case in modern browsers or when using compilers such as Babel). This eliminates any assumptions made about the Error’s call stack. ([Discussion](https://github.com/airbnb/javascript/issues/794))
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -938,17 +935,17 @@ const short = function longUniqueMoreDescriptiveLexicalFoo() {
 };
 ```
 
-  
+
 
 #### 7.2. Wrap immediately invoked function expressions in parentheses.
 
 eslint: [`wrap-iife`](https://eslint.org/docs/rules/wrap-iife.html)
 
-  
+
 
 >❓Why? An immediately invoked function expression is a single unit - wrapping both it, and its invocation parens, in parens, cleanly expresses this. Note that in a world with modules everywhere, you almost never need an IIFE.
 
-  
+
 
 ```javascript
 // immediately-invoked function expression (IIFE)
@@ -957,13 +954,13 @@ eslint: [`wrap-iife`](https://eslint.org/docs/rules/wrap-iife.html)
 }());
 ```
 
-  
+
 
 #### 7.3. Never declare a function in a non-function block (`if`, `while`, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears.
 
 eslint: [`no-loop-func`](https://eslint.org/docs/rules/no-loop-func.html)
 
-  
+
 
 #### **7.4. Note:** ECMA-262 defines a `block` as a list of statements. A function declaration is not a statement.
 
@@ -984,7 +981,7 @@ if (currentUser) {
 }
 ```
 
-  
+
 
 #### 7.5. Never name a parameter `arguments`. This will take precedence over the `arguments` object that is given to every function scope.
 
@@ -1000,17 +997,17 @@ function foo(name, options, args) {
 }
 ```
 
-  
+
 
 #### 7.6. Never use `arguments`, opt to use rest syntax `...` instead.
 
 eslint: [`prefer-rest-params`](https://eslint.org/docs/rules/prefer-rest-params)
 
-  
+
 
 >❓Why? `...` is explicit about which arguments you want pulled. Plus, rest arguments are a real Array, and not merely Array-like like `arguments`.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1025,7 +1022,7 @@ function concatenateAll(...args) {
 }
 ```
 
-  
+
 
 #### 7.7. Use default parameter syntax rather than mutating function arguments.
 
@@ -1053,15 +1050,15 @@ function handleThings(opts = {}) {
 }
 ```
 
-  
+
 
 #### 7.8. Avoid side effects with default parameters.
 
-  
+
 
 >❓Why? They are confusing to reason about.
 
-  
+
 
 ```javascript
 var b = 1;
@@ -1077,7 +1074,7 @@ count(3); // 3
 count();  // 3
 ```
 
-  
+
 
 #### 7.9. Always put default parameters last.
 
@@ -1093,24 +1090,24 @@ function handleThings(name, opts = {}) {
 }
 ```
 
-  
 
-#### 7.10. If parameters number is greater than 3, put them into `options` parameter
 
-  
+#### 7.10. If parameters number is greater than 2, put them into `options` parameter
+
+
 
 >❓Why? It improves readability and helps to avoid mess with parameters order
 
-  
+
 
 ```javascript
 // ❌ bad
 function createUser(
-  firstName, 
-  middleName, 
-  lastName, 
-  userName, 
-  nickName, 
+  firstName,
+  middleName,
+  lastName,
+  userName,
+  nickName,
   city
 ) {
   // ...
@@ -1120,38 +1117,38 @@ createUser('Bob', null, 'Doe', 'bob_doe', 'bobbie', 'New York'); // need to chec
 
 
 // ✅ good
-function createUser({ 
-  firstName, 
-  middleName, 
-  lastName, 
-  userName, 
-  nickName, 
-  city 
+function createUser({
+  firstName,
+  middleName,
+  lastName,
+  userName,
+  nickName,
+  city
 } = {}) {
   // ...
 }
 
 createUser({
-  firstName: 'Bob', 
-  middleName: null, 
-  lastName: 'Doe', 
-  userName: 'bob_doe', 
-  nickName: 'bobbie', 
+  firstName: 'Bob',
+  middleName: null,
+  lastName: 'Doe',
+  userName: 'bob_doe',
+  nickName: 'bobbie',
   city: 'New York'
 });
 ```
 
-  
+
 
 #### 7.11. Never use the Function constructor to create a new function.
 
 eslint: [`no-new-func`](https://eslint.org/docs/rules/no-new-func)
 
-  
+
 
 >❓Why? Creating a function in this way evaluates a string similarly to `eval()`, which opens vulnerabilities.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1161,17 +1158,17 @@ var add = new Function('a', 'b', 'return a + b');
 var subtract = Function('a', 'b', 'return a - b');
 ```
 
-  
+
 
 #### 7.12 Spacing in a function signature.
 
 eslint: [`space-before-function-paren`](https://eslint.org/docs/rules/space-before-function-paren) [`space-before-blocks`](https://eslint.org/docs/rules/space-before-blocks)
 
-  
+
 
 >❓Why? Consistency is good, and you shouldn’t have to add or remove a space when adding or removing a name.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1184,17 +1181,17 @@ const x = function () {};
 const y = function a() {};
 ```
 
-  
+
 
 #### 7.13 Never mutate parameters.
 
 eslint: [`no-param-reassign`](https://eslint.org/docs/rules/no-param-reassign.html)
 
-  
+
 
 >❓Why? Manipulating objects passed in as parameters can cause unwanted variable side effects in the original caller.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1208,17 +1205,17 @@ function f2(obj) {
 }
 ```
 
-  
+
 
 #### 7.14 Never reassign parameters.
 
 eslint: [`no-param-reassign`](https://eslint.org/docs/rules/no-param-reassign.html)
 
-  
+
 
 >❓Why? Reassigning parameters can lead to unexpected behavior, especially when accessing the `arguments` object. It can also cause optimization issues, especially in V8.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1243,17 +1240,17 @@ function f4(a = 1) {
 }
 ```
 
-  
+
 
 #### 7.15. Prefer the use of the spread operator `...` to call variadic functions.
 
 eslint: [`prefer-spread`](https://eslint.org/docs/rules/prefer-spread)
 
-  
+
 
 >❓Why? It’s cleaner, you don’t need to supply a context, and you can not easily compose `new` with `apply`.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1271,11 +1268,11 @@ new (Function.prototype.bind.apply(Date, [null, 2016, 8, 5]));
 new Date(...[2016, 8, 5]);
 ```
 
-  
+
 
 #### 7.16. Functions with multiline signatures, or invocations, should be indented just like every other multiline list in this guide: with each item on a line by itself, with a trailing comma on the last item.
 
-  
+
 
 eslint: [`function-paren-newline`](https://eslint.org/docs/rules/function-paren-newline)
 
@@ -1309,23 +1306,23 @@ console.log(
 );
 ```
 
-  
+
 
 8\. Arrow Functions
 -------------------
 
-  
+
 
 #### 8.1. When you must use an anonymous function (as when passing an inline callback), use arrow function notation.
 
 eslint: [`prefer-arrow-callback`](https://eslint.org/docs/rules/prefer-arrow-callback.html), [`arrow-spacing`](https://eslint.org/docs/rules/arrow-spacing.html)
 
-  
 
->❓Why? It creates a version of the function that executes in the context of `this`, which is usually what you want, and is a more concise syntax.  
+
+>❓Why? It creates a version of the function that executes in the context of `this`, which is usually what you want, and is a more concise syntax.
 Why not? If you have a fairly complicated function, you might move that logic out into its own named function expression.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1341,17 +1338,17 @@ Why not? If you have a fairly complicated function, you might move that logic ou
 });
 ```
 
-  
+
 
 #### 8.2. If the function body consists of a single statement returning an [expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#Expressions) without side effects, omit the braces and use the implicit return. Otherwise, keep the braces and use a `return` statement.
 
 eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens.html), [`arrow-body-style`](https://eslint.org/docs/rules/arrow-body-style.html)
 
-  
+
 
 >❓Why? Syntactic sugar. It reads well when multiple functions are chained together.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1393,15 +1390,15 @@ foo(() => {
 });
 ```
 
-  
+
 
 #### 8.3. In case the expression spans over multiple lines, wrap it in parentheses for better readability.
 
-  
+
 
 >❓Why? It shows clearly where the function starts and ends.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1420,21 +1417,21 @@ foo(() => {
 ));
 ```
 
-  
+
 
 #### 8.4. If your function takes a single argument and doesn’t use braces, omit the parentheses. Otherwise, always include parentheses around arguments for clarity and consistency.
 
 eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens.html)
 
-  
+
 
 **💡 Note:** it is also acceptable to always use parentheses, in which case use the [“always” option](https://eslint.org/docs/rules/arrow-parens#always) for eslint.
 
-  
+
 
 >❓Why? Less visual clutter.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1461,13 +1458,13 @@ eslint: [`arrow-parens`](https://eslint.org/docs/rules/arrow-parens.html)
 });
 ```
 
-  
+
 
 #### 8.5. Avoid confusing arrow function syntax (`=>`) with comparison operators (`<=`, `>=`).
 
 eslint: [`no-confusing-arrow`](https://eslint.org/docs/rules/no-confusing-arrow)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1486,13 +1483,13 @@ const itemHeight = (item) => {
 };
 ```
 
-  
+
 
 #### 8.6. Enforce the location of arrow function bodies with implicit returns.
 
 eslint: [`implicit-arrow-linebreak`](https://eslint.org/docs/rules/implicit-arrow-linebreak)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1510,20 +1507,20 @@ eslint: [`implicit-arrow-linebreak`](https://eslint.org/docs/rules/implicit-arr
 )
 ```
 
-  
+
 
 9\. Classes & Constructors
 --------------------------
 
-  
+
 
 #### 9.1. Always use `class`. Avoid manipulating `prototype` directly.
 
-  
+
 
 >❓Why? `class` syntax is more concise and easier to reason about.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1549,15 +1546,15 @@ class Queue {
 }
 ```
 
-  
+
 
 #### 9.2. Use `extends` for inheritance.
 
-  
+
 
 >❓Why? It is a built-in way to inherit prototype functionality without breaking `instanceof`.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1578,7 +1575,7 @@ class PeekableQueue extends Queue {
 }
 ```
 
-  
+
 
 #### 9.3. Methods can return `this` to help with method chaining.
 
@@ -1616,7 +1613,7 @@ luke.jump()
   .setHeight(20);
 ```
 
-  
+
 
 #### 9.4. It’s okay to write a custom `toString()` method, just make sure it works successfully and causes no side effects.
 
@@ -1636,13 +1633,13 @@ class Jedi {
 }
 ```
 
-  
+
 
 #### 9.5. Classes have a default constructor if one is not specified. An empty constructor function or one that just delegates to a parent class is unnecessary.
 
 eslint: [`no-useless-constructor`](https://eslint.org/docs/rules/no-useless-constructor)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1670,17 +1667,17 @@ class Rey extends Jedi {
 }
 ```
 
-  
+
 
 #### 9.6. Avoid duplicate class members.
 
 eslint: [`no-dupe-class-members`](https://eslint.org/docs/rules/no-dupe-class-members)
 
-  
+
 
 >❓Why? Duplicate class member declarations will silently prefer the last one - having duplicates is almost certainly a bug.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1700,20 +1697,20 @@ class Foo {
 }
 ```
 
-  
+
 
 10\. Modules
 ------------
 
-  
+
 
 #### 10.1. Always use modules (`import`/`export`) over a non-standard module system. You can always transpile to your preferred module system.
 
-  
+
 
 >❓Why? Modules are the future, let’s start using the future now.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1729,15 +1726,15 @@ import { es6 } from './AirbnbStyleGuide';
 export default es6;
 ```
 
-  
+
 
 #### 10.2. Do not use wildcard imports.
 
-  
+
 
 >❓Why? This makes sure you have a single default export.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1747,19 +1744,19 @@ import * as AirbnbStyleGuide from './AirbnbStyleGuide';
 import AirbnbStyleGuide from './AirbnbStyleGuide';
 ```
 
-  
+
 
 #### 10.3. And do not export directly from an import.
 
-  
+
 
 **💡 Note:** It's allowed to write wildcard export in \`index.js\` files to simplify import paths
 
-  
+
 
 >❓Why? Although the one-liner is concise, having one clear way to import and one clear way to export makes things consistent.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1776,17 +1773,17 @@ export default es6;
 export * from './AirbnbStyleGuide'
 ```
 
-  
+
 
 #### 10.4. Only import from a path in one place.
 
 eslint: [`no-duplicate-imports`](https://eslint.org/docs/rules/no-duplicate-imports)
 
-  
+
 
 >❓Why? Having multiple lines that import from the same path can make code harder to maintain.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1804,17 +1801,17 @@ import foo, {
 } from 'foo';
 ```
 
-  
+
 
 #### 10.5. Do not export mutable bindings.
 
 eslint: [`import/no-mutable-exports`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-mutable-exports.md)
 
-  
+
 
 >❓Why? Mutation should be avoided in general, but in particular when exporting mutable bindings. While this technique may be needed for some special cases, in general, only constant references should be exported.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1826,15 +1823,15 @@ const foo = 3;
 export { foo };
 ```
 
-  
+
 
 #### 10.6. Prefer named export over default export.
 
-  
+
 
 >❓Why? Easier to maintain and refactor. Same module name is enforced across all project imports
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1849,17 +1846,17 @@ export function foo() {}
 import { foo } from './foo' // import name is stable
 ```
 
-  
+
 
 #### 10.7. Put all `import`s above non-import statements.
 
 eslint: [`import/first`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/first.md)
 
-  
+
 
 >❓Why? Since `import`s are hoisted, keeping them all at the top prevents surprising behavior.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1875,15 +1872,15 @@ import bar from 'bar';
 foo.init();
 ```
 
-  
+
 
 #### 10.9. Multiline imports should be indented just like multiline array and object literals.
 
-  
+
 
 >❓Why? The curly braces follow the same indentation rules as every other curly brace block in the style guide, as do the trailing commas.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1899,17 +1896,17 @@ import {
 } from 'path';
 ```
 
-  
+
 
 #### 10.9. Disallow Webpack loader syntax in module import statements.
 
 eslint: [`import/no-webpack-loader-syntax`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-webpack-loader-syntax.md)
 
-  
+
 
 >❓Why? Since using Webpack syntax in the imports couples the code to a module bundler. Prefer using the loader syntax in `webpack.config.js`.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -1921,7 +1918,7 @@ import fooSass from 'foo.scss';
 import barCss from 'bar.css';
 ```
 
-  
+
 
 11\. Iterators and Generators
 -----------------------------
@@ -1930,12 +1927,12 @@ import barCss from 'bar.css';
 
 eslint: [`no-iterator`](https://eslint.org/docs/rules/no-iterator.html) [`no-restricted-syntax`](https://eslint.org/docs/rules/no-restricted-syntax)
 
-  
 
->❓Why? This enforces our immutable rule. Dealing with pure functions that return values is easier to reason about than side effects.  
+
+>❓Why? This enforces our immutable rule. Dealing with pure functions that return values is easier to reason about than side effects.
 Use `map()` / `every()` / `filter()` / `find()` / `findIndex()` / `reduce()` / `some()` / … to iterate over arrays, and `Object.keys()` / `Object.values()` / `Object.entries()` to produce arrays so you can iterate over objects.
 
-  
+
 
 ```javascript
 const numbers = [1, 2, 3, 4, 5];
@@ -1974,27 +1971,27 @@ numbers.forEach((num) => {
 const increasedByOne = numbers.map(num => num + 1);
 ```
 
-  
+
 
 #### 11.2. Don’t use generators for now in browsers.
 
 **💡 Note:** It's allowed to use generators in NodeJS environment
 
-  
+
 
 >❓Why? They don’t transpile well to ES5.
 
-  
+
 
 #### 11.3. If you must use generators, make sure their function signature is spaced properly.
 
 eslint: [`generator-star-spacing`](https://eslint.org/docs/rules/generator-star-spacing)
 
-  
+
 
 >❓Why? `function` and `*` are part of the same conceptual keyword - `*` is not a modifier for `function`, `function*` is a unique construct, different from `function`.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -2052,18 +2049,18 @@ const foo = function* () {
 };
 ```
 
-  
+
 
 12\. Properties
 ---------------
 
-  
+
 
 #### 12.1. Use dot notation when accessing properties.
 
 eslint: [`dot-notation`](https://eslint.org/docs/rules/dot-notation.html)
 
-  
+
 
 ```javascript
 const luke = {
@@ -2078,7 +2075,7 @@ const isJedi = luke['jedi'];
 const isJedi = luke.jedi;
 ```
 
-  
+
 
 #### 12.3. Use bracket notation `[]` when accessing properties with a variable.
 
@@ -2095,13 +2092,13 @@ function getProp(prop) {
 const isJedi = getProp('jedi');
 ```
 
-  
+
 
 #### 12.3. Use exponentiation operator `**` when calculating exponentiations.
 
 eslint: [`no-restricted-properties`](https://eslint.org/docs/rules/no-restricted-properties)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -2111,17 +2108,17 @@ const binary = Math.pow(2, 10);
 const binary = 2 ** 10;
 ```
 
-  
+
 
 #### 13\. Variables
 
-  
+
 
 #### 13.1. Always use `const` or `let` to declare variables. Not doing so will result in global variables. We want to avoid polluting the global namespace. Captain Planet warned us of that.
 
 eslint: [`no-undef`](https://eslint.org/docs/rules/no-undef) [`prefer-const`](https://eslint.org/docs/rules/prefer-const)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -2131,17 +2128,17 @@ superPower = new SuperPower();
 const superPower = new SuperPower();
 ```
 
-  
+
 
 #### 13.3. Use one `const` or `let` declaration per variable or assignment.
 
 eslint: [`one-var`](https://eslint.org/docs/rules/one-var.html)
 
-  
+
 
 >❓Why? It’s easier to add new variable declarations this way, and you never have to worry about swapping out a `;` for a `,` or introducing punctuation-only diffs. You can also step through each declaration with the debugger, instead of jumping through all of them at once.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -2161,15 +2158,15 @@ const goSportsTeam = true;
 const dragonball = 'z';
 ```
 
-  
+
 
 #### 13.3. Group all your `const`s and then group all your `let`s.
 
-  
+
 
 >❓Why? This is helpful when later on you might need to assign a variable depending on one of the previous assigned variables.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -2192,15 +2189,15 @@ let i;
 let length;
 ```
 
-  
+
 
 #### [13.4](https://mate-academy.github.io/style-guides/javascript.html#variables--define-where-used) Assign variables where you need them, but place them in a reasonable place.
 
-  
+
 
 >❓Why? `let` and `const` are block scoped and not function scoped.
 
-  
+
 
 ```javascript
 // ❌ bad - unnecessary function call
@@ -2236,17 +2233,17 @@ function checkName(hasName) {
 }
 ```
 
-  
+
 
 #### 13.6. Don’t chain variable assignments.
 
 eslint: [`no-multi-assign`](https://eslint.org/docs/rules/no-multi-assign)
 
-  
+
 
 >❓Why? Chaining variable assignments creates implicit global variables.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -2276,17 +2273,17 @@ console.log(c); // throws ReferenceError
 // the same applies for `const`
 ```
 
-  
+
 
 #### 13.6. Avoid using unary increments and decrements (`++`, `--`).
 
 eslint [`no-plusplus`](https://eslint.org/docs/rules/no-plusplus)
 
-  
+
 
 >❓Why? Per the eslint documentation, unary increment and decrement statements are subject to automatic semicolon insertion and can cause silent errors with incrementing or decrementing values within an application. It is also more expressive to mutate your values with statements like `num += 1` instead of `num++` or `num ++`. Disallowing unary increment and decrement statements also prevents you from pre-incrementing/pre-decrementing values unintentionally which can also cause unexpected behavior in your programs.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -2317,17 +2314,17 @@ const sum = array.reduce((a, b) => a + b, 0);
 const truthyCount = array.filter(Boolean).length;
 ```
 
-  
+
 
 #### 13.7. Avoid linebreaks before or after `=` in an assignment. If your assignment violates [`max-len`](https://eslint.org/docs/rules/max-len.html), surround the value in parens.
 
 eslint [`operator-linebreak`](https://eslint.org/docs/rules/operator-linebreak.html)
 
-  
+
 
 >❓Why? Linebreaks surrounding `=` can obfuscate the value of an assignment.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -2349,17 +2346,17 @@ const foo = 'superLongLongLongLongLongLongLongLongString';
 
 ```
 
-  
+
 
 #### 13.9. Disallow unused variables.
 
 eslint: [`no-unused-vars`](https://eslint.org/docs/rules/no-unused-vars)
 
-  
+
 
 >❓Why? Variables that are declared and not used anywhere in the code are most likely an error due to incomplete refactoring. Such variables take up space in the code and can lead to confusion by readers.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -2395,16 +2392,16 @@ var { type, ...coords } = data;
 // 'coords' is now the 'data' object without its 'type' property.
 ```
 
-  
+
 
 14\. Hoisting
 -------------
 
-  
+
 
 #### 14.1. `var` declarations get hoisted to the top of their closest enclosing function scope, their assignment does not. `const` and `let` declarations are blessed with a new concept called [Temporal Dead Zones (TDZ)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let#Temporal_Dead_Zone). It’s important to know why [typeof is no longer safe](http://es-discourse.com/t/why-typeof-is-no-longer-safe/15).
 
-  
+
 
 ```javascript
 // we know this wouldn’t work (assuming there
@@ -2439,11 +2436,11 @@ function example() {
 }
 ```
 
-  
+
 
 #### 14.2. Anonymous function expressions hoist their variable name, but not the function assignment.
 
-  
+
 
 ```javascript
 function example() {
@@ -2457,11 +2454,11 @@ function example() {
 }
 ```
 
-  
+
 
 #### 14.3. Named function expressions hoist the variable name, not the function name or the function body.
 
-  
+
 
 ```javascript
 function example() {
@@ -2489,11 +2486,11 @@ function example() {
 }
 ```
 
-  
+
 
 #### 14.4. Function declarations hoist their name and the function body.
 
-  
+
 
 ```javascript
 function example() {
@@ -2507,18 +2504,18 @@ function example() {
 
 *   For more information refer to [JavaScript Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting/) by [Ben Cherry](http://www.adequatelygood.com/).
 
-  
+
 
 15\. Comparison Operators & Equality
 ------------------------------------
 
-  
+
 
 #### 15.1. Use `===` and `!==` over `==` and `!=`.
 
 eslint: [`eqeqeq`](https://eslint.org/docs/rules/eqeqeq.html)
 
-  
+
 
 #### 15.2. Conditional statements such as the `if` statement evaluate their expression using coercion with the `ToBoolean` abstract method and always follow these simple rules:
 
@@ -2536,7 +2533,7 @@ if ([0] && []) {
 }
 ```
 
-  
+
 
 #### 15.3. Use shortcuts for booleans, but explicit comparisons for strings and numbers.
 
@@ -2572,21 +2569,21 @@ if (collection.length > 0) {
 }
 ```
 
-  
+
 
 #### 15.4. For more information see [Truth Equality and JavaScript](https://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll.
 
-  
+
 
 #### 15.6. Use braces to create blocks in `case` and `default` clauses that contain lexical declarations (e.g. `let`, `const`, `function`, and `class`).
 
 eslint: [`no-case-declarations`](https://eslint.org/docs/rules/no-case-declarations.html)
 
-  
+
 
 >❓Why? Lexical declarations are visible in the entire `switch` block but only get initialized when assigned, which only happens when its `case` is reached. This causes problems when multiple `case` clauses attempt to define the same thing.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -2630,13 +2627,13 @@ switch (foo) {
   }
 ```
 
-  
+
 
 #### 15.6. Ternaries should not be nested. Enforce newlines between operands of ternary expressions.
 
 eslint: [`no-nested-ternary`](https://eslint.org/docs/rules/no-nested-ternary.html) , [`multiline-ternary`](https://eslint.org/docs/latest/rules/multiline-ternary)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -2646,8 +2643,8 @@ const foo = maybe1 > maybe2
 
 // ✅ good
 // split into 2 separated ternary expressions
-const maybeNull = value1 > value2 
-  ? 'baz' 
+const maybeNull = value1 > value2
+  ? 'baz'
   : null;
 
 const foo = maybe1 > maybe2
@@ -2655,13 +2652,13 @@ const foo = maybe1 > maybe2
   : maybeNull;
 ```
 
-  
+
 
 #### 15.7. Avoid unneeded ternary statements.
 
 eslint: [`no-unneeded-ternary`](https://eslint.org/docs/rules/no-unneeded-ternary.html)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -2675,17 +2672,17 @@ const bar = !!c;
 const baz = !c;
 ```
 
-  
+
 
 #### 15.8 When mixing operators, enclose them in parentheses. The only exception is the standard arithmetic operators (`+`, `-`, `*`, & `/`) since their precedence is broadly understood.
 
 eslint: [`no-mixed-operators`](https://eslint.org/docs/rules/no-mixed-operators.html)
 
-  
+
 
 >❓Why? This improves readability and clarifies the developer’s intention.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -2715,18 +2712,18 @@ if (a || (b && c)) {
 const bar = a + b / c * d;
 ```
 
-  
+
 
 16\. Blocks
 -----------
 
-  
+
 
 #### 16.1. Enforce consistent brace style for all control statements.
 
 eslint: [`curly`](https://eslint.org/docs/latest/rules/curly) , [`brace-style`](https://eslint.org/docs/rules/brace-style.html)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -2750,13 +2747,13 @@ function bar() {
 }
 ```
 
-  
+
 
 #### 16.2. If you’re using multi-line blocks with `if` and `else`, put `else` on the same line as your `if` block’s closing brace.
 
 eslint: [`brace-style`](https://eslint.org/docs/rules/brace-style.html)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -2777,13 +2774,13 @@ if (test) {
 }
 ```
 
-  
+
 
 #### 16.4. If an `if` block always executes a `return` statement, the subsequent `else` block is unnecessary. A `return` in an `else if` block following an `if` block that contains a `return` can be separated into multiple `if` blocks.
 
 eslint: [`no-else-return`](https://eslint.org/docs/rules/no-else-return)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -2847,20 +2844,20 @@ function dogs(x) {
 }
 ```
 
-  
+
 
 17\. Control Statements
 -----------------------
 
-  
+
 
 #### 17.1 In case your control statement (`if`, `while` etc.) gets too long or exceeds the maximum line length, each (grouped) condition could be put into a new line. The logical operator should begin the line.
 
-  
+
 
 >❓Why? Requiring operators at the beginning of the line keeps the operators aligned and follows a pattern similar to method chaining. This also improves readability by making it easier to visually follow complex logic.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -2911,7 +2908,7 @@ if (foo === 123 && bar === 'abc') {
 }
 ```
 
-  
+
 
 #### 17.2 Don’t use selection operators in place of control statements.
 
@@ -2925,12 +2922,12 @@ if (!isRunning) {
 }
 ```
 
-  
+
 
 18\. Comments
 -------------
 
-  
+
 
 #### 18.1 Use `/** ... */` for multi-line comments.
 
@@ -2961,7 +2958,7 @@ function make(tag) {
 }
 ```
 
-  
+
 
 #### 18.2. Use `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an empty line before the comment unless it’s on the first line of a block.
 
@@ -3001,13 +2998,13 @@ function getType() {
 }
 ```
 
-  
+
 
 #### 18.3. Start all comments with a space to make it easier to read.
 
 eslint: [`spaced-comment`](https://eslint.org/docs/rules/spaced-comment)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3043,15 +3040,15 @@ function make(tag) {
 }
 ```
 
-  
+
 
 #### 18.4. Prefixing your comments with `FIXME` or `TODO` helps other developers quickly understand if you’re pointing out a problem that needs to be revisited, or if you’re suggesting a solution to the problem that needs to be implemented. These are different than regular comments because they are actionable. The actions are `FIXME: -- need to figure this out` or `TODO: -- need to implement`.
 
-  
+
 
 💡 Note: `FIXME` and `TODO` comments should have a link to the task
 
-  
+
 
 #### 18.5. Use `// FIXME:` to annotate problems.
 
@@ -3066,7 +3063,7 @@ class Calculator extends Abacus {
 }
 ```
 
-  
+
 
 #### 18.6. Use `// TODO:` to annotate solutions to problems.
 
@@ -3081,17 +3078,17 @@ class Calculator extends Abacus {
 }
 ```
 
-  
+
 
 #### 19\. Whitespace
 
-  
+
 
 #### 19.1. Use soft tabs (space character) set to 2 spaces.
 
 eslint: [`indent`](https://eslint.org/docs/rules/indent.html)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3110,13 +3107,13 @@ function baz() {
 }
 ```
 
-  
+
 
 #### 19.2. Place 1 space before the leading brace.
 
 eslint: [`space-before-blocks`](https://eslint.org/docs/rules/space-before-blocks.html)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3142,13 +3139,13 @@ dog.set('attr', {
 });
 ```
 
-  
+
 
 #### 19.3. Place 1 space before the opening parenthesis in control statements (`if`, `while` etc.). Place no space between the argument list and the function name in function calls and declarations.
 
 eslint: [`keyword-spacing`](https://eslint.org/docs/rules/keyword-spacing.html)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3172,13 +3169,13 @@ function fight() {
 }
 ```
 
-  
+
 
 #### 19.4. Set off operators with spaces.
 
 eslint: [`space-infix-ops`](https://eslint.org/docs/rules/space-infix-ops.html)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3188,13 +3185,13 @@ const x=y+5;
 const x = y + 5;
 ```
 
-  
+
 
 #### 19.5. End files with a single newline character.
 
 eslint: [`eol-last`](https://github.com/eslint/eslint/blob/master/docs/rules/eol-last.md)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3203,7 +3200,7 @@ import { es6 } from './AirbnbStyleGuide';
 export default es6;
 ```
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3213,7 +3210,7 @@ export default es6;↵
 ↵
 ```
 
-  
+
 
 ```javascript
 // ✅ good
@@ -3222,13 +3219,13 @@ import { es6 } from './AirbnbStyleGuide';
 export default es6;↵
 ```
 
-  
+
 
 #### 19.6. Use indentation when making long method chains (more than 2 method chains). Use a leading dot, which emphasizes that the line is a method call, not a new statement.
 
 eslint: [`newline-per-chained-call`](https://eslint.org/docs/rules/newline-per-chained-call) [`no-whitespace-before-property`](https://eslint.org/docs/rules/no-whitespace-before-property)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3270,11 +3267,11 @@ const leds = stage.selectAll('.led')
 const leds = stage.selectAll('.led').data(data);
 ```
 
-  
+
 
 #### 19.7. Leave a blank line after blocks and before the next statement.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3331,13 +3328,13 @@ const arr = [
 return arr;
 ```
 
-  
+
 
 #### 19.8. Do not pad your blocks with blank lines.
 
 eslint: [`padded-blocks`](https://eslint.org/docs/rules/padded-blocks.html)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3377,13 +3374,13 @@ if (baz) {
 }
 ```
 
-  
+
 
 #### 19.9. Do not add spaces inside parentheses.
 
 eslint: [`space-in-parens`](https://eslint.org/docs/rules/space-in-parens.html)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3407,7 +3404,7 @@ if (foo) {
 }
 ```
 
-  
+
 
 #### 19.10. Do not add spaces inside brackets.
 
@@ -3423,13 +3420,13 @@ const foo = [1, 2, 3];
 console.log(foo[0]);
 ```
 
-  
+
 
 #### 19.11. Add spaces inside curly braces.
 
 eslint: [`object-curly-spacing`](https://eslint.org/docs/rules/object-curly-spacing.html)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3439,17 +3436,17 @@ const foo = {clark: 'kent'};
 const foo = { clark: 'kent' };
 ```
 
-  
+
 
 #### 19.12. Avoid having lines of code that are longer than 80 characters (including whitespace). Note: per [above](https://app.clickup.com/24383048/v/dc/q83j8-12520/q83j8-29741?block=block-66fbe678-6c41-4e12-9e4b-72671228fd2c), long strings are exempt from this rule, and should not be broken up.
 
 eslint: [`max-len`](https://eslint.org/docs/rules/max-len.html)
 
-  
+
 
 >❓Why? This ensures readability and maintainability.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3476,7 +3473,7 @@ $.ajax({
   .fail(() => console.log('You have failed this city.'));
 ```
 
-  
+
 
 #### 19.13. Avoid spaces before commas and require a space after commas.
 
@@ -3490,13 +3487,13 @@ var arr = [1 , 2];
 var arr = [1, 2];
 ```
 
-  
+
 
 #### 19.14. Enforce spacing inside of computed properties.
 
 eslint: [`computed-property-spacing`](https://eslint.org/docs/rules/computed-property-spacing)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3512,13 +3509,13 @@ var x = { [b]: a }
 obj[foo[bar]]
 ```
 
-  
+
 
 #### 19.15. Avoid spaces between functions and their invocations.
 
 eslint: [`func-call-spacing`](https://eslint.org/docs/rules/func-call-spacing)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3531,13 +3528,13 @@ func
 func();
 ```
 
-  
+
 
 #### 19.16 Enforce spacing between keys and values in object literal properties.
 
 eslint: [`key-spacing`](https://eslint.org/docs/rules/key-spacing)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3548,19 +3545,19 @@ var obj2 = { "foo":42 };
 var obj = { "foo": 42 };
 ```
 
-  
+
 
 #### 19.17 Avoid trailing spaces at the end of lines.
 
 eslint: [`no-trailing-spaces`](https://eslint.org/docs/rules/no-trailing-spaces)
 
-  
+
 
 #### 19.18 Avoid multiple empty lines and only allow one newline at the end of files.
 
 eslint: [`no-multiple-empty-lines`](https://eslint.org/docs/rules/no-multiple-empty-lines)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3576,18 +3573,18 @@ var x = 1;
 var y = 2;
 ```
 
-  
+
 
 20\. Commas
 -----------
 
-  
+
 
 #### 20.1. Leading commas: **Nope.** 
 
 eslint: [`comma-style`](https://eslint.org/docs/rules/comma-style.html)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3621,17 +3618,17 @@ const hero = {
 };
 ```
 
-  
+
 
 #### 20.2. Additional trailing comma: **Yup.** 
 
 eslint: [`comma-dangle`](https://eslint.org/docs/rules/comma-dangle.html)
 
-  
+
 
 >❓Why? This leads to cleaner git diffs. Also, transpilers like Babel will remove the additional trailing comma in the transpiled code which means you don’t have to worry about the [trailing comma problem](https://github.com/airbnb/javascript/blob/es5-deprecated/es5/README.md#commas) in legacy browsers.
 
-  
+
 
 ```javascript
 // ❌ bad - git diff without trailing comma
@@ -3650,7 +3647,7 @@ const hero = {
 };
 ```
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3726,22 +3723,22 @@ createHero(
 );
 ```
 
-  
+
 
 21\. Semicolons
 ---------------
 
-  
+
 
 #### 21.1. **Yup.** 
 
 eslint: [`semi`](https://eslint.org/docs/rules/semi.html)
 
-  
+
 
 >❓Why? When JavaScript encounters a line break without a semicolon, it uses a set of rules called [Automatic Semicolon Insertion](https://tc39.github.io/ecma262/#sec-automatic-semicolon-insertion) to determine whether or not it should regard that line break as the end of a statement, and (as the name implies) place a semicolon into your code before the line break if it thinks so. ASI contains a few eccentric behaviors, though, and your code will break if JavaScript misinterprets your line break. These rules will become more complicated as new features become a part of JavaScript. Explicitly terminating your statements and configuring your linter to catch missing semicolons will help prevent you from encountering issues.
 
-  
+
 
 ```javascript
 // ❌ bad - raises exception
@@ -3784,22 +3781,22 @@ function foo() {
 
 *   [Read more](https://stackoverflow.com/questions/7365172/semicolon-before-self-invoking-function/7365214#7365214).
 
-  
+
 
 22\. Type Casting & Coercion
 ----------------------------
 
-  
+
 
 #### 22.1. Perform type coercion at the beginning of the statement.
 
-  
+
 
 #### 22.2 Strings:
 
 eslint: [`no-new-wrappers`](https://eslint.org/docs/rules/no-new-wrappers)
 
-  
+
 
 ```javascript
 // => this.reviewScore = 9;
@@ -3817,13 +3814,13 @@ const totalScore = this.reviewScore.toString(); // isn’t guaranteed to return 
 const totalScore = String(this.reviewScore);
 ```
 
-  
+
 
 #### 22.3. Numbers: Use `Number` for type casting and `parseInt` always with a radix for parsing strings.
 
 eslint: [`radix`](https://eslint.org/docs/rules/radix) [`no-new-wrappers`](https://eslint.org/docs/rules/no-new-wrappers)
 
-  
+
 
 ```javascript
 const inputValue = '4';
@@ -3847,13 +3844,13 @@ const val = Number(inputValue);
 const val = parseInt(inputValue, 10);
 ```
 
-  
+
 
 #### 22.4. Bitwise operators: no
 
 eslint: [`no-bitwise`](https://eslint.org/docs/latest/rules/no-bitwise)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3867,11 +3864,11 @@ if ([1, 2, 3].indexOf(5) === -1) {
 }
 ```
 
-  
+
 
 #### 22.5. If for whatever reason you are doing something wild and `parseInt` is your bottleneck and need to use Bitshift for [performance reasons](https://jsperf.com/coercion-vs-casting/3), leave a comment explaining why and what you’re doing.
 
-  
+
 
 ```javascript
 // ✅ good
@@ -3883,13 +3880,13 @@ if ([1, 2, 3].indexOf(5) === -1) {
 const val = inputValue >> 0;
 ```
 
-  
+
 
 #### 22.6 Booleans:
 
 eslint: [`no-new-wrappers`](https://eslint.org/docs/rules/no-new-wrappers)
 
-  
+
 
 ```javascript
 const age = 0;
@@ -3897,29 +3894,29 @@ const age = 0;
 // ❌ bad
 const hasAge = new Boolean(age);
 
-// ✅ good, but ! and !! may be confused 
+// ✅ good, but ! and !! may be confused
 const hasAge = !!age;
 
 // best
 const hasAge = Boolean(age);
 ```
 
-  
+
 
 23\. Naming Conventions
 -----------------------
 
-  
+
 
 #### [23.1](https://mate-academy.github.io/style-guides/javascript.html#naming--descriptive) Avoid single letter names. Be descriptive with your naming.
 
 eslint: [`id-length`](https://eslint.org/docs/rules/id-length)
 
-  
+
 
 **💡 Note:** it's allowed to use single letter name for iterator variable
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3938,13 +3935,13 @@ for (let i = 0; i < array.length; i+=1) {
 }
 ```
 
-  
+
 
 #### 23.2. Use camelCase when naming objects, functions, and instances. Function names are typically verbs or verb phrases.
 
 eslint: [`camelcase`](https://eslint.org/docs/rules/camelcase.html) 
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3957,13 +3954,13 @@ const thisIsMyObject = {};
 function calculatePrice() {}
 ```
 
-  
+
 
 #### 23.3. Use PascalCase only when naming constructors or classes.
 
 eslint: [`new-cap`](https://eslint.org/docs/rules/new-cap.html)
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -3987,17 +3984,17 @@ const good = new User({
 });
 ```
 
-  
+
 
 #### 23.4 Do not use trailing or leading underscores.
 
 eslint: [`no-underscore-dangle`](https://eslint.org/docs/rules/no-underscore-dangle.html)
 
-  
+
 
 >❓Why? JavaScript does not have the concept of privacy in terms of properties or methods. Although a leading underscore is a common convention to mean “private”, in fact, these properties are fully public, and as such, are part of your public API contract. This convention might lead developers to wrongly think that a change won’t count as breaking, or that tests aren’t needed. tl;dr: if you want something to be “private”, it must not be observably present.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -4009,11 +4006,11 @@ this._firstName = 'Panda';
 this.firstName = 'Panda';
 ```
 
-  
+
 
 #### 23.5 Don’t save references to `this`. Use arrow functions or [Function#bind](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind).
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -4040,7 +4037,7 @@ function foo() {
 }
 ```
 
-  
+
 
 #### 23.6 A base filename should exactly match the name of its primary named or default export.
 
@@ -4082,11 +4079,11 @@ import insideDirectory from './insideDirectory'; // camelCase export/import/dire
 // ^ supports both insideDirectory.js and insideDirectory/index.js
 ```
 
-  
+
 
 #### 23.7 Use camelCase when you export a function. Your filename should be identical to your function’s name.
 
-  
+
 
 ```javascript
 // filename makeStyleGuide.js
@@ -4095,11 +4092,11 @@ export function makeStyleGuide() {
 }
 ```
 
-  
+
 
 #### 23.8 Use PascalCase when you export a constructor / class / singleton / function library / bare object.
 
-  
+
 
 ```javascript
 // filename AirbnbStyleGuide.js
@@ -4109,15 +4106,15 @@ export const AirbnbStyleGuide = {
 };
 ```
 
-  
+
 
 #### 23.9 Acronyms and initialisms should always be all capitalized, or all lowercased.
 
-  
+
 
 >❓Why? Names are for readability, not to appease a computer algorithm.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -4150,20 +4147,20 @@ const requests = [
 ];
 ```
 
-  
+
 
 #### 23.10 You may optionally uppercase a constant only if it (1) is exported, (2) is a `const` (it can not be reassigned), and (3) the programmer can trust it (and its nested properties) to never change.
 
-  
+
 
 >❓Why? This is an additional tool to assist in situations where the programmer would be unsure if a variable might ever change. UPPERCASE\_VARIABLES are letting the programmer know that they can trust the variable (and its properties) not to change.
 
-  
+
 
 *   What about all `const` variables? - This is unnecessary, so uppercasing should not be used for constants within a file. It should be used for exported constants however.
 *   What about exported objects? - Uppercase at the top level of export (e.g. `EXPORTED_OBJECT.key`) and maintain that all nested properties do not change.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -4196,15 +4193,15 @@ export const MAPPING = {
 };
 ```
 
-  
+
 
 #### 23.11 Don't shorten variables or functions names
 
-  
+
 
 >❓Why? For better readability and maintainance
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -4222,15 +4219,15 @@ const findVacancy = () => this.vacancyRepository.find();
 24\. Accessors
 --------------
 
-  
+
 
 #### 24.1 Accessor functions for properties are not required.
 
-  
+
 
 #### 24.2 Do not use JavaScript getters/setters as they cause unexpected side effects and are harder to test, maintain, and reason about. Instead, if you do make accessor functions, use `getVal()` and `setVal('hello')`.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -4256,7 +4253,7 @@ class Dragon {
 }
 ```
 
-  
+
 
 #### 24.3 If the property/method is a `boolean`, use `isVal()` or `hasVal()`.
 
@@ -4272,7 +4269,7 @@ if (!dragon.hasAge()) {
 }
 ```
 
-  
+
 
 #### 24.4 It’s okay to create `get()` and `set()` functions, but be consistent.
 
@@ -4293,14 +4290,14 @@ class Jedi {
 }
 ```
 
-  
+
 
 25\. ECMAScript 5 Compatibility
 -------------------------------
 
 #### 25.1. Refer to [Kangax](https://twitter.com/kangax/)’s ES5 [compatibility table](https://kangax.github.io/es5-compat-table/).
 
-  
+
 
 26\. ECMAScript 6+ (ES 2015+) Styles
 ------------------------------------
@@ -4322,32 +4319,32 @@ class Jedi {
 13.  [Iterators and Generators](https://mate-academy.github.io/style-guides/javascript.html#iterators-and-generators)
 14.  [Modules](https://mate-academy.github.io/style-guides/javascript.html#modules)
 
-  
+
 
 #### 26.2 Do not use [TC39 proposals](https://github.com/tc39/proposals) that have not reached stage 3.
 
-  
+
 
 >❓Why? [They are not finalized](https://tc39.github.io/process-document/), and they are subject to change or to be withdrawn entirely. We want to use JavaScript, and proposals are not JavaScript yet.
 
-  
+
 
 27\. Standard Library
 ---------------------
 
 The [Standard Library](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects) contains utilities that are functionally broken but remain for legacy reasons.
 
-  
+
 
 #### 27.1. Use `Number.isNaN` instead of global `isNaN`.
 
 eslint: [`no-restricted-globals`](https://eslint.org/docs/rules/no-restricted-globals)
 
-  
+
 
 >❓Why? The global `isNaN` coerces non-numbers to numbers, returning true for anything that coerces to NaN. If this behavior is desired, make it explicit.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -4359,17 +4356,17 @@ Number.isNaN('1.2.3'); // false
 Number.isNaN(Number('1.2.3')); // true
 ```
 
-  
+
 
 #### 27.2. Use `Number.isFinite` instead of global `isFinite`.
 
 eslint: [`no-restricted-globals`](https://eslint.org/docs/rules/no-restricted-globals)
 
-  
+
 
 >❓Why? The global `isFinite` coerces non-numbers to numbers, returning true for anything that coerces to a finite number. If this behavior is desired, make it explicit.
 
-  
+
 
 ```javascript
 // ❌ bad
@@ -4380,14 +4377,14 @@ Number.isFinite('2e3'); // false
 Number.isFinite(parseInt('2e3', 10)); // true
 ```
 
-  
+
 
 28\. Testing
 ------------
 
 #### 28.1. **Yup.**
 
-  
+
 
 #### 28.2. **No, but seriously**:
 
@@ -4398,7 +4395,7 @@ Number.isFinite(parseInt('2e3', 10)); // true
 *   100% test coverage is a good goal to strive for, even if it’s not always practical to reach it.
 *   Whenever you fix a bug, _write a regression test_. A bug fixed without a regression test is almost certainly going to break again in the future.
 
-  
+
 
 Performance
 -----------
@@ -4411,7 +4408,7 @@ Performance
 *   [Long String Concatenation](https://jsperf.com/ya-string-concat)
 *   [Are Javascript functions like](https://www.quora.com/JavaScript-programming-language-Are-Javascript-functions-like-map-reduce-and-filter-already-optimized-for-traversing-array/answer/Quildreen-Motta) [`map()`](https://www.quora.com/JavaScript-programming-language-Are-Javascript-functions-like-map-reduce-and-filter-already-optimized-for-traversing-array/answer/Quildreen-Motta)[,](https://www.quora.com/JavaScript-programming-language-Are-Javascript-functions-like-map-reduce-and-filter-already-optimized-for-traversing-array/answer/Quildreen-Motta) [`reduce()`](https://www.quora.com/JavaScript-programming-language-Are-Javascript-functions-like-map-reduce-and-filter-already-optimized-for-traversing-array/answer/Quildreen-Motta)[, and](https://www.quora.com/JavaScript-programming-language-Are-Javascript-functions-like-map-reduce-and-filter-already-optimized-for-traversing-array/answer/Quildreen-Motta) [`filter()`](https://www.quora.com/JavaScript-programming-language-Are-Javascript-functions-like-map-reduce-and-filter-already-optimized-for-traversing-array/answer/Quildreen-Motta) [optimized for traversing arrays?](https://www.quora.com/JavaScript-programming-language-Are-Javascript-functions-like-map-reduce-and-filter-already-optimized-for-traversing-array/answer/Quildreen-Motta)
 
-  
+
 
 Resources
 ---------
