@@ -17,9 +17,12 @@
   - [3.4. Before block should not contain common test data preparation](#34-before-block-should-not-contain-common-test-data-preparation)
   - [3.5. Test block should only contain test steps_and_assertions](#35-test-block-should-only-contain-test-steps-and-assertions)
   - [3.6. Before block should not contain test steps](#36-before-block-should-not-contain-test-steps)
+  - [3.7. Before block should be placed inside the Describe block](#36-before-block-should-be-placed-inside-the-describe-block)
 - [4\. Assertions](#4-assertions)
   - [4.1 One assertion per one test step method](#41-one-assertion-per-one-test-step-method)
   - [4.2 Use expect for assertions](#42-use-expect-for-assertions)
+- [5\. Files naming](#3-files-naming)
+  - [5.1. Name test files without should at the beggining](#51-name-test-files-without-should-at-the-beggining)
 
 
 1\. Factory classes
@@ -386,6 +389,59 @@ test('should redirect to sign in page after submitting form',
 
 ```
 
+#### 3.7. Before block should be placed inside the Describe block
+
+Please place `beforeEach` block inside the `Describe` block for more readability.
+
+```typescript
+// ❌ not recommended
+let chatPage: ChatPage;
+
+test.beforeEach((
+  {
+    page,
+    chat,
+  },
+) => {
+  chatPage = new ChatPage(page, { chatId: chat.id });
+});
+
+test.describe('Chat page', () => {
+  test('should provide the ability to send messge',
+    async ({ priority }) => {
+      priority.critical();
+
+      await chatPage.visit();
+    });
+});
+
+
+
+// ✅ recommended
+test.describe('Chat page', () => {
+  let chatPage: ChatPage;
+
+  test.beforeEach((
+    {
+      page,
+      chat,
+    },
+  ) => {
+    chatPage = new ChatPage(page, { chatId: chat.id });
+  });
+
+  test('should provide the ability to send messge',
+    async ({ priority }) => {
+      priority.critical();
+
+      await chatPage.visit();
+    });
+});
+
+```
+
+
+
 4\. Assertions
 --------------
 
@@ -450,3 +506,14 @@ export class QuestionsEditorPage {
 }
 
 ```
+
+5\. Files naming
+--------------
+
+#### 5.1. Name test files without should at the beggining
+
+To make file name shorter, try to avoid using the `should` word at the beginning:
+
+- `shouldBeAbleToEditOwnUserProfile` > `editOwnUserProfile`
+- `shouldBeAbleToChangeTheCourse` > `courseChanging`
+- `shouldUpdateUsername` > `updateUsername`
