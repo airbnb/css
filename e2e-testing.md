@@ -21,7 +21,9 @@
 - [4\. Assertions](#4-assertions)
   - [4.1 One assertion per one test step method](#41-one-assertion-per-one-test-step-method)
   - [4.2 Use expect for assertions](#42-use-expect-for-assertions)
-- [5\. Files naming](#3-files-naming)
+    - [4.2.1](#421-Playwright)
+    - [4.2.2](#422-Appium)
+- [5\. Files naming](#5-files-naming)
   - [5.1. Name test files without should at the beginning](#51-name-test-files-without-should-at-the-beggining)
 - [6\. Class methods with conditional logic](#6-class-methods-with-conditional-logic)
   - [6.1. Use ternary operator for conditional logic ](#61-use-ternary-operator-for-conditional-logic)
@@ -482,8 +484,9 @@ export class QuestionsEditorPage {
 
 #### 4.2. Use expect for assertions
 
-
 Always use expect for assertions.
+
+##### 4.2.1. Playwright
 
 ```typescript
 // ❌ not recommended
@@ -502,6 +505,32 @@ export class QuestionsEditorPage {
   async assertQuestionIsPresentInTheList(question: string): Promise<void> {
     await test.step(`Assert question is present in the list`, async () => {
       await expect(this.questionInList.getByText(question)).toBeVisible();
+    });
+  }
+}
+
+```
+
+##### 4.2.2. Appium
+
+```typescript
+// ❌ not recommended
+export class QuestionsEditorPage {
+
+  async assertQuestionIsPresentInTheList(question: string): Promise<void> {
+    await step(`Assert question is present in the list`, async () => {
+      await this.questionInList(question).waitForDisplayed();
+    });
+  }
+}
+
+// ✅ recommended
+export class QuestionsEditorPage {
+
+  async assertQuestionIsPresentInTheList(question: string): Promise<void> {
+    await step(`Assert question is present in the list`, async () => {
+      await this.questionInList(question).waitForDisplayed();
+      await expect(await this.questionInList(question).isDisplayed()).toBeTruthy();
     });
   }
 }
