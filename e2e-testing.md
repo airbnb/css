@@ -513,6 +513,8 @@ export class QuestionsEditorPage {
 
 ##### 4.2.2. Appium
 
+Split methods for waitings and assertions. If the method is called 'assert' it should contain expect. If the method contains only waitForDisplayed, name it as 'waitFor...'.
+
 ```typescript
 // ❌ not recommended
 export class QuestionsEditorPage {
@@ -522,15 +524,29 @@ export class QuestionsEditorPage {
       await this.questionInList(question).waitForDisplayed();
     });
   }
-}
-
-// ✅ recommended
-export class QuestionsEditorPage {
 
   async assertQuestionIsPresentInTheList(question: string): Promise<void> {
     await step(`Assert question is present in the list`, async () => {
       await this.questionInList(question).waitForDisplayed();
       await expect(await this.questionInList(question).isDisplayed()).toBeTruthy();
+    });
+  }
+}
+
+// ✅ recommended
+export class QuestionsEditorPage {
+
+  async waitForQuestionIsPresentInTheList(question: string): Promise<void> {
+    await step(`Wait for question is present in the list`, async () => {
+      await this.questionInList(question).waitForDisplayed();
+    });
+  }
+
+  async assertQuestionIsPresentInTheList(question: string): Promise<void> {
+    await step(`Assert question is present in the list`, async () => {
+      await expect(
+        await this.questionInList(question).isDisplayed(),
+        ).toBeTruthy();
     });
   }
 }
