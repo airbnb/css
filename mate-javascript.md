@@ -82,6 +82,78 @@ const { a, ...noA } = copy;
 // noA => { b: 2, c: 3 }
 ```
 
+#### 1.2. Check if property exists in object before accessing it. In Mate we prefer ["noUncheckedIndexedAccess" option](https://www.typescriptlang.org/tsconfig#noUncheckedIndexedAccess) to be enabled in tsconfig.json for preventing runtime errors.
+
+```js
+// ❌ bad
+const user: User = {
+  name: 'John',
+  age: '25',
+};
+
+// some code that can change user object
+
+return user.city.length; // runtime error
+
+// ✅ good
+const user = {
+  name: 'John',
+  age: '25',
+};
+
+// some code that can change user object
+
+if ('city' in user) {
+  // city is defined
+  return user.city.length;
+}
+```
+
+For TypeScript projects (API, Frontend) we recommend to use [optional chaining](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#optional-chaining) to prevent runtime errors. Also, it's a good practice to use [nullish coalescing](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#nullish-coalescing) to provide default values for undefined or null properties.
+
+```ts
+// ❌ bad
+type User = {
+  name: string;
+  age: string;
+  city?: string;
+};
+
+const user: User = {
+  name: 'John',
+  age: '25',
+};
+
+// some code that can change user object
+
+return user.city.length; // runtime error
+
+// ✅ good
+type User = {
+  name: string;
+  age: string;
+  city?: string;
+};
+
+const user: User = {
+  name: 'John',
+  age: '25',
+};
+
+// some code that can change user object
+
+return user.city?.length ?? 0; // no runtime error
+```
+
+To prevent runtime errors with accessing non-existing properties in objects, we recommend to enable ["noUncheckedIndexedAccess" option](https://www.typescriptlang.org/tsconfig#noUncheckedIndexedAccess) in tsconfig.json. This option will force TypeScript to check if property exists in object before accessing it.
+
+```json
+{
+  "compilerOptions": {
+    "noUncheckedIndexedAccess": true
+  }
+}
+```
 
 2\. Destructuring
 -----------------
@@ -109,6 +181,106 @@ function processInput(input) {
 
 // the caller selects only the data they need
 const { left, top } = processInput(input);
+```
+
+#### 2.2. Check if property exists in object after destructuring it.
+
+When using TypeScript, you may face a situation when you need to destructure an object with optional properties. In this case, you need to check if the property exists before using it in the code below to prevent runtime errors.
+
+```ts
+// ❌ bad
+type User = {
+  name: string;
+  age: string;
+  city?: string;
+};
+
+const user: User = {
+  name: 'John',
+  age: '25',
+};
+
+// some code that can change user object
+
+const { city } = user;
+
+return city.length; // runtime error
+
+// ✅ good
+type User = {
+  name: string;
+  age: string;
+  city?: string;
+};
+
+const user: User = {
+  name: 'John',
+  age: '25',
+};
+
+// some code that can change user object
+
+const { city } = user;
+
+if (city) {
+  return city.length;
+}
+
+// --------------------------------
+// or with setting default value
+
+const { city = 'Fallback city' } = user;
+
+return city.length;
+```
+
+#### 2.3. Check if property exists in array after destructuring it.
+
+When using TypeScript, you may face a situation when you need to destructure an array with unknown length. In this case, you need to check if the property exists before using it in the code below to prevent runtime errors.
+
+```ts
+// ❌ bad
+type Cities = string[];
+
+const cities: Cities = ['Kyiv', 'London', 'New York'];
+
+cities.push('Paris');
+
+// some other code that can change cities array
+
+const oslo = cities[4];
+// undefined, but no runtime error as type Cities is string[]
+
+return oslo.length; // runtime error
+
+// ✅ good
+type Cities = string[];
+
+const cities: Cities = ['Kyiv', 'London', 'New York'];
+
+cities.push('Paris');
+
+// some other code that can change cities array
+
+const oslo = cities[4];
+
+if (oslo) {
+  return oslo.length;
+}
+// --------------------------------
+// or with setting default value
+const oslo = cities[4] ?? 'Fallback city';
+
+return oslo.length;
+```
+
+In cases, when you know the exact length of the array, you can use array tuple types to prevent runtime errors.
+
+```ts
+// ✅ good
+type Cities = [string, string, string];
+//or alternative way
+const CITIES = ['Kyiv', 'London', 'New York'] as const;
 ```
 
 3\. Functions
