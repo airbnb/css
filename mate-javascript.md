@@ -4,8 +4,11 @@
 
 - [1. Objects](#1-objects)
     - [1.1. Prefer the object spread operator over `Object.assign` to shallow-copy objects. Use the object rest operator to get a new object with certain properties omitted.](#11-prefer-the-object-spread-operator-overobjectassignto-shallow-copy-objects-use-the-object-rest-operator-to-get-a-new-object-with-certain-properties-omitted)
+    - [1.2. Check if property exists in object before accessing it. In Mate we prefer "noUncheckedIndexedAccess" option to be enabled in tsconfig.json for preventing runtime errors.](#12-check-if-property-exists-in-object-before-accessing-it-in-mate-we-prefer-nouncheckedindexedaccess-option-to-be-enabled-in-tsconfigjson-for-preventing-runtime-errors)
 - [2. Destructuring](#2-destructuring)
     - [2.1. Use object destructuring for multiple return values, not array destructuring.](#21use-object-destructuring-for-multiple-return-values-not-array-destructuring)
+    - [2.2. Check if property exists in object after destructuring it.](#22check-if-property-exists-in-object-after-destructuring-it)
+    - [2.3. Check if property exists in array after destructuring it.](#23check-if-property-exists-in-array-after-destructuring-it)
 - [3. Functions](#3-functions)
     - [3.1. Avoid side effects with default parameters.](#31-avoid-side-effects-with-default-parameters)
     - [3.2. Always put default parameters last.](#32-always-put-default-parameters-last)
